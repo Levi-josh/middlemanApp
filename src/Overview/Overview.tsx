@@ -13,7 +13,7 @@ const Overview = () => {
 return (
 <div className="w-full h-screen ">
 <Swiper modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
-  spaceBetween={20}
+  spaceBetween={0}
   slidesPerView={1}
   // navigation={true}
   // draggable={true}
@@ -24,7 +24,7 @@ return (
 //   disableOnInteraction: false, // Allow manual navigation to stop autoplay
 // }}
 
- className="bg-black text-white w-full h-full lg:hidden">
+ className="bg-black2  text-white w-full h-full lg:hidden">
 <SwiperSlide><Firstpage/></SwiperSlide> 
 <SwiperSlide> <Chat/></SwiperSlide> 
 <SwiperSlide><h1>middleman</h1></SwiperSlide> 

@@ -2,7 +2,9 @@
 
 const Chat = () => {
   return (
-    <div>Chat</div>
+    <div className="bg-black w-full h-screen">
+      Chat
+    </div>
   )
 }
 
