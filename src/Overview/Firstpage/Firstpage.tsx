@@ -2,14 +2,18 @@
 import { FaCopy, FaMessage, FaPiggyBank, FaWallet } from "react-icons/fa6"
 import Header from "../../Header/Header"
 import Dashboard from "./Dashboard"
+import pfp from '../../assets/IMG-20230507-WA0018.jpg'
+
 const Firstpage = () => {
   return (
-    <div className="px-3 sm:px-4 md:px-5 lg:w-1075">
+    <div className="px-3 sm:px-4 md:px-5 lg:w-1075 h-full">
     <Header/>
     <div className="flex flex-col gap-6  lg:flex-row lg:justify-between  lg:items-center h-103 ">
       <div className="lg:w-107 w-full rounded-lg h-full  bg-black px-2 lg:px-3 gap-3 lg:gap-2 flex-col flex justify-center items-start ">
         <div className="flex flex-row items-center gap-3 lg:gap-2 lg:flex-col">
-        <div className="lg:w-20 lg:h-20 w-14 h-14 rounded-full bg-black2 outline outline-3 outline-purple"></div>
+        <div className="lg:w-20 lg:h-20 w-14 h-14 overflow-hidden rounded-full bg-black2 outline outline-3 outline-purple">
+          <img src={pfp}/>
+        </div>
         <p className="text-white">Levi joshua</p>
         </div>
         <div className="flex items-center gap-3">

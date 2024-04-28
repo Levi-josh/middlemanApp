@@ -12,7 +12,7 @@ import 'swiper/css/scrollbar';
 import Footer from "../Footer/Footer";
 const Overview = () => {
 return (
-<div className="w-full h-screen ">
+<div className="w-full h-screen fixed ">
  {/* small screen */}
 <Swiper modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
   spaceBetween={0}
