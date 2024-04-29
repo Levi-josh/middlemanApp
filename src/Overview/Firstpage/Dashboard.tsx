@@ -2,7 +2,7 @@ import { FaMoneyBill, FaMoneyBillTransfer, FaWallet } from "react-icons/fa6"
 
 const Dashboard = () => {
   return (
-    <div className="bg-black flex rounded-lg justify-between p-4 sm:p-6 flex-col h-1045 lg:w-1085 w-full mt-6 ">
+    <div className="bg-black flex rounded-lg justify-between p-4 sm:p-6 flex-col h-104 lg:w-1085 w-full mt-6 ">
       <h1>Overview</h1>
       <div className="bg-black2 flex items-center gap-4 h-10003 p-2 sm:p-4 rounded-lg">
         <div className="flex flex-col justify-center bg-black w-full h-full p-1 sm:p-3 rounded-lg ">
