@@ -6,9 +6,9 @@ import pfp from '../../assets/IMG-20230507-WA0018.jpg'
 
 const Firstpage = () => {
   return (
-    <div className="px-3 sm:px-4  md:px-5 h-10007 lg:w-1075 lg:h-full">
+    <div className="w-full   lg:px-5   lg:w-1075 h-full">
     <Header/>
-    <div className="flex flex-col lg:gap-6 justify-between  lg:flex-row lg:justify-between  lg:items-center h-full lg:h-103 ">
+    <div className="flex flex-col px-3 sm:px-4  lg:gap-6 py-16 lg:py-0 overflow-auto   lg:flex-row lg:justify-between  lg:items-center h-full lg:h-103 ">
       <div className="lg:w-107 w-full rounded-lg h-102 lg:h-full  bg-black px-2 lg:px-3  lg:gap-2 flex-col flex justify-center items-start ">
         <div className="flex flex-row items-center gap-3 lg:gap-2 lg:flex-col">
         <div className="lg:w-20 lg:h-20 w-14 h-14 overflow-hidden rounded-full bg-black2 outline outline-3 outline-purple">
@@ -27,7 +27,7 @@ const Firstpage = () => {
       <div className="flex w-full h-12 lg:h-full justify-between items-center hover:transition-all hover:scale-x-105 bg-black hover:bg-black1 hover:cursor-pointer   px-2 rounded-lg"><p className="text-xs text-white">Wallet ID</p><div className="w-6 text-xs rounded-full flex justify-center items-center bg-purple h-6"><FaWallet className="text-white"/></div></div>
       <div className="flex  w-full h-12 lg:h-full justify-between items-center hover:transition-all hover:scale-x-105 bg-black hover:bg-black1 hover:cursor-pointer   px-2 rounded-lg"><p className="text-xs text-white">Transfer</p><div className="w-6 text-xs rounded-full flex justify-center items-center bg-purple h-6"><FaPiggyBank className="text-white"/></div></div>
      </div>
-     <div className="lg:hidden h-104 bg-slate-800"><Dashboard/></div>
+     <div className="lg:hidden h-106 bg-slate-800"><Dashboard/></div>
     </div>
     <div className="hidden lg:block"><Dashboard/></div>
     </div>
