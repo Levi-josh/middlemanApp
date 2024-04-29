@@ -27,7 +27,7 @@ const Firstpage = () => {
       <div className="flex w-full h-12 lg:h-full justify-between items-center hover:transition-all hover:scale-x-105 bg-black hover:bg-black1 hover:cursor-pointer   px-2 rounded-lg"><p className="text-xs text-white">Wallet ID</p><div className="w-6 text-xs rounded-full flex justify-center items-center bg-purple h-6"><FaWallet className="text-white"/></div></div>
       <div className="flex  w-full h-12 lg:h-full justify-between items-center hover:transition-all hover:scale-x-105 bg-black hover:bg-black1 hover:cursor-pointer   px-2 rounded-lg"><p className="text-xs text-white">Transfer</p><div className="w-6 text-xs rounded-full flex justify-center items-center bg-purple h-6"><FaPiggyBank className="text-white"/></div></div>
      </div>
-     <div className="lg:hidden h-105 bg-slate-800"><Dashboard/></div>
+     <div className="lg:hidden h-104 bg-slate-800"><Dashboard/></div>
     </div>
     <div className="hidden lg:block"><Dashboard/></div>
     </div>
