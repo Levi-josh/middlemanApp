@@ -6,7 +6,7 @@ import pfp from '../../assets/IMG-20230507-WA0018.jpg'
 
 const Firstpage = () => {
   return (
-    <div className="px-3 sm:px-4  md:px-5 h-10008 lg:w-1075 lg:h-full">
+    <div className="px-3 sm:px-4  md:px-5 h-10007 lg:w-1075 lg:h-full">
     <Header/>
     <div className="flex flex-col lg:gap-6 justify-between  lg:flex-row lg:justify-between  lg:items-center h-full lg:h-103 ">
       <div className="lg:w-107 w-full rounded-lg h-102 lg:h-full  bg-black px-2 lg:px-3  lg:gap-2 flex-col flex justify-center items-start ">
