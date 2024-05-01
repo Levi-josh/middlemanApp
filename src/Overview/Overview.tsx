@@ -23,7 +23,7 @@ return (
 <SwiperSlide><h1>middleman</h1></SwiperSlide> 
 </Swiper>
 {/* large screen  */}
-<div className="hidden lg:flex bg-black2 w-full h-full">
+<div className="hidden lg:flex bg-black2 w-full h-screen">
 <Firstpage/>
 <Chat/>
 </div>

@@ -6,9 +6,9 @@ import pfp from '../../assets/IMG-20230507-WA0018.jpg'
 
 const Firstpage = () => {
   return (
-    <div className="w-full overflow-auto  sm:overflow-visible     lg:px-5 lg:w-1075 h-full">
+    <div className="w-full overflow-auto   sm:overflow-visible     lg:px-5 lg:w-1075 h-full">
     <Header/>
-    <div className="flex flex-col px-3 mb-20 sm:mb-0 justify-between sm:px-4  lg:gap-6 pt-14 sm:pt-0  lg:flex-row lg:justify-between  lg:items-center h-full sm:h-100085 lg:h-103 ">
+    <div className="flex flex-col px-3 sm:px-5 lg:px-0  mb-32 sm:mb-0 justify-between   lg:gap-6 pt-14 sm:pt-0  lg:flex-row lg:justify-between  lg:items-center h-full sm:h-10008 lg:h-103 ">
       <div className="lg:w-107 w-full rounded-lg h-102 lg:h-full  bg-black px-2 lg:px-3  lg:gap-2 flex-col flex justify-center items-start ">
         <div className="flex flex-row items-center gap-3 lg:gap-2 lg:flex-col">
         <div className="sm:w-20 sm:h-20  w-14 h-14 overflow-hidden rounded-full bg-black2 outline outline-3 outline-purple">
