@@ -2,7 +2,7 @@ import victor from '../../assets/IMG-20230507-WA0023.jpg'
 import jessica from '../../assets/IMG-20230507-WA0021.jpg'
 import dave from '../../assets/IMG-20230515-WA0004.jpg'
 import tony from '../../assets/photo_2024-05-06_16-45-08.jpg'
-import { useState } from 'react'
+
 
 const Chatlist = () => {
     const mychat = [
