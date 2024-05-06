@@ -20,7 +20,6 @@ return (
  className="bg-black2  text-white w-full h-full lg:hidden">
 <SwiperSlide><Firstpage/></SwiperSlide> 
 <SwiperSlide> <Chat/></SwiperSlide> 
-<SwiperSlide><h1>middleman</h1></SwiperSlide> 
 </Swiper>
 {/* large screen  */}
 <div className="hidden lg:flex bg-black2 w-full h-screen">
