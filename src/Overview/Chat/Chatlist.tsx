@@ -5,7 +5,7 @@ import tony from '../../assets/photo_2024-05-06_16-45-08.jpg'
 import { useState } from 'react'
 
 const Chatlist = () => {
-    const [mychat,setmychat] = useState([
+    const mychat = [
     {username:'Don vick',
     pfp:victor,
     message:'Hwfa guy you still the come?',
@@ -30,7 +30,7 @@ const Chatlist = () => {
     sent:'4mins ago',
     unread:1
     }
-    ])
+    ]
   return (
     <div className='px-3 sm:px-4 lg:px-0 md:px-5 pt-7 flex flex-col gap-7 h-full'>
     {mychat.map((chat)=>(
