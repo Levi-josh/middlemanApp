@@ -10,6 +10,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
 import 'swiper/css/scrollbar';
 import Footer from "../Footer/Footer";
+// import Test from "./Test";
 const Overview = () => {
 return (
 <div className="w-full h-screen fixed ">
