@@ -31,3 +31,9 @@
     background-color: white;
     /* Change the active bullet color */
 }
+.swiper-scrollbar{
+    background-color: aqua;
+}
+.swiper-scrollbar-horizontal{
+    background-color: aqua;
+}

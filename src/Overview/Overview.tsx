@@ -1,5 +1,7 @@
 import Firstpage from "./Firstpage/Firstpage"
 import Chat from "./Chat/Chat"
+// import Laptopfirstpg from "./Firstpage/Laptopfirstpg";
+import { Outlet } from 'react-router-dom'
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/pagination';
@@ -13,18 +15,19 @@ import Footer from "../Footer/Footer";
 // import Test from "./Test";
 const Overview = () => {
 return (
-<div className="w-full h-screen fixed ">
+<div className="w-full h-screen fixed  ">
  {/* small screen */}
 <Swiper modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
   spaceBetween={0}
+  scrollbar={true}
   slidesPerView={1}
- className="bg-black2  text-white w-full h-full lg:hidden">
+ className="bg-black2  text-white  w-full h-full lg:hidden">
 <SwiperSlide><Firstpage/></SwiperSlide> 
 <SwiperSlide> <Chat/></SwiperSlide> 
 </Swiper>
 {/* large screen  */}
 <div className="hidden lg:flex bg-black2 w-full h-screen">
-<Firstpage/>
+<Outlet/>
 <Chat/>
 </div>
 <Footer/>
