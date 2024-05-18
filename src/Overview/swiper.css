@@ -31,9 +31,23 @@
     background-color: white;
     /* Change the active bullet color */
 }
-.swiper-scrollbar{
-    background-color: aqua;
-}
-.swiper-scrollbar-horizontal{
-    background-color: aqua;
-}
+
+/* Customizing the scrollbar track */
+ .swiper-scrollbar {
+    background-color:black !important; /* Change to your desired track color */
+    height: 8px;
+    
+    width:100% ;
+  }
+  
+  /* Customizing the scrollbar draggable handle */
+  .swiper-scrollbar-drag {
+    background-color: #6739B7 !important; /* Change to your desired handle color */
+    border-radius: 4px;
+     /* Add rounded corners to the handle */
+  }
+  
+  /* Example of additional styling */
+  .swiper-scrollbar-drag:hover {
+    background-color: #ff8a50 !important; /* Change handle color on hover */
+  }

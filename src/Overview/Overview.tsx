@@ -1,7 +1,9 @@
 import Firstpage from "./Firstpage/Firstpage"
 import Chat from "./Chat/Chat"
+import SwiperCore from 'swiper';
 // import Laptopfirstpg from "./Firstpage/Laptopfirstpg";
 import { Outlet } from 'react-router-dom'
+import  { useRef, useState } from 'react';
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/pagination';
@@ -13,15 +15,46 @@ import 'swiper/css/autoplay';
 import 'swiper/css/scrollbar';
 import Footer from "../Footer/Footer";
 // import Test from "./Test";
-const Overview = () => {
+const Overview: React.FC = () => {
+  const swiperRef = useRef<SwiperCore | null>();
+ 
+
+  const goToSlide = (index: number) => {
+    if (swiperRef.current) {
+      swiperRef.current.slideTo(index);
+    }
+  };
+  const handleSlideChange = () => {
+    if (swiperRef.current) {
+      const swiper = swiperRef.current;
+      const isAtBeginning = swiper.isBeginning;
+      const isAtEnd = swiper.isEnd;
+      if (isAtBeginning) {
+        swiper.allowSlidePrev = false;
+      } else {
+        swiper.allowSlidePrev = true;
+      }
+
+      if (isAtEnd) {
+        swiper.allowSlideNext = false;
+      } else {
+        swiper.allowSlideNext = true;
+      }
+    }
+  };
 return (
-<div className="w-full h-screen fixed  ">
+<div className="w-full  fixed overflow-auto  h-screen">
  {/* small screen */}
 <Swiper modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
   spaceBetween={0}
-  scrollbar={true}
+  onSwiper={(swiper) => {
+    swiperRef.current = swiper;
+    handleSlideChange();
+  }}
+  scrollbar={{ draggable: true }}
+  onSlideChange={handleSlideChange}
   slidesPerView={1}
- className="bg-black2  text-white  w-full h-full lg:hidden">
+ className="  text-white bg-slate-500   w-full h-full lg:hidden">
 <SwiperSlide><Firstpage/></SwiperSlide> 
 <SwiperSlide> <Chat/></SwiperSlide> 
 </Swiper>
@@ -30,7 +63,7 @@ return (
 <Outlet/>
 <Chat/>
 </div>
-<Footer/>
+{/* <Footer goToSlide={goToSlide}/> */}
 </div>
   )
 }
