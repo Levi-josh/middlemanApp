@@ -34,9 +34,12 @@
 
 /* Customizing the scrollbar track */
  .swiper-scrollbar {
-    background-color:black !important; /* Change to your desired track color */
+     /* Change to your desired track color */
     height: 8px;
-    
+    z-index: 60 !important;
+    /* Position the scrollbar at the top */
+   padding: 0 30px 30px;
+  bottom: 8vh !important;
     width:100% ;
   }
   

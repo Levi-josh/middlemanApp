@@ -54,7 +54,7 @@ return (
   scrollbar={{ draggable: true }}
   onSlideChange={handleSlideChange}
   slidesPerView={1}
- className="  text-white bg-slate-500   w-full h-full lg:hidden">
+ className="  text-white bg-black2  w-full h-full lg:hidden">
 <SwiperSlide><Firstpage/></SwiperSlide> 
 <SwiperSlide> <Chat/></SwiperSlide> 
 </Swiper>
@@ -63,7 +63,7 @@ return (
 <Outlet/>
 <Chat/>
 </div>
-{/* <Footer goToSlide={goToSlide}/> */}
+<Footer goToSlide={goToSlide}/>
 </div>
   )
 }
