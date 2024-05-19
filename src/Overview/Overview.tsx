@@ -3,7 +3,7 @@ import Chat from "./Chat/Chat"
 import SwiperCore from 'swiper';
 // import Laptopfirstpg from "./Firstpage/Laptopfirstpg";
 import { Outlet } from 'react-router-dom'
-import  { useRef, useState } from 'react';
+import  { useRef} from 'react';
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/pagination';
