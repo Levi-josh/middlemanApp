@@ -2,6 +2,7 @@ import { FaHome } from "react-icons/fa"
 import { FaMessage } from "react-icons/fa6"
 
 
+
 interface FooterProps {
   goToSlide: (index: number) => void;
 }
