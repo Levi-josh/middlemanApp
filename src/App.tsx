@@ -12,6 +12,10 @@ import BuyOrSell from './Overview/Transaction/BuyOrSell';
 import Comfirmed from './Overview/Transaction/Comfirmed';
 import Buyer from './Overview/Transaction/Buyer';
 import Seller from './Overview/Transaction/Seller';
+import Pending from './Overview/Transaction/Pending';
+import Pending2 from './Overview/Transaction/Pending2';
+import SthirdParty from './Overview/Transaction/SthirdParty';
+import BthirdParty from './Overview/Transaction/BthirdParty';
 function App() {
   const router = createBrowserRouter(createRoutesFromElements(
     <>
@@ -26,6 +30,10 @@ function App() {
     <Route path='/market/comfirmed' element={<Comfirmed/>}/>
     <Route path='/market/buyer' element={<Buyer/>}/>
     <Route path='/market/seller' element={<Seller/>}/>
+    <Route path='/market/pending' element={<Pending/>}/>
+    <Route path='/market/pending2' element={<Pending2/>}/>
+    <Route path='/market/sthirdParty' element={<SthirdParty/>}/>
+    <Route path='/market/BthirdParty' element={<BthirdParty/>}/>
     </Route>
     </>
   ));
