@@ -4,7 +4,7 @@ import { FaCheck } from "react-icons/fa6"
 
 const BuyOrSell = () => {
   return (
-    <div className=" w-full h-full px-4 pt-32 flex flex-col items-center gap-7">
+    <div className=" w-full h-full px-4 pt-24 flex flex-col items-center gap-7">
     <div className="w-16 h-16 rounded-full bg-purple  flex justify-center items-center"><FaStoreAlt className="text-white text-2xl"/></div>
     <div className="flex flex-col gap-7">
     <div><p className="text-white">Welcome to middleman's market place,to Start the transaction you have to choose between this two options below.</p></div>

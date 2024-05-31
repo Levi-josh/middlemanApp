@@ -1,12 +1,11 @@
-
-import './App.css'
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
+import './App.css';
 import Overview from './Overview/Overview';
 import Chatitems from './Overview/Chat/Chatitems';
 import Laptopfirstpg from './Overview/Firstpage/Laptopfirstpg';
 import Verify from './Overview/Transaction/Verify';
-// import Firstpage from './Overview/Firstpage/Firstpage';
-// import Chatlist from './Overview/Chat/Chatlist';
-import { Route,RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
 import Market from './Overview/Transaction/Market';
 import BuyOrSell from './Overview/Transaction/BuyOrSell';
 import Comfirmed from './Overview/Transaction/Comfirmed';
@@ -16,31 +15,83 @@ import Pending from './Overview/Transaction/Pending';
 import Pending2 from './Overview/Transaction/Pending2';
 import SthirdParty from './Overview/Transaction/SthirdParty';
 import BthirdParty from './Overview/Transaction/BthirdParty';
+import { ChatProvider } from './Overview/Chat/ChatContext';
+
+const pageVariants = {
+  initial: {
+    x: '100%',
+    opacity: 0,
+  },
+  in: {
+    x: 0,
+    opacity: 1,
+  },
+  out: {
+    x: '100%',
+    opacity: 0,
+  },
+};
+
+const pageTransition = {
+  type: 'tween',
+  ease: 'anticipate',
+  duration: 0.5,
+};
+
+const MotionWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <motion.div
+    initial="initial"
+    animate="in"
+    exit="out"
+    variants={pageVariants}
+    transition={pageTransition}
+  >
+    {children}
+  </motion.div>
+);
+
+const AnimatedRoutes = () => {
+  const location = useLocation();
+  return (
+    <AnimatePresence>
+      <Routes location={location} key={location.pathname}>
+        <Route path='/' element={<Overview />} >
+          <Route index element={<MotionWrapper><Laptopfirstpg /></MotionWrapper>} />
+          <Route path='chat' element={<MotionWrapper><Chatitems /></MotionWrapper>} />
+        </Route>
+        <Route path='pchat' element={<MotionWrapper><Chatitems /></MotionWrapper>} />
+        <Route path='market' element={<MotionWrapper><Market /></MotionWrapper>}>
+          <Route index element={<MotionWrapper><BuyOrSell /></MotionWrapper>} />
+          <Route path='verify' element={<MotionWrapper><Verify /></MotionWrapper>} />
+          <Route path='comfirmed' element={<MotionWrapper><Comfirmed /></MotionWrapper>} />
+          <Route path='buyer' element={<MotionWrapper><Buyer /></MotionWrapper>} />
+          <Route path='seller' element={<MotionWrapper><Seller /></MotionWrapper>} />
+          <Route path='pending' element={<MotionWrapper><Pending /></MotionWrapper>} />
+          <Route path='pending2' element={<MotionWrapper><Pending2 /></MotionWrapper>} />
+          <Route path='SthirdParty' element={<MotionWrapper><SthirdParty /></MotionWrapper>} />
+          <Route path='BthirdParty' element={<MotionWrapper><BthirdParty /></MotionWrapper>} />
+        </Route>
+      </Routes>
+    </AnimatePresence>
+  );
+};
+
 function App() {
-  const router = createBrowserRouter(createRoutesFromElements(
-    <>
-    <Route path='/' element={<Overview />} >
-     <Route index element={<Laptopfirstpg/>}/>
-     <Route path='/chat' element={<Chatitems/>}/>
-    </Route>
-    <Route path='/pchat' element={<Chatitems/>}/>
-    <Route path='/market' element={<Market/>}>
-    <Route index element={<BuyOrSell/>}/>
-    <Route path='/market/verify' element={<Verify/>}/>
-    <Route path='/market/comfirmed' element={<Comfirmed/>}/>
-    <Route path='/market/buyer' element={<Buyer/>}/>
-    <Route path='/market/seller' element={<Seller/>}/>
-    <Route path='/market/pending' element={<Pending/>}/>
-    <Route path='/market/pending2' element={<Pending2/>}/>
-    <Route path='/market/sthirdParty' element={<SthirdParty/>}/>
-    <Route path='/market/BthirdParty' element={<BthirdParty/>}/>
-    </Route>
-    </>
-  ));
-  return (<>
-    <RouterProvider router={router} />
-    </>
-  )
+  const [fromChat, setFromChat] = useState(false);
+
+  const isfromChat = () => {
+    setFromChat(true);
+  };
+
+  return (
+    <ChatProvider isfromChat={isfromChat} fromChat={fromChat}>
+      <Router>
+        <AnimatedRoutes />
+      </Router>
+    </ChatProvider>
+  );
 }
 
-export default App
+export default App;
+
+

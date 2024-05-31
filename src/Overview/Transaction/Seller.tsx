@@ -1,6 +1,4 @@
 
-import { FaAngleDown } from "react-icons/fa6"
-
 
 const Seller = () => {
   return (
@@ -10,7 +8,10 @@ const Seller = () => {
       <input type="text" className="w-full h-1007 rounded-lg text-white border-2 border-solid border-purple outline-none bg-black placeholder:text-white placeholder:pl-3 " placeholder="Enter delivery date"/>
       <input type="text" className="w-full h-1007 rounded-lg text-white border-2 border-solid border-purple outline-none bg-black placeholder:text-white placeholder:pl-3 " placeholder="Enter Amount"/>
       <input type="text" className="w-full h-1007 rounded-lg text-white border-2 border-solid border-purple outline-none bg-black placeholder:text-white placeholder:pl-3 " placeholder="Enter WalletID"/>
-      <div className="flex justify-between items-center w-full h-1007 rounded-lg text-white border-2 border-solid border-purple  bg-black px-3"><p>Choose a delivery method</p><FaAngleDown/></div>
+      <select className="outline-none w-full h-1007 rounded-lg text-white border-2 border-solid border-purple  bg-black px-3">
+        <option>Self delivery</option>
+        <option>Third party</option>
+      </select>
     </form>
     <button className="bg-purple text-white fixed bottom-14 w-103 rounded-full h-1005 right-4">Continue</button>
     <button className="bg-black text-white fixed bottom-14 w-103 rounded-full h-1005 left-4">Cancel</button>

@@ -5,7 +5,7 @@ import tony from '../../assets/photo_2024-05-06_16-45-08.jpg'
 import { NavLink } from 'react-router-dom'
 
 
-const Chatlist = () => {
+const Chatlist= () => {
     const mychat = [
     {username:'Don vick',
     pfp:victor,
