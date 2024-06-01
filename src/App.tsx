@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-route
 import { AnimatePresence, motion } from 'framer-motion';
 import './App.css';
 import Overview from './Overview/Overview';
+import Overview2 from './Overview/Overview2';
 import Chatitems from './Overview/Chat/Chatitems';
 import Laptopfirstpg from './Overview/Firstpage/Laptopfirstpg';
 import Verify from './Overview/Transaction/Verify';
@@ -28,14 +29,14 @@ const pageVariants = {
   },
   out: {
     x: '100%',
-    opacity: 0,
+    opacity: 1,
   },
 };
 
 const pageTransition = {
   type: 'tween',
   ease: 'anticipate',
-  duration: 0.5,
+  duration: 1,
 };
 
 const MotionWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => (
@@ -45,6 +46,7 @@ const MotionWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) =>
     exit="out"
     variants={pageVariants}
     transition={pageTransition}
+    // Ensure the element covers the whole page
   >
     {children}
   </motion.div>
@@ -53,11 +55,11 @@ const MotionWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) =>
 const AnimatedRoutes = () => {
   const location = useLocation();
   return (
-    <AnimatePresence>
+    <AnimatePresence >
       <Routes location={location} key={location.pathname}>
-        <Route path='/' element={<Overview />} >
-          <Route index element={<MotionWrapper><Laptopfirstpg /></MotionWrapper>} />
-          <Route path='chat' element={<MotionWrapper><Chatitems /></MotionWrapper>} />
+        <Route path='/' element={<Overview2 />} >
+          <Route index element={<Laptopfirstpg />} />
+          <Route path='chat' element={<Chatitems />} />
         </Route>
         <Route path='pchat' element={<MotionWrapper><Chatitems /></MotionWrapper>} />
         <Route path='market' element={<MotionWrapper><Market /></MotionWrapper>}>
@@ -86,6 +88,7 @@ function App() {
   return (
     <ChatProvider isfromChat={isfromChat} fromChat={fromChat}>
       <Router>
+        <Overview />
         <AnimatedRoutes />
       </Router>
     </ChatProvider>

@@ -2,7 +2,7 @@ import Firstpage from "./Firstpage/Firstpage"
 import Chat from "./Chat/Chat"
 import SwiperCore from 'swiper';
 // import Laptopfirstpg from "./Firstpage/Laptopfirstpg";
-import { Outlet } from 'react-router-dom'
+
 import  { useRef  } from 'react';
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -44,7 +44,7 @@ const Overview: React.FC = () => {
     }
   };
 return (
-<div className="w-full  fixed overflow-auto  h-screen">
+<div className="w-full  fixed overflow-auto  h-screen lg:hidden">
  {/* small screen */}
 
 <Swiper modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
@@ -57,16 +57,13 @@ return (
   onSlideChange={handleSlideChange}
   slidesPerView={1}
   initialSlide={fromChat?1:0}
- className="  text-white bg-black2  w-full h-full lg:hidden">
+ className="  text-white bg-black2  w-full h-full ">
 <SwiperSlide><Firstpage/></SwiperSlide> 
 <SwiperSlide> <Chat/></SwiperSlide> 
 </Swiper>
 
 {/* large screen  */}
-<div className="hidden lg:flex bg-black2 w-full h-screen">
-<Outlet/>
-<Chat/>
-</div>
+
 <Footer goToSlide={goToSlide}/>
 
 </div>
