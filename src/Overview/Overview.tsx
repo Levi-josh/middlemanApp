@@ -3,7 +3,7 @@ import Chat from "./Chat/Chat"
 import SwiperCore from 'swiper';
 // import Laptopfirstpg from "./Firstpage/Laptopfirstpg";
 
-import  { useRef  } from 'react';
+import  { useRef } from 'react';
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/pagination';
@@ -19,7 +19,6 @@ import { useChatContext  } from './Chat/ChatContext'
 const Overview: React.FC = () => {
   const swiperRef = useRef<SwiperCore | null>();
   const { fromChat } = useChatContext();
-
   const goToSlide = (index: number) => {
     if (swiperRef.current) {
       swiperRef.current.slideTo(index);
@@ -59,7 +58,7 @@ return (
   initialSlide={fromChat?1:0}
  className="  text-white bg-black2  w-full h-full ">
 <SwiperSlide><Firstpage/></SwiperSlide> 
-<SwiperSlide> <Chat/></SwiperSlide> 
+<SwiperSlide> <Chat /></SwiperSlide> 
 </Swiper>
 
 {/* large screen  */}
