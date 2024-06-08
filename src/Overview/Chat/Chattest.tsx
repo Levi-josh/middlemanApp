@@ -14,6 +14,7 @@ const [userId,setuserId] = useState('')
 const [users, setusers] = useState<User|null>(null);
 socket.emit('setCustomId', users?._id)
     const [messages, setMessages] = useState<Messages[]>([]);
+    const [Dbmessages, setDbMessages] = useState<Messages[]>([]);
     const [message, setMessage] = useState<string>('');
     const [receiver, setReceiver] = useState<string>('');
     const [sender, setSender] = useState<string>('');
@@ -24,10 +25,26 @@ socket.emit('setCustomId', users?._id)
             console.log(data)
             setMessages((prevMessages) => [...prevMessages, data]);
         });
+const fetdata = async()=>{
+        const option = {
+            method: 'Get',
+            headers: {
+                'content-type': 'application/json',
+            },
+        }
+        try {
+            const response = await fetch(` http://localhost:3500/getmessages/666340c0fa8160ce8ec8482d`, option);
+            const data = await response.json()
+            setDbMessages(data)
+           console.log(data)
+        }
+        catch (err) {
+        console.log(err)
+        }}
+        fetdata()
         return () => {
             socket.off('private chat');
         };
-
     }, []);
     interface message {
         from: String,
@@ -120,6 +137,13 @@ socket.emit('setCustomId', users?._id)
                 />
                 <button type="submit" className='text-purple'>Send</button>
             </form>
+            <ul className='text-white'>
+                {Dbmessages.map((msg, index) => (
+                    <li key={index}>
+                         {msg.message}
+                    </li>
+                ))}
+            </ul>
             <ul className='text-white'>
                 {messages.map((msg, index) => (
                     <li key={index}>
