@@ -17,6 +17,7 @@ import Pending2 from './Overview/Transaction/Pending2';
 import SthirdParty from './Overview/Transaction/SthirdParty';
 import BthirdParty from './Overview/Transaction/BthirdParty';
 import Chattest from './Overview/Chat/Chattest';
+import Login from './Auth/Login';
 import { ChatProvider } from './Overview/Chat/ChatContext';
 
 const pageVariants = {
@@ -62,8 +63,9 @@ const AnimatedRoutes = () => {
           <Route index element={<Laptopfirstpg />} />
           <Route path='chat' element={<Chatitems />} />
         </Route>
-        <Route path='pchat' element={<MotionWrapper><Chatitems /></MotionWrapper>} />
+        <Route path='pchat/:id' element={<MotionWrapper><Chatitems /></MotionWrapper>} />
         <Route path='chattest' element={<MotionWrapper><Chattest /></MotionWrapper>} />
+        <Route path='login' element={<MotionWrapper><Login/></MotionWrapper>} />
         <Route path='market' element={<MotionWrapper><Market /></MotionWrapper>}>
           <Route index element={<MotionWrapper><BuyOrSell /></MotionWrapper>} />
           <Route path='verify' element={<MotionWrapper><Verify /></MotionWrapper>} />

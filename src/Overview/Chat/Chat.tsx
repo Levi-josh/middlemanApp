@@ -1,6 +1,6 @@
 import Header2 from "../../Header/Header2"
 import Chatlist from "./Chatlist"
-import { useState,FormEvent } from "react"
+import { useState, useEffect } from "react"
 const Chat = () => {
   interface message {
     from: String,
@@ -34,25 +34,29 @@ interface Chat {
     walletId: string;
     __v: number;
 }
-  const [userId,setuserId] = useState('')
   const [users, setusers] = useState<User|null>(null);
-  const handleId = async(e:FormEvent<HTMLFormElement>) =>{
-  e.preventDefault();
-  const option = {
-    method: 'Get',
-    headers: {
-        'content-type': 'application/json',
-    },
-}
-try {
-    const response = await fetch(`http://localhost:3500/getusers/${userId}`, option);
-    const data = await response.json()
-    setusers(data)
-   console.log(data)
-}
-catch (err) {
-console.log(err)
-}} 
+  const Id = localStorage.getItem('Id')
+useEffect(()=>{
+  const fetchUsers = async()=>{
+    const option = {
+      method: 'Get',
+      headers: {
+          'content-type': 'application/json',
+      },
+  }
+  try {
+      const response = await fetch(`http://localhost:3500/getusers/${Id}`, option);
+      const data = await response.json()
+      setusers(data)
+     console.log(data)
+  }
+  catch (err) {
+  console.log(err)
+  }
+  }
+  fetchUsers()
+},[])
+ 
 
   return (
     <div className="bg-black lg:fixed lg:right-0  pt-3  lg:px-3 sm:pt-4 md:pt-5 h-full overflow-auto w-full   text-white lg:w-1025 ">
@@ -60,15 +64,7 @@ console.log(err)
     <div className="w-full text-center  bg-black2  pt-10 sm:pt-12 lg:pt-11 ">
     <p className="py-2 lg:py-1">1 unread message</p>
     </div>
-    <form onSubmit={handleId}>
-    <input
-      type="text"
-      placeholder="Receiver"
-      value={userId}
-      onChange={(e) => setuserId(e.target.value)} className="bg-black outline-none text-white"/>
-    <button >Get Id</button>
-    </form>
-    {users && <Chatlist chatUsers={users} />}
+    {users ? <Chatlist chatUsers={users} />:<p className='text-white font-bold lg:mt-20 mt-28 md:mt-32 text-center font-serif'>No Chat yet!</p>}
     </div>
   )
 }
