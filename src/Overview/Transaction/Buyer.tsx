@@ -1,4 +1,4 @@
-import { FaAngleDown, FaCopy } from "react-icons/fa6"
+import {  FaCopy } from "react-icons/fa6"
 
 
 const Buyer = () => {
