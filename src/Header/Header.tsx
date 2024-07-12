@@ -1,6 +1,7 @@
 import { FaAppStore, FaBell, FaQuestion } from "react-icons/fa6"
 import { motion } from 'framer-motion'
 import pfp from '../assets/IMG-20230507-WA0018.jpg'
+import { NavLink } from "react-router-dom"
 
 const Header = (props:any) => {
   console.log(props.scrollPosition)
@@ -13,7 +14,7 @@ const Header = (props:any) => {
       <div className="flex gap-6 items-center">
         <div className="bg-black w-8 h-8 rounded-lg justify-center hover:transition-all hover:bg-black1 hover:cursor-pointer items-center text-white flex"><FaAppStore/></div>
         <div className="bg-black w-8 h-8 rounded-lg justify-center hover:transition-all hover:bg-black1 hover:cursor-pointer items-center text-white flex"><FaBell/></div>
-        <div className="bg-black w-8 h-8 rounded-lg justify-center hover:transition-all hover:bg-black1 hover:cursor-pointer items-center text-white flex"><FaQuestion/></div>
+        <NavLink to={'/login'}><div className="bg-black w-8 h-8 rounded-lg justify-center hover:transition-all hover:bg-black1 hover:cursor-pointer items-center text-white flex"><FaQuestion/></div></NavLink>
       </div>
     </div>
   )

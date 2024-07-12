@@ -1,6 +1,7 @@
 import { useState,FormEvent } from "react"
 import { useNavigate } from "react-router-dom"
 import midman from '../assets/IMG-20230507-WA0018.jpg'
+import { NavLink } from "react-router-dom"
 
 const Login = () => {
 const [text,setText]=useState("")
@@ -34,7 +35,7 @@ const handSubmit = (e:FormEvent<HTMLFormElement>)=>{
               <div className="flex lg:hidden   py-3 justify-between items-center ">
                 <img src={midman} className="bg-no-repeat bg-cover bg-center rounded-full w-12 h-12"/> 
                 <div className="flex items-center gap-4">
-                  <button className="w-full bg-purple px-4 py-1 rounded-full text-white">SignIn</button>
+                  <NavLink to={'/'}><button className="w-full bg-purple px-4 py-1 rounded-full text-white">SignIn</button></NavLink>
                   <button className="w-full bg-purple px-4 py-1 rounded-full text-white">SignUp</button>
                 </div> 
               </div>
