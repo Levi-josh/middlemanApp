@@ -18,6 +18,8 @@ import SthirdParty from './Overview/Transaction/SthirdParty';
 import BthirdParty from './Overview/Transaction/BthirdParty';
 import Chattest from './Overview/Chat/Chattest';
 import Login from './Auth/Login';
+import PhoneLogin from './Auth/PhoneLogin';
+import LoginOutlet from './Auth/LoginOutlet';
 import { ChatProvider } from './Overview/Chat/ChatContext';
 
 const pageVariants = {
@@ -65,7 +67,10 @@ const AnimatedRoutes = () => {
         </Route>
         <Route path='pchat/:id' element={<MotionWrapper><Chatitems /></MotionWrapper>} />
         <Route path='chattest' element={<MotionWrapper><Chattest /></MotionWrapper>} />
-        <Route path='login' element={<MotionWrapper><Login/></MotionWrapper>} />
+        <Route path='login' element={<MotionWrapper><LoginOutlet/></MotionWrapper>} >
+          <Route index element={<MotionWrapper><Login/></MotionWrapper>}/>
+          <Route path='phone' element={<MotionWrapper><PhoneLogin/></MotionWrapper>}/>
+        </Route>
         <Route path='market' element={<MotionWrapper><Market /></MotionWrapper>}>
           <Route index element={<MotionWrapper><BuyOrSell /></MotionWrapper>} />
           <Route path='verify' element={<MotionWrapper><Verify /></MotionWrapper>} />
