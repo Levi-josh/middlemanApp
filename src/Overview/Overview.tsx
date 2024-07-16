@@ -56,7 +56,7 @@ return (
   onSlideChange={handleSlideChange}
   slidesPerView={1}
   initialSlide={fromChat?1:0}
- className="  text-white bg-black2  w-full h-full ">
+ className="  text-white demo  w-full h-full ">
 <SwiperSlide><Firstpage/></SwiperSlide> 
 <SwiperSlide> <Chat /></SwiperSlide> 
 </Swiper>
