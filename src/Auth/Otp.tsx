@@ -1,18 +1,60 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState} from 'react';
 import { FaLock } from 'react-icons/fa';
+import { useNavigate } from "react-router-dom"
 const Otp = () => {
     const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
-
+    const navigate = useNavigate()
+    const [otp, setOtp] = useState(Array(6).fill(''));
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, index: number) => {
       if (e.key !== 'Shift' && e.key !== 'Tab') { // Avoid moving focus on Shift or Tab
-       
         if (index < inputRefs.current.length - 1) {
-          const nextInput = inputRefs.current[index + 1];
-          if (nextInput) {
-            nextInput.focus();
-          }
+          // const nextInput = inputRefs.current[index + 1];
+          // if (nextInput) {
+          //   nextInput.focus();
+          // }
         }
+        if(index===6){
+          navigate('/')
+        }
+        console.log(index)
       }
+      // if (e.key === 'Backspace') {
+
+      //   if (index > 0) {
+      //     const prevInput = inputRefs.current[index - 1];
+      //     if (prevInput) {
+      //       prevInput.focus();
+      //     }
+      //   }
+
+      // }
+    };
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
+      const value = e.target.value;
+        const newOtp = [...otp];
+        newOtp[index] = value;
+        setOtp(newOtp);
+        console.log(value)
+        console.log(newOtp[index])
+        console.log(newOtp)
+        console.log(index)
+        if (index < inputRefs.current.length - 1 && newOtp[index]) {
+           const nextInput = inputRefs.current[index + 1];
+           if (nextInput) {
+             nextInput.focus();
+           }
+        }
+        
+        if (index < inputRefs.current.length - 1 && !newOtp[index]) {
+          const prevInput = inputRefs.current[index - 1];
+          if (prevInput) {
+            prevInput.focus();
+          }
+          console.log(newOtp[index])
+        }
+        
+        
+      
     };
     return (
       <div className="flex flex-col items-center pt-24 bg-black  gap-7 w-full h-full px-4">
@@ -23,9 +65,12 @@ const Otp = () => {
           <input
             key={index}
             type="text"
+            maxLength={1}
+            value={otp[index]}
             className="w-10 h-10 rounded-md outline-none bg-black text-white text-center border-2 border-solid border-demotext"
             ref={el => inputRefs.current[index] = el}
             onKeyDown={(e) => handleKeyDown(e, index)}
+            onChange={(e) => handleChange(e, index)}
             autoFocus={index === 0} // autofocus only the first input
           />
         ))}
