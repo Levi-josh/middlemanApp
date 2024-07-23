@@ -1,6 +1,7 @@
 
 import ChatHeader from "../../Header/ChatHeader"
-import ChatFooter from "../../Footer/ChatFooter"
+// import ChatFooter from "../../Footer/ChatFooter"
+import { FaCamera } from "react-icons/fa"
 import  { useState, useEffect,FormEvent , ChangeEvent } from 'react';
 import { useNavigate, useParams } from 'react-router-dom'
 import io from 'socket.io-client';
@@ -73,10 +74,10 @@ const fetdata = async()=>{
         method: 'Get',
         headers: {
             'content-type': 'application/json',
-        },
+        }
     }
     try {
-        const response = await fetch(` http://localhost:3500/getmessages/${Id}`, option);
+        const response = await fetch(` http://localhost:3500/getmessages/${Id}/${params.id}`, option);
         const data = await response.json()
         setDbMessages(data)
        console.log(data)
@@ -89,6 +90,7 @@ const fetdata = async()=>{
       mySocket.off('private chat');
     };
 }, []);
+console.log(messages)
 const handleSubmit = (e:FormEvent<HTMLFormElement>) => {
   e.preventDefault();
   if (message.trim() && params.id) {
@@ -114,7 +116,18 @@ const handleChange = (e:ChangeEvent<HTMLInputElement>) =>{ setMessage(e.target.v
       </div>
     </div>)}
     </div>
-    <ChatFooter handleSubmit={handleSubmit} handleChange={handleChange}/>
+    {/* <ChatFooter handleSubmit={handleSubmit} handleChange={handleChange}/> */}
+    <div className="w-full z-10 bg-black lg:w-1025 px-3 sm:px-4 md:px-5 lg:px-3 flex items-center bottom-0  justify-between fixed h-14 sm:h-16 md:h-20">
+      <form onSubmit={handleSubmit} className="w-full z-10 bg-black lg:w-1025 px-3 sm:px-4 md:px-5 lg:px-3 flex items-center bottom-0  justify-between fixed h-14 sm:h-16 md:h-20"> 
+        <FaCamera className="text-white text-lg sm:text-2xl md:text-3xl"/>
+        
+        <input onChange={handleChange} className="w-107 bg-black1 border border-solid border-gray-800 text-white outline-none rounded-full placeholder:pl-1 pl-5 sm:py-1" placeholder="Enter text" type="text" value={message}/>
+        <button type="submit" className='text-purple'>Send</button>
+        {/* <button className="w-6 h-6 sm:w-9 sm:h-9 bg-purple rounded-full flex items-center justify-center" >
+            <FaTelegramPlane className="text-white text-sm sm:text-lg"/>
+        </button> */}
+      </form>
+    </div>
     </div>
   )
 }

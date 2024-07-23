@@ -17,6 +17,7 @@ import Pending2 from './Overview/Transaction/Pending2';
 import SthirdParty from './Overview/Transaction/SthirdParty';
 import BthirdParty from './Overview/Transaction/BthirdParty';
 import Chattest from './Overview/Chat/Chattest';
+import Otp from './Auth/Otp';
 import Login from './Auth/Login';
 import PhoneLogin from './Auth/PhoneLogin';
 import LoginOutlet from './Auth/LoginOutlet';
@@ -35,6 +36,12 @@ const pageVariants = {
     x: '100%',
     opacity: 1,
   },
+  in2:{
+    opacity: 1,
+  },
+  initial2:{
+    opacity: 0,
+  }
 };
 
 const pageTransition = {
@@ -56,6 +63,7 @@ const MotionWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) =>
   </motion.div>
 );
 
+
 const AnimatedRoutes = () => {
   const location = useLocation();
   return (
@@ -67,9 +75,10 @@ const AnimatedRoutes = () => {
         </Route>
         <Route path='pchat/:id' element={<MotionWrapper><Chatitems /></MotionWrapper>} />
         <Route path='chattest' element={<MotionWrapper><Chattest /></MotionWrapper>} />
-        <Route path='login' element={<MotionWrapper><LoginOutlet/></MotionWrapper>} >
-          <Route index element={<MotionWrapper><Login/></MotionWrapper>}/>
-          <Route path='phone' element={<MotionWrapper><PhoneLogin/></MotionWrapper>}/>
+        <Route path='login' element={<><LoginOutlet/></>} >
+          <Route index element={<><Login/></>}/>
+          <Route path='phone' element={<><PhoneLogin/></>}/>
+          <Route path='otp' element={<><Otp/></>}/>
         </Route>
         <Route path='market' element={<MotionWrapper><Market /></MotionWrapper>}>
           <Route index element={<MotionWrapper><BuyOrSell /></MotionWrapper>} />

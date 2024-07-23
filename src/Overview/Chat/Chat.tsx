@@ -34,7 +34,7 @@ interface Chat {
     walletId: string;
     __v: number;
 }
-  const [users, setusers] = useState<User|null>(null);
+  const [users, setusers] = useState<User|null>();
   const Id = localStorage.getItem('Id')
 useEffect(()=>{
   const fetchUsers = async()=>{
