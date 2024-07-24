@@ -9,7 +9,8 @@ export default {
       colors:{
         black1:'#121212',
         black2:'#1A1A1A',
-        purple:'#6739B7',
+        // purple:'#6739B7',
+        purple:'rgb(107, 42, 168)',
         purplegrad:'#6739B7-9A7EC9',
         white1:'#F5F5F5',
         demotext:'rgb(49, 47, 47)'
