@@ -25,7 +25,7 @@ console.log(scrollPosition)
         <p className="text-white sm:text-lg lg:text-xl font-semibold">Levi joshua</p>
         </div>
         <div className="flex items-center justify-between w-full">
-          <p className=" text-white1 font-semibold text-sm sm:text-lg lg:text-base"><span className="font-bold">Invitation code</span>: jotelpvaqenvxuelgdsiwncpi</p>
+          <p className=" text-white font-semibold text-sm sm:text-lg lg:text-base"><span className="">Invitation code</span> : jotelpvaqenvxuelgdsiwncpi</p>
           <FaCopy className="text-white sm:text-2xl"/>
         </div>
        

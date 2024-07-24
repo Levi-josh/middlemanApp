@@ -20,7 +20,7 @@ const Otp = () => {
       }
       // if (e.key === 'Backspace') {
 
-      //   if (index > 0) {
+      //   if (index === 5) {
       //     const prevInput = inputRefs.current[index - 1];
       //     if (prevInput) {
       //       prevInput.focus();
@@ -38,21 +38,22 @@ const Otp = () => {
         console.log(newOtp[index])
         console.log(newOtp)
         console.log(index)
-        if (index < inputRefs.current.length - 1 && newOtp[index]) {
+        if (index < inputRefs.current.length - 1 && value) {
            const nextInput = inputRefs.current[index + 1];
            if (nextInput) {
              nextInput.focus();
            }
+           console.log(nextInput)
         }
         
-        if (index < inputRefs.current.length - 1 && !newOtp[index]) {
+        if (index < inputRefs.current.length - 1 && !value) {
           const prevInput = inputRefs.current[index - 1];
           if (prevInput) {
             prevInput.focus();
           }
-          console.log(newOtp[index])
+          console.log(prevInput)
         }
-        
+
         
       
     };

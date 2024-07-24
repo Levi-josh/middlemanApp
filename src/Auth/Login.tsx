@@ -14,7 +14,7 @@ const handSubmit = (e:FormEvent<HTMLFormElement>)=>{
     }
 }
   return (
-    <div className="demo w-full h-full px-4 sm:px-6 md:px-8 lg:px-0 lg:flex justify-center overflow-auto  lg:justify-normal fixed  ">
+    <div className="bg-black2 w-full h-full px-4 sm:px-6 md:px-8 lg:px-0 lg:flex justify-center overflow-auto  lg:justify-normal fixed  ">
         <form onSubmit={handSubmit} className="bg-black w-109 hidden h-108 sm:w-1065 md:w-106 lg:w-106 xl:w-105 lg:h-full lg:flex flex-col justify-center  px-4 ">
           <div className="flex flex-col gap-10 w-full justify-center items-center">
             <input type="email" className="w-full h-10 bg-black border-0.1   border-demotext  text-white outline-none rounded-full placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white"  placeholder="Enter an email"  />
@@ -28,7 +28,7 @@ const handSubmit = (e:FormEvent<HTMLFormElement>)=>{
               <p className="text-white">Or</p>
               <hr className="w-full  border-demotext "/>
             </div>
-            <div className="w-full h-10 demo text-white flex justify-center items-center">Google</div>
+            <div className="w-full h-10 bg-black2 text-white flex justify-center items-center">Google</div>
           </div>
         </form>
         <div className="lg:px-7 lg:pt-5 overflow-auto flex flex-col gap-7 ">

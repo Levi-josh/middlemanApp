@@ -15,7 +15,7 @@ const handSubmit = (e:FormEvent<HTMLFormElement>)=>{
     }
 }
   return (
-    <div className="flex justify-center w-full h-screen demo items-center">
+    <div className="flex justify-center w-full h-screen bg-black2 items-center">
         <NavLink to={'/login'} relative="path"><FaArrowLeft className="absolute text-white top-3 left-3"/></NavLink>
         <form onSubmit={handSubmit} className="bg-black w-109 lg:hidden h-108 sm:w-1065 md:w-106 lg:w-106 xl:w-105 lg:h-full flex flex-col justify-center  px-4 ">
           <div className="flex flex-col gap-10 w-full justify-center items-center">
@@ -30,7 +30,7 @@ const handSubmit = (e:FormEvent<HTMLFormElement>)=>{
               <p className="text-white">Or</p>
               <hr className="w-full  border-demotext "/>
             </div>
-            <div className="w-full h-10 demo text-white flex justify-center items-center">Google</div>
+            <div className="w-full h-10 bg-black2 text-white flex justify-center items-center">Google</div>
           </div>
         </form>  
     </div>
