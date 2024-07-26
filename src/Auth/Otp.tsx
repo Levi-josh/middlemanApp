@@ -24,7 +24,7 @@ const verifyOtp = async(e:FormEvent<HTMLFormElement>)=>{
     const data = await response.json()
     console.log(data)
     localStorage.setItem('Id', data.UserId)
-    data && navigate('/')
+    data && navigate('/verified')
   }
   catch (err) {
   console.log(err)

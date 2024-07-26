@@ -15,7 +15,7 @@ const Details = () => {
               body:JSON.stringify({text})
         }
         try {
-              const response = await fetch(` http://localhost:3500/signup`, option);
+              const response = await fetch(` http://localhost:3500/details`, option);
               const data = await response.json()
               data && navigate('/')
         }
@@ -25,13 +25,23 @@ const Details = () => {
           
     }
   return (
-    <div  className="flex flex-col items-center pt-24 bg-black  gap-7 w-full h-full px-4">
+    <div  className="flex flex-col items-center pt-24 bg-black  gap-7 w-full h-screen px-4">
         <form onSubmit={handSubmit} className='w-full flex items-center flex-col gap-5'>
-            <div className='sm:w-28 sm:h-28 w-24 h-24 rounded-full flex justify-center items-center text-white bg-purple'>
+            <div className='sm:w-28 relative overflow-hidden sm:h-28 w-24 h-24 rounded-full flex justify-center items-center text-white bg-purple'>
                 <img/>
+                <div  className="absolute  flex justify-center items-center w-full h-full z-10 bg-transparent">
+                    <input type="file" />
+                </div>
             </div>
-            <input type="text" className="w-full h-10 bg-black border border-solid  border-demotext  text-white outline-none rounded-full placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white" onChange={e=>{setText(e.target.value)}} value={text} placeholder="Enter a username"  />
-            <button>Continue</button>
+            <input type="text" className="w-full h-10 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-3 sm:py-1 placeholder:text-white" onChange={e=>{setText(e.target.value)}} value={text} placeholder="Enter a username"  />
+            
+            <select className="outline-none w-full h-10 rounded-lg text-white border border-solid border-demotext  bg-black px-3">
+                <option>Male</option>
+                <option>Female</option>
+                <option>Prefer not to say</option>
+            </select>
+          
+            <button className="w-full h-10 bg-purple text-white rounded-lg">Continue</button>
         </form>
     </div>
   )

@@ -23,6 +23,8 @@ import PhoneLogin from './Auth/PhoneLogin';
 import LoginOutlet from './Auth/LoginOutlet';
 import { ChatProvider } from './Overview/Chat/ChatContext';
 import Invites from './Overview/Invites/Invites';
+import Details from './Auth/Details';
+import Verified from './Auth/Verified';
 
 const pageVariants = {
   initial: {
@@ -77,6 +79,8 @@ const AnimatedRoutes = () => {
         <Route path='pchat/:id' element={<MotionWrapper><Chatitems /></MotionWrapper>} />
         <Route path='chattest' element={<MotionWrapper><Chattest /></MotionWrapper>} />
         <Route path='invite' element={<MotionWrapper><Invites /></MotionWrapper>} />
+        <Route path='verified' element={<MotionWrapper><Verified /></MotionWrapper>} />
+        <Route path='details' element={<MotionWrapper><Details /></MotionWrapper>} />
         <Route path='login' element={<><LoginOutlet/></>} >
           <Route index element={<><Login/></>}/>
           <Route path='phone' element={<><PhoneLogin/></>}/>

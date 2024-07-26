@@ -29,6 +29,7 @@ const Invites = () => {
     }
     const handleChange = (e:ChangeEvent<HTMLInputElement>) =>{ 
         setInviteCode(e.target.value)
+        const inviteValue = e.target.value
         const searchInvite = async()=>{
             const option = {
                 method: 'Get',
@@ -37,7 +38,7 @@ const Invites = () => {
                 },
             }
             try {
-                const response = await fetch(` http://localhost:3500/sendInvite/${inviteCode}`, option);
+                const response = await fetch(` http://localhost:3500/searchInvite/${inviteValue}`, option);
                 const data = await response.json()
                 setUserid(data.id)
                 setSearchedUser(data)
@@ -47,8 +48,9 @@ const Invites = () => {
             console.log(err)
             }
         }
-        if (inviteCode.length === 36) {
+        if (inviteValue.length === 36) {
             searchInvite() 
+            console.log('ran')
         }
     }
   return (
