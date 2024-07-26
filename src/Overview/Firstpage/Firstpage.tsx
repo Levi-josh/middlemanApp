@@ -3,6 +3,7 @@ import { FaCopy, FaMessage, FaPiggyBank, FaWallet } from "react-icons/fa6"
 import Header from "../../Header/Header"
 import Dashboard from "./Dashboard"
 import pfp from '../../assets/IMG-20230507-WA0018.jpg'
+import { NavLink } from 'react-router-dom';
 
 const Firstpage = () => {
 const [scrollPosition, setScrollPosition] = useState<number>(0);
@@ -22,7 +23,7 @@ console.log(scrollPosition)
         <div className="sm:w-20 sm:h-20  w-14 h-14 overflow-hidden rounded-full bg-black2 outline outline-3 outline-purple">
           <img src={pfp}/>
         </div>
-        <p className="text-white sm:text-lg lg:text-xl font-semibold">Levi joshua</p>
+        <p className="text-white text-sm sm:text-base  font-bold">Levi joshua</p>
         </div>
         <div className="flex items-center justify-between w-full">
           <p className=" text-white font-semibold text-sm sm:text-lg lg:text-base"><span className="">Invitation code</span> : jotelpvaqenvxuelgdsiwncpi</p>
@@ -31,7 +32,7 @@ console.log(scrollPosition)
        
       </div> 
      <div className="flex flex-row gap-3  items-center h-1006 lg:justify-between lg:h-full lg:w-103 lg:flex-col">
-      <div className="flex w-full h-full lg:h-full justify-between items-center hover:transition-all hover:scale-x-105 bg-black hover:bg-black1 hover:cursor-pointer px-2 rounded-lg"><p className="text-xs sm:text-base  text-white">Create chat</p><div className="w-6 sm:w-8 sm:h-8 text-xs rounded-full flex justify-center items-center bg-purple h-6"><FaMessage className="text-white"/></div></div>
+      <NavLink to={'/invite'} className={'w-full h-full '}><div className="flex w-full h-full justify-between items-center hover:transition-all hover:scale-x-105 bg-black hover:bg-black1 hover:cursor-pointer px-2 rounded-lg"><p className="text-xs sm:text-base  text-white">Invite</p><div className="w-6 sm:w-8 sm:h-8 text-xs rounded-full flex justify-center items-center bg-purple h-6"><FaMessage className="text-white"/></div></div></NavLink>
       <div className="flex w-full h-full lg:h-full justify-between items-center hover:transition-all hover:scale-x-105 bg-black hover:bg-black1 hover:cursor-pointer   px-2 rounded-lg"><p className="text-xs sm:text-base  text-white">Wallet Id</p><div className="w-6 sm:w-8 sm:h-8 text-xs rounded-full flex justify-center items-center bg-purple h-6"><FaWallet className="text-white"/></div></div>
       <div className="flex  w-full h-full lg:h-full justify-between items-center hover:transition-all hover:scale-x-105 bg-black hover:bg-black1 hover:cursor-pointer   px-2 rounded-lg"><p className="text-xs sm:text-base  text-white">Transfer</p><div className="w-6 sm:w-8 sm:h-8 text-xs rounded-full flex justify-center items-center bg-purple h-6"><FaPiggyBank className="text-white"/></div></div>
      </div>

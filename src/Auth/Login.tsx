@@ -1,25 +1,42 @@
-import { useState,FormEvent } from "react"
+import { useState,FormEvent} from "react"
 import { useNavigate } from "react-router-dom"
 import midman from '../assets/IMG-20230507-WA0018.jpg'
 import { NavLink } from "react-router-dom"
 
 const Login = () => {
 const [text,setText]=useState("")
+const [email,setEmail]=useState('')
+const [password,setPassword]=useState('')
 const navigate = useNavigate()
-const handSubmit = (e:FormEvent<HTMLFormElement>)=>{
+
+const handSubmit = async(e:FormEvent<HTMLFormElement>)=>{
     e.preventDefault();
-    if(text){
-    localStorage.setItem('Id', text)
-    navigate('/')
+    const option = {
+        method: 'Post',
+        headers: {
+            'content-type': 'application/json',
+        },
+        body:JSON.stringify({email,password})
     }
+    try {
+        const response = await fetch(` http://localhost:3500/signup`, option);
+        const data = await response.json()
+        data && navigate('/login/otp')
+        
+    }
+    catch (err) {
+    console.log(err)
+    }
+
 }
+
   return (
     <div className="bg-black2 w-full h-full px-4 sm:px-6 md:px-8 lg:px-0 lg:flex justify-center overflow-auto  lg:justify-normal fixed  ">
         <form onSubmit={handSubmit} className="bg-black w-109 hidden h-108 sm:w-1065 md:w-106 lg:w-106 xl:w-105 lg:h-full lg:flex flex-col justify-center  px-4 ">
           <div className="flex flex-col gap-10 w-full justify-center items-center">
-            <input type="email" className="w-full h-10 bg-black border-0.1   border-demotext  text-white outline-none rounded-full placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white"  placeholder="Enter an email"  />
+            <input type="email" className="w-full h-10 bg-black border-0.1   border-demotext  text-white outline-none rounded-full placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white"  placeholder="Enter an email" onChange={e=>{setEmail(e.target.value)}} value={email}   />
             <input type="text" className="w-full h-10 bg-black border border-solid  border-demotext  text-white outline-none rounded-full placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white" onChange={e=>{setText(e.target.value)}} value={text} placeholder="Enter a username"  />
-            <input type="password" className="w-full h-10 bg-black border border-solid  border-demotext  text-white outline-none rounded-full placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white" placeholder="Enter a password"  />
+            <input type="password" className="w-full h-10 bg-black border border-solid  border-demotext  text-white outline-none rounded-full placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white" placeholder="Enter a password" onChange={e=>{setPassword(e.target.value)}} value={password}   />
             <button className="w-full h-10 bg-purple text-white">Sign</button>
           </div>
           <div className="flex flex-col gap-10 mt-7 w-full justify-center items-center">
@@ -51,14 +68,14 @@ const handSubmit = (e:FormEvent<HTMLFormElement>)=>{
             <div className="md:w-105 p-4 md:p-5 flex flex-col gap-3">
               <h1 className="font-bold text-purple text-xl lg:text-2xl text-center ">About us</h1>
               <div>
-                <p className="text-white text-sm lg:text-base leading-5 font-sans  sm:leading-6 md:leading-7 lg:leading-6  xl:leading-7 ">In the digital age, trust can be a tricky thing. Whether you're buying or selling goods and services online, the risk of scams and fraud can make even the simplest transactions nerve-wracking. That's where The Middleman comes in.</p>
-                <p className="text-white text-sm lg:text-base leading-5 font-sans sm:leading-6 md:leading-7 lg:leading-6  xl:leading-7">The Middleman is here to facilitate your transactions with the utmost security and reliability.</p>
+                <p className="text-white text-sm lg:text-base leading-6   sm:leading-6 md:leading-7 xl:leading-8    ">In the digital age, trust can be a tricky thing. Whether you're buying or selling goods and services online, the risk of scams and fraud can make even the simplest transactions nerve-wracking. That's where The Middleman comes in.</p>
+                <p className="text-white text-sm lg:text-base leading-6  sm:leading-6 md:leading-7  xl:leading-8 ">The Middleman is here to facilitate your transactions with the utmost security and reliability.</p>
               </div>
             </div>
           </div>
           <div className="p-4  md:p-5  w-full bg-black rounded-xl flex flex-col gap-3">
             <h1 className="text-purple font-bold text-xl text-center md:text-start lg:text-2xl"> How It Works </h1>
-            <div className=" text-white text-sm flex flex-col gap-4  ">
+            <div className=" text-white text-sm sm:text-base flex flex-col gap-4  ">
               <div className="flex gap-2 items-start"><div className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 rounded-full bg-purple flex items-center justify-center text-xs sm:font-semibold">1</div><p>Buyer and Seller Agreement - The buyer and  seller agree on the terms of the transaction.</p></div>
               <div className="flex gap-2 items-start"><div className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 rounded-full bg-purple flex items-center justify-center text-xs sm:font-semibold">2</div><p>Secure Payment - The buyer deposits the payment with The Middleman.</p></div>
               <div className="flex gap-2 items-start"><div className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 rounded-full bg-purple flex items-center justify-center text-xs sm:font-semibold">3</div><p> Product Delivery - The seller ships the  product or provides the service.</p></div>
@@ -68,7 +85,7 @@ const handSubmit = (e:FormEvent<HTMLFormElement>)=>{
           </div>
           <div className="p-4  lg:p-5 w-full bg-black rounded-xl flex flex-col gap-3">
             <h1 className=" font-bold text-purple text-xl text-center md:text-start lg:text-2xl">Why Choose Us?</h1>
-            <div className=" text-white text-sm flex flex-col gap-4  ">
+            <div className=" text-white text-sm sm:text-base flex flex-col gap-4  ">
               <div className="flex gap-2 items-start w-full "><div className="w-4 h-4 sm:w-5 flex-shrink-0 sm:h-5 rounded-full bg-purple flex items-center justify-center text-xs sm:font-semibold">1</div><p className=""> Safety First - We hold the payment securely until the buyer confirms they've received the product or service.</p></div>
               <div className="flex gap-2 items-start"><div className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 rounded-full bg-purple flex items-center justify-center text-xs sm:font-semibold">2</div><p>Peace of Mind - Both buyers and sellers  can engage in transactions with confidence,  knowing their funds and products  are protected.</p></div>
               <div className="flex gap-2 items-start"><div className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 rounded-full bg-purple flex items-center justify-center text-xs sm:font-semibold">3</div><p>  User-Friendly - Our platform is designed to be intuitive and easy to use, making the process smooth and hassle-free.</p></div>
