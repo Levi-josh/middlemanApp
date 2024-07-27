@@ -59,7 +59,7 @@ const Invites = () => {
         <form onSubmit={handSubmit} className="flex flex-col w-109 h-108 items-center sm:w-108 md:w-107 lg:w-104 gap-10 sm:gap-14">
         <div className="flex flex-col items-center gap-5 sm:gap-7">
         <div className='sm:w-20 sm:h-20 w-16 h-16 rounded-full flex justify-center items-center text-white bg-purple'><FaLink/></div>
-        <p className="text-white text-center  text-sm sm:text-base">Ask the user you want to invite their <span>invite code</span>,then paste it in the input below. please make sure the code is correct and complete.</p>
+        <p className="text-white text-center  text-sm sm:text-base">Ask the user you want to invite their <span className="font-bold ">invite code</span>,then paste it in the input below. please make sure the code is correct and complete.</p>
         </div>
         <div className="flex flex-col items-center gap-5 sm:gap-7 w-full">
         <input type="text" className="w-full h-10  bg-black border border-solid  border-demotext  text-white outline-none rounded-full placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white" onChange={handleChange} value={inviteCode} placeholder="Enter invite code"  />
