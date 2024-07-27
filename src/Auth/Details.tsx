@@ -16,7 +16,7 @@ const Details = () => {
               headers: {
                   'content-type': 'application/json',
               },
-              body:JSON.stringify({username})
+              body:JSON.stringify({username,selectedFile})
         }
         try {
               const response = await fetch(` http://localhost:3500/details`, option);

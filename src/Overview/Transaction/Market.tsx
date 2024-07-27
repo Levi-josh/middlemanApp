@@ -1,6 +1,7 @@
 import { Outlet, useNavigate } from "react-router-dom"
-import MktHearder from "../../Header/MktHearder"
+import { FaArrowLeft} from "react-icons/fa6"
 import { useEffect } from "react"
+import { NavLink } from "react-router-dom"
 
 
 
@@ -49,8 +50,8 @@ const Market = () => {
     }
   },[])
   return (
-    <div className="bg-black2 w-full h-screen fixed">
-        <MktHearder/>
+    <div className="bg-black w-full h-screen items-center fixed flex flex-col  justify-center">
+        <NavLink to={'/'} relative="path"><FaArrowLeft className="absolute text-white top-3 left-3"/></NavLink>
         <Outlet/>
     </div>
   )
