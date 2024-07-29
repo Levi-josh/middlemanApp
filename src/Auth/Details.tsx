@@ -8,18 +8,22 @@ const Details = () => {
     const [previewUrl, setPreviewUrl] = useState<string | null>(null);
     const [username, setUsername] = useState<string>('');
     const fileInputRef = useRef<HTMLInputElement>(null);
+    const id = localStorage.getItem('Id')
 
     const handSubmit = async(e:FormEvent<HTMLFormElement>)=>{
         e.preventDefault();
+        if (!selectedFile || !id) return;
+        const formData = new FormData();
+        formData.append('image', selectedFile);
+        formData.append('username', username);
+        formData.append('id', id );
+    
         const option = {
-              method: 'Post',
-              headers: {
-                  'content-type': 'application/json',
-              },
-              body:JSON.stringify({username,selectedFile})
-        }
+          method: 'POST',
+          body: formData,
+        };
         try {
-              const response = await fetch(` http://localhost:3500/details`, option);
+              const response = await fetch(` http://localhost:3500/getPfp`, option);
               const data = await response.json()
               data && navigate('/')
         }

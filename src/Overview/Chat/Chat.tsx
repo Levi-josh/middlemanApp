@@ -1,7 +1,9 @@
 import Header2 from "../../Header/Header2"
 import Chatlist from "./Chatlist"
 import { useState, useEffect } from "react"
-const Chat = () => {
+
+
+const Chat= () => {
   interface message {
     from: String,
     to: String,

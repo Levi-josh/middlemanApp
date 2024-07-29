@@ -1,9 +1,9 @@
 import Firstpage from "./Firstpage/Firstpage"
 import Chat from "./Chat/Chat"
 import SwiperCore from 'swiper';
-// import Laptopfirstpg from "./Firstpage/Laptopfirstpg";
-
+// import Laptopfirstpg from "./Firstpage/Laptopfirstpg"
 import  { useRef } from 'react';
+// import { useState, useEffect } from "react"
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/pagination';
@@ -19,12 +19,12 @@ import { useChatContext  } from './Chat/ChatContext'
 const Overview: React.FC = () => {
   const swiperRef = useRef<SwiperCore | null>();
   const { fromChat } = useChatContext();
-  const goToSlide = (index: number) => {
+const goToSlide = (index: number) => {
     if (swiperRef.current) {
       swiperRef.current.slideTo(index);
     }
   };
-  const handleSlideChange = () => {
+const handleSlideChange = () => {
     if (swiperRef.current) {
       const swiper = swiperRef.current;
       const isAtBeginning = swiper.isBeginning;
@@ -42,6 +42,7 @@ const Overview: React.FC = () => {
       }
     }
   };
+
 return (
 <div className="w-full  fixed overflow-auto  h-screen lg:hidden">
  {/* small screen */}
