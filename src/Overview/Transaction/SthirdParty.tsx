@@ -1,11 +1,11 @@
-import { useNavigate } from "react-router-dom"
+// import { useNavigate } from "react-router-dom"
 import { FaVanShuttle } from "react-icons/fa6"
 
 const SthirdParty = () => {
-  const navigate = useNavigate()
-  const continueVerification = ()=>{
-    navigate('/market/verify')
-  }
+  // const navigate = useNavigate()
+  // // const continueVerification = ()=>{
+  // //   navigate('/market/verify')
+  // // }
   return (
     <div className="w-full h-full items-center flex justify-center  ">
     <div className=" w-109  sm:w-108 md:w-107 lg:w-105  h-108  justify-between items-center   flex flex-col ">

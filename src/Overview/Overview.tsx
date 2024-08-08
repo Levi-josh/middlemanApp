@@ -15,7 +15,6 @@ import 'swiper/css/autoplay';
 import 'swiper/css/scrollbar';
 import Footer from "../Footer/Footer";
 import { useChatContext  } from './Chat/ChatContext'
-import { Outlet } from 'react-router-dom'
 import Laptopfirstpg from "./Firstpage/Laptopfirstpg";
 // import Test from "./Test";
 const Overview: React.FC = () => {
