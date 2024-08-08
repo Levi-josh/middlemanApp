@@ -66,13 +66,13 @@ const Laptopfirstpg = () => {
       <div className="lg:w-107 w-full rounded-lg h-102 lg:h-full  bg-black px-2 lg:px-3  lg:gap-2 flex-col flex gap-3 justify-center items-start ">
         <div className="flex flex-row items-center gap-3 lg:gap-2 lg:flex-col">
         <div className="sm:w-20 sm:h-20  w-14 h-14 overflow-hidden rounded-full  outline outline-3 outline-purple">
-          <img src={`http://localhost:3500${users?.profilePic}`}/>
+          {users?.profilePic?<img src={`http://localhost:3500${users?.profilePic}`}/>:<div className='sm:h-20   w-14 h-14 rounded-full sm:w-20 text-xs flex items-center justify-center text-white'>No photo</div>}
         </div>
         <p className="text-white font-bold">{users?.username}</p>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center justify-between w-full">
           <p className=" text-white"><span className="">Invitation code</span> : {users?.inviteCode}</p>
-          <FaCopy className="text-white"/>
+          <FaCopy className="text-white hover:cursor-pointer"/>
         </div>
        
       </div> 

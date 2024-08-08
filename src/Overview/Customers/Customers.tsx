@@ -13,7 +13,7 @@ const Customers = () => {
        <div className='sm:w-20 sm:h-20 w-16 h-16 rounded-full flex justify-center items-center  text-white bg-purple' ><FaUser/></div>
        <h1 className="text-white text-center sm:text-lg  font-semibold  ">Customers</h1>
      </div>
-     <p className="text-white text-center  text-sm sm:text-base ">These are list of people you accepted and sent an invite</p>
+     <p className="text-white text-center  text-sm sm:text-base ">These are list of people you accepted or sent an invite</p>
     </div> 
      <div className="flex flex-col  w-full border border-demotext rounded-lg ">
        <div className="w-full  border-b border-demotext  p-4 sm:p-6 flex  items-center justify-between">

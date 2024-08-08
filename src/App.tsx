@@ -26,6 +26,9 @@ import Verified from './Auth/Verified';
 import Signup from './Auth/Signup';
 import History from './Overview/History/History';
 import Customers from './Overview/Customers/Customers';
+import Deposit from './Overview/Deposit/Deposit';
+import Withdraw from './Overview/Withdraw/Withdraw';
+import Transfer from './Overview/Transfer/Transfer';
 
 
 const pageVariants = {
@@ -85,6 +88,9 @@ const AnimatedRoutes = () => {
         <Route path='pchat/:id' element={<MotionWrapper><Chatitems /></MotionWrapper>} />
         <Route path='chattest' element={<MotionWrapper><Chattest /></MotionWrapper>} />
         <Route path='invite' element={<MotionWrapper><Invites /></MotionWrapper>} />
+        <Route path='deposit' element={<MotionWrapper><Deposit /></MotionWrapper>} />
+        <Route path='withdraw' element={<MotionWrapper><Withdraw /></MotionWrapper>} />
+        <Route path='transfer' element={<MotionWrapper><Transfer /></MotionWrapper>} />
         <Route path='history' element={<MotionWrapper><History /></MotionWrapper>} />
         <Route path='customers' element={<MotionWrapper><Customers /></MotionWrapper>} />
         <Route path='verified' element={<MotionWrapper><Verified /></MotionWrapper>} />
