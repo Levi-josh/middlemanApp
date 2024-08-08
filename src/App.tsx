@@ -3,9 +3,7 @@ import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-route
 import { AnimatePresence, motion } from 'framer-motion';
 import './App.css';
 import Overview from './Overview/Overview';
-import Overview2 from './Overview/Overview2';
 import Chatitems from './Overview/Chat/Chatitems';
-import Laptopfirstpg from './Overview/Firstpage/Laptopfirstpg';
 import Verify from './Overview/Transaction/Verify';
 import Market from './Overview/Transaction/Market';
 import BuyOrSell from './Overview/Transaction/BuyOrSell';
