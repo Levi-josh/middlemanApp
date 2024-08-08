@@ -25,6 +25,10 @@ import { ChatProvider } from './Overview/Chat/ChatContext';
 import Invites from './Overview/Invites/Invites';
 import Details from './Auth/Details';
 import Verified from './Auth/Verified';
+import Signup from './Auth/Signup';
+import History from './Overview/History/History';
+import Customers from './Overview/Customers/Customers';
+
 
 const pageVariants = {
   initial: {
@@ -38,6 +42,9 @@ const pageVariants = {
   out: {
     x: '100%',
     opacity: 1,
+  },
+  out2: {
+    opacity: 0,
   },
   in2:{
     opacity: 1,
@@ -55,9 +62,9 @@ const pageTransition = {
 
 const MotionWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <motion.div
-    initial="initial"
-    animate="in"
-    exit="out"
+    initial={window.matchMedia('(max-width: 600px)').matches?"initial":'initial2'}
+    animate={window.matchMedia('(max-width: 600px)').matches?"in":'in2'}
+    exit={window.matchMedia('(max-width: 600px)').matches?"out":'out2'}
     variants={pageVariants}
     transition={pageTransition}
     // Ensure the element covers the whole page
@@ -72,18 +79,22 @@ const AnimatedRoutes = () => {
   return (
     <AnimatePresence >
       <Routes location={location} key={location.pathname}>
-        <Route path='/' element={<Overview2 />} >
+        {/* <Route path='/' element={<Overview2 />} >
           <Route index element={<Laptopfirstpg />} />
           <Route path='chat' element={<Chatitems />} />
-        </Route>
+          <Route path='desktopchat/:id' element={<Chatitems />} />
+        </Route> */}
         <Route path='pchat/:id' element={<MotionWrapper><Chatitems /></MotionWrapper>} />
         <Route path='chattest' element={<MotionWrapper><Chattest /></MotionWrapper>} />
         <Route path='invite' element={<MotionWrapper><Invites /></MotionWrapper>} />
+        <Route path='history' element={<MotionWrapper><History /></MotionWrapper>} />
+        <Route path='customers' element={<MotionWrapper><Customers /></MotionWrapper>} />
         <Route path='verified' element={<MotionWrapper><Verified /></MotionWrapper>} />
         <Route path='details' element={<MotionWrapper><Details /></MotionWrapper>} />
-        <Route path='login' element={<><LoginOutlet/></>} >
+        <Route path='landingPage' element={<><LoginOutlet/></>} >
           <Route index element={<><Login/></>}/>
-          <Route path='phone' element={<><PhoneLogin/></>}/>
+          <Route path='phoneSignin' element={<><PhoneLogin/></>}/>
+          <Route path='phoneSignup' element={<><Signup /></>}/>
           <Route path='otp' element={<><Otp/></>}/>
         </Route>
         <Route path='market' element={<MotionWrapper><Market /></MotionWrapper>}>
@@ -112,8 +123,8 @@ function App() {
   return (
     <ChatProvider isfromChat={isfromChat} fromChat={fromChat}>
       <Router>
-        <Overview />
-        <AnimatedRoutes />
+      <Overview />
+      <AnimatedRoutes />
       </Router>
     </ChatProvider>
   );

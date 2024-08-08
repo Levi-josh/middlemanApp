@@ -15,6 +15,8 @@ import 'swiper/css/autoplay';
 import 'swiper/css/scrollbar';
 import Footer from "../Footer/Footer";
 import { useChatContext  } from './Chat/ChatContext'
+import { Outlet } from 'react-router-dom'
+import Laptopfirstpg from "./Firstpage/Laptopfirstpg";
 // import Test from "./Test";
 const Overview: React.FC = () => {
   const swiperRef = useRef<SwiperCore | null>();
@@ -44,7 +46,8 @@ const handleSlideChange = () => {
   };
 
 return (
-<div className="w-full  fixed overflow-auto  h-screen lg:hidden">
+<div className="w-full h-screen fixed   overflow-auto  bg-black2">
+<div className="w-full   lg:hidden  h-full ">
  {/* small screen */}
 
 <Swiper modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
@@ -66,6 +69,11 @@ return (
 
 <Footer goToSlide={goToSlide}/>
 
+</div>
+<div className="hidden lg:flex  w-full h-full">
+<Laptopfirstpg/>
+<Chat />
+</div>
 </div>
   )
 }

@@ -71,12 +71,15 @@ const Verify = () => {
   };
   return (
     <div className="flex flex-col items-center justify-center  bg-black w-full h-full ">
-    <div className='w-109 md:w-107 h-108 sm:h-107 lg:w-106 xl:w-105 flex items-center flex-col  gap-7  '>
+    <div className='w-109 md:w-107 h-108 sm:h-107 lg:w-105 flex items-center flex-col  gap-7  '>
     <div className='w-full flex items-center flex-col gap-5'>
-      <div className='sm:w-20 sm:h-20 w-16 h-16 rounded-full flex justify-center items-center text-white bg-purple'><FaKey /></div>
-        <p className="text-white text-nowrap  text-sm sm:text-base">Input your password to prove that you are the buyer</p>
+      <div  className='w-full flex items-center flex-col gap-3'>
+        <div className='sm:w-20 sm:h-20 w-16 h-16 rounded-full flex justify-center items-center text-white bg-purple'><FaKey /></div>
+        <h1 className="text-white sm:text-lg font-semibold">Password verification</h1>
+      </div>
+      <p className="text-white text-nowrap  text-sm sm:text-base">Prove that you're the recipient by inputing your password.</p>
     </div>
-    <form onSubmit={verifyOtp} className='flex flex-col h-full w-full items-center  justify-between '>
+    <form onSubmit={verifyOtp} className='flex flex-col h-full w-full items-center  justify-between lg:justify-start lg:gap-12 '>
       <div className="flex items-center gap-3" >
       {Array(6).fill('').map((_, index) => (
         <input
@@ -92,7 +95,7 @@ const Verify = () => {
         />
       ))}
       </div>
-      <button className='w-full md:w-106 h-10 sm:h-12 bg-purple text-white rounded-lg'>Verify</button>
+      <button className="bg-purple text-white  w-full rounded-lg h-10  sm:h-12 lg:w-108 xl:w-107">Verify</button>
     </form>
     </div>
   </div>

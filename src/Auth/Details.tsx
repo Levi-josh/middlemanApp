@@ -45,7 +45,8 @@ const Details = () => {
 
   return (
     <div  className="flex flex-col items-center justify-center  bg-black  gap-7 w-full h-screen ">
-        <form onSubmit={handSubmit} className='w-109 md:w-107 h-108 sm:h-107  lg:w-106 xl:w-105 flex items-center flex-col gap-5 sm:gap-7 lg:gap-10'>
+        <form onSubmit={handSubmit} className='w-109 md:w-107 h-108 sm:h-107  lg:w-105 flex items-center flex-col justify-between lg:justify-start lg:gap-10 '>
+          <div className="gap-5 sm:gap-7 lg:gap-10 flex flex-col items-center w-full">
             <div className="flex items-center flex-col gap-3">
             <div className='sm:w-28 relative overflow-hidden sm:h-28 w-24 h-24 rounded-full flex justify-center items-center text-white bg-purple'>
             {previewUrl && <img src={previewUrl} alt="Profile Preview" />}
@@ -57,15 +58,14 @@ const Details = () => {
             <p className="text-white font-semibold lg:text-lg">Select a photo</p>
             </div>
             <input type="text" className="w-full h-10 sm:h-12 lg:h-10 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-3 sm:py-1 placeholder:text-white" onChange={e=>{setUsername(e.target.value)}} value={username} placeholder="Enter a username"  />
-            
             <select className="outline-none w-full h-10 sm:h-12 lg:h-10 rounded-lg  text-white border border-solid border-demotext  bg-black px-3 placeholder-white">
                 <option value="" disabled selected>Select gender</option>
                 <option className="">Male</option>
                 <option>Female</option>
                 <option>Prefer not to say</option>
             </select>
-          
-            <button className="w-full h-10 bg-purple sm:h-12 lg:h-10 text-white rounded-lg">Continue</button>
+          </div>
+            <button className="bg-purple text-white  w-full rounded-lg h-10  sm:h-12 lg:w-108 xl:w-107">Continue</button>
         </form>
     </div>
   )

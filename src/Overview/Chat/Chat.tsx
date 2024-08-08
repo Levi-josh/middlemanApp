@@ -61,7 +61,7 @@ useEffect(()=>{
  
 
   return (
-    <div className="bg-black lg:fixed lg:right-0  pt-3  lg:px-3 sm:pt-4 md:pt-5 h-full overflow-auto w-full   text-white lg:w-103 xl:w-1025 ">
+    <div className="bg-black lg:fixed lg:right-0  pt-3 lg:h-screen z-50   lg:px-3 sm:pt-4 md:pt-5 h-full overflow-auto w-full   text-white lg:w-103 xl:w-1025 ">
     <Header2/> 
     <div className="w-full text-center  bg-black2  pt-10 sm:pt-12 lg:pt-11 ">
     {users?.chats && <p className="py-2 lg:py-1">1 unread message</p>}

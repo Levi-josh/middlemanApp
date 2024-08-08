@@ -50,7 +50,7 @@ const Market = () => {
     }
   },[])
   return (
-    <div className="bg-black w-full h-screen items-center fixed flex flex-col  justify-center">
+    <div className="bg-black w-full h-screen  fixed flex flex-col  justify-center">
         <NavLink to={'/'} relative="path"><FaArrowLeft className="absolute text-white top-3 left-3"/></NavLink>
         <Outlet/>
     </div>

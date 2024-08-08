@@ -19,12 +19,12 @@ const Dashboard = () => {
         <div className="h-full w-full sm:w-103  bg-black2 rounded-lg p-2 ">
         <div className="w-full h-full  bg-black hover:transition-all hover:scale-105    hover:cursor-pointer flex rounded-lg gap-3 justify-center items-center flex-col">
           <div className=" w-8 h-8 sm:w-12 sm:h-12 lg:w-10 lg:h-10 flex justify-center items-center rounded-full bg-purple"><FaWallet className="text-white text-base sm:text-lg lg:text-base"/></div>
-          <p className="text-white text-sm sm:text-base ">Withdraw</p></div>
+          <p className="text-white text-sm sm:text-base ">Deposit</p></div>
         </div>
         <div className="h-full w-full sm:w-103  flex-col bg-black2 rounded-lg p-2 ">
         <div className="w-full h-full rounded-lg hover:cursor-pointer hover:transition-all hover:scale-105  bg-black flex gap-3 justify-center items-center flex-col">
           <div className=" w-8 h-8 sm:w-12 sm:h-12 lg:w-10 lg:h-10 flex justify-center items-center rounded-full bg-purple"><FaMoneyBill className="text-white text-base sm:text-lg lg:text-base"/></div>
-          <p className="text-white text-sm sm:text-base ">Deposit</p></div>
+          <p className="text-white text-sm sm:text-base ">Withdraw</p></div>
         </div>
         <div className="h-full w-full  sm:w-103  bg-black2 rounded-lg p-2 ">
         <div className="w-full h-full rounded-lg  bg-black hover:cursor-pointer hover:transition-all hover:scale-105  flex gap-3 justify-center items-center flex-col">

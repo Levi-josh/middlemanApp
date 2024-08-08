@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import { FaVanShuttle } from "react-icons/fa6"
 
 const SthirdParty = () => {
   const navigate = useNavigate()
@@ -6,15 +7,29 @@ const SthirdParty = () => {
     navigate('/market/verify')
   }
   return (
-    <div className="w-full h-full px-4 pt-24  ">
-      <div>
-        <p className="text-white">You were choosen to be a thirdparty to this transaction by the seller.</p>
-        <p className="text-white">Your work as a thirdparty for the seller is to deliver the products or goods for the seller,so when the receiver or buyer comes for the goods you are meant to ask him/her to verify on your device before collection.</p>
-        <p className="text-white">Click on continue to verify the buyer.</p>
+    <div className="w-full h-full items-center flex justify-center  ">
+    <div className=" w-109  sm:w-108 md:w-107 lg:w-105  h-108  justify-between items-center   flex flex-col ">
+      <div className="w-full flex flex-col gap-5 sm:gap-10 items-center">
+        <div className="w-full flex flex-col gap-3 items-center">
+          <div className="w-16 h-16 rounded-full bg-purple text-white text-lg font-bold  flex justify-center items-center"><FaVanShuttle/></div>
+          <h1 className="sm:text-lg font-semibold text-white">ThirdParty Delivery</h1>
+        </div>
+        <div className="flex flex-col gap-2 w-full ">
+        <p className="text-white text-sm sm:text-base">You were choosen to be a thirdparty to this transaction by the Seller/sender.</p>
+        <p className="text-white text-sm sm:text-base ">Follow the instructions below:</p>
+        <ul className="text-white text-sm sm:text-base ">
+          <li>Your number one objective is to deliver the package to the buyer/recipient.</li>
+          <li>After the package has been received or confirmed by the receiver,request for the user's password to verify before the package is out from your custody. </li>
+          <li>Click on the continue button below to verify the user.</li>
+        </ul>
+        </div>
       </div>
-      <button className="bg-purple text-white fixed bottom-14 w-103 rounded-full h-1005 right-4" onClick={continueVerification}>Continue</button>
-      <button className=" text-white bg-black fixed bottom-14 w-103 rounded-full h-1005 left-4">Reject</button>
+      <div className="flex w-full justify-between">
+          <button className=" text-white bg-black2 w-103 rounded-full h-10 sm:h-12">Cancel</button>
+          <button className="bg-purple text-white w-103 rounded-full h-10 sm:h-12">Continue</button>
+      </div>
     </div>
+  </div>
   )
 }
 

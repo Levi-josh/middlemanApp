@@ -8,7 +8,7 @@ interface FooterProps {
 }
 const ChatFooter:React.FC<FooterProps>  = ({handleSubmit,handleChange}) => {
   return (
-    <div className="w-full z-10 bg-black lg:w-1025 px-3 sm:px-4 md:px-5 lg:px-3 flex items-center bottom-0  justify-between fixed h-14 sm:h-16 md:h-20">
+    <div className="w-full z-10 bg-black lg:w-107 xl:w-1075 px-3 sm:px-4 md:px-5 lg:px-3 flex items-center bottom-0  justify-between fixed h-14 sm:h-16 md:h-20">
       <form onSubmit={handleSubmit} className="w-full z-10 bg-black lg:w-1025 px-3 sm:px-4 md:px-5 lg:px-3 flex items-center bottom-0  justify-between fixed h-14 sm:h-16 md:h-20"> 
         <FaCamera className="text-white text-lg sm:text-2xl md:text-3xl"/>
         
