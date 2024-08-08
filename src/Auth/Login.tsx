@@ -42,15 +42,7 @@ const itemFromRightVariants = {
   }
 };
 
-const itemFromTopVariants = {
-  hidden: { opacity: 0, y: -50 },
-  visible: { opacity: 1, y: 0 },
-  transition: {
-    type: "tween",
-    duration: 2,
-    ease: "easeInOut"
-  }
-};
+
 const textRevealVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
@@ -240,6 +232,30 @@ const changeForm = () => {
         <div className="flex gap-2 items-start" >
           <motion.div  className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 rounded-full bg-purple flex items-center justify-center text-xs" variants={itemFromLeftVariants}>1</motion.div >
           <motion.p variants={itemFromRightVariants}>Safety First - We hold the payment securely until the buyer confirms they've received the product or service.</motion.p>
+        </div>
+        <div className="flex gap-2 items-start" >
+          <motion.div className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 rounded-full bg-purple flex items-center justify-center text-xs" variants={itemFromLeftVariants}>2</motion.div>
+          <motion.p variants={itemFromRightVariants}>Peace of Mind - Both buyers and sellers  can engage in transactions with confidence,  knowing their funds and products  are protected.</motion.p>
+        </div>
+        <div className="flex gap-2 items-start" >
+          <motion.div className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 rounded-full bg-purple flex items-center justify-center text-xs" variants={itemFromLeftVariants}>3</motion.div>
+          <motion.p variants={itemFromRightVariants}>User-Friendly - Our platform is designed to be intuitive and easy to use, making the process smooth and hassle-free.</motion.p>
+        </div>
+      </div>
+    </motion.div>
+    <motion.div
+      className="p-4 md:p-5 w-full bg-black rounded-xl flex flex-col gap-3"
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.5 }}>
+      <motion.h1 className="text-purple font-bold text-xl text-center md:text-start lg:text-2xl"variants={textRevealVariants}>
+        Third-Party Involvement
+      </motion.h1>
+      <div className="text-white text-sm sm:text-base flex flex-col gap-4 sm:gap-5">
+        <div className="flex gap-2 items-start" >
+          <motion.div  className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 rounded-full bg-purple flex items-center justify-center text-xs" variants={itemFromLeftVariants}>1</motion.div >
+          <motion.p variants={itemFromRightVariants}>Buyer's Third Party - if the byer cannot receive the product personally,thy can designate a trusted third party to pick up and confirm receipt of the product on their behalf.</motion.p>
         </div>
         <div className="flex gap-2 items-start" >
           <motion.div className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 rounded-full bg-purple flex items-center justify-center text-xs" variants={itemFromLeftVariants}>2</motion.div>
