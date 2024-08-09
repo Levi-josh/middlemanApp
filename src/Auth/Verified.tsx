@@ -3,7 +3,7 @@ import { FaCheck } from "react-icons/fa6"
 
 const Verified = () => {
     return (
-        <div  className="flex flex-col items-center justify-center  bg-black  gap-7 w-full h-screen ">
+        <div  className="flex flex-col fixed items-center justify-center  bg-black  gap-7 w-full h-screen ">
             <div className="w-109 sm:w-1065 h-108 sm:h-107 md:w-107 lg:w-106 xl:w-105  flex flex-col justify-between items-center  ">
             <div className='w-full flex items-center flex-col gap-5 sm:gap-7 '>
                 <div className='sm:w-20 sm:h-20 w-16 h-16 rounded-full flex justify-center items-center text-white bg-purple'><FaCheck/></div>

@@ -54,7 +54,7 @@ const Invites = () => {
         }
     }
   return (
-    <div className="w-full h-screen bg-black flex justify-center items-center">
+    <div className="w-full h-screen fixed bg-black flex justify-center items-center">
         <NavLink to={'/'} relative="path"><FaArrowLeft className="absolute text-white top-3 left-3"/></NavLink>
         <form onSubmit={handSubmit} className="flex flex-col w-109 h-108 items-center sm:w-108 md:w-107 lg:w-105 gap-10 justify-between lg:justify-start">
         <div className="flex flex-col gap-5 items-center sm:gap-7">

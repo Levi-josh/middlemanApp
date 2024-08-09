@@ -168,28 +168,7 @@ const changeForm = () => {
                 <p className="text-white text-sm leading-loose sm:leading-loose sm:text-base text-center     ">In the digital age, trust can be a tricky thing. Whether you're buying or selling goods and services online, the risk of scams and fraud can make even the simplest transactions nerve-wracking. That's where The Middleman comes in.The Middleman is here to facilitate your transactions with the utmost security and reliability.</p>
               </motion.div>
             </div>
-          </motion.div>
-          {/* <div className="p-4  md:p-5  w-full bg-black rounded-xl flex flex-col gap-3">
-            <h1 className="text-purple font-bold text-xl text-center md:text-start lg:text-2xl"> How It Works </h1>
-            <div className=" text-white text-sm sm:text-base flex flex-col gap-4 sm:gap-5 ">
-              <div className="flex gap-2 items-start"><div className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 rounded-full bg-purple flex items-center justify-center text-xs ">1</div><p>Buyer and Seller Agreement - The buyer and  seller agree on the terms of the transaction.</p></div>
-              <div className="flex gap-2 items-start"><div className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 rounded-full bg-purple flex items-center justify-center text-xs ">2</div><p>Secure Payment - The buyer deposits the payment with The Middleman.</p></div>
-              <div className="flex gap-2 items-start"><div className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 rounded-full bg-purple flex items-center justify-center text-xs ">3</div><p> Product Delivery - The seller ships the  product or provides the service.</p></div>
-              <div className="flex gap-2 items-start"><div className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 rounded-full bg-purple flex items-center justify-center text-xs ">4</div><p>Confirmation - The buyer confirms receipt  and satisfaction with the item.</p></div> 
-              <div className="flex gap-2 items-start"><div className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 rounded-full bg-purple flex items-center justify-center text-xs ">5</div><p>Release of Funds - The Middleman releases  the payment to the seller.</p> </div>
-            </div>
-          </div>
-          <div className="p-4  lg:p-5 w-full bg-black rounded-xl flex flex-col gap-3">
-            <h1 className=" font-bold text-purple text-xl text-center md:text-start lg:text-2xl">Why Choose Us?</h1>
-            <div className=" text-white text-sm sm:text-base flex flex-col gap-4  ">
-              <div className="flex gap-2 items-start w-full "><div className="w-4 h-4 sm:w-5 flex-shrink-0 sm:h-5 rounded-full bg-purple flex items-center justify-center text-xs ">1</div><p className=""> Safety First - We hold the payment securely until the buyer confirms they've received the product or service.</p></div>
-              <div className="flex gap-2 items-start"><div className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 rounded-full bg-purple flex items-center justify-center text-xs ">2</div><p>Peace of Mind - Both buyers and sellers  can engage in transactions with confidence,  knowing their funds and products  are protected.</p></div>
-              <div className="flex gap-2 items-start"><div className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 rounded-full bg-purple flex items-center justify-center text-xs ">3</div><p>  User-Friendly - Our platform is designed to be intuitive and easy to use, making the process smooth and hassle-free.</p></div>
-            </div>
-          </div>
-          <div>
-            <p>Sign up now and experience the safest way to buy and sell online.</p>
-          </div> */}
+      </motion.div>
       <motion.div className="p-4 md:p-5 w-full bg-black rounded-xl flex flex-col gap-3"
       variants={containerVariants}
       initial="hidden"
@@ -261,11 +240,7 @@ const changeForm = () => {
         </div>
         <div className="flex gap-2 items-start" >
           <motion.div className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 rounded-full bg-purple flex items-center justify-center text-xs" variants={textRevealVariants}>2</motion.div>
-          <motion.p variants={textRevealVariants}>Peace of Mind - Both buyers and sellers  can engage in transactions with confidence,  knowing their funds and products  are protected.</motion.p>
-        </div>
-        <div className="flex gap-2 items-start" >
-          <motion.div className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 rounded-full bg-purple flex items-center justify-center text-xs" variants={textRevealVariants}>3</motion.div>
-          <motion.p variants={textRevealVariants}>User-Friendly - Our platform is designed to be intuitive and easy to use, making the process smooth and hassle-free.</motion.p>
+          <motion.p variants={textRevealVariants}>Seller's Third Party - Similarly,if the seller cannot deliver the product personally,they can designate a trusted third party to deliver the product and confirm that the transaction is successfully. </motion.p>
         </div>
       </div>
     </motion.div>

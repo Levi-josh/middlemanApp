@@ -44,7 +44,7 @@ const Details = () => {
       };
 
   return (
-    <div  className="flex flex-col items-center justify-center  bg-black  gap-7 w-full h-screen ">
+    <div  className="flex flex-col fixed items-center justify-center  bg-black  gap-7 w-full h-screen ">
         <form onSubmit={handSubmit} className='w-109 md:w-107 h-108 sm:h-107  lg:w-105 flex items-center flex-col justify-between lg:justify-start lg:gap-10 '>
           <div className="gap-5 sm:gap-7 lg:gap-10 flex flex-col items-center w-full">
             <div className="flex items-center flex-col gap-3">

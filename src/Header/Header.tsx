@@ -12,7 +12,7 @@ const Header = (props:any) => {
       </motion.div>
       <motion.div animate={{y:props.scrollPosition>=82?0:'150%'}} transition={{type:'tween',duration: 0.1, delay: 0}}  className="outline outline-2 outline-purple w-8 h-8 rounded-full overflow-hidden absolute sm:hidden "><img src={pfp}/></motion.div>
       <div className="flex gap-6 items-center">
-      <div className="bg-black w-8 h-8 rounded-lg justify-center hover:transition-all hover:bg-black1 hover:cursor-pointer items-center text-white flex relative"><FaBell/><div className="bg-purple w-2 h-2 absolute top-1 right-2 rounded-full"></div></div>
+      <NavLink to={'/notification'}><div className="bg-black w-8 h-8 rounded-lg justify-center hover:transition-all hover:bg-black1 hover:cursor-pointer items-center text-white flex relative"><FaBell/><div className="bg-purple w-2 h-2 absolute top-1 right-2 rounded-full"></div></div></NavLink>
         <div className="bg-black w-8 h-8 rounded-lg justify-center hover:transition-all hover:bg-black1 hover:cursor-pointer items-center text-white flex"><FaAppStore/></div>
         <NavLink to={'/landingPage'}><div className="bg-black w-8 h-8 rounded-lg justify-center hover:transition-all hover:bg-black1 hover:cursor-pointer items-center text-white flex"><FaQuestion/></div></NavLink>
       </div>

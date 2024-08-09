@@ -28,7 +28,7 @@ const handSubmit = async(e:FormEvent<HTMLFormElement>)=>{
       
 }
     return (
-        <div className="flex justify-center w-full h-screen bg-black items-center">
+        <div className="flex justify-center fixed w-full h-screen bg-black items-center">
             <NavLink to={'/landingPage'} relative="path"><FaArrowLeft className="absolute text-white top-3 left-3"/></NavLink>
             <form onSubmit={handSubmit} className="bg-black w-109 lg:hidden h-108 sm:w-1065 md:w-106 lg:w-106 xl:w-105 lg:h-full flex flex-col items-center justify-between  ">
                 <div className="h-10001 text-white font-bold text-lg sm:text-xl">

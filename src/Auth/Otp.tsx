@@ -70,7 +70,7 @@ const verifyOtp = async(e:FormEvent<HTMLFormElement>)=>{
         }
     };
     return (
-      <div className="flex flex-col items-center justify-center  bg-black w-full h-full ">
+      <div className="flex flex-col fixed items-center justify-center  bg-black w-full h-full ">
         <div className='w-109 md:w-107 h-108 sm:h-107 lg:w-106 xl:w-105 flex items-center flex-col  gap-7  '>
         <div className='w-full flex items-center flex-col gap-5'>
           <div className='sm:w-20 sm:h-20 w-16 h-16 rounded-full flex justify-center items-center text-white bg-purple'><FaLock/></div>
