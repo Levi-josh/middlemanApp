@@ -118,7 +118,7 @@ const changeForm = () => {
               <p className="text-white">Or</p>
               <hr className="w-full  border-demotext "/>
             </div>
-            <div className="w-full h-10 rounded-full bg-black2 text-white flex justify-center items-center text-base">Google</div>
+            <div className="w-full h-10 rounded-full bg-black2 text-white flex justify-center items-center text-base hover:cursor-pointer" onClick={()=>window.location.href = 'http://localhost:3500/auth/google'}>Google</div>
             <p className="text-white">Dont have an account? <span className="text-purple font-semibold  hover:cursor-pointer" onClick={changeForm}>Signup</span></p>
           </div>
         </form>

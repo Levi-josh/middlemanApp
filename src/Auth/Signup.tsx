@@ -47,7 +47,7 @@ const handSubmit = async(e:FormEvent<HTMLFormElement>)=>{
                     <p className="text-white">Or</p>
                     <hr className="w-full  border-demotext "/>
                   </div>
-                  <div className="w-full h-10 rounded-full sm:h-12 bg-black2 text-white flex justify-center items-center">Google</div>
+                  <div className="w-full h-10 rounded-full sm:h-12 bg-black2 text-white flex justify-center items-center" onClick={()=>window.location.href = 'https://shawbackend.onrender.com/auth/google'}>Google</div>
                   <p className="text-white">Already have an account? <span className="text-purple font-semibold"><NavLink to={'/landingPage/phoneSignin'}>Signin</NavLink></span></p>
                 </div>
               </div>
