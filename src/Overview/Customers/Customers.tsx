@@ -5,7 +5,7 @@ import victor from '../../assets/IMG-20230507-WA0023.jpg'
 
 const Customers = () => {
   return (
-    <div className=" h-screen w-full fixed text-white flex flex-col justify-center items-center bg-black">
+    <div className=" h-screen w-full  text-white flex flex-col justify-center items-center bg-black">
     <NavLink to={'/'} relative="path"><FaArrowLeft className="absolute text-white top-3 left-3"/></NavLink>
    <div className="flex flex-col w-109 h-108 items-center sm:w-108 md:w-107 lg:w-105  gap-5 sm:gap-7">
    <div className="flex flex-col items-center gap-5 sm:gap-7">
