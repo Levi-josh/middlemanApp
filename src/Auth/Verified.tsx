@@ -1,7 +1,8 @@
-
+import { useNavigate } from "react-router-dom"
 import { FaCheck } from "react-icons/fa6"
 
 const Verified = () => {
+const navigate = useNavigate()
     return (
         <div  className="flex flex-col fixed items-center justify-center  bg-black  gap-7 w-full h-screen ">
             <div className="w-109 sm:w-1065 h-108 sm:h-107 md:w-107 lg:w-106 xl:w-105  flex flex-col justify-between items-center  ">
@@ -12,7 +13,7 @@ const Verified = () => {
                     <p className='flex w-full items-center font-sans gap-2 text-sm sm:text-base justify-center text-center '>You have successfully registered as a user,click on the button below to continue</p>
                 </div>
             </div>
-            <button className='w-full md:w-106 h-10 sm:h-12 bg-purple text-white rounded-lg'>Continue</button>
+            <button className='w-full md:w-106 h-10 sm:h-12 bg-purple text-white rounded-lg' onClick={()=>navigate('/details')}>Continue</button>
             </div>
         </div>
       )

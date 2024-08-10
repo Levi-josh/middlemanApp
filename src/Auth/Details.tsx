@@ -23,7 +23,7 @@ const Details = () => {
           body: formData,
         };
         try {
-              const response = await fetch(` http://localhost:3500/getPfp`, option);
+              const response = await fetch(` https://middlemanbackend.onrender.com/getPfp`, option);
               const data = await response.json()
               data && navigate('/')
         }

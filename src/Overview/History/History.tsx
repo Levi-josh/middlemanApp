@@ -21,10 +21,10 @@ const History = () => {
               <img src={victor}/>
             </div>
             <div className="w-full ">
-              <div className='flex items-center justify-between w-full'><p>Transaction With :</p><p>Victor</p></div>
-              <div className='flex items-center justify-between w-full'><p>Amount paid :</p><p>$1000</p></div>
-              <div className='flex items-center justify-between w-full'><p>Date :</p><p>22 thurs july 2024</p></div>
-              <div className='flex items-center justify-between w-full'><p>Status :</p><p>pending</p></div>
+              <div className='flex items-center justify-between w-full text-sm sm:text-base'><p>Transaction With :</p><p>Victor</p></div>
+              <div className='flex items-center justify-between w-full text-sm sm:text-base'><p>Amount paid :</p><p>$1000</p></div>
+              <div className='flex items-center justify-between w-full text-sm sm:text-base'><p>Date :</p><p>22 thurs july 2024</p></div>
+              <div className='flex items-center justify-between w-full text-sm sm:text-base'><p>Status :</p><p>pending</p></div>
             </div>
           </div>
         </div>

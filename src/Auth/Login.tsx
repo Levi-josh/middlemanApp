@@ -69,7 +69,7 @@ const signUpHandSubmit = async(e:FormEvent<HTMLFormElement>)=>{
         body:JSON.stringify({email,password})
     }
     try {
-        const response = await fetch(` http://localhost:3500/signup`, option);
+        const response = await fetch(` https://middlemanbackend.onrender.com/signup`, option);
         const data = await response.json()
         data && navigate('/landingPage/otp')
         
@@ -89,7 +89,7 @@ const signInHandSubmit = async(e:FormEvent<HTMLFormElement>)=>{
         body:JSON.stringify({email,password})
     }
     try {
-        const response = await fetch(` http://localhost:3500/signin`, option);
+        const response = await fetch(` https://middlemanbackend.onrender.com/signin`, option);
         const data = await response.json()
         data && navigate('/')
         
