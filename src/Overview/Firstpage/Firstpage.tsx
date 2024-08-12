@@ -72,7 +72,7 @@ fetchUsers()
 
   return (
     <div className="w-full overflow-auto lg:bg-black     sm:overflow-visible      lg:px-5 lg:w-1075 h-full " onScroll={scrolldiv}>
-    <Header scrollPosition={scrollPosition}/>
+    <Header scrollPosition={scrollPosition} profilePic={users?.profilePic}/>
     <div className="flex flex-col px-3 sm:px-5 lg:px-0  mb-32 sm:mb-0 justify-between   lg:gap-6 pt-14 sm:pt-0  lg:flex-row lg:justify-between  lg:items-center h-full sm:h-10008 lg:h-103 ">
       <div className="lg:w-107 w-full rounded-lg h-102 lg:h-full  bg-black px-4 lg:px-2  lg:gap-2 flex-col flex gap-3 sm:gap-6 justify-center items-start ">
         <div className="flex flex-row items-center gap-3 sm:gap-6 lg:gap-2 lg:flex-col">

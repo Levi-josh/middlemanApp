@@ -45,7 +45,7 @@ const handleSlideChange = () => {
   };
 
 return (
-<div className="w-full h-screen fixed   overflow-auto  bg-black2">
+<div className="w-full h-screen fixed     bg-black2">
 <div className="w-full   lg:hidden  h-full ">
  {/* small screen */}
 

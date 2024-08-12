@@ -48,7 +48,7 @@ const Details = () => {
         <form onSubmit={handSubmit} className='w-109 md:w-107 h-108 sm:h-107  lg:w-105 flex items-center flex-col justify-between lg:justify-start lg:gap-10 '>
           <div className="gap-5 sm:gap-7 lg:gap-10 flex flex-col items-center w-full">
             <div className="flex items-center flex-col gap-3">
-            <div className='sm:w-28 relative overflow-hidden sm:h-28 w-24 h-24 rounded-full flex justify-center items-center text-white bg-purple'>
+            <div className='sm:w-20 relative overflow-hidden sm:h-20 w-14 h-14 rounded-full flex justify-center items-center text-white bg-purple'>
             {previewUrl && <img src={previewUrl} alt="Profile Preview" />}
                 <div  className="absolute  flex justify-center items-center w-full h-full z-10 bg-transparent" >
                 <input type="file" accept="image/*" onChange={handleFileChange} style={{ display: 'none' }} ref={fileInputRef}  />

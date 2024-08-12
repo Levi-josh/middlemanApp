@@ -6,11 +6,11 @@ import victor from '../../assets/IMG-20230507-WA0023.jpg'
 const History = () => {
   return (
     <div className=" h-screen w-full text-white flex fixed flex-col justify-center items-center bg-black">
-       <NavLink to={'/'} relative="path"><FaArrowLeft className="absolute text-white top-3 left-3"/></NavLink>
+       <NavLink to={'/'} relative="path"><FaArrowLeft className="absolute text-white top-7 left-7 sm:top-10 sm:left-10 "/></NavLink>
       <div className="flex flex-col w-109 h-108 items-center sm:w-108 md:w-107 lg:w-105 gap-5 sm:gap-7 ">
         <div className="flex flex-col items-center gap-5 sm:gap-7">
           <div className="flex flex-col items-center gap-3 w-full">
-            <div className='sm:w-20 sm:h-20 w-16 h-16 rounded-full flex justify-center items-center  text-white bg-purple' ><FaHistory/></div>
+            <div className='sm:w-20 sm:h-20 w-14 h-14 rounded-full flex justify-center items-center  text-white bg-purple text-xl sm:text-2xl' ><FaHistory/></div>
             <h1 className="text-white text-center sm:text-lg  font-semibold  ">History</h1>
           </div>
           <p className="text-white text-center  text-sm sm:text-base ">These are list of people you accepted and sent an invite</p>

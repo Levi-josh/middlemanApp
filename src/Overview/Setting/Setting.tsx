@@ -1,0 +1,86 @@
+import { FaArrowLeft,FaCamera} from "react-icons/fa6"
+import { NavLink } from "react-router-dom"
+import { useState,useEffect } from 'react';
+import { useNavigate } from "react-router-dom"
+
+const Setting = () => {
+    interface message {
+        from: String,
+        to: String,
+        message: String,
+        timestamp:Date
+      }
+      interface Chat {
+        username:String,
+        userId:String,
+        socketId:String,
+        messages:message[],
+        read:Boolean,
+        msgUnread:Number,
+        profilePic:String,
+      }
+      interface User {
+        _id: string;
+        email: string;
+        socketId: string;
+        username: string;
+        password: string;
+        balance: number;
+        chats: Chat[];
+        history: any[];
+        inviteCode: string;
+        notification: any[];
+        pending: number;
+        profilePic: string;
+        transaction: any[];
+        walletId: string;
+        __v: number;
+      }
+      const [users, setusers] = useState<User|null>();
+      const Id = localStorage.getItem('Id')
+      const navigate = useNavigate()
+useEffect(()=>{
+const fetchUsers = async()=>{
+  const option = {
+    method: 'Get',
+    headers: {
+        'content-type': 'application/json',
+    },
+}
+try {
+    const response = await fetch(`http://localhost:3500/getusers/${Id}`, option);
+    const data = await response.json()
+    setusers(data)
+   console.log(data)
+}
+catch (err) {
+console.log(err)
+}
+}
+fetchUsers()
+},[])
+  return (
+    <div className="w-full h-screen fixed bg-black flex justify-center items-center">
+    <NavLink to={'/'} relative="path"><FaArrowLeft className="absolute text-white top-7 left-7 sm:top-10 sm:left-10 "/></NavLink>
+    <form  className="flex flex-col w-109 h-108 items-center sm:w-108 md:w-107 lg:w-105 gap-10 justify-between lg:justify-start">
+    <div className="flex flex-col gap-5 items-center sm:gap-7 w-full">
+      <div className="flex flex-col items-center gap-5 sm:gap-7 w-full">
+        <div className="flex flex-col items-center gap-3 w-full">
+          <div className='sm:w-20 sm:h-20 w-14 h-14 rounded-full flex justify-center items-center text-xl sm:text-2xl  text-white bg-purple' >{users?.profilePic?<img src={`http://localhost:3500${users?.profilePic}`} className='sm:w-20 bg-no-repeat bg-cover bg-center sm:h-20   w-14 h-14 rounded-full  '/>:<div className='sm:h-20    w-14 h-14 rounded-full sm:w-20 sm:text-lg flex items-center justify-center text-white'><FaCamera/></div>}</div>
+          <h1 className="text-white text-center text-lg sm:text-xl  font-semibold  ">Setting's</h1>
+        </div>
+      {/* <p className="text-white text-center  text-sm sm:text-base ">Add some money to your account balance</p> */}
+      </div>
+      <div className="flex flex-col items-center gap-5 sm:gap-7 w-full">
+        <input type="text" className="w-full h-10 sm:h-12 lg:h-10 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white" value={'josh kelly'}  placeholder="Enter amount"  />
+        <input type="email" className="w-full h-10 sm:h-12 lg:h-10 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white" value={'levijoshuakelly@gmail.com'}  placeholder="Enter amount"  />
+        <input type="text" className="w-full h-10 sm:h-12 lg:h-10 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white" value={'joshkelly1965'}  placeholder="Enter amount"  />
+      </div>
+    </div>
+    <button className="bg-purple  text-white  w-full rounded-lg h-10  sm:h-12 lg:w-108 xl:w-107" onClick={()=>navigate('/landingPage')}>Log Out</button>
+    </form>
+</div>
+  )
+}
+
+export default Setting

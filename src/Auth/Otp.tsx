@@ -72,13 +72,12 @@ const verifyOtp = async(e:FormEvent<HTMLFormElement>)=>{
     return (
       <div className="flex flex-col fixed items-center justify-center  bg-black w-full h-full ">
         <div className='w-109 md:w-107 h-108 sm:h-107 lg:w-106 xl:w-105 flex items-center flex-col  gap-7  '>
-        <div className='w-full flex items-center flex-col gap-5'>
-          <div className='sm:w-20 sm:h-20 w-16 h-16 rounded-full flex justify-center items-center text-white bg-purple'><FaLock/></div>
-          <div className='flex flex-col items-center text-white gap-2'>
+        <div className='w-full flex items-center flex-col gap-5 sm:gap-7'>
+          <div className='flex flex-col items-center text-white gap-3'>
+            <div className='sm:w-20 sm:h-20 w-14 h-14 rounded-full flex justify-center items-center text-white bg-purple'><FaLock/></div>
             <p className="text-white text-center font-semibold text-lg lg:text-xl">verification code</p>
-            <div className='flex w-full items-center gap-2 text-sm lg:text-base justify-center '><p className="">This is an end to end encryption</p><FaLock className="text-white text-xs"/></div>
-            <p className=' '>02:00</p>
           </div>
+          <div className='flex w-full items-center gap-2 text-sm lg:text-base justify-center text-white  '><p className="">This is an end to end encryption</p><FaLock className="text-xs"/><p className=' '>02:00</p></div>
         </div>
         <form onSubmit={verifyOtp} className='flex flex-col h-full w-full items-center  justify-between '>
           <div className="flex items-center gap-3" >

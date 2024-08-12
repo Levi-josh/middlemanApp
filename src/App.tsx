@@ -30,6 +30,8 @@ import Deposit from './Overview/Deposit/Deposit';
 import Withdraw from './Overview/Withdraw/Withdraw';
 import Transfer from './Overview/Transfer/Transfer';
 import Notification from './Overview/Notification/Notification';
+import Setting from './Overview/Setting/Setting';
+import Frequently from './Overview/F&Q/Frequently';
 
 
 const pageVariants = {
@@ -97,6 +99,8 @@ const AnimatedRoutes = () => {
         <Route path='customers' element={<MotionWrapper><Customers /></MotionWrapper>} />
         <Route path='verified' element={<MotionWrapper><Verified /></MotionWrapper>} />
         <Route path='details' element={<MotionWrapper><Details /></MotionWrapper>} />
+        <Route path='f&Q' element={<MotionWrapper><Frequently/></MotionWrapper>} />
+        <Route path='setting' element={<MotionWrapper><Setting /></MotionWrapper>} />
         <Route path='landingPage' element={<><LoginOutlet/></>} >
           <Route index element={<><Login/></>}/>
           <Route path='phoneSignin' element={<><PhoneLogin/></>}/>

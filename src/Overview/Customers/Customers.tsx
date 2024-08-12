@@ -6,16 +6,16 @@ import victor from '../../assets/IMG-20230507-WA0023.jpg'
 const Customers = () => {
   return (
     <div className=" h-screen w-full  text-white flex flex-col justify-center items-center bg-black">
-    <NavLink to={'/'} relative="path"><FaArrowLeft className="absolute text-white top-3 left-3"/></NavLink>
+    <NavLink to={'/'} relative="path"><FaArrowLeft className="absolute text-white top-7 left-7 sm:top-10 sm:left-10 "/></NavLink>
    <div className="flex flex-col w-109 h-108 items-center sm:w-108 md:w-107 lg:w-105  gap-5 sm:gap-7">
    <div className="flex flex-col items-center gap-5 sm:gap-7">
      <div className="flex flex-col items-center gap-3 w-full">
-       <div className='sm:w-20 sm:h-20 w-16 h-16 rounded-full flex justify-center items-center  text-white bg-purple' ><FaUser/></div>
-       <h1 className="text-white text-center sm:text-lg  font-semibold  ">Customers</h1>
+       <div className='sm:w-20 sm:h-20 w-14 h-14 rounded-full flex justify-center items-center text-xl sm:text-2xl  text-white bg-purple' ><FaUser/></div>
+       <h1 className="text-white text-center text-lg sm:text-xl font-semibold  ">Customers</h1>
      </div>
      <p className="text-white text-center  text-sm sm:text-base ">These are list of people you accepted or sent an invite</p>
     </div> 
-     <div className="flex flex-col  w-full border border-demotext rounded-lg ">
+     <div className="flex flex-col  w-full   rounded-lg ">
        <div className="w-full  border-b border-demotext  p-4 sm:p-6 flex  items-center justify-between">
         <div className='w-full h-full flex items-center gap-5'>
           <div className="sm:w-14 sm:h-14 w-12 h-12 overflow-hidden rounded-full bg-black2">
