@@ -70,7 +70,6 @@ const Invites = () => {
             <div className="sm:w-12 sm:h-12  w-10 h-10 overflow-hidden rounded-full bg-black2 outline outline-3 outline-purple">
                 <img src={`https://middlemanbackend.onrender.com${searchedUser.profilePic}`}/>
             </div>
-            {/* <p>{searchedUser?.username}</p> */}
             <p className="text-white">{searchedUser.username}</p>
         </div>}
         </div>
