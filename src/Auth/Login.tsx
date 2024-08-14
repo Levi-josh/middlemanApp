@@ -105,7 +105,7 @@ const changeForm = () => {
 }
 
   return (
-    <div className="bg-black2  w-full h-full px-4 sm:px-6 md:px-8 lg:px-0 lg:flex justify-center overflow-auto  lg:justify-normal fixed  ">
+    <div className="bg-black2  w-full h-full px-4 sm:px-6 md:px-8 lg:px-0 lg:flex justify-center  lg:justify-normal fixed  ">
       {switchForm ?
         <form onSubmit={signUpHandSubmit} className="bg-black w-109 hidden h-108 sm:w-1065 md:w-106 lg:w-109 xl:w-107 lg:h-full lg:flex flex-col justify-center  px-4 ">
           <div className="flex flex-col gap-7 w-full justify-center items-center">
@@ -171,10 +171,10 @@ const changeForm = () => {
             </div>
       </motion.div>
       <motion.div className="p-4 md:p-5 w-full bg-black rounded-xl flex flex-col gap-3"
-      variants={containerVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.5 }}>
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.5 }}>
         <motion.h1 className="text-purple font-bold text-xl text-center md:text-start lg:text-2xl"variants={textRevealVariants}>
           How It Works
         </motion.h1>

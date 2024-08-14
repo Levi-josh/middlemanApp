@@ -57,7 +57,7 @@ const fetchUsers = async()=>{
     },
 }
 try {
-    const response = await fetch(`http://localhost:3500/getusers/${Id}`, option);
+    const response = await fetch(`https://middlemanbackend.onrender.com/getusers/${Id}`, option);
     const data = await response.json()
     setusers(data)
    console.log(data)
@@ -76,7 +76,7 @@ fetchUsers()
       <div className="lg:w-107 w-full rounded-lg h-102 lg:h-full  bg-black px-4 lg:px-2  lg:gap-2 flex-col flex gap-3 sm:gap-6 justify-center items-start ">
         <div className="flex flex-row items-center gap-3 sm:gap-6 lg:gap-2 lg:flex-col">
         <div className="sm:w-20 sm:h-20  w-14 h-14 rounded-full overflow-hidden bg-black2 outline outline-3 flex justify-center items-center outline-purple">
-        {users?.profilePic?<img src={`http://localhost:3500${users?.profilePic}`} className='sm:w-20 bg-no-repeat bg-cover bg-center sm:h-20   w-14 h-14 rounded-full  '/>:<div className='sm:h-20 bg-black   w-14 h-14 rounded-full sm:w-20 sm:text-lg flex items-center justify-center text-white'><FaCamera/></div>}
+        {users?.profilePic?<img src={`https://middlemanbackend.onrender.com${users?.profilePic}`} className='sm:w-20 bg-no-repeat bg-cover bg-center sm:h-20   w-14 h-14 rounded-full  '/>:<div className='sm:h-20 bg-black   w-14 h-14 rounded-full sm:w-20 sm:text-lg flex items-center justify-center text-white'><FaCamera/></div>}
         </div>
         {/* <img src={`http://localhost:3500${users?.profilePic}`} className='sm:w-20 bg-no-repeat bg-cover bg-center sm:h-20 rounded-full   w-14 h-14  '/> */}
         <p className="text-white text-sm sm:text-base  font-bold">{users?.username}</p>

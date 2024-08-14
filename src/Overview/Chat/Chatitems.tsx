@@ -54,7 +54,7 @@ const navigate = useNavigate()
 // const [Id,setId]=useState<string|null>('')
 let mySocket:any;
 if(Id){
-  const socket = io('http://localhost:3500')
+  const socket = io('https://middlemanbackend.onrender.com')
   socket.emit('setCustomId',Id)
   mySocket = socket 
 }
@@ -77,7 +77,7 @@ const fetdata = async()=>{
         }
     }
     try {
-        const response = await fetch(` http://localhost:3500/getmessages/${Id}/${params.id}`, option);
+        const response = await fetch(` https://middlemanbackend.onrender.com/getmessages/${Id}/${params.id}`, option);
         const data = await response.json()
         setDbMessages(data)
        console.log(data)

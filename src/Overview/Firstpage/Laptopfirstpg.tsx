@@ -47,7 +47,7 @@ const Laptopfirstpg = () => {
       },
   }
   try {
-      const response = await fetch(`http://localhost:3500/getusers/${Id}`, option);
+      const response = await fetch(`https://middlemanbackend.onrender.com/getusers/${Id}`, option);
       const data = await response.json()
       setusers(data)
      console.log(data)
@@ -65,7 +65,7 @@ const Laptopfirstpg = () => {
       <div className="lg:w-107 w-full rounded-lg h-102 lg:h-full  bg-black px-2 lg:px-3  lg:gap-2 flex-col flex gap-3 justify-center items-start ">
         <div className="flex flex-row items-center gap-3 lg:gap-2 lg:flex-col">
         <div className="sm:w-20 sm:h-20  w-14 h-14 overflow-hidden rounded-full  outline outline-3 outline-purple">
-          {users?.profilePic?<img src={`http://localhost:3500${users?.profilePic}`}/>:<div className='sm:h-20   w-14 h-14 rounded-full sm:w-20  flex items-center bg-black justify-center text-white text-lg'><FaCamera/></div>}
+          {users?.profilePic?<img src={`https://middlemanbackend.onrender.com${users?.profilePic}`}/>:<div className='sm:h-20   w-14 h-14 rounded-full sm:w-20  flex items-center bg-black justify-center text-white text-lg'><FaCamera/></div>}
         </div>
         <p className="text-white font-bold">{users?.username}</p>
         </div>

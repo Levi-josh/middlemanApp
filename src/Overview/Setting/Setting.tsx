@@ -46,7 +46,7 @@ const fetchUsers = async()=>{
     },
 }
 try {
-    const response = await fetch(`http://localhost:3500/getusers/${Id}`, option);
+    const response = await fetch(`https://middlemanbackend.onrender.com/getusers/${Id}`, option);
     const data = await response.json()
     setusers(data)
    console.log(data)
