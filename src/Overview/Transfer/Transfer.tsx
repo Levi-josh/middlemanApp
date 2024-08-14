@@ -1,6 +1,5 @@
 import { FaLink ,FaArrowLeft} from "react-icons/fa6"
 import { NavLink } from "react-router-dom"
-import victor from '../../assets/IMG-20230507-WA0023.jpg'
 import { useState,FormEvent,ChangeEvent} from "react"
 
 const Transfer = () => {
@@ -66,10 +65,10 @@ const handleChange = (e:ChangeEvent<HTMLInputElement>) =>{
       <input type="text" className="w-full h-10 sm:h-12 lg:h-10 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white"  placeholder="Enter WalletId" onChange={handleChange} />
       {searchedUser.username &&<div className="flex gap-5 rounded-lg pl-5 items-center w-full h-16 sm:h-20 bg-black2">
             <div className="sm:w-12 sm:h-12  w-10 h-10 overflow-hidden rounded-full bg-black2 outline outline-3 outline-purple">
-                <img src={victor}/>
+                <img src={`https://middlemanbackend.onrender.com${searchedUser.profilePic}`}/>
             </div>
             {/* <p>{searchedUser?.username}</p> */}
-            <p className="text-white">victor chinemerem</p>
+            <p className="text-white">{searchedUser.username}</p>
         </div>}
       <input type="text" className="w-full h-10 sm:h-12 lg:h-10 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white"  placeholder="Enter amount" onChange={(e)=>setAmount(e.target.value)} />
       </div>

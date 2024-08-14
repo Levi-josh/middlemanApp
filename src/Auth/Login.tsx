@@ -91,6 +91,7 @@ const signInHandSubmit = async(e:FormEvent<HTMLFormElement>)=>{
     try {
         const response = await fetch(` https://middlemanbackend.onrender.com/login`, option);
         const data = await response.json()
+        localStorage.setItem('Id', data.UserId)
         data && navigate('/')
         
     }

@@ -25,7 +25,7 @@ const Deposit = () => {
 
 }
   return (
-    <div className="w-full h-screen fixed bg-black flex justify-center items-center">
+    <div className="w-full h-screen fixed bg-black overflow-auto flex justify-center items-center">
     <NavLink to={'/'} relative="path"><FaArrowLeft className="absolute text-white top-7 left-7 sm:top-10 sm:left-10 "/></NavLink>
     <form onSubmit={handSubmit}  className="flex flex-col w-109 h-108 items-center sm:w-108 md:w-107 lg:w-105 gap-10 justify-between lg:justify-start">
     <div className="flex flex-col gap-5 items-center sm:gap-7 w-full">

@@ -38,7 +38,6 @@ interface User {
   password: string;
   balance: number;
   chats: Chat[];
-  history: any[];
   inviteCode: string;
   notification: any[];
   pending: number;

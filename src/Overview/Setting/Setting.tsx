@@ -1,7 +1,7 @@
-import { FaArrowLeft,FaCamera} from "react-icons/fa6"
+import { FaArrowLeft,FaCamera, FaPencil, FaRegEyeSlash} from "react-icons/fa6"
 import { NavLink } from "react-router-dom"
 import { useState,useEffect } from 'react';
-import { useNavigate } from "react-router-dom"
+
 
 const Setting = () => {
     interface message {
@@ -27,7 +27,6 @@ const Setting = () => {
         password: string;
         balance: number;
         chats: Chat[];
-        history: any[];
         inviteCode: string;
         notification: any[];
         pending: number;
@@ -38,7 +37,6 @@ const Setting = () => {
       }
       const [users, setusers] = useState<User|null>();
       const Id = localStorage.getItem('Id')
-      const navigate = useNavigate()
 useEffect(()=>{
 const fetchUsers = async()=>{
   const option = {
@@ -67,17 +65,26 @@ fetchUsers()
       <div className="flex flex-col items-center gap-5 sm:gap-7 w-full">
         <div className="flex flex-col items-center gap-3 w-full">
           <div className='sm:w-20 sm:h-20 w-14 h-14 rounded-full flex justify-center items-center text-xl sm:text-2xl  text-white bg-purple' >{users?.profilePic?<img src={`http://localhost:3500${users?.profilePic}`} className='sm:w-20 bg-no-repeat bg-cover bg-center sm:h-20   w-14 h-14 rounded-full  '/>:<div className='sm:h-20    w-14 h-14 rounded-full sm:w-20 sm:text-lg flex items-center justify-center text-white'><FaCamera/></div>}</div>
-          <h1 className="text-white text-center text-lg sm:text-xl  font-semibold  ">Setting's</h1>
+          <h1 className="text-white text-center text-lg sm:text-xl  font-semibold  ">Settings</h1>
         </div>
       {/* <p className="text-white text-center  text-sm sm:text-base ">Add some money to your account balance</p> */}
       </div>
       <div className="flex flex-col items-center gap-5 sm:gap-7 w-full">
-        <input type="text" className="w-full h-10 sm:h-12 lg:h-10 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white" value={'josh kelly'}  placeholder="Enter amount"  />
-        <input type="email" className="w-full h-10 sm:h-12 lg:h-10 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white" value={'levijoshuakelly@gmail.com'}  placeholder="Enter amount"  />
-        <input type="text" className="w-full h-10 sm:h-12 lg:h-10 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white" value={'joshkelly1965'}  placeholder="Enter amount"  />
+        <div className="w-full h-10 sm:h-12 lg:h-10 flex items-center justify-between  px-3 sm:px-5 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg  ">
+          <div className="flex gap-3"><p >Username :</p><p>josh kelly</p></div>
+          <FaPencil className="hover:cursor-pointer"/>
+        </div>
+        <div className="w-full h-10 sm:h-12 lg:h-10 flex items-center justify-between  px-3 sm:px-5 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg  ">
+          <div className="flex gap-3"><p>Email :</p><p>levijoshuakelly@gmail.com</p></div>
+          <FaPencil className="hover:cursor-pointer"/>
+        </div>
+        <div className="w-full h-10 sm:h-12 lg:h-10 flex items-center justify-between  px-3 sm:px-5 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg  ">
+          <div className="flex gap-3"><p>Password :</p><p>joshkelly1965</p></div>
+          <FaRegEyeSlash className="hover:cursor-pointer"/>
+        </div>
       </div>
     </div>
-    <button className="bg-purple  text-white  w-full rounded-lg h-10  sm:h-12 lg:w-108 xl:w-107" onClick={()=>navigate('/landingPage')}>Log Out</button>
+    <NavLink to={'/landingPage'} className={'w-full lg:w-108 xl:w-107'}><button className="bg-purple  text-white  w-full rounded-lg h-10  sm:h-12 " >Log Out</button></NavLink>
     </form>
 </div>
   )
