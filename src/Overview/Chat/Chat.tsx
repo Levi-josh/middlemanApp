@@ -54,8 +54,8 @@ useEffect(()=>{
     <div className="w-full text-center  bg-black2  pt-10 sm:pt-12 lg:pt-11 ">
     {Chats && <p className="py-2 lg:py-1">1 unread message</p>}
     </div>
-    {Chats ? Chats.length>1?<Chatlist chatUsers={Chats} />:<p className='text-white font-bold lg:mt-20 mt-28 md:mt-32 text-center font-serif'>No Chat yet!</p>:
-    <div className="flex justify-center lg:mt-20 mt-28 md:mt-32 h-screen ">{errors?<p className="font-semibold">try again</p>:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' ><FaRotate/></motion.div>}</div>
+    {Chats ? Chats.length>1?<Chatlist chatUsers={Chats} />:<p className='text-white font-bold lg:mt-20 mt-28 md:mt-32 text-center '>No Chat yet!</p>:
+    <div className="flex justify-center lg:mt-20 mt-28 md:mt-32  ">{errors?<div className='bg-purple px-3 py-1 sm:px-5 hover:cursor-pointer h-auto  rounded-full'><p >Retry</p></div>:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' ><FaRotate/></motion.div>}</div>
     }
     </div>
   )

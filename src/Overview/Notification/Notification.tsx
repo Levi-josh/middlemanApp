@@ -2,6 +2,8 @@
 import {FaArrowLeft, FaBell} from "react-icons/fa6"
 import { NavLink } from "react-router-dom"
 import { useState,useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { FaRotate,  } from "react-icons/fa6"
 
 
 const Notification = () => {
@@ -13,6 +15,7 @@ const Notification = () => {
         pic:String
       }
     const [notes, setNotes] = useState<Note[]|null>();
+    const [errors, setErrors] = useState<String>('');
     const Id = localStorage.getItem('Id')
     useEffect(()=>{
     const fetchUsers = async()=>{
@@ -28,9 +31,10 @@ const Notification = () => {
         setNotes(data)
        console.log(data)
     }
-    catch (err) {
-    console.log(err)
-    }
+    catch (err:any) {
+        console.log(err)
+        setErrors(err)
+      }
     }
     fetchUsers()
     },[])
@@ -47,7 +51,7 @@ const Notification = () => {
             {/* <p className="text-white text-center  text-sm sm:text-base ">Ask the user for their <span className="font-bold ">invite code</span>,then paste it in the input below. please make sure the code is correct and complete.</p> */}
         </div>
         <div className='w-full gap-3 flex flex-col'>
-        {notes?notes?.map(prev=>(
+        {notes?notes.length>1 ?notes?.map(prev=>(
             <div className='w-full h-auto rounded-lg p-3 sm:p-5 bg-black2 flex flex-col gap-3 sm:gap-7 md:flex-row  md:items-start'>
                 <div className='w-full md:w-107   h-full   flex gap-2 sm:gap-5 items-start '>
                     <div className="sm:w-16 sm:h-16 flex-shrink-0  w-10 h-10 overflow-hidden  bg-black2 ">
@@ -59,7 +63,10 @@ const Notification = () => {
                     <button className='bg-purple rounded-md py-1 sm:py-2 lg:py-1  sm:px-4 w-1025 md:w-full text-sm sm:text-base'>Accept</button>
                     <button className='bg-purple rounded-md py-1 sm:py-2 lg:py-1 sm:px-4 w-1025 md:w-full  text-sm sm:text-base'>Reject</button>
                 </div>}
-            </div>)):<p className='text-white mt-20  sm:text-lg font-semibold '>No notifications yet!</p>}
+            </div>)):<p className='text-white mt-20  sm:text-lg font-semibold '>No notifications yet!</p>
+            :
+            <div className="flex justify-center lg:mt-20 mt-28 md:mt-32 text-white  ">{errors?<div className='bg-purple px-6 py-1 sm:px-10 hover:cursor-pointer h-auto  rounded-full'><p >Retry</p></div>:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' ><FaRotate/></motion.div>}</div> 
+            }
         </div>
     </div>
 

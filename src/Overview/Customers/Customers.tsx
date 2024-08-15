@@ -2,6 +2,8 @@ import { FaUser } from 'react-icons/fa';
 import {FaArrowLeft, FaMessage} from "react-icons/fa6"
 import { NavLink } from "react-router-dom"
 import { useState,useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { FaRotate,  } from "react-icons/fa6"
 
 const Customers = () => {
   interface messageSchema {
@@ -21,6 +23,7 @@ const Customers = () => {
   }
 
 const [customers, setCustomers] = useState<customs[]|null>();
+const [errors, setErrors] = useState<String>('');
 const Id = localStorage.getItem('Id')
 useEffect(()=>{
 const fetchUsers = async()=>{
@@ -36,8 +39,9 @@ try {
     setCustomers(data)
    console.log(data)
 }
-catch (err) {
-console.log(err)
+catch (err:any) {
+  console.log(err)
+  setErrors(err)
 }
 }
 fetchUsers()
@@ -55,7 +59,7 @@ fetchUsers()
      {customers&&<p className="text-white text-center  text-sm sm:text-base ">These are list of people you accepted or sent an invite</p>}
     </div> 
      <div className="flex flex-col  w-full items-center    ">
-     {customers?customers?.map(prev=>(
+     {customers?customers.length>1?customers?.map(prev=>(
        <div className="w-full  border-b border-demotext  p-4 sm:p-6 flex  items-center justify-between">
         <div className='w-full h-full flex items-center gap-5'>
             <div className="sm:w-14 sm:h-14 w-12 h-12 overflow-hidden rounded-full bg-black2">
@@ -66,7 +70,12 @@ fetchUsers()
             </div>
          </div>
          <NavLink to={`/pchat/${prev.userId}`}></NavLink><div className='flex items-center gap-1 sm:gap-2 h-10 hover:cursor-pointer text-sm sm:text-base bg-purple rounded-lg px-2 sm:px-3'><p>message</p><FaMessage className='mt-1'/></div>
-       </div>)):<p className='text-white mt-20  sm:text-lg font-semibold '>No customers yet!</p>}
+       </div>)):<p className='text-white mt-20  sm:text-lg font-semibold '>No customers yet!</p>
+       :
+       <div className="flex justify-center lg:mt-20 mt-28 md:mt-32  ">{errors?<div className='bg-purple px-6 py-1 sm:px-10 hover:cursor-pointer h-auto  rounded-full'><p >Retry</p></div>:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' ><FaRotate/></motion.div>}</div>
+       
+       }
+
      </div>
    </div>
    </div>

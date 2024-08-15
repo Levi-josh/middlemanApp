@@ -2,6 +2,8 @@ import { FaHistory } from "react-icons/fa"
 import {FaArrowLeft} from "react-icons/fa6"
 import { NavLink } from "react-router-dom"
 import { useState,useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { FaRotate,  } from "react-icons/fa6"
 
 const History = () => {
   interface offerOption {
@@ -38,6 +40,7 @@ const History = () => {
     completed:Boolean
   }
   const [history, setHistory] = useState<transaction[]|null>();
+  const [errors, setErrors] = useState<String>('');
   const Id = localStorage.getItem('Id')
   useEffect(()=>{
   const fetchUsers = async()=>{
@@ -53,8 +56,9 @@ const History = () => {
       setHistory(data)
      console.log(data)
   }
-  catch (err) {
-  console.log(err)
+  catch (err:any) {
+    console.log(err)
+    setErrors(err)
   }
   }
   fetchUsers()
@@ -71,7 +75,7 @@ const History = () => {
           {history&&<p className="text-white text-center  text-sm sm:text-base ">These are list of people you accepted and sent an invite</p>}
         </div> 
         <div className="flex flex-col items-center gap-5 w-full">
-        {history?history?.map(prev=>(
+        {history?history.length>1?history?.map(prev=>(
           <div className="w-full h-auto bg-black2 rounded-lg p-2  sm:p-4 flex items-center gap-3 sm:gap-5">
             <div className="sm:w-24 sm:h-24 flex-shrink-0  w-20 h-20 overflow-hidden  bg-black2 ">
               <img src={`https://middlemanbackend.onrender.com${prev.transactionWith.pic}`}/>
@@ -82,7 +86,10 @@ const History = () => {
               <div className='flex items-center justify-between w-full text-sm sm:text-base'><p>Date :</p><p>{prev.deals.deliveryDate}</p></div>
               <div className='flex items-center justify-between w-full text-sm sm:text-base'><p>Status :</p><p>{prev.completed?'Completed':'pending'}</p></div>
             </div>
-          </div>)):<p className='text-white  mt-20  sm:text-lg font-semibold '>No transaction history yet!</p>}
+          </div>)):<p className='text-white  mt-20  sm:text-lg font-semibold '>No transaction history yet!</p>
+        :
+        <div className="flex justify-center lg:mt-20 mt-28 md:mt-32  ">{errors?<div className='bg-purple px-6 py-1 sm:px-10 hover:cursor-pointer h-auto  rounded-full'><p >Retry</p></div>:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' ><FaRotate/></motion.div>}</div> 
+        }
         </div>
       </div>
     </div>

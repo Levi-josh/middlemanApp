@@ -2,7 +2,7 @@ import Firstpage from "./Firstpage/Firstpage"
 import Chat from "./Chat/Chat"
 import SwiperCore from 'swiper';
 // import Laptopfirstpg from "./Firstpage/Laptopfirstpg"
-import  { useRef } from 'react';
+import  { useRef, } from 'react';
 // import { useState, useEffect } from "react"
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -15,10 +15,24 @@ import 'swiper/css/autoplay';
 import 'swiper/css/scrollbar';
 import Footer from "../Footer/Footer";
 import { useChatContext  } from './Chat/ChatContext'
+import {  useEffect } from "react"
+import { useNavigate } from "react-router-dom"
+
+
 // import Test from "./Test";
 const Overview: React.FC = () => {
   const swiperRef = useRef<SwiperCore | null>();
   const { fromChat } = useChatContext();
+  const Id = localStorage.getItem('Id')
+  const navigate = useNavigate()
+   useEffect(()=>{
+    if (!Id) {
+      navigate('/landingPage')
+    }
+    console.log(Id)
+
+  },[])
+
 const goToSlide = (index: number) => {
     if (swiperRef.current) {
       swiperRef.current.slideTo(index);
@@ -45,7 +59,7 @@ const handleSlideChange = () => {
 
 return (
 <div className="w-full h-screen fixed      bg-black2">
-<div className="w-full   lg:hidden     h-full ">
+{Id && <div className="w-full   lg:hidden     h-full ">
  {/* small screen */}
 
 <Swiper modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
@@ -67,12 +81,12 @@ return (
 
 <Footer goToSlide={goToSlide}/>
 
-</div>
-<div className="hidden lg:flex  w-full h-full">
+</div>}
+{Id && <div className="hidden lg:flex  w-full h-full">
 {/* <Laptopfirstpg/> */}
 <Firstpage/>
 <Chat />
-</div>
+</div>}
 </div>
   )
 }

@@ -211,7 +211,7 @@ const changeForm = () => {
             <div className="text-white text-sm sm:text-base flex flex-col gap-4 sm:gap-5">
               <div className="flex gap-2 items-start" >
                 <motion.div  className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 rounded-full bg-purple flex items-center justify-center text-xs" variants={textRevealVariants}>1</motion.div >
-                <motion.p variants={textRevealVariants}>Buyer's Third Party - if the byer cannot receive the product personally,thy can designate a trusted third party to pick up and confirm receipt of the product on their behalf.</motion.p>
+                <motion.p variants={textRevealVariants}>Buyer's Third Party - if the buyer cannot receive the product personally,thy can designate a trusted third party to pick up and confirm receipt of the product on their behalf.</motion.p>
               </div>
               <div className="flex gap-2 items-start" >
                 <motion.div className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 rounded-full bg-purple flex items-center justify-center text-xs" variants={textRevealVariants}>2</motion.div>

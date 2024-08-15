@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, } from 'react';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import './App.css';
@@ -32,6 +32,7 @@ import Notification from './Overview/Notification/Notification';
 import Setting from './Overview/Setting/Setting';
 import Frequently from './Overview/F&Q/Frequently';
 import Overview2 from './Overview/Overview2'
+
 
 
 const pageVariants = {
@@ -125,7 +126,6 @@ const AnimatedRoutes = () => {
 
 function App() {
   const [fromChat, setFromChat] = useState(false);
-
   const isfromChat = () => {
     setFromChat(true);
   };
