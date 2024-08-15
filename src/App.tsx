@@ -14,7 +14,6 @@ import Pending from './Overview/Transaction/Pending';
 import Pending2 from './Overview/Transaction/Pending2';
 import SthirdParty from './Overview/Transaction/SthirdParty';
 import BthirdParty from './Overview/Transaction/BthirdParty';
-import Chattest from './Overview/Chat/Chattest';
 import Otp from './Auth/Otp';
 import Login from './Auth/Login';
 import PhoneLogin from './Auth/PhoneLogin';
@@ -32,6 +31,7 @@ import Transfer from './Overview/Transfer/Transfer';
 import Notification from './Overview/Notification/Notification';
 import Setting from './Overview/Setting/Setting';
 import Frequently from './Overview/F&Q/Frequently';
+import Overview2 from './Overview/Overview2'
 
 
 const pageVariants = {
@@ -88,10 +88,10 @@ const AnimatedRoutes = () => {
           <Route path='chat' element={<Chatitems />} />
           <Route path='desktopchat/:id' element={<Chatitems />} />
         </Route> */}
+        <Route path='/' element={<Overview2 />} ></Route>
         <Route path='pchat/:id' element={<MotionWrapper><Chatitems /></MotionWrapper>} />
-        <Route path='chattest' element={<MotionWrapper><Chattest /></MotionWrapper>} />
         <Route path='invite' element={<MotionWrapper><Invites /></MotionWrapper>} />
-        <Route path='notification' element={<MotionWrapper><Notification /></MotionWrapper>} />
+        <Route path='notification' element={<Notification />} />
         <Route path='deposit' element={<MotionWrapper><Deposit /></MotionWrapper>} />
         <Route path='withdraw' element={<MotionWrapper><Withdraw /></MotionWrapper>} />
         <Route path='transfer' element={<MotionWrapper><Transfer /></MotionWrapper>} />
@@ -99,8 +99,8 @@ const AnimatedRoutes = () => {
         <Route path='customers' element={<MotionWrapper><Customers /></MotionWrapper>} />
         <Route path='verified' element={<MotionWrapper><Verified /></MotionWrapper>} />
         <Route path='details' element={<MotionWrapper><Details /></MotionWrapper>} />
-        <Route path='f&Q' element={<MotionWrapper><Frequently/></MotionWrapper>} />
-        <Route path='setting' element={<MotionWrapper><Setting /></MotionWrapper>} />
+        <Route path='f&Q' element={<Frequently/>} />
+        <Route path='setting' element={<Setting />} />
         <Route path='landingPage' element={<><LoginOutlet/></>} >
           <Route index element={<><Login/></>}/>
           <Route path='phoneSignin' element={<><PhoneLogin/></>}/>
@@ -131,12 +131,14 @@ function App() {
   };
 
   return (
-    <ChatProvider isfromChat={isfromChat} fromChat={fromChat}>
+    <div className='fixed overflow-hidden w-full h-full'>
+    <ChatProvider isfromChat={isfromChat} fromChat={fromChat} >
       <Router>
-      <Overview />
+      <Overview  />
       <AnimatedRoutes />
       </Router>
     </ChatProvider>
+    </div>
   );
 }
 

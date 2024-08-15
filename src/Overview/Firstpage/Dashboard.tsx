@@ -1,18 +1,18 @@
 import { FaMoneyBill, FaMoneyBillTransfer, FaWallet } from "react-icons/fa6"
 import { NavLink } from "react-router-dom"
 
-const Dashboard = () => {
+const Dashboard = (props:any) => {
   return (
     <div className="bg-black flex rounded-lg justify-evenly px-2 sm:p-6 lg:p-3 flex-col h-full lg:w-1085 w-full lg:mt-6 ">
       <h1 className="text-white text-sm sm:text-base   font-bold">Overview</h1>
       <div className="bg-black2 flex items-center gap-4 h-100025 p-2   lg:w-1083 rounded-lg">
         <div className="flex flex-col lg:flex-row  gap-2 justify-center lg:items-center lg:justify-between bg-black w-full h-full px-3  rounded-lg ">
           <p className="text-white text-sm sm:text-base font-semibold   ">Balance:</p>
-          <p className="text-sm text-white sm:text-base">$10,000</p>
+          <p className="text-sm text-white sm:text-base">{props.balance?`${props.balance}`:'00'}</p>
         </div>
         <div className="flex flex-col lg:flex-row gap-2 justify-center lg:items-center lg:justify-between bg-black w-full h-full px-3 rounded-lg ">
           <p className="text-white text-sm sm:text-base font-semibold  ">Pending:</p>
-          <p className="text-sm text-white sm:text-base">$100</p>
+          <p className="text-sm text-white sm:text-base">{props.pending?`${props.pending}`:'00'}</p>
         </div>
       </div>
       <h1 className="text-white text-sm sm:text-base   font-bold">Money Transfer</h1>

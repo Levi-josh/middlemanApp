@@ -66,7 +66,7 @@ fetchUsers()
             </div>
          </div>
          <NavLink to={`/pchat/${prev.userId}`}></NavLink><div className='flex items-center gap-1 sm:gap-2 h-10 hover:cursor-pointer text-sm sm:text-base bg-purple rounded-lg px-2 sm:px-3'><p>message</p><FaMessage className='mt-1'/></div>
-       </div>)):<p className='text-white mt-20 text-lg sm:text-xl font-semibold font-serif'>No customers yet!</p>}
+       </div>)):<p className='text-white mt-20  sm:text-lg font-semibold '>No customers yet!</p>}
      </div>
    </div>
    </div>

@@ -82,7 +82,7 @@ const History = () => {
               <div className='flex items-center justify-between w-full text-sm sm:text-base'><p>Date :</p><p>{prev.deals.deliveryDate}</p></div>
               <div className='flex items-center justify-between w-full text-sm sm:text-base'><p>Status :</p><p>{prev.completed?'Completed':'pending'}</p></div>
             </div>
-          </div>)):<p className='text-white  mt-20 text-lg sm:text-xl font-semibold font-serif'>No transaction history yet!</p>}
+          </div>)):<p className='text-white  mt-20  sm:text-lg font-semibold '>No transaction history yet!</p>}
         </div>
       </div>
     </div>

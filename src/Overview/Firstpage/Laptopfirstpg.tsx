@@ -64,22 +64,21 @@ const Laptopfirstpg = () => {
     <div className="flex flex-col px-3 sm:px-5 lg:px-0  mb-32 sm:mb-0 justify-between   lg:gap-6 pt-14 sm:pt-0  lg:flex-row lg:justify-between  lg:items-center h-full sm:h-10008 lg:h-103 ">
       <div className="lg:w-107 w-full rounded-lg h-102 lg:h-full  bg-black px-2 lg:px-3  lg:gap-2 flex-col flex gap-3 justify-center items-start ">
         <div className="flex flex-row items-center gap-3 lg:gap-2 lg:flex-col">
-        <div className="sm:w-20 sm:h-20  w-14 h-14 overflow-hidden rounded-full  outline outline-3 outline-purple">
-          {users?.profilePic?<img src={`https://middlemanbackend.onrender.com${users?.profilePic}`}/>:<div className='sm:h-20   w-14 h-14 rounded-full sm:w-20  flex items-center bg-black justify-center text-white text-lg'><FaCamera/></div>}
-        </div>
-        <p className="text-white font-bold">{users?.username}</p>
+          <div className="sm:w-20 sm:h-20  w-14 h-14 overflow-hidden rounded-full  outline outline-3 outline-purple">
+            {users?.profilePic?<img src={`https://middlemanbackend.onrender.com${users?.profilePic}`}/>:<div className='sm:h-20   w-14 h-14 rounded-full sm:w-20  flex items-center bg-black justify-center text-white text-lg'><FaCamera/></div>}
+          </div>
+          <p className="text-white font-bold">{users?.username}</p>
         </div>
         <div className="flex items-center justify-between w-full">
           <p className=" text-white"><span className="">Invitation code</span> : {users?.inviteCode}</p>
           <FaCopy className="text-white hover:cursor-pointer"/>
         </div>
-       
       </div> 
-     <div className="flex flex-row gap-3  items-center h-1006 lg:justify-between lg:h-full lg:w-103 lg:flex-col">
-     <NavLink to={'/invite'} className={'w-full h-full '}><div className="flex w-full h-full lg:h-full justify-between items-center hover:transition-all hover:scale-x-105 bg-black hover:bg-black1 hover:cursor-pointer px-2 rounded-lg"><p className="text-sm  text-white">Invite</p><div className="w-6 text-xs rounded-full flex justify-center items-center bg-purple h-6"><FaLink className="text-white"/></div></div></NavLink>
-     <NavLink to={'/customers'} className={'w-full h-full '}><div className="flex w-full h-full lg:h-full justify-between items-center hover:transition-all hover:scale-x-105 bg-black hover:bg-black1 hover:cursor-pointer   px-2 rounded-lg"><p className="text-sm  text-white">Customers</p><div className="w-6 text-xs rounded-full flex justify-center items-center bg-purple h-6"><FaUser className="text-white"/></div></div></NavLink>
-     <NavLink to={'/history'} className={'w-full h-full '}><div className="flex  w-full h-full lg:h-full justify-between items-center hover:transition-all hover:scale-x-105 bg-black hover:bg-black1 hover:cursor-pointer   px-2 rounded-lg"><p className="text-sm  text-white">History</p><div className="w-6 text-xs rounded-full flex justify-center items-center bg-purple h-6">< FaHistory className="text-white"/></div></div></NavLink>
-     </div>
+      <div className="flex flex-row gap-3  items-center h-1006 lg:justify-between lg:h-full lg:w-103 lg:flex-col">
+        <NavLink to={'/invite'} className={'w-full h-full '}><div className="flex w-full h-full lg:h-full justify-between items-center hover:transition-all hover:scale-x-105 bg-black hover:bg-black1 hover:cursor-pointer px-2 rounded-lg"><p className="text-sm  text-white">Invite</p><div className="w-6 text-xs rounded-full flex justify-center items-center bg-purple h-6"><FaLink className="text-white"/></div></div></NavLink>
+        <NavLink to={'/customers'} className={'w-full h-full '}><div className="flex w-full h-full lg:h-full justify-between items-center hover:transition-all hover:scale-x-105 bg-black hover:bg-black1 hover:cursor-pointer   px-2 rounded-lg"><p className="text-sm  text-white">Customers</p><div className="w-6 text-xs rounded-full flex justify-center items-center bg-purple h-6"><FaUser className="text-white"/></div></div></NavLink>
+        <NavLink to={'/history'} className={'w-full h-full '}><div className="flex  w-full h-full lg:h-full justify-between items-center hover:transition-all hover:scale-x-105 bg-black hover:bg-black1 hover:cursor-pointer   px-2 rounded-lg"><p className="text-sm  text-white">History</p><div className="w-6 text-xs rounded-full flex justify-center items-center bg-purple h-6">< FaHistory className="text-white"/></div></div></NavLink>
+      </div>
     </div>
     <div className="hidden lg:block h-1055"><Dashboard/></div>
     </div>

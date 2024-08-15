@@ -59,7 +59,7 @@ const Notification = () => {
                     <button className='bg-purple rounded-md py-1 sm:py-2 lg:py-1  sm:px-4 w-1025 md:w-full text-sm sm:text-base'>Accept</button>
                     <button className='bg-purple rounded-md py-1 sm:py-2 lg:py-1 sm:px-4 w-1025 md:w-full  text-sm sm:text-base'>Reject</button>
                 </div>}
-            </div>)):<p className='text-white mt-20 text-lg sm:text-xl font-semibold font-serif'>No notifications yet!</p>}
+            </div>)):<p className='text-white mt-20  sm:text-lg font-semibold '>No notifications yet!</p>}
         </div>
     </div>
 

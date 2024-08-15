@@ -19,59 +19,14 @@ interface Chat {
     profilePic:String,
 }
 
-interface User {
-    _id: string;
-    email: string;
-    socketId: string;
-    username: string;
-    password: string;
-    balance: number;
-    chats: Chat[];
-    history: any[];
-    inviteCode: string;
-    notification: any[];
-    pending: number;
-    profilePic: string;
-    transaction: any[];
-    walletId: string;
-    __v: number;
-}
-
 interface ChatlistProps {
-    chatUsers: User;
+    chatUsers: Chat[];
 }
 
 const Chatlist: React.FC<ChatlistProps> = ({ chatUsers }) => {
-    // const mychat = [
-    // {username:'Don vick',
-    // pfp:victor,
-    // message:'Hwfa guy you still the come?',
-    // sent:'Just now',
-    // unread:1
-    // },
-    // {username:'Jessica',
-    // pfp:jessica,
-    // message:'Joshua what about my material?',
-    // sent:'2mins ago',
-    // unread:3
-    // },
-    // {username:'Dave',
-    // pfp:dave,
-    // message:`when i'm through i will send it `,
-    // sent:'3mins ago',
-    // unread:2
-    // },
-    // {username:'Tony diva',
-    // pfp:tony,
-    // message:`Send your wallet address `,
-    // sent:'4mins ago',
-    // unread:1
-    // }
-    //]
-    console.log(chatUsers)
-  return (
+    return (
     <div className='px-3 bg-black w-full sm:px-4 lg:px-0 md:px-5 pt-7 flex flex-col gap-7 h-full'>
-    {chatUsers.chats.map((chat,index)=>(
+    { chatUsers.map((chat,index)=>(
         <NavLink key={index} to={`${window.matchMedia('(max-width: 600px)').matches?`/pchat/${chat.userId}`:'/chat'}`}><div className='w-full h-1012  bg-black2 rounded-lg flex justify-between items-center px-3 lg:px-2'>
             <div className='flex gap-4 sm:gap-6 lg:gap-2 items-center'>
                 <div className='w-12 h-12 lg:w-10 lg:h-10 sm:w-16 sm:h-16 rounded-full overflow-hidden  outline outline-2 outline-purple'>
@@ -89,7 +44,7 @@ const Chatlist: React.FC<ChatlistProps> = ({ chatUsers }) => {
         </div></NavLink>
     ))}
     </div>
-  )
+    )
 }
 
 export default Chatlist

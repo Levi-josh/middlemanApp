@@ -15,7 +15,6 @@ import 'swiper/css/autoplay';
 import 'swiper/css/scrollbar';
 import Footer from "../Footer/Footer";
 import { useChatContext  } from './Chat/ChatContext'
-import Laptopfirstpg from "./Firstpage/Laptopfirstpg";
 // import Test from "./Test";
 const Overview: React.FC = () => {
   const swiperRef = useRef<SwiperCore | null>();
@@ -45,8 +44,8 @@ const handleSlideChange = () => {
   };
 
 return (
-<div className="w-full h-screen fixed     bg-black2">
-<div className="w-full   lg:hidden  h-full ">
+<div className="w-full h-screen fixed      bg-black2">
+<div className="w-full   lg:hidden     h-full ">
  {/* small screen */}
 
 <Swiper modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
@@ -59,8 +58,8 @@ return (
   onSlideChange={handleSlideChange}
   slidesPerView={1}
   initialSlide={fromChat?1:0}
- className="  text-white bg-black2 w-full h-full ">
-<SwiperSlide><Firstpage/></SwiperSlide> 
+ className="  text-white  w-full h-full ">
+<SwiperSlide ><Firstpage/></SwiperSlide> 
 <SwiperSlide> <Chat /></SwiperSlide> 
 </Swiper>
 
@@ -70,7 +69,8 @@ return (
 
 </div>
 <div className="hidden lg:flex  w-full h-full">
-<Laptopfirstpg/>
+{/* <Laptopfirstpg/> */}
+<Firstpage/>
 <Chat />
 </div>
 </div>

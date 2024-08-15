@@ -1,6 +1,8 @@
 import Header2 from "../../Header/Header2"
 import Chatlist from "./Chatlist"
 import { useState, useEffect } from "react"
+import { motion } from 'framer-motion';
+import { FaRotate,  } from "react-icons/fa6"
 
 
 const Chat= () => {
@@ -19,27 +21,12 @@ interface Chat {
     msgUnread:Number,
     profilePic:String,
 }
-  interface User {
-    _id: string;
-    email: string;
-    socketId: string;
-    username: string;
-    password: string;
-    balance: number;
-    chats: Chat[];
-    history: any[];
-    inviteCode: string;
-    notification: any[];
-    pending: number;
-    profilePic: string;
-    transaction: any[];
-    walletId: string;
-    __v: number;
-}
-  const [users, setusers] = useState<User|null>();
+
+  const [Chats, setChats] = useState<Chat[]|null>();
+  const [errors, setErrors] = useState<String>('');
   const Id = localStorage.getItem('Id')
 useEffect(()=>{
-  const fetchUsers = async()=>{
+  const fetchChats = async()=>{
     const option = {
       method: 'Get',
       headers: {
@@ -47,16 +34,17 @@ useEffect(()=>{
       },
   }
   try {
-      const response = await fetch(`https://middlemanbackend.onrender.com/getusers/${Id}`, option);
+      const response = await fetch(`https://middlemanbackend.onrender.com/getChats/${Id}`, option);
       const data = await response.json()
-      setusers(data)
+      setChats(data)
      console.log(data)
   }
-  catch (err) {
-  console.log(err)
+  catch (err:any) {
+    console.log(err)
+    setErrors(err)
   }
   }
-  fetchUsers()
+  fetchChats()
 },[])
  
 
@@ -64,9 +52,11 @@ useEffect(()=>{
     <div className="bg-black lg:fixed lg:right-0  pt-3 lg:h-screen z-50   lg:px-3 sm:pt-4 md:pt-5 h-full overflow-auto w-full   text-white lg:w-103 xl:w-1025 ">
     <Header2/> 
     <div className="w-full text-center  bg-black2  pt-10 sm:pt-12 lg:pt-11 ">
-    {users?.chats && <p className="py-2 lg:py-1">1 unread message</p>}
+    {Chats && <p className="py-2 lg:py-1">1 unread message</p>}
     </div>
-    {users ? <Chatlist chatUsers={users} />:<p className='text-white font-bold lg:mt-20 mt-28 md:mt-32 text-center font-serif'>No Chat yet!</p>}
+    {Chats ? Chats.length>1?<Chatlist chatUsers={Chats} />:<p className='text-white font-bold lg:mt-20 mt-28 md:mt-32 text-center font-serif'>No Chat yet!</p>:
+    <div className="flex justify-center lg:mt-20 mt-28 md:mt-32 h-screen ">{errors?<p className="font-semibold">try again</p>:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' ><FaRotate/></motion.div>}</div>
+    }
     </div>
   )
 }
