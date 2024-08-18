@@ -20,7 +20,7 @@ const verifyOtp = async(e:FormEvent<HTMLFormElement>)=>{
     body:JSON.stringify({otp})
   }
   try {
-    const response = await fetch(` http://localhost:3500/verify-otp`, option);
+    const response = await fetch(` https://middlemanbackend.onrender.com/verify-otp`, option);
     const data = await response.json()
     console.log(data)
     localStorage.setItem('Id', data.UserId)

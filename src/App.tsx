@@ -98,8 +98,8 @@ const AnimatedRoutes = () => {
         <Route path='transfer' element={<MotionWrapper><Transfer /></MotionWrapper>} />
         <Route path='history' element={<MotionWrapper><History /></MotionWrapper>} />
         <Route path='customers' element={<MotionWrapper><Customers /></MotionWrapper>} />
-        <Route path='verified' element={<MotionWrapper><Verified /></MotionWrapper>} />
-        <Route path='details' element={<MotionWrapper><Details /></MotionWrapper>} />
+        <Route path='verified' element={<Verified />} />
+        <Route path='details' element={<Details />} />
         <Route path='f&Q' element={<Frequently/>} />
         <Route path='setting' element={<Setting />} />
         <Route path='landingPage' element={<><LoginOutlet/></>} >

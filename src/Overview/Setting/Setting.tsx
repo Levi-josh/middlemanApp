@@ -1,4 +1,4 @@
-import { FaArrowLeft,FaCamera, FaPencil, FaRegEyeSlash} from "react-icons/fa6"
+import { FaArrowLeft,FaCamera, FaPencil, FaRegEyeSlash, FaCopy} from "react-icons/fa6"
 import { NavLink } from "react-router-dom"
 import { useState,useEffect } from 'react';
 
@@ -81,6 +81,10 @@ fetchUsers()
         <div className="w-full h-10 sm:h-12 lg:h-10 flex items-center justify-between  px-3 sm:px-5 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg  ">
           <div className="flex gap-3"><p>Password :</p><p>joshkelly1965</p></div>
           <FaRegEyeSlash className="hover:cursor-pointer"/>
+        </div>
+        <div className="w-full h-10 sm:h-12 lg:h-10 flex items-center justify-between  px-3 sm:px-5 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg  ">
+          <div className="flex gap-3"><p>Invite code :</p><p>{window.matchMedia('(max-width: 600px)').matches? `${('joshkelly1965jfstyyohxrdeu6pgcdz')?.slice(0,20)} . . .`:'joshkelly1965jfstyyohxrdeu6pgcdz'}</p></div>
+          < FaCopy className="hover:cursor-pointer"/>
         </div>
       </div>
     </div>

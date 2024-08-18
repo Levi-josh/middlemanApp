@@ -3,7 +3,7 @@ import {FaArrowLeft} from "react-icons/fa6"
 import { NavLink } from "react-router-dom"
 import { useState,useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaRotate,  } from "react-icons/fa6"
+import { FaRotate, FaArrowRotateLeft } from "react-icons/fa6"
 
 const History = () => {
   interface offerOption {
@@ -88,7 +88,7 @@ const History = () => {
             </div>
           </div>)):<p className='text-white  mt-20  sm:text-lg font-semibold '>No transaction history yet!</p>
         :
-        <div className="flex justify-center lg:mt-20 mt-28 md:mt-32  ">{errors?<div className='bg-purple px-6 py-1 sm:px-10 hover:cursor-pointer h-auto  rounded-full'><p >Retry</p></div>:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' ><FaRotate/></motion.div>}</div> 
+        <div className="flex justify-center lg:mt-20 mt-28 md:mt-32  ">{errors?<div className='bg-purple px-6 py-1 sm:px-10 hover:cursor-pointer h-auto  rounded-full flex items-center gap-1'><FaArrowRotateLeft/><p >Retry</p></div>:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' ><FaRotate/></motion.div>}</div> 
         }
         </div>
       </div>

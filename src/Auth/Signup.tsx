@@ -9,13 +9,15 @@ const [password,setPassword]=useState('')
 const navigate = useNavigate()
 
 const handSubmit = async(e:FormEvent<HTMLFormElement>)=>{
+  console.log(email)
+  console.log(password)
     e.preventDefault();
     const option = {
           method: 'Post',
           headers: {
               'content-type': 'application/json',
           },
-          body:JSON.stringify({email,password})
+          body:JSON.stringify({email:email,password:password})
     }
     try {
           const response = await fetch(` https://middlemanbackend.onrender.com/signup`, option);

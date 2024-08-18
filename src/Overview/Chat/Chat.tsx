@@ -2,7 +2,7 @@ import Header2 from "../../Header/Header2"
 import Chatlist from "./Chatlist"
 import { useState, useEffect } from "react"
 import { motion } from 'framer-motion';
-import { FaRotate,  } from "react-icons/fa6"
+import { FaArrowRotateLeft, FaRotate,  } from "react-icons/fa6"
 
 
 const Chat= () => {
@@ -55,7 +55,7 @@ useEffect(()=>{
     {Chats && <p className="py-2 lg:py-1">1 unread message</p>}
     </div>
     {Chats ? Chats.length>1?<Chatlist chatUsers={Chats} />:<p className='text-white font-bold lg:mt-20 mt-28 md:mt-32 text-center '>No Chat yet!</p>:
-    <div className="flex justify-center lg:mt-20 mt-28 md:mt-32  ">{errors?<div className='bg-purple px-3 py-1 sm:px-5 hover:cursor-pointer h-auto  rounded-full'><p >Retry</p></div>:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' ><FaRotate/></motion.div>}</div>
+    <div className="flex justify-center lg:mt-20 mt-28 md:mt-32  ">{errors?<div className='bg-purple px-3 py-1 sm:px-5 hover:cursor-pointer h-auto  rounded-full flex items-center gap-1'><FaArrowRotateLeft/><p >Retry</p></div>:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' ><FaRotate/></motion.div>}</div>
     }
     </div>
   )
