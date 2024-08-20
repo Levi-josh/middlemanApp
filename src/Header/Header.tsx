@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { NavLink } from "react-router-dom"
 
 const Header = (props:any) => {
-  console.log(props.scrollPosition)
+
   return (
     <div className="flex bg-black2 z-30 overflow-hidden px-3 sm:px-5 lg:px-0 w-full fixed sm:static h-14 sm:h-16  justify-between items-center">
       <motion.div  animate={{x:props.scrollPosition>=82?'-120%':0}} transition={{type:'tween',duration: 0.1, delay: 0}} className="bg-black h-8 w-32 rounded-lg pl-2 flex items-center">

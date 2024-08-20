@@ -156,7 +156,7 @@ const changeForm = () => {
                 <motion.h2 className="text-white text-center text-sm font-sans sm:text-base"   variants={textRevealVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }}>Your Trusted Escrow Service for Secure Transactions...</motion.h2>
               </div>
           </div>
-          <motion.div className="w-full  rounded-xl h-auto  md:pb-0 md:pr-0 md:pl-6 md:pt-6 mt-3 sm:mt-5   bg-black  flex flex-col md:flex-row   "  variants={textRevealVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }}>
+          <motion.div className="w-full  rounded-xl h-auto  md:pb-6 md:pr-0 md:pl-6 md:pt-6 mt-3 sm:mt-5   bg-black  flex flex-col md:flex-row   "  variants={textRevealVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }}>
             <motion.img src={middlemanImage} className="bg-no-repeat bg-cover bg-center  md:w-105 h-auto   md:rounded-e-none w-full object-cover  " variants={textRevealVariants}/> 
             <div className="md:w-105 md:pb-6 p-3 sm:p-5 md:pt-0  md:pl-5 md:pr-2 flex flex-col gap-3 md:gap-1">
               <motion.h1 className="font-bold text-purple text-xl lg:text-2xl text-center " variants={textRevealVariants}>About us</motion.h1>
