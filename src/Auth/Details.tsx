@@ -1,6 +1,8 @@
 import { useState,FormEvent,useRef} from "react"
 import { FaCamera } from "react-icons/fa6"
 import { useNavigate } from "react-router-dom"
+import { motion } from 'framer-motion';
+import { FaRotate } from "react-icons/fa6"
 
 const Details = () => {
     const navigate = useNavigate()
@@ -8,11 +10,13 @@ const Details = () => {
     const [previewUrl, setPreviewUrl] = useState<string | null>(null);
     const [username, setUsername] = useState<string>('');
     const fileInputRef = useRef<HTMLInputElement>(null);
+    const [ran,setRan]=useState(false)
     const id = localStorage.getItem('Id')
 
     const handSubmit = async(e:FormEvent<HTMLFormElement>)=>{
         e.preventDefault();
         if (!selectedFile || !id) return;
+        setRan(true)
         const formData = new FormData();
         formData.append('image', selectedFile);
         formData.append('username', username);
@@ -65,7 +69,7 @@ const Details = () => {
                 <option>Prefer not to say</option>
             </select>
           </div>
-            <button className="bg-purple text-white  w-full rounded-lg h-10  sm:h-12 lg:w-108 xl:w-107">Continue</button>
+            <button className="bg-purple text-white flex justify-center items-center  w-full rounded-lg h-10  sm:h-12 lg:w-108 xl:w-107">{!ran?`Continue`:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' ><FaRotate/></motion.div>}</button>
         </form>
     </div>
   )

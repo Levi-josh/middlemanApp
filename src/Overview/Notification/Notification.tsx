@@ -51,7 +51,7 @@ const Notification = () => {
             {/* <p className="text-white text-center  text-sm sm:text-base ">Ask the user for their <span className="font-bold ">invite code</span>,then paste it in the input below. please make sure the code is correct and complete.</p> */}
         </div>
         <div className='w-full gap-3 flex flex-col'>
-        {notes?notes.length>1 ?notes?.map(prev=>(
+        {notes?notes.length>0 ?notes?.map(prev=>(
             <div className='w-full h-auto rounded-lg p-3 sm:p-5 bg-black2 flex flex-col gap-3 sm:gap-7 md:flex-row  md:items-start'>
                 <div className='w-full md:w-107   h-full   flex gap-2 sm:gap-5 items-start '>
                     <div className="sm:w-16 sm:h-16 flex-shrink-0  w-10 h-10 overflow-hidden  bg-black2 ">

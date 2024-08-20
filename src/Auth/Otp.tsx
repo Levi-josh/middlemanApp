@@ -1,17 +1,21 @@
 import React, { useRef, useState,FormEvent} from 'react';
 import { FaLock } from 'react-icons/fa';
 import { useNavigate } from "react-router-dom"
+import { motion } from 'framer-motion';
+import { FaRotate } from "react-icons/fa6"
+
 
 const Otp = () => {
 const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 const navigate = useNavigate()
+const [ran,setRan]=useState(false)
 const [otps, setOtp] = useState(Array(6).fill(''));
 
 
 const verifyOtp = async(e:FormEvent<HTMLFormElement>)=>{
   e.preventDefault()
+  setRan(true)
   const otp = otps.join("")
-  console.log(otp)
   const option = {
     method: 'Post',
     headers: {
@@ -95,7 +99,7 @@ const verifyOtp = async(e:FormEvent<HTMLFormElement>)=>{
             />
           ))}
           </div>
-          <button className='w-full md:w-106 h-10 sm:h-12 bg-purple text-white rounded-lg'>Verify</button>
+          <button className='w-full md:w-106 flex justify-center items-center h-10 sm:h-12 bg-purple text-white rounded-lg'>{!ran?`Verify`:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' ><FaRotate/></motion.div>}</button>
         </form>
         </div>
       </div>

@@ -2,12 +2,15 @@ import { useState,FormEvent} from "react"
 import { useNavigate } from "react-router-dom"
 import { NavLink } from "react-router-dom"
 import { motion } from 'framer-motion';
+import { FaRotate } from "react-icons/fa6"
 import middlemanImage from '../assets/middlemanImage.jpg'
+
 
 
 const Login = () => {
 const [email,setEmail]=useState('')
 const [password,setPassword]=useState('')
+const [ran,setRan]=useState(false)
 const navigate = useNavigate()
 const [switchForm,setSwitchForm] = useState<boolean>(true)
 
@@ -60,8 +63,8 @@ const textRevealVariants = {
 
 
 const signUpHandSubmit = async(e:FormEvent<HTMLFormElement>)=>{
-
     e.preventDefault();
+    setRan(true)
     const option = {
         method: 'Post',
         headers: {
@@ -82,6 +85,7 @@ const signUpHandSubmit = async(e:FormEvent<HTMLFormElement>)=>{
 }
 const signInHandSubmit = async(e:FormEvent<HTMLFormElement>)=>{
     e.preventDefault();
+    setRan(true)
     const option = {
         method: 'Post',
         headers: {
@@ -112,7 +116,7 @@ const changeForm = () => {
           <div className="flex flex-col gap-7 w-full justify-center items-center">
             <input type="email" className="w-full h-10  bg-black border    border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white"  placeholder="Enter an email" onChange={e=>{setEmail(e.target.value)}} value={email}   />
             <input type="password" className="w-full h-10 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white" placeholder="Enter a password" onChange={e=>{setPassword(e.target.value)}} value={password}   />
-            <button className="w-full h-10 rounded-lg bg-purple text-white text-base">Sign In</button>
+            <button className="w-full h-10 rounded-lg bg-purple flex justify-center items-center text-white text-base">{!ran?`Sign In`:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' ><FaRotate/></motion.div>}</button>
           </div>
           <div className="flex flex-col gap-5 mt-5 w-full justify-center items-center">
             <div className=" w-full h-auto gap-3   flex items-center">
@@ -129,7 +133,7 @@ const changeForm = () => {
           <div className="flex flex-col gap-7 w-full justify-center items-center">
             <input type="email" className="w-full h-10  bg-black border    border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white"  placeholder="Enter an email" onChange={e=>{setEmail(e.target.value)}} value={email}   />
             <input type="password" className="w-full h-10 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white" placeholder="Enter a password" onChange={e=>{setPassword(e.target.value)}} value={password}   />
-            <button className="w-full h-10 rounded-lg bg-purple text-white text-base">Sign Up</button>
+            <button className="w-full h-10 rounded-lg bg-purple flex justify-center items-center text-white text-base">{!ran?`Sign Up`:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' ><FaRotate/></motion.div>}</button>
           </div>
           <div className="flex flex-col gap-5 mt-5 w-full justify-center items-center">
             <div className=" w-full h-auto gap-3   flex items-center">

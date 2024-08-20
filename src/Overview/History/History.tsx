@@ -75,7 +75,7 @@ const History = () => {
           {history&&<p className="text-white text-center  text-sm sm:text-base ">These are list of people you accepted and sent an invite</p>}
         </div> 
         <div className="flex flex-col items-center gap-5 w-full">
-        {history?history.length>1?history?.map(prev=>(
+        {history?history.length>0?history?.map(prev=>(
           <div className="w-full h-auto bg-black2 rounded-lg p-2  sm:p-4 flex items-center gap-3 sm:gap-5">
             <div className="sm:w-24 sm:h-24 flex-shrink-0  w-20 h-20 overflow-hidden  bg-black2 ">
               <img src={`https://middlemanbackend.onrender.com${prev.transactionWith.pic}`}/>

@@ -2,16 +2,18 @@ import { useState,FormEvent} from "react"
 import { FaArrowLeft } from "react-icons/fa"
 import { NavLink } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
+import { motion } from 'framer-motion';
+import { FaRotate } from "react-icons/fa6"
 
 const Signup = () => {
-    const [email,setEmail]=useState('')
+const [email,setEmail]=useState('')
 const [password,setPassword]=useState('')
+const [ran,setRan]=useState(false)
 const navigate = useNavigate()
 
 const handSubmit = async(e:FormEvent<HTMLFormElement>)=>{
-  console.log(email)
-  console.log(password)
     e.preventDefault();
+    setRan(true)
     const option = {
           method: 'Post',
           headers: {
@@ -41,7 +43,7 @@ const handSubmit = async(e:FormEvent<HTMLFormElement>)=>{
                 <div className="flex flex-col gap-7 sm:gap-12 w-full justify-center items-center">
                   <input type="email" className="w-full h-10 sm:h-12 bg-black border-0.1   border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white"  placeholder="Enter an email" onChange={e=>{setEmail(e.target.value)}} value={email} />
                   <input type="password" className="w-full h-10 sm:h-12 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white" placeholder="Enter a password" onChange={e=>{setPassword(e.target.value)}} value={password} />
-                  <button className="w-full rounded-lg h-10 sm:h-12 bg-purple text-white">Sign Up</button>
+                  <button className="w-full rounded-lg h-10 sm:h-12 flex justify-center items-center bg-purple text-white">{!ran?`Sign Up`:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' ><FaRotate/></motion.div>}</button>
                 </div>
                 <div className="flex flex-col gap-5 sm:gap-7 mt-5 sm:mt-7 w-full justify-center items-center">
                   <div className=" w-full h-auto gap-3   flex items-center">
