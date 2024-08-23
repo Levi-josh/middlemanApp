@@ -20,7 +20,7 @@ const handSubmit = async(e:FormEvent<HTMLFormElement>)=>{
           headers: {
               'content-type': 'application/json',
           },
-          body:JSON.stringify({email:email,password:password})
+          body:JSON.stringify({email,password})
     }
     try {
           const response = await fetch(`https://middlemanbackend.onrender.com/login`, option);
@@ -69,7 +69,7 @@ console.log(password)
                 <p className="text-white">Or</p>
                 <hr className="w-full  border-demotext "/>
               </div>
-              <div className="w-full h-10 rounded-lg sm:h-12 bg-black2 text-white flex justify-center items-center">
+              <div className="w-full h-10 rounded-lg sm:h-12 bg-black2 text-white gap-2 flex justify-center items-center">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M22 12C22 11.3284 21.9682 10.6647 21.9051 10.0156H12V14H17.6641C17.238 15.5394 16.3299 16.8066 15.0645 17.625V20.1625H18.5037C20.6712 18.7469 22 16.1044 22 12Z" fill="#4285F4"/>
                 <path d="M12 22C14.88 22 17.175 21.125 18.85 19.7437L15.4108 17.625C14.5487 18.2125 13.3713 18.5562 12 18.5562C9.22061 18.5562 6.92061 16.7437 6.00366 14.3187H2.42866V16.9312C4.0951 19.9625 7.69354 22 12 22Z" fill="#34A853"/>

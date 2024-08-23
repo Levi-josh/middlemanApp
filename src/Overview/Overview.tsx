@@ -79,7 +79,7 @@ return (
 
 {/* large screen  */}
 
-<Footer goToSlide={goToSlide}/>
+<Footer goToSlide={goToSlide} fromChat={fromChat}/>
 
 </div>}
 {Id && <div className="hidden lg:flex  w-full h-full">

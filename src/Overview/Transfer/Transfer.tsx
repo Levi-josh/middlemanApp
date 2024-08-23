@@ -1,4 +1,4 @@
-import { FaLink ,FaArrowLeft,FaRotate} from "react-icons/fa6"
+import { FaLink ,FaArrowLeft} from "react-icons/fa6"
 import { NavLink } from "react-router-dom"
 import { useState,FormEvent,ChangeEvent} from "react"
 import { motion } from 'framer-motion';
@@ -80,7 +80,17 @@ const handleChange = (e:ChangeEvent<HTMLInputElement>) =>{
       <input type="text" className="w-full h-10 sm:h-12 lg:h-10 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white"  placeholder="Enter amount" onChange={(e)=>setAmount(e.target.value)} />
       </div>
     </div>
-    <button className="bg-purple  text-white  w-full rounded-lg h-10 flex justify-center items-center   sm:h-12 lg:w-108 xl:w-107">{!ran?`Transfer`:data?`Sent`:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' ><FaRotate/></motion.div>}r</button>
+    <button className="bg-purple  text-white  w-full rounded-lg h-10 flex justify-center items-center   sm:h-12 lg:w-108 xl:w-107">{!ran?`Transfer`:data?`Sent`:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' >            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2V6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M12 18V22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M4.929 4.929L7.757 7.757" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M16.243 16.243L19.071 19.071" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M2 12H6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M18 12H22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M4.929 19.071L7.757 16.243" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M16.243 7.757L19.071 4.929" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg></motion.div>}
+      </button>
     </form>
 </div>
   )
