@@ -3,7 +3,7 @@ import { FaArrowLeft } from "react-icons/fa"
 import { NavLink } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 import { motion } from 'framer-motion';
-import { FaRotate } from "react-icons/fa6"
+
 
 const Signup = () => {
 const [email,setEmail]=useState('')
@@ -43,7 +43,19 @@ const handSubmit = async(e:FormEvent<HTMLFormElement>)=>{
                 <div className="flex flex-col gap-7 sm:gap-12 w-full justify-center items-center">
                   <input type="email" className="w-full h-10 sm:h-12 bg-black border-0.1   border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white"  placeholder="Enter an email" onChange={e=>{setEmail(e.target.value)}} value={email} />
                   <input type="password" className="w-full h-10 sm:h-12 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white" placeholder="Enter a password" onChange={e=>{setPassword(e.target.value)}} value={password} />
-                  <button className="w-full rounded-lg h-10 sm:h-12 flex justify-center items-center bg-purple text-white">{!ran?`Sign Up`:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' ><FaRotate/></motion.div>}</button>
+                  <button className="w-full rounded-lg h-10 sm:h-12 flex justify-center items-center bg-purple text-white">{!ran?`Sign Up`:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' >
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 2V6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M12 18V22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M4.929 4.929L7.757 7.757" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M16.243 16.243L19.071 19.071" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M2 12H6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M18 12H22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M4.929 19.071L7.757 16.243" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M16.243 7.757L19.071 4.929" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </motion.div>}
+                  </button>
                 </div>
                 <div className="flex flex-col gap-5 sm:gap-7 mt-5 sm:mt-7 w-full justify-center items-center">
                   <div className=" w-full h-auto gap-3   flex items-center">
@@ -51,7 +63,15 @@ const handSubmit = async(e:FormEvent<HTMLFormElement>)=>{
                     <p className="text-white">Or</p>
                     <hr className="w-full  border-demotext "/>
                   </div>
-                  <div className="w-full h-10 rounded-lg sm:h-12 bg-black2 text-white flex justify-center items-center" onClick={()=>window.location.href = 'https://middlemanbackend.onrender.com/auth/google'}>Google</div>
+                  <div className="w-full h-10 rounded-lg sm:h-12 bg-black2 text-white flex justify-center items-center" onClick={()=>window.location.href = 'https://middlemanbackend.onrender.com/auth/google'}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22 12C22 11.3284 21.9682 10.6647 21.9051 10.0156H12V14H17.6641C17.238 15.5394 16.3299 16.8066 15.0645 17.625V20.1625H18.5037C20.6712 18.7469 22 16.1044 22 12Z" fill="#4285F4"/>
+                    <path d="M12 22C14.88 22 17.175 21.125 18.85 19.7437L15.4108 17.625C14.5487 18.2125 13.3713 18.5562 12 18.5562C9.22061 18.5562 6.92061 16.7437 6.00366 14.3187H2.42866V16.9312C4.0951 19.9625 7.69354 22 12 22Z" fill="#34A853"/>
+                    <path d="M6.00366 14.3187C5.72866 13.7312 5.5713 13.0906 5.5713 12.4312C5.5713 11.7719 5.72866 11.1312 6.00366 10.5437V7.93124H2.42866C1.51561 9.59062 1 11.4562 1 12.4312C1 13.4062 1.51561 15.2719 2.42866 16.9312L6.00366 14.3187Z" fill="#FBBC05"/>
+                    <path d="M12 5.5C13.4449 5.5 14.7564 6.00624 15.7957 6.93125L18.95 3.775C16.975 2 14.88 1 12 1C7.69354 1 4.0951 3.03748 2.42866 6.06873L6.00366 8.68124C6.92061 6.25624 9.22061 5.5 12 5.5Z" fill="#EA4335"/>
+                  </svg>
+                  <p>Google</p>
+                  </div>
                   <p className="text-white">Already have an account? <span className="text-purple font-semibold"><NavLink to={'/landingPage/phoneSignin'}>Signin</NavLink></span></p>
                 </div>
               </div>
