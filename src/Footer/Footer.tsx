@@ -6,8 +6,8 @@ interface FooterProps {
 }
 
 const Footer:React.FC<FooterProps> = ({ goToSlide }) => {
-  const [changeIcon,setChangeIcon]=useState(false)
-  const navigateIcon = (prev)=> {
+  const [changeIcon,setChangeIcon]=useState<Boolean>(false)
+  const navigateIcon = (prev:Boolean)=> {
     setChangeIcon(prev)
   }
   return (
