@@ -56,7 +56,7 @@ fetchUsers()
        <div className='sm:w-20 sm:h-20 w-14 h-14 rounded-full flex justify-center items-center text-xl sm:text-2xl  text-white bg-purple' ><FaUser/></div>
        {customers&&<h1 className="text-white text-center text-lg sm:text-xl font-semibold  ">Customers</h1>}
      </div>
-     {customers&&<p className="text-white text-center  text-sm sm:text-base ">These are list of people you accepted or sent an invite</p>}
+     {customers?.length===1&&<p className="text-white text-center  text-sm sm:text-base ">These are list of people you accepted or sent an invite</p>}
     </div> 
      <div className="flex flex-col  w-full items-center    ">
      {customers?customers.length>0?customers?.map(prev=>(

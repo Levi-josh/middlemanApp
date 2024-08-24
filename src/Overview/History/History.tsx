@@ -72,7 +72,7 @@ const History = () => {
             <div className='sm:w-20 sm:h-20 w-14 h-14 rounded-full flex justify-center items-center  text-white bg-purple text-xl sm:text-2xl' ><FaHistory/></div>
             {history&&<h1 className="text-white text-center sm:text-lg  font-semibold  ">Transaction History</h1>}
           </div>
-          {history&&<p className="text-white text-center  text-sm sm:text-base ">These are list of people you accepted and sent an invite</p>}
+          {history?.length===1&&<p className="text-white text-center  text-sm sm:text-base ">These are list of people you accepted and sent an invite</p>}
         </div> 
         <div className="flex flex-col items-center gap-5 w-full">
         {history?history.length>0?history?.map(prev=>(
