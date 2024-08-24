@@ -129,7 +129,7 @@ function App() {
   const isfromChat = () => {
     setFromChat(true);
   };
-
+console.log(fromChat)
   return (
     <div className='fixed overflow-hidden w-full h-full'>
     <ChatProvider isfromChat={isfromChat} fromChat={fromChat} >
