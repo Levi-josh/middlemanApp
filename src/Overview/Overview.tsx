@@ -26,7 +26,7 @@ const Overview: React.FC = () => {
   const Id = localStorage.getItem('Id')
   const navigate = useNavigate()
    useEffect(()=>{
-    if (Id) {
+    if (!Id) {
       navigate('/landingPage')
     }
     console.log(Id)
@@ -59,7 +59,7 @@ const handleSlideChange = () => {
 
 return (
 <div className="w-full h-screen fixed      bg-black2">
-{!Id && <div className="w-full   lg:hidden     h-full ">
+{Id && <div className="w-full   lg:hidden     h-full ">
  {/* small screen */}
 
 <Swiper modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
@@ -79,10 +79,10 @@ return (
 
 {/* large screen  */}
 
-<Footer goToSlide={goToSlide} fromChat={fromChat}/>
+<Footer goToSlide={goToSlide} />
 
 </div>}
-{!Id && <div className="hidden lg:flex  w-full h-full">
+{Id && <div className="hidden lg:flex  w-full h-full">
 {/* <Laptopfirstpg/> */}
 <Firstpage/>
 <Chat />
