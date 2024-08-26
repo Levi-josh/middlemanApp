@@ -90,7 +90,7 @@ const AnimatedRoutes = () => {
           <Route path='desktopchat/:id' element={<Chatitems />} />
         </Route> */}
         <Route path='/' element={<Overview2 />} ></Route>
-        <Route path='pchat/:id' element={<MotionWrapper><Chatitems /></MotionWrapper>} />
+        <Route path='chat/:id' element={<MotionWrapper><Chatitems /></MotionWrapper>} />
         <Route path='invite' element={<MotionWrapper><Invites /></MotionWrapper>} />
         <Route path='notification' element={<Notification />} />
         <Route path='deposit' element={<MotionWrapper><Deposit /></MotionWrapper>} />

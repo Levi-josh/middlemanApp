@@ -15,7 +15,7 @@ const Header2 = () => {
         <FaSearch/>
       </div></>:
       <div className="flex items-center w-full gap-2 ">
-      <FaArrowLeft onClick={handleSearch}/>
+      <FaArrowLeft onClick={handleSearch} className="hover:cursor-pointer"/>
       <div className="w-full relative flex items-center">
       <input className="w-full h-8 sm:h-10 bg-black2  rounded-full outline-none pl-5 text-white placeholder:text-white" placeholder="search" autoFocus/>
       <div className="bg-black2 rounded-full flex justify-center items-center absolute right-0 w-102 h-full" >

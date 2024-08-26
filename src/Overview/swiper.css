@@ -33,15 +33,15 @@
 }
 
 /* Customizing the scrollbar track */
- .swiper-scrollbar {
-    background-color: black !important; /* Change to your desired track color */
+ /* .swiper-scrollbar {
+    background-color: black !important;
     height: 8px;
    
-    /* Position the scrollbar at the top */
+  
   
     bottom: 8vh !important;
     width:100% !important;
-  }
+  } */
   
   /* Customizing the scrollbar draggable handle */
   .swiper-scrollbar-drag {

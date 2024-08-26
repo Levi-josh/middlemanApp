@@ -75,7 +75,7 @@ const History = () => {
           {history?.length===1&&<p className="text-white text-center  text-sm sm:text-base ">These are list of people you accepted and sent an invite</p>}
         </div> 
         <div className="flex flex-col items-center gap-5 w-full">
-        {history?history.length>0?history?.map(prev=>(
+        {history&&history.length>0?history?.map(prev=>(
           <div className="w-full h-auto bg-black2 rounded-lg p-2  sm:p-4 flex items-center gap-3 sm:gap-5">
             <div className="sm:w-24 sm:h-24 flex-shrink-0  w-20 h-20 overflow-hidden  bg-black2 ">
               <img src={`https://middlemanbackend.onrender.com${prev.transactionWith.pic}`}/>
@@ -86,7 +86,7 @@ const History = () => {
               <div className='flex items-center justify-between w-full text-sm sm:text-base'><p>Date :</p><p>{prev.deals.deliveryDate}</p></div>
               <div className='flex items-center justify-between w-full text-sm sm:text-base'><p>Status :</p><p>{prev.completed?'Completed':'pending'}</p></div>
             </div>
-          </div>)):<p className='text-white  mt-20  sm:text-lg font-semibold '>No transaction history yet!</p>
+          </div>)):history&&history.length===0?(<p className='text-white  mt-20  sm:text-lg font-semibold '>No transaction history yet!</p>)
         :
         <div className="flex justify-center lg:mt-20 mt-28 md:mt-32  ">{errors?<div className='bg-purple px-6 py-1 sm:px-10 hover:cursor-pointer h-auto  rounded-full flex items-center gap-1'><FaArrowRotateLeft/><p >Retry</p></div>:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' >            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 2V6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

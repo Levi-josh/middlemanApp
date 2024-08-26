@@ -71,20 +71,20 @@ fetchUsers()
       </div>
       <div className="flex flex-col items-center gap-5 sm:gap-7 w-full">
         <div className="w-full h-10 sm:h-12 lg:h-10 flex items-center justify-between  px-3 sm:px-5 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg  ">
-          <div className="flex gap-3"><p >Username :</p><p>josh kelly</p></div>
-          <FaPencil className="hover:cursor-pointer"/>
+          <div className="flex gap-3"><p >Username :</p><p>{users?.username}</p></div>
+          {users?.username&&<FaPencil className="hover:cursor-pointer"/>}
         </div>
         <div className="w-full h-10 sm:h-12 lg:h-10 flex items-center justify-between  px-3 sm:px-5 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg  ">
-          <div className="flex gap-3"><p>Email :</p><p>levijoshuakelly@gmail.com</p></div>
-          <FaPencil className="hover:cursor-pointer"/>
+          <div className="flex gap-3"><p>Email :</p><p>{users?.email}</p></div>
+          {users?.email&&<FaPencil className="hover:cursor-pointer"/>}
         </div>
         <div className="w-full h-10 sm:h-12 lg:h-10 flex items-center justify-between  px-3 sm:px-5 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg  ">
-          <div className="flex gap-3"><p>Password :</p><p>joshkelly1965</p></div>
-          <FaRegEyeSlash className="hover:cursor-pointer"/>
+          <div className="flex gap-3"><p>Password :</p><p>{users?.password}</p></div>
+          {users?.password&&<FaRegEyeSlash className="hover:cursor-pointer"/>}
         </div>
         <div className="w-full h-10 sm:h-12 lg:h-10 flex items-center justify-between  px-3 sm:px-5 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg  ">
-          <div className="flex gap-3"><p>Invite code :</p><p>{window.matchMedia('(max-width: 600px)').matches? `${('joshkelly1965jfstyyohxrdeu6pgcdz')?.slice(0,20)} . . .`:'joshkelly1965jfstyyohxrdeu6pgcdz'}</p></div>
-          < FaCopy className="hover:cursor-pointer"/>
+          <div className="flex gap-3"><p>Invite code :</p>{users?.inviteCode&&<p>{window.matchMedia('(max-width: 600px)').matches? `${(users?.inviteCode)?.slice(0,20)} . . .`:users?.inviteCode}</p>}</div>
+          {users?.inviteCode && < FaCopy className="hover:cursor-pointer"/>}
         </div>
       </div>
     </div>

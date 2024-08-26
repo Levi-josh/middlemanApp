@@ -73,12 +73,14 @@ fetchUsers()
     <Header scrollPosition={scrollPosition} profilePic={users?.profilePic}/>
     <div className="flex flex-col px-3  sm:px-5 lg:px-0  mb-32 sm:mb-0 justify-between bg-black2   lg:gap-6 pt-14 sm:pt-0  lg:flex-row lg:justify-between lg:h-103  lg:items-center h-full sm:h-10008   ">
       <div className="lg:w-107 w-full rounded-lg h-102 lg:h-full  bg-black  px-4  lg:gap-2 flex-col flex gap-2 sm:gap-6 justify-center items-start ">
-        <div className="flex flex-row items-center gap-3 sm:gap-6 lg:gap-2 lg:flex-col">
+        <div className="flex items-center  gap-3 sm:gap-6 ">
         <div className="sm:w-20 sm:h-20  w-14 h-14 rounded-full overflow-hidden bg-black2 outline outline-3 flex justify-center items-center outline-purple">
         {users?.profilePic?<img src={`http://localhost:3500/uploads/1722282556907.jpg`} className='sm:w-20 bg-no-repeat bg-cover bg-center sm:h-20   w-14 h-14 rounded-full  '/>:<div className='sm:h-20 bg-black   w-14 h-14 rounded-full sm:w-20 sm:text-lg flex items-center justify-center text-white'><FaCamera/></div>}
         </div>
-        {/* <img src={`http://localhost:3500${users?.profilePic}`} className='sm:w-20 bg-no-repeat bg-cover bg-center sm:h-20 rounded-full   w-14 h-14  '/> */}
-        <p className="text-white text-sm sm:text-base  font-bold">{users?.username}</p>
+        {users?.username&&<div className='flex flex-col gap-1 sm:gap-2 text-white'>
+          <p className='text-sm sm:text-base'>Hello,</p>
+          <p className=" text-sm sm:text-base  font-bold">{users?.username}</p>
+        </div>}
         </div>
         {users?.inviteCode?<div className="flex items-center pt-1 justify-between w-full">
           <p className=" text-white font-semibold text-sm sm:text-lg lg:text-base"><span className="">WalletAddress</span> : {users?.walletId && window.matchMedia('(max-width: 600px)').matches? `${(users?.walletId)?.slice(0,20)}...`:users?.walletId}</p>

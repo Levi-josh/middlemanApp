@@ -1,4 +1,4 @@
-import { FaLink ,FaArrowLeft} from "react-icons/fa6"
+import { FaArrowLeft} from "react-icons/fa6"
 import { NavLink } from "react-router-dom"
 import { useState,FormEvent} from "react"
 import { motion } from 'framer-motion';
@@ -38,10 +38,12 @@ const Deposit = () => {
     <div className="flex flex-col gap-5 items-center sm:gap-7 w-full">
       <div className="flex flex-col items-center gap-5 sm:gap-7 w-full">
         <div className="flex flex-col items-center gap-3 w-full">
-          <div className='sm:w-20 sm:h-20 w-14 h-14 rounded-full flex justify-center items-center text-xl sm:text-2xl  text-white bg-purple' ><FaLink/></div>
+          <div className='sm:w-20 sm:h-20 w-14 h-14 rounded-full flex justify-center items-center text-xl sm:text-2xl  text-white bg-purple' ><svg className="w-7 h-7 sm:w-10 sm:h-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2V15M12 15L7 10M12 15L17 10M5 20H19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg></div>
           <h1 className="text-white text-center text-lg sm:text-xl  font-semibold  ">Deposit</h1>
         </div>
-      <p className="text-white text-center  text-sm sm:text-base ">Add some money to your account balance</p>
+      <p className="text-white text-center  text-sm sm:text-base ">Enter amount to add some money to your account balance</p>
       </div>
       <div className="flex flex-col items-center gap-5 sm:gap-7 w-full">
         <input type="text" className="w-full h-10 sm:h-12 lg:h-10 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white"  placeholder="Enter amount" onChange={(e)=>setAmount(e.target.value)}  />

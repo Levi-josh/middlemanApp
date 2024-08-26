@@ -67,7 +67,7 @@ const Invites = () => {
         <div className='sm:w-20 sm:h-20 w-14 h-14 rounded-full flex justify-center items-center  text-white bg-purple text-xl sm:text-2xl' ><FaLink/></div>
         <h1 className="text-white text-center text-lg sm:text-xl  font-semibold  ">Invite User</h1>
         </div>
-        <p className="text-white text-center  text-sm sm:text-base ">Ask the user for their <span className="font-bold ">invite code</span>,then paste it in the input below. please make sure the code is correct and complete.</p>
+        <p className="text-white text-center  text-sm sm:text-base ">Paste the user's invitecode below to send a business transaction invitation.</p>
         </div>
         <div className="flex flex-col items-center gap-5 sm:gap-7 w-full">
         <input type="text" className="w-full h-10 sm:h-12 lg:h-10 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white" onChange={handleChange} value={inviteCode} placeholder="Enter invite code"  />
