@@ -45,7 +45,7 @@ useEffect(()=>{
   }
   }
   fetchChats()
-},[])
+},[Id])
 
   return (
     <div className="bg-black lg:fixed lg:right-0  pt-3 lg:h-screen z-50   lg:px-3 sm:pt-4 md:pt-5 h-full overflow-auto w-full   text-white lg:w-103 xl:w-1025 ">

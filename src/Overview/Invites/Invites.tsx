@@ -33,7 +33,7 @@ const Invites = () => {
     //     }
     
     // }
-    console.log(userid)
+
     const handSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setRan(true);

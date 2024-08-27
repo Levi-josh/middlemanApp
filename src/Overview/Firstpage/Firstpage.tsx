@@ -49,6 +49,7 @@ const [users, setusers] = useState<User|null>();
 const [errors, setErrors] = useState<String>('');
 const Id = localStorage.getItem('Id')
 useEffect(()=>{
+  setusers(null)
 const fetchUsers = async()=>{
   const option = {
     method: 'Get',
@@ -66,7 +67,7 @@ catch (err:any) {
 }
 }
 fetchUsers()
-},[])
+},[Id])
 
   return (
     <div className="w-full overflow-x-hidden lg:overflow-auto   bg-black2    lg:px-5 lg:w-107 xl:w-1075 lg:h-screen h-full " onScroll={scrolldiv}>
@@ -79,11 +80,11 @@ fetchUsers()
         </div>
         {users?.username&&<div className='flex flex-col gap-1  text-white'>
           <p className='text-sm sm:text-base'>Hello,</p>
-          <p className=" text-sm sm:text-base  font-bold">{users?.username}</p>
+          <p className=" text-sm sm:text-base  font-semibold">{users?.username}</p>
         </div>}
         </div>
-        {users?.inviteCode?<div className="flex items-center pt-1 justify-between w-full">
-          <p className=" text-white  text-sm sm:text-lg lg:text-base"><span className="">WalletAddress</span> : {users?.walletId && window.matchMedia('(max-width: 600px)').matches? `${(users?.walletId)?.slice(0,20)}...`:users?.walletId}</p>
+        {users?.walletId?<div className="flex items-center pt-1 justify-between w-full">
+          <p className=" text-white  text-sm sm:text-base">WalletAddress : {users?.walletId && window.matchMedia('(max-width: 600px)').matches? `${(users?.walletId)?.slice(0,20)}...`:users?.walletId}</p>
           <FaCopy className="text-white sm:text-2xl"/>
         </div>
           :

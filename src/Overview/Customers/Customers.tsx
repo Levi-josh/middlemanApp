@@ -69,7 +69,7 @@ fetchUsers()
               <div className='flex items-center gap-3 w-full '><p className='sm:text-lg font-semibold'>{prev.username}</p></div>
             </div>
          </div>
-         <NavLink to={`/chat/${prev.userId}`}></NavLink><div className='flex items-center gap-1 sm:gap-2 h-10 hover:cursor-pointer text-sm sm:text-base bg-purple rounded-lg px-2 sm:px-3'><p>message</p><FaMessage className='mt-1'/></div>
+         <NavLink to={`/chat/${prev.userId}`}><div className='flex items-center gap-1 sm:gap-2 h-10 hover:cursor-pointer text-sm sm:text-base bg-purple rounded-lg px-2 sm:px-3'><p>message</p><FaMessage className='mt-1'/></div></NavLink>
        </div>)): customers&&customers.length===0?(<p className='text-white mt-20  sm:text-lg font-semibold '>No customers yet!</p>)
        :
        (<div className="flex justify-center lg:mt-20 mt-28 md:mt-32  ">{errors?<div className='bg-purple px-6 py-1 sm:px-10 hover:cursor-pointer h-auto  rounded-full flex items-center gap-1'><FaArrowRotateLeft/><p >Retry</p></div>:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' >            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -41,7 +41,7 @@ const Notification = () => {
       }
     }
     fetchUsers()
-    },[])
+    },[notes])
 console.log(notes)
     const acceptInvite = async(note:any)=>{
         const option = {
@@ -53,14 +53,14 @@ console.log(notes)
       try {
           const response = await fetch(`https://middlemanbackend.onrender.com/acceptInvite/${note}/${Id}`, option);
           const data = await response.json()
-          setNotes(data)
+          console.log(data)
       }
       catch (err:any) {
           console.log(err)
           setErrors(err)
         }
       }
-  
+  console.log(notes?.message)
   return (
     <div className="w-full h-screen fixed bg-black flex justify-center items-center">
     <NavLink to={'/'} relative="path"><FaArrowLeft className="absolute text-white top-7 left-7 sm:top-10 sm:left-10 "/></NavLink>

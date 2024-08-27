@@ -77,7 +77,7 @@ const fetdata = async()=>{
         }
     }
     try {
-        const response = await fetch(` https://middlemanbackend.onrender.com/getmessages/${Id}/${params.id}`, option);
+        const response = await fetch(`https://middlemanbackend.onrender.com/getmessages/${Id}/${params.id}`, option);
         const data = await response.json()
         setDbMessages(data)
        console.log(data)

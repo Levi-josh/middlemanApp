@@ -2,10 +2,9 @@
 import { NavLink } from "react-router-dom"
 
 const Dashboard = (props:any) => {
-  console.log(props.pending)
   return (
     <div className="bg-black flex rounded-lg justify-evenly px-2 sm:p-6 lg:p-3 flex-col h-full lg:w-1085 w-full lg:mt-6 ">
-      <h1 className="text-white text-sm sm:text-base   font-bold">Overview</h1>
+      <h1 className="text-white text-sm sm:text-base   font-semibold">Overview</h1>
       <div className="bg-black2 flex items-center gap-4 h-100025 p-2   lg:w-1083 rounded-lg">
         <div className="flex flex-col lg:flex-row  gap-2 justify-center lg:items-center lg:justify-between bg-black w-full h-full px-3  rounded-lg ">
           <p className="text-white text-sm sm:text-base font-semibold   ">Balance:</p>
@@ -16,7 +15,7 @@ const Dashboard = (props:any) => {
           <p className="text-sm text-white sm:text-base">{props.pending !== null && props.pending !== undefined?`$${props.pending}`:'---'}</p>
         </div>
       </div>
-      <h1 className="text-white text-sm sm:text-base   font-bold">Money Transfer</h1>
+      <h1 className="text-white text-sm sm:text-base   font-semibold">Money Transfer</h1>
       <div className="flex h-10004 w-full gap-2 sm:gap-0 sm:justify-between   ">
         <NavLink to={'deposit'} className={'w-full h-full sm:w-103 '}><div className="h-full w-full  bg-black2 rounded-lg p-2 ">
         <div className="w-full h-full  bg-black hover:transition-all hover:scale-105    hover:cursor-pointer flex rounded-lg gap-3 justify-center items-center flex-col">
