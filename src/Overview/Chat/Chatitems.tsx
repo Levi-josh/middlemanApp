@@ -3,17 +3,17 @@ import ChatHeader from "../../Header/ChatHeader"
 // import ChatFooter from "../../Footer/ChatFooter"
 import { FaCamera } from "react-icons/fa"
 import  { useState, useEffect,FormEvent , ChangeEvent } from 'react';
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import io from 'socket.io-client';
 
-type Messages = {
-    from: string;
-    to: string;
-    message: string;
-};
+// type Messages = {
+//     from: string;
+//     to: string;
+//     message: string;
+// };
 
 const Chatitems = () => {
-  interface message {
+  interface Messages {
     from: String,
     to: String,
     message: String,
@@ -50,25 +50,23 @@ const Id = localStorage.getItem('Id')
 const [messages, setMessages] = useState<Messages[]>([]);
 const [Dbmessages, setDbMessages] = useState<Messages[]>([]);
 const [message, setMessage] = useState<string>('');
-const navigate = useNavigate()
-// const [Id,setId]=useState<string|null>('')
-let mySocket:any;
-if(Id){
-  const socket = io('https://middlemanbackend.onrender.com')
-  socket.emit('setCustomId',Id)
-  mySocket = socket 
-}
-else{
-  navigate('/login')
-}
+const socket = io('https://middlemanbackend.onrender.com')
+socket.emit('setCustomId',Id)
+let mySocket = socket
+
 useEffect(() => {
-  // const myid = localStorage.getItem('Id')
-  // setId(myid)
-  // Listen for private chat messages
-  mySocket.on('private chat', (data:any) =>  {
-      console.log(data)
-      setMessages((prevMessages) => [...prevMessages, data]);
+  // Set up the listener for the 'private chat' event
+  socket.on('private chat', (data) => {
+    console.log('Received private chat message:', data);
+    setMessages((prevMessages) => [...prevMessages, data]);
   });
+
+  // Cleanup the listener when the component unmounts
+  return () => {
+    socket.off('private chat');
+  };
+}, [socket]);
+useEffect(() => {
 const fetdata = async()=>{
     const option = {
         method: 'Get',
@@ -86,11 +84,8 @@ const fetdata = async()=>{
     console.log(err)
     }}
     fetdata()
-    return () => {
-      mySocket.off('private chat');
-    };
 }, []);
-console.log(messages)
+
 const handleSubmit = (e:FormEvent<HTMLFormElement>) => {
   e.preventDefault();
   if (message.trim() && params.id) {

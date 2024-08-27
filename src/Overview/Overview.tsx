@@ -30,8 +30,6 @@ const Overview: React.FC = () => {
     if (!Id) {
       navigate('/landingPage')
     }
-    console.log(Id)
-
   },[])
 
 const goToSlide = (index: number) => {
@@ -69,7 +67,6 @@ return (
   spaceBetween={0}
   onSwiper={(swiper) => {
     swiperRef.current = swiper;
-    console.log(swiper)
     handleSlideChange();
   }}
   onSlideChange={handleSlideChange}
