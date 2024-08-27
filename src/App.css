@@ -14,7 +14,37 @@
 .demo{
     /* background-color:rgb(29, 28, 28) */
     background-color:rgb(49, 47, 47);
-    
-   
-    
+     
 }
+.message-right {
+    background-color: #8e44ad; /* Example purple color */
+    border-radius: 10px;
+    position: relative;
+  }
+  
+  .message-right::after {
+    content: '';
+    position: absolute;
+    bottom: 0; /* Aligns the tail to the bottom of the message */
+    right: -10px; /* Positions the tail slightly outside the right border */
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #8e44ad transparent; /* Creates the triangle pointing right */
+  }
+  
+  .message-left {
+    background-color: #3498db; /* Example blue color */
+    border-radius: 10px;
+    position: relative;
+  }
+  
+  .message-left::after {
+    content: '';
+    position: absolute;
+    bottom: 0; /* Aligns the tail to the bottom of the message */
+    left: -10px;/* Positions the tail slightly outside the left border */
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent  transparent #8e44ad transparent; /* Creates the triangle pointing left */
+  } 
+  

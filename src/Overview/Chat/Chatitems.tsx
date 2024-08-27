@@ -98,18 +98,34 @@ const handleChange = (e:ChangeEvent<HTMLInputElement>) =>{ setMessage(e.target.v
     <div className="h-screen lg:w-1069 xl:w-1074 bg-black2    ">
     <ChatHeader/>
     <div className={`pt-24 gap-5 px-4 w-full h-full overflow-auto pb-24`}>
-      {Dbmessages.map((prev:any) => <div className={`text-white ${prev.from==Id?'mr-0':'ml-0'} h-auto  mt-5 m-auto p-2 flex flex-col gap-2   w-107  bg-purple rounded-lg`}>
+      {/* {Dbmessages.map((prev:any) => <div className={`text-white ${prev.from==Id?'mr-0':'ml-0'} h-auto  mt-5 m-auto p-2 flex flex-col gap-2   w-107  bg-purple rounded-lg`}>
       <p className="">{prev.message}</p>
       <div className="flex items-center mr-0 m-auto w-auto justify-end ">
       <p className="text-xs ">{prev.msgTime}</p>
       </div>
-    </div>)}
-      {messages.map((prev:any) => <div className={`text-white ${prev.from==Id?'mr-0':'ml-0'} h-auto  mt-5 m-auto p-2 flex flex-col gap-2   w-107  bg-purple rounded-lg`}>
+    </div>)} */}
+      {/* {messages.map((prev:any) => <div className={`text-white ${prev.from==Id?'mr-0':'ml-0'} h-auto  mt-5 m-auto p-2 flex flex-col gap-2   w-107  bg-purple rounded-lg`}>
       <p className="">{prev.message}</p>
       <div className="flex items-center mr-0 m-auto w-auto justify-end ">
       <p className="text-xs ">{prev.msgTime}</p>
       </div>
-    </div>)}
+    </div>)} */}
+    {Dbmessages.map((prev:any) => (
+  <div className={`text-white ${prev.from === Id ? 'mr-0 self-end message-right' : 'ml-0 self-start message-left'} h-auto mt-5 m-auto p-2 flex flex-col gap-2 w-107 bg-purple rounded-lg relative`}>
+    <p className="">{prev.message}</p>
+    <div className="flex items-center mr-0 m-auto w-auto justify-end">
+      <p className="text-xs">{prev.msgTime}</p>
+    </div>
+  </div>
+))}
+    {messages.map((prev:any) => (
+  <div className={`text-white ${prev.from === Id ? 'mr-0 self-end message-right' : 'ml-0 self-start message-left'} h-auto mt-5 m-auto p-2 flex flex-col gap-2 w-107 bg-purple rounded-lg relative`}>
+    <p className="">{prev.message}</p>
+    <div className="flex items-center mr-0 m-auto w-auto justify-end">
+      <p className="text-xs">{prev.msgTime}</p>
+    </div>
+  </div>
+))}
     </div>
     {/* <ChatFooter handleSubmit={handleSubmit} handleChange={handleChange}/> */}
     <div className="w-full z-10 bg-black  lg:w-1069 xl:w-1074 px-3 sm:px-4 md:px-5 lg:px-3 flex items-center bottom-0  justify-between fixed h-14 sm:h-16 md:h-20">

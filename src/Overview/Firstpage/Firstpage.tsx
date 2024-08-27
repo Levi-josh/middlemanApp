@@ -84,7 +84,7 @@ fetchUsers()
         </div>}
         </div>
         {users?.walletId?<div className="flex items-center pt-1 justify-between w-full">
-          <p className=" text-white  text-sm sm:text-base">WalletAddress : {users?.walletId && window.matchMedia('(max-width: 600px)').matches? `${(users?.walletId)?.slice(0,20)}...`:users?.walletId}</p>
+          <p className=" text-white  text-sm sm:sstext-base">WalletAddress : {users?.walletId && window.matchMedia('(max-width: 600px)').matches? `${(users?.walletId)?.slice(0,20)}...`:users?.walletId}</p>
           <FaCopy className="text-white sm:text-2xl"/>
         </div>
           :
