@@ -10,29 +10,65 @@ const Invites = () => {
     const [ran,setRan]=useState(false)
     const [ searchedUser ,setSearchedUser ]=useState({username:'',profilePic:''})
     const myid= localStorage.getItem('Id')
-    const handSubmit = async(e:FormEvent<HTMLFormElement>)=>{
-        e.preventDefault();
-        setRan(true)
-        const option = {
-            method: 'Post',
-            headers: {
-                'content-type': 'application/json',
-            },
-            body:JSON.stringify({userid, myid })
-        }
-        try {
-            const response = await fetch(` https://middlemanbackend.onrender.com/sendInvite`, option);
-            const data = await response.json()
-            setData(data)
-            data&&setTimeout(() => {
-                setRan(false)  
-            }, 3000);
-        }
-        catch (err) {
-        console.log(err)
-        }
+    // const handSubmit = async(e:FormEvent<HTMLFormElement>)=>{
+    //     e.preventDefault();
+    //     setRan(true)
+    //     const option = {
+    //         method: 'POST',
+    //         headers: {
+    //             'content-type': 'application/json',
+    //         },
+    //         body:JSON.stringify({userid:userid, myid:myid })
+    //     }
+    //     try {
+    //         const response = await fetch(`https://middlemanbackend.onrender.com/sendInvite`, option);
+    //         const data = await response.json()
+    //         setData(data)
+    //         data&&setTimeout(() => {
+    //             setRan(false)  
+    //         }, 3000);
+    //     }
+    //     catch (err) {
+    //     console.log(err)
+    //     }
     
-    }
+    // }
+    console.log(userid)
+    const handSubmit = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setRan(true);
+    
+        const option = {
+            method: 'POST', // Corrected 'Post' to 'POST' for consistency
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ userid: userid, myid: myid })
+        };
+    
+        try {
+            const response = await fetch(`https://middlemanbackend.onrender.com/sendInvite`, option);
+            
+            if (!response.ok) {
+                // If the response is not ok, read the response text to understand the error
+                const errorText = await response.text();
+                throw new Error(`Server error: ${errorText}`);
+            }
+    
+            const data = await response.json();
+            console.log(data)
+            setData(data);
+    
+            if (data) {
+                setTimeout(() => {
+                    setRan(false);
+                }, 3000);
+            }
+        } catch (err:any) {
+            console.error('Error:', err);
+        }
+    };
+    
     const handleChange = (e:ChangeEvent<HTMLInputElement>) =>{ 
         setInviteCode(e.target.value)
         const inviteValue = e.target.value
@@ -46,7 +82,8 @@ const Invites = () => {
             try {
                 const response = await fetch(` https://middlemanbackend.onrender.com/searchInvite/${inviteValue}`, option);
                 const data = await response.json()
-                setUserid(data._id)
+                console.log(data )
+                setUserid(data.id)
                 setSearchedUser(data)
             }
             catch (err) {
@@ -79,7 +116,7 @@ const Invites = () => {
         </div>}
         </div>
         </div>
-        <button className="bg-purple  text-white  w-full rounded-lg h-10 flex justify-center items-center  sm:h-12 lg:w-108 xl:w-107">{!ran?`Invite`:data?`Sent`:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' >            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <button className="bg-purple  text-white  w-full rounded-lg h-10 flex justify-center items-center  sm:h-12 lg:w-108 xl:w-107">{!ran?`Invite`:data?`Sent`:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' > <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M12 2V6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               <path d="M12 18V22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               <path d="M4.929 4.929L7.757 7.757" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

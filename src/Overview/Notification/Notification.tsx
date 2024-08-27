@@ -8,6 +8,7 @@ import { FaArrowRotateLeft  } from "react-icons/fa6"
 
 const Notification = () => {
     interface message {
+        _id:String
         note:String,
         accept:Boolean,
         reject:Boolean,
@@ -41,7 +42,25 @@ const Notification = () => {
     }
     fetchUsers()
     },[])
-    console.log(notes&&notes.message?.length>0)
+console.log(notes)
+    const acceptInvite = async(note:any)=>{
+        const option = {
+          method: 'Put',
+          headers: {
+              'content-type': 'application/json',
+          },
+      }
+      try {
+          const response = await fetch(`https://middlemanbackend.onrender.com/acceptInvite/${note}/${Id}`, option);
+          const data = await response.json()
+          setNotes(data)
+      }
+      catch (err:any) {
+          console.log(err)
+          setErrors(err)
+        }
+      }
+  
   return (
     <div className="w-full h-screen fixed bg-black flex justify-center items-center">
     <NavLink to={'/'} relative="path"><FaArrowLeft className="absolute text-white top-7 left-7 sm:top-10 sm:left-10 "/></NavLink>
@@ -66,7 +85,7 @@ const Notification = () => {
                     </div>
                     {!prev.accept && !prev.reject && (
                         <div className='w-full md:w-103 h-full flex justify-end text-white gap-2 sm:gap-4 items-start'>
-                        <button className='bg-purple rounded-md py-1 sm:py-2 lg:py-1 sm:px-4 w-1025 md:w-full text-sm sm:text-base'>Accept</button>
+                        <button className='bg-purple rounded-md py-1 sm:py-2 lg:py-1 sm:px-4 w-1025 md:w-full text-sm sm:text-base' onClick={()=>acceptInvite(prev._id)}>Accept</button>
                         <button className='bg-purple rounded-md py-1 sm:py-2 lg:py-1 sm:px-4 w-1025 md:w-full text-sm sm:text-base'>Reject</button>
                         </div>
                     )}

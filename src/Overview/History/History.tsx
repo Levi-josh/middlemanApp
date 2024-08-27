@@ -51,7 +51,7 @@ const History = () => {
       },
   }
   try {
-      const response = await fetch(`https://middlemanbackend.onrender.com//getHistory/${Id}`, option);
+      const response = await fetch(`https://middlemanbackend.onrender.com/getHistory/${Id}`, option);
       const data = await response.json()
       setHistory(data)
      console.log(data)

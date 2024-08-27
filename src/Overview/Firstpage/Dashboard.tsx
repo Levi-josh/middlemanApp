@@ -2,6 +2,7 @@
 import { NavLink } from "react-router-dom"
 
 const Dashboard = (props:any) => {
+  console.log(props.pending)
   return (
     <div className="bg-black flex rounded-lg justify-evenly px-2 sm:p-6 lg:p-3 flex-col h-full lg:w-1085 w-full lg:mt-6 ">
       <h1 className="text-white text-sm sm:text-base   font-bold">Overview</h1>
@@ -12,7 +13,7 @@ const Dashboard = (props:any) => {
         </div>
         <div className="flex flex-col lg:flex-row gap-2 justify-center lg:items-center lg:justify-between bg-black w-full h-full px-3 rounded-lg ">
           <p className="text-white text-sm sm:text-base font-semibold  ">Pending:</p>
-          <p className="text-sm text-white sm:text-base">{props.pending?`$${props.pending}`:'---'}</p>
+          <p className="text-sm text-white sm:text-base">{props.pending !== null && props.pending !== undefined?`$${props.pending}`:'---'}</p>
         </div>
       </div>
       <h1 className="text-white text-sm sm:text-base   font-bold">Money Transfer</h1>
