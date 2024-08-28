@@ -37,7 +37,6 @@ useEffect(()=>{
       const response = await fetch(`https://middlemanbackend.onrender.com/getChats/${Id}`, option);
       const data = await response.json()
       setChats(data)
-     console.log(data)
   }
   catch (err:any) {
     console.log(err)
