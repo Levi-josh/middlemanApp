@@ -21,11 +21,11 @@ interface Chat {
     msgUnread:Number,
     profilePic:String,
 }
-
   const [Chats, setChats] = useState<Chat[]|null>();
   const [errors, setErrors] = useState<String>('');
   const Id = localStorage.getItem('Id')
 useEffect(()=>{
+  setChats(null)
   const fetchChats = async()=>{
     const option = {
       method: 'Get',
