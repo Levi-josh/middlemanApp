@@ -6,23 +6,23 @@ import { FaArrowRotateLeft,  } from "react-icons/fa6"
 
 
 const Chat= () => {
-  interface message {
-    from: String,
-    to: String,
-    message: String,
-    timestamp:Date
+  interface Message {
+    from: string,
+    to: string,
+    message: string,
+    timestamp:Date,
+    read: boolean
 }
 interface Chat {
-    username:String,
-    userId:String,
-    socketId:String,
-    messages:message[],
-    read:Boolean,
-    msgUnread:Number,
-    profilePic:String,
+    username:string,
+    userId:string,
+    socketId:string,
+    messages:Message[],
+    msgUnread:number,
+    profilePic:string,
 }
   const [Chats, setChats] = useState<Chat[]|null>();
-  const [errors, setErrors] = useState<String>('');
+  const [errors, setErrors] = useState<string>('');
   const Id = localStorage.getItem('Id')
 useEffect(()=>{
   setChats(null)
@@ -53,7 +53,7 @@ useEffect(()=>{
     {Chats && <p className="py-2 lg:py-1">1 unread message</p>}
     </div>
     { Chats && Chats.length>0?<Chatlist chatUsers={Chats} />:Chats?.length===0?<p className='text-white font-bold lg:mt-20 mt-28 md:mt-32 text-center '>No Chat yet!</p>:
-    <div className="flex justify-center lg:mt-20 mt-28 md:mt-32  ">{errors?<div className='bg-purple px-3 py-1 sm:px-5 hover:cursor-pointer h-auto  rounded-full flex items-center gap-1'><FaArrowRotateLeft/><p >Retry</p></div>:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' >            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <div className="flex justify-center lg:mt-20 mt-28 md:mt-32  ">{errors?<div className='bg-purple px-3 py-1 sm:px-5 hover:cursor-pointer h-auto  rounded-full flex items-center gap-1'><FaArrowRotateLeft/><p >Retry</p></div>:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' > <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M12 2V6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       <path d="M12 18V22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       <path d="M4.929 4.929L7.757 7.757" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

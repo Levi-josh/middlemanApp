@@ -11,14 +11,14 @@ const Chatitems = () => {
     from: String,
     to: String,
     message: String,
-    timestamp:Date
+    timestamp:Date,
+    read:Boolean
 }
 interface Messanger {
   username:String,
   userId:String,
   socketId:String,
   messages:Messages[],
-  read:Boolean,
   msgUnread:Number,
   profilePic:String,
 }
@@ -39,13 +39,14 @@ setMySocket(socket)
 useEffect(() => {
   mySocket?.on('private chat', (data:any) => {
     setMessages((prevMessages) => [...prevMessages, data]);
+    console.log(data)
   });
   return () => {
     mySocket?.off('private chat');
   };
 
 }, [mySocket]);
-console.log(mySocket)
+
 useEffect(() => {
 const fetdata = async()=>{
     const option = {
@@ -65,13 +66,58 @@ const fetdata = async()=>{
     fetdata()
 }, []);
 useEffect(() => {
+  if (Dbmessages?.messages?.length) {
+    messagesEndRef.current?.scrollIntoView({ behavior: "auto" });
+  }
+}, [Dbmessages]);
+useEffect(() => {
+  const fetdata = async()=>{
+    const option = {
+        method: 'Put',
+        headers: {
+            'content-type': 'application/json',
+        },
+        body:JSON.stringify({userId:Id,contactId:params.id})
+    }
+    try {
+        const response = await fetch(`https://middlemanbackend.onrender.com/markAsRead`, option);
+        const data = await response.json()
+        console.log(data)
+    }
+    catch (err) {
+    console.log(err)
+    }}
+    fetdata()
   messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
 }, [messages,Dbmessages]);
+useEffect(() => {
+  const interval = setInterval(() => {
+    setMessages((prevMessages) => [...prevMessages]); // Trigger re-render
+  }, 60000);
+
+  return () => clearInterval(interval);
+}, []);
+
+const formatTime = (timestamp: Date): string => {
+  const now = new Date();
+  const messageTime = new Date(timestamp);
+
+  const diffInMinutes = Math.floor((now.getTime() - messageTime.getTime()) / 60000);
+
+  if (diffInMinutes < 1) {
+    return "Just now";
+  } else if (diffInMinutes < 60) {
+    return `${diffInMinutes} min ago`;
+  } else {
+    const hours = Math.floor(diffInMinutes / 60);
+    return `${hours} hr${hours > 1 ? "s" : ""} ago`;
+  }
+};
 
 const handleSubmit = (e:FormEvent<HTMLFormElement>) => {
   e.preventDefault();
   if (message.trim() && params.id) {
-    mySocket.emit('private chat', { from: Id, to: params.id, message });
+    mySocket.emit('private chat', { from: Id, to: params.id, message,timestamp: Date.now() });
       setMessage(''); // Clear the input field
   }
 };
@@ -84,7 +130,7 @@ const handleChange = (e:ChangeEvent<HTMLInputElement>) =>{ setMessage(e.target.v
   <div className={`text-white ${prev.from === Id ? 'mr-0 self-end message-right' : 'ml-0 self-start message-left'} h-auto mt-5 m-auto p-2 flex flex-col gap-2 w-107 bg-purple rounded-lg relative`}>
     <p className="">{prev.message}</p>
     <div className="flex items-center mr-0 m-auto w-auto justify-end">
-      <p className="text-xs">{prev.msgTime}</p>
+      <p className="text-xs">{formatTime(prev.timestamp)}</p>
     </div>
   </div>
 ))}
@@ -92,7 +138,7 @@ const handleChange = (e:ChangeEvent<HTMLInputElement>) =>{ setMessage(e.target.v
   <div className={`text-white ${prev.from === Id ? 'mr-0 self-end message-right' : 'ml-0 self-start message-left'} h-auto mt-5 m-auto p-2 flex flex-col gap-2 w-107 bg-purple rounded-lg relative`}>
     <p className="">{prev.message}</p>
     <div className="flex items-center mr-0 m-auto w-auto justify-end">
-      <p className="text-xs">{prev.msgTime}</p>
+      <p className="text-xs ">{formatTime(prev.timestamp)}</p>
     </div>
   </div>
 ))}

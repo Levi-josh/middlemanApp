@@ -77,16 +77,21 @@ console.log(notes)
             {notes && notes.message && notes.message.length > 0 ? (
                 notes.message.map((prev) => (
                     <div className='w-full h-auto rounded-lg p-3 sm:p-5 bg-black2 flex flex-col gap-3 sm:gap-7 md:flex-row md:items-start'>
-                    <div className='w-full md:w-107 h-full flex gap-2 sm:gap-5 items-start'>
+                    <div className='w-full  h-full flex gap-2 sm:gap-5 items-start'>
                         <div className="sm:w-16 sm:h-16 flex-shrink-0 w-10 h-10 overflow-hidden bg-black2">
                         <img src={`https://middlemanbackend.onrender.com${prev.pic}`} alt="Profile" />
                         </div>
                         <p className='text-white text-sm sm:text-base'>{prev.note}</p>
                     </div>
-                    {!prev.accept && !prev.reject && (
+                    {prev.accept === false && prev.reject === false && (
                         <div className='w-full md:w-103 h-full flex justify-end text-white gap-2 sm:gap-4 items-start'>
                         <button className='bg-purple rounded-md py-1 sm:py-2 lg:py-1 sm:px-4 w-1025 md:w-full text-sm sm:text-base' onClick={()=>acceptInvite(prev._id)}>Accept</button>
                         <button className='bg-purple rounded-md py-1 sm:py-2 lg:py-1 sm:px-4 w-1025 md:w-full text-sm sm:text-base'>Reject</button>
+                        </div>
+                    )}
+                    {prev.accept && (
+                        <div className='w-full md:w-103 h-full flex justify-end text-white gap-2 sm:gap-4 items-start'>
+                            <div className="bg-purple rounded-md py-1 sm:py-2 lg:py-1 sm:px-4 w-1025 md:w-full text-sm sm:text-base">Accepted</div>
                         </div>
                     )}
                     </div>
