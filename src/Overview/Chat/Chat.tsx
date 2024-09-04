@@ -25,7 +25,6 @@ interface Chat {
   const [errors, setErrors] = useState<string>('');
   const Id = localStorage.getItem('Id')
 useEffect(()=>{
-  setChats(null)
   const fetchChats = async()=>{
     const option = {
       method: 'Get',
@@ -44,7 +43,7 @@ useEffect(()=>{
   }
   }
   fetchChats()
-},[Id])
+},[Id,Chats])
 
   return (
     <div className="bg-black lg:fixed lg:right-0  pt-3 lg:h-screen z-50   lg:px-3 sm:pt-4 md:pt-5 h-full overflow-auto w-full   text-white lg:w-103 xl:w-1025 ">

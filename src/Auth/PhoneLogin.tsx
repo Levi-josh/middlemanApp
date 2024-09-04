@@ -47,8 +47,8 @@ console.log(password)
           </div>
           <div className="flex flex-col w-full items-center    justify-start">
             <div className="flex flex-col gap-7 sm:gap-12 w-full justify-center items-center">
-              <input type="email" className="w-full h-10 sm:h-12 bg-black border-0.1   border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white"  placeholder="Enter an email" onChange={e=>{setEmail(e.target.value)}} value={email} />
-              <input type="password" className="w-full h-10 sm:h-12 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white" placeholder="Enter a password" onChange={e=>{setPassword(e.target.value)}} value={password} />
+              <input required type="email" className="w-full h-10 sm:h-12 bg-black border-0.1   border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white"  placeholder="Enter an email" onChange={e=>{setEmail(e.target.value)}} value={email} />
+              <input required maxLength={6} type="password" className="w-full h-10 sm:h-12 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white" placeholder="Enter a password" onChange={e=>{setPassword(e.target.value)}} value={password} />
               <button className="w-full flex justify-center items-center rounded-lg h-10 sm:h-12 bg-purple text-white">{!ran?`Sign In`:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' >
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M12 2V6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

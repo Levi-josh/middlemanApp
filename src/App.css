@@ -17,7 +17,7 @@
      
 }
 .message-right {
-    background-color: rgb(107, 42, 168); /* Example purple color */
+    background-color: black; /* Example purple color */
     border-radius: 10px;
     position: relative;
   }
@@ -29,11 +29,11 @@
     right: -10px; /* Positions the tail slightly outside the right border */
     border-width: 10px;
     border-style: solid;
-    border-color: transparent transparent rgb(107, 42, 168) transparent; /* Creates the triangle pointing right */
+    border-color: transparent transparent black transparent; /* Creates the triangle pointing right */
   }
   
   .message-left {
-    background-color: rgb(107, 42, 168); /* Example blue color */
+    background-color: black; /* Example blue color */
     border-radius: 10px;
     position: relative;
   }
@@ -45,6 +45,6 @@
     left: -10px;/* Positions the tail slightly outside the left border */
     border-width: 10px;
     border-style: solid;
-    border-color: transparent  transparent rgb(107, 42, 168) transparent; /* Creates the triangle pointing left */
+    border-color: transparent  transparent black transparent; /* Creates the triangle pointing left */
   } 
   

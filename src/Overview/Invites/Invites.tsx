@@ -110,7 +110,7 @@ const Invites = () => {
         <input type="text" className="w-full h-10 sm:h-12 lg:h-10 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white" onChange={handleChange} value={inviteCode} placeholder="Enter invite code"  />
         {searchedUser.username &&<div className="flex gap-5 rounded-lg pl-5 items-center w-full h-16 sm:h-20 bg-black2">
             <div className="sm:w-12 sm:h-12  w-10 h-10 overflow-hidden rounded-full bg-black2 outline outline-3 outline-purple">
-                <img src={`https://middlemanbackend.onrender.com${searchedUser.profilePic}`}/>
+                <img src={searchedUser?.profilePic}/>
             </div>
             <p className="text-white">{searchedUser.username}</p>
         </div>}

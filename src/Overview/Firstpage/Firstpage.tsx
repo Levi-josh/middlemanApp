@@ -1,5 +1,5 @@
 import { useState,useEffect } from 'react';
-import { FaCamera, FaCopy,FaLink,  FaArrowRotateLeft } from "react-icons/fa6"
+import { FaCamera, FaLink,  FaArrowRotateLeft } from "react-icons/fa6"
 import Header from "../../Header/Header"
 import Dashboard from "./Dashboard"
 import { NavLink } from 'react-router-dom';
@@ -68,24 +68,28 @@ catch (err:any) {
 }
 fetchUsers()
 },[Id])
-
+console.log(users)
   return (
     <div className="w-full overflow-x-hidden lg:overflow-auto   bg-black2    lg:px-5 lg:w-107 xl:w-1075 lg:h-screen h-full " onScroll={scrolldiv}>
     <Header scrollPosition={scrollPosition} profilePic={users?.profilePic}/>
     <div className="flex flex-col px-3  sm:px-5 lg:px-0  mb-32 sm:mb-0 justify-between bg-black2   lg:gap-6 pt-14 sm:pt-0  lg:flex-row lg:justify-between lg:h-103  lg:items-center h-full sm:h-10008   ">
-      <div className="lg:w-107 w-full rounded-lg h-102 lg:h-full  bg-black  px-4  lg:gap-2 flex-col flex gap-2 sm:gap-6 justify-center items-start ">
-        <div className="flex items-center  gap-3 sm:gap-6 ">
+      <div className="lg:w-107 w-full rounded-lg h-102 lg:h-full  bg-black px-5 sm:px-6 lg:px-7    flex-col flex justify-evenly items-start ">
+        <div className="flex items-center  gap-3 sm:gap-6 lg:gap-4  ">
         <div className="sm:w-20 sm:h-20  w-14 h-14 rounded-full overflow-hidden bg-black2 outline outline-3 flex justify-center items-center outline-purple">
-        {users?.profilePic?<img src={`http://localhost:3500/uploads/1722282556907.jpg`} className='sm:w-20 bg-no-repeat bg-cover bg-center sm:h-20   w-14 h-14 rounded-full  '/>:<div className='sm:h-20 bg-black   w-14 h-14 rounded-full sm:w-20 sm:text-lg flex items-center justify-center text-white'><FaCamera/></div>}
+        {users?.profilePic?<img src={users?.profilePic} className='sm:w-20  sm:h-20 object-cover   w-14 h-14 rounded-full  '/>:<div className='sm:h-20 bg-black   w-14 h-14 rounded-full sm:w-20 sm:text-lg flex items-center justify-center text-white'><FaCamera/></div>}
         </div>
-        {users?.username&&<div className='flex flex-col gap-1  text-white'>
+        {users?.username&&<div className='flex flex-col text-white   '>
           <p className='text-sm sm:text-base'>Hello,</p>
           <p className=" text-sm sm:text-base  font-semibold">{users?.username}</p>
         </div>}
         </div>
-        {users?.walletId?<div className="flex items-center pt-1 justify-between w-full">
-          <p className=" text-white font-semibold   text-sm sm:text-base">WalletAddress : {users?.walletId && window.matchMedia('(max-width: 600px)').matches? `${(users?.walletId)?.slice(0,20)}...`:users?.walletId}</p>
-          <FaCopy className="text-white sm:text-2xl"/>
+        {users?.walletId?<div className="flex items-center justify-between  gap-5 w-full">
+          {/* <p className=" text-white font-semibold   text-sm sm:text-base">WalletAddress : {users?.walletId && window.matchMedia('(max-width: 600px)').matches? `${(users?.walletId)?.slice(0,20)}...`:users?.walletId}</p> */}
+          <p className='text-sm text-white sm:text-base'>Click to see all your transaction history</p>
+          <div className=" w-6 h-6 sm:w-8 sm:h-8  flex justify-center items-center rounded-full bg-purple"><svg  className="w-4 h-4 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 12H5M5 12L9 16M5 12L9 8" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M5 12H19M19 12L15 16M19 12L15 8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg></div>
         </div>
           :
         <div className="flex items-center text-white  justify-end w-full">

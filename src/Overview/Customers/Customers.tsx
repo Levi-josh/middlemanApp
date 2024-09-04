@@ -59,11 +59,11 @@ fetchUsers()
      {customers?.length===1&&<p className="text-white text-center  text-sm sm:text-base ">These are list of people you accepted or sent an invite</p>}
     </div> 
      <div className="flex flex-col  w-full items-center    ">
-     {customers&&customers.length>0?customers?.map(prev=>(
+     {customers&&customers.length>0?customers?.map((prev:any)=>(
        <div className="w-full  border-b border-demotext  p-4 sm:p-6 flex  items-center justify-between">
         <div className='w-full h-full flex items-center gap-5'>
             <div className="sm:w-14 sm:h-14 w-12 h-12 overflow-hidden rounded-full bg-black2">
-              <img src={`https://middlemanbackend.onrender.com${prev.profilePic}`}/>
+              <img src={prev?.profilePic}/>
             </div>
             <div>
               <div className='flex items-center gap-3 w-full '><p className='sm:text-lg font-semibold'>{prev.username}</p></div>
