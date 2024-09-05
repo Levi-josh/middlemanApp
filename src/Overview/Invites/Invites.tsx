@@ -109,8 +109,8 @@ const Invites = () => {
         <div className="flex flex-col items-center gap-5 sm:gap-7 w-full">
         <input type="text" className="w-full h-10 sm:h-12 lg:h-10 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white" onChange={handleChange} value={inviteCode} placeholder="Enter invite code"  />
         {searchedUser.username &&<div className="flex gap-5 rounded-lg pl-5 items-center w-full h-16 sm:h-20 bg-black2">
-            <div className="sm:w-12 sm:h-12  w-10 h-10 overflow-hidden rounded-full bg-black2 outline outline-3 outline-purple">
-                <img src={searchedUser?.profilePic}/>
+            <div className="sm:w-12 sm:h-12 object-cover  w-10 h-10 overflow-hidden rounded-full bg-black2 outline outline-3 outline-purple">
+                <img src={searchedUser?.profilePic} className="w-full h-full"/>
             </div>
             <p className="text-white">{searchedUser.username}</p>
         </div>}
