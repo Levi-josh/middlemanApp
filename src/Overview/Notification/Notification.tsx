@@ -60,7 +60,6 @@ console.log(notes)
           setErrors(err)
         }
       }
-  console.log(notes?.message)
   return (
     <div className="w-full h-screen fixed bg-black overflow-auto   flex justify-center items-center">
     <NavLink to={'/'} relative="path"><FaArrowLeft className="absolute text-white top-7 left-7 sm:top-10 sm:left-10 "/></NavLink>
@@ -78,7 +77,7 @@ console.log(notes)
                 notes.message.map((prev:any) => (
                     <div className='w-full h-auto rounded-lg p-3 sm:p-5 bg-black2 flex flex-col gap-3 sm:gap-7 md:flex-row md:items-start'>
                     <div className='w-full  h-full flex gap-2 sm:gap-5 items-start'>
-                        <div className="sm:w-16 sm:h-16 object-cover flex-shrink-0 w-10 h-10 overflow-hidden bg-black2">
+                        <div className="sm:w-16 sm:h-16 object-cover flex-shrink-0 w-12 h-12 overflow-hidden bg-black2">
                         <img src={prev?.pic} alt="Profile" className="h-full w-full" />
                         </div>
                         <p className='text-white text-sm sm:text-base'>{prev.note}</p>

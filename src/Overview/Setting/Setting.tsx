@@ -1,4 +1,4 @@
-import { FaArrowLeft,FaCamera, FaPencil, FaRegEyeSlash, FaCopy} from "react-icons/fa6"
+import { FaArrowLeft,FaCamera, FaPencil, FaCopy} from "react-icons/fa6"
 import { NavLink } from "react-router-dom"
 import { useState,useEffect } from 'react';
 
@@ -79,7 +79,7 @@ fetchUsers()
         </div>
         <div className="w-full h-10 sm:h-12 lg:h-10 flex items-center justify-between  px-3 sm:px-5 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg  ">
           <div className="flex gap-3"><p>Wallet address :</p>{users?.walletId&&<p>{window.matchMedia('(max-width: 600px)').matches? `${(users?.walletId)?.slice(0,20)} . . .`:users?.walletId}</p>}</div>
-          {users?.walletId&&<FaRegEyeSlash className="hover:cursor-pointer"/>}
+          {users?.walletId&&< FaCopy className="hover:cursor-pointer"/>}
         </div>
         <div className="w-full h-10 sm:h-12 lg:h-10 flex items-center justify-between  px-3 sm:px-5 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg  ">
           <div className="flex gap-3"><p>Invite code :</p>{users?.inviteCode&&<p>{window.matchMedia('(max-width: 600px)').matches? `${(users?.inviteCode)?.slice(0,20)} . . .`:users?.inviteCode}</p>}</div>
