@@ -1,26 +1,29 @@
 
-import ChatHeader from "../../Header/ChatHeader"
+// import ChatHeader from "../../Header/ChatHeader"
 // import ChatFooter from "../../Footer/ChatFooter"
 import { FaCamera,FaTelegramPlane } from "react-icons/fa"
+import { FaArrowLeft,FaEllipsisV, FaStoreAlt } from 'react-icons/fa'
+import { NavLink } from 'react-router-dom'
 import  { useState, useEffect,FormEvent , ChangeEvent,useRef } from 'react';
 import { useParams } from 'react-router-dom'
+import { useChatContext } from './ChatContext';
 import io from 'socket.io-client';
 
 const Chatitems = () => {
   interface Messages {
-    from: String,
-    to: String,
-    message: String,
+    from: string,
+    to: string,
+    message: string,
     timestamp:Date,
     read:Boolean
 }
 interface Messanger {
-  username:String,
-  userId:String,
-  socketId:String,
+  username:string,
+  userId:string,
+  socketId:string,
   messages:Messages[],
   msgUnread:Number,
-  profilePic:String,
+  profilePic:string,
 }
 
 const params = useParams()
@@ -29,6 +32,7 @@ const messagesEndRef = useRef<null | HTMLDivElement>(null);
 const [messages, setMessages] = useState<Messages[]>([]);
 const [Dbmessages, setDbMessages] = useState<Messanger>();
 const [message, setMessage] = useState<string>('');
+const { isfromChat } = useChatContext();
 const [mySocket,setMySocket] = useState<any|null>();
 
 useEffect(() => {
@@ -124,7 +128,18 @@ const handleSubmit = (e:FormEvent<HTMLFormElement>) => {
 const handleChange = (e:ChangeEvent<HTMLInputElement>) =>{ setMessage(e.target.value)}
   return (
   <div className="h-screen lg:w-1069 xl:w-1074 bg-black2    ">
-  <ChatHeader Dbmessages={Dbmessages}/>
+  {/* <ChatHeader Dbmessages={Dbmessages}/> */}
+  <div className="w-full z-10 bg-black lg:w-1069 xl:w-1074 px-3 top-0  sm:px-4 md:px-5 lg:px-3 flex items-center   justify-between fixed h-16 sm:h-20 md:h-24 lg:h-20">
+    <div className="flex items-center gap-5 sm:gap-10">
+        <NavLink to={'/'}><FaArrowLeft className='text-white text-lg sm:text-xl md:text-2sxl lg:text-xl' onClick={isfromChat}/></NavLink>
+        <div className="outline outline-2 outline-purple w-8 h-8 sm:w-11 sm:h-11 md:h-14 md:w-14 lg:w-11 lg:h-11 rounded-full overflow-hidden"><img src={Dbmessages?.profilePic} /></div>
+        <p className="text-white sm:text-xl ">{Dbmessages?.username}</p>
+    </div>
+    <div className="flex items-center gap-5 sm:gap-10">
+        <NavLink to={'/market'}><FaStoreAlt className='text-white text-lg sm:text-2xl md:text-3xl lg:text-2xl'/></NavLink>
+        <FaEllipsisV  className='text-white text-lg sm:text-2xl md:text-3xl lg:text-2xl'/>
+    </div>
+  </div>
   <div className={`pt-24 gap-5 px-4 w-full h-full overflow-auto `}>
   {Dbmessages?.messages?.map((prev:any) => (
   <div className={`text-white ${prev.from === Id ? 'mr-0 self-end message-right' : prev.from == 'middleman'?'bg-purple': 'ml-0 self-start message-left'} h-auto mt-5 m-auto p-2 flex flex-col gap-2 w-107 bg-black rounded-lg relative`}>

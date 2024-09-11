@@ -55,14 +55,14 @@ const Details = () => {
             <div className='sm:w-20 relative overflow-hidden sm:h-20 w-14 h-14 rounded-full flex justify-center items-center text-white bg-purple'>
             {previewUrl && <img src={previewUrl} alt="Profile Preview" />}
                 <div  className="absolute  flex justify-center items-center w-full h-full z-10 bg-transparent" >
-                <input type="file" accept="image/*" onChange={handleFileChange} style={{ display: 'none' }} ref={fileInputRef}  />
+                <input type="file" required accept="image/*" onChange={handleFileChange} style={{ display: 'none' }} ref={fileInputRef}  />
                 <FaCamera onClick={() => fileInputRef.current?.click()}/>
                 </div>
             </div>
             <p className="text-white font-semibold lg:text-lg">Select a photo</p>
             </div>
-            <input type="text" className="w-full h-10 sm:h-12 lg:h-10 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-3 sm:py-1 placeholder:text-white" onChange={e=>{setUsername(e.target.value)}} value={username} placeholder="Enter a username"  />
-            <select className="outline-none w-full h-10 sm:h-12 lg:h-10 rounded-lg  text-white border border-solid border-demotext  bg-black px-3 placeholder-white">
+            <input type="text" required className="w-full h-10 sm:h-12 lg:h-10 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-3 sm:py-1 placeholder:text-white" onChange={e=>{setUsername(e.target.value)}} value={username} placeholder="Enter a username"  />
+            <select required className="outline-none w-full h-10 sm:h-12 lg:h-10 rounded-lg  text-white border border-solid border-demotext  bg-black px-3 placeholder-white">
                 <option value="" disabled selected>Select gender</option>
                 <option className="">Male</option>
                 <option>Female</option>

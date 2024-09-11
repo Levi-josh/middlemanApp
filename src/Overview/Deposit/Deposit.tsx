@@ -46,7 +46,7 @@ const Deposit = () => {
       <p className="text-white text-center  text-sm sm:text-base ">Enter amount to add some money to your account balance</p>
       </div>
       <div className="flex flex-col items-center gap-5 sm:gap-7 w-full">
-        <input type="text" className="w-full h-10 sm:h-12 lg:h-10 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white"  placeholder="Enter amount" onChange={(e)=>setAmount(e.target.value)}  />
+        <input type="text" required className="w-full h-10 sm:h-12 lg:h-10 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white"  placeholder="Enter amount" onChange={(e)=>setAmount(e.target.value)}  />
       </div>
     </div>
     <button className="bg-purple  text-white flex justify-center items-center   w-full rounded-lg h-10  sm:h-12 lg:w-108 xl:w-107">{!ran?`Deposit`:data?`Sent`:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' >            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

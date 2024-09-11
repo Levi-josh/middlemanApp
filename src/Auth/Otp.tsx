@@ -96,6 +96,7 @@ const verifyOtp = async(e:FormEvent<HTMLFormElement>)=>{
               onKeyDown={(e) => handleKeyDown(e, index)}
               onChange={(e) => handleChange(e, index)}
               autoFocus={index === 0} // autofocus only the first input
+              required
             />
           ))}
           </div>

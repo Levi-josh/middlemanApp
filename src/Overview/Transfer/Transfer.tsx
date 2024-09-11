@@ -6,12 +6,14 @@ import { motion } from 'framer-motion';
 const Transfer = () => {
   const [ recipientId,setRecipientId]=useState("")
   const [amount,setAmount]=useState("")
+  const [walletAdd,setWalletAdd]=useState("")
   const [data,setData]=useState("")
   const [ran,setRan]=useState(false)
   const [ searchedUser ,setSearchedUser ]=useState({username:'',profilePic:''})
   const userId= localStorage.getItem('Id')
   const handSubmit = async(e:FormEvent<HTMLFormElement>)=>{
     e.preventDefault();
+    if(walletAdd.length < 36)return
     setRan(true)
     const option = {
         method: 'Post',
@@ -34,6 +36,7 @@ const Transfer = () => {
 
 }
 const handleChange = (e:ChangeEvent<HTMLInputElement>) =>{ 
+  setWalletAdd(e.target.value)
     const walletid = e.target.value
     const searchInvite = async()=>{
         const option = {
@@ -72,7 +75,7 @@ const handleChange = (e:ChangeEvent<HTMLInputElement>) =>{
         <p className="text-white text-center  text-sm sm:text-base ">Paste the walletAddress of the receipt below to tranfer some money.</p>
       </div>
       <div className="flex flex-col items-center gap-5 sm:gap-7 w-full">
-      <input type="text" className="w-full h-10 sm:h-12 lg:h-10 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white"  placeholder="Enter WalletId" onChange={handleChange} />
+      <input type="text" required className="w-full h-10 sm:h-12 lg:h-10 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white"  placeholder="Enter WalletId" onChange={handleChange} />
       {searchedUser.username &&<div className="flex gap-5 rounded-lg pl-5 items-center w-full h-16 sm:h-20 bg-black2">
             <div className="sm:w-12 sm:h-12  w-10 h-10 overflow-hidden rounded-full bg-black2 outline outline-3 outline-purple">
                 <img src={`https://middlemanbackend.onrender.com${searchedUser.profilePic}`}/>
@@ -80,7 +83,7 @@ const handleChange = (e:ChangeEvent<HTMLInputElement>) =>{
             {/* <p>{searchedUser?.username}</p> */}
             <p className="text-white">{searchedUser.username}</p>
         </div>}
-      <input type="text" className="w-full h-10 sm:h-12 lg:h-10 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white"  placeholder="Enter amount" onChange={(e)=>setAmount(e.target.value)} />
+      <input type="text" required className="w-full h-10 sm:h-12 lg:h-10 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white"  placeholder="Enter amount" onChange={(e)=>setAmount(e.target.value)} />
       </div>
     </div>
     <button className="bg-purple  text-white  w-full rounded-lg h-10 flex justify-center items-center   sm:h-12 lg:w-108 xl:w-107">{!ran?`Transfer`:data?`Sent`:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' >            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
