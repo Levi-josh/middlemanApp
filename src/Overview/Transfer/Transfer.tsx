@@ -66,7 +66,7 @@ const handleChange = (e:ChangeEvent<HTMLInputElement>) =>{
     <div className="flex flex-col gap-5 items-center sm:gap-7 w-full">
       <div className="flex flex-col items-center gap-5 sm:gap-7 w-full">
         <div className="flex flex-col items-center gap-3 w-full">
-          <div className='sm:w-20 sm:h-20 w-14 h-14  rounded-full flex justify-center items-center  text-white bg-purple text-xl sm:text-2xl' ><svg  className="w-7 h-7 sm:w-10 sm:h-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <div className='sm:h-16 sm:w-16 w-14 h-14  rounded-full flex justify-center items-center  text-white bg-purple ' ><svg  className="w-7 h-7 sm:w-8 sm:h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M19 12H5M5 12L9 16M5 12L9 8" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M5 12H19M19 12L15 16M19 12L15 8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg></div>

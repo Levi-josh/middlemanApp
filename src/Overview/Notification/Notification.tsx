@@ -67,7 +67,7 @@ console.log(notes)
     <div className="flex flex-col gap-5 items-center sm:gap-7">
         <div className="flex flex-col items-center gap-5 sm:gap-7">
             <div className="flex flex-col items-center gap-3 w-full">
-                <div className='sm:w-20 sm:h-20 w-14 h-14 rounded-full flex justify-center items-center  text-white bg-purple text-xl sm:text-2xl' ><FaBell/></div>
+                <div className='sm:h-16 sm:w-16 w-14 h-14 rounded-full flex justify-center items-center  text-white bg-purple ' ><FaBell className="w-5 h-5 sm:w-6 sm:h-6"/></div>
                 {notes?.message.length===1&&<h1 className="text-white text-center text-lg sm:text-xl font-semibold  ">Notifications</h1>}
             </div>
             {/* <p className="text-white text-center  text-sm sm:text-base ">Ask the user for their <span className="font-bold ">invite code</span>,then paste it in the input below. please make sure the code is correct and complete.</p> */}
