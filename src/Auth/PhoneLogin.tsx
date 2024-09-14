@@ -48,11 +48,11 @@ console.log(password)
           <div className="flex flex-col w-full items-center    justify-start">
             <div className="flex flex-col  w-full justify-center items-center">
               <div className="w-full flex items-center flex-col">
-                <p className='text-sm text-red-600'>Email has already been taken</p>
+                <p className='text-sm text-red-600 invisible'>Email has already been taken</p>
                 <input required type="email" className="w-full h-10 sm:h-12 bg-black border-0.1   border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white"  placeholder="Enter an email" onChange={e=>{setEmail(e.target.value)}} value={email} />
               </div>
               <div className='w-full flex items-center flex-col  pt-3 sm:pt-8 pb-7 sm:pb-12 '>
-                <p className='text-sm text-red-600 visible '>Wrong password</p>
+                <p className='text-sm text-red-600 invisible '>Wrong password</p>
                 <input required maxLength={6} type="password" className="w-full h-10 sm:h-12 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white" placeholder="Enter a password" onChange={e=>{setPassword(e.target.value)}} value={password} />
               </div>
               <button className="w-full flex justify-center items-center rounded-lg h-10 sm:h-12 bg-purple text-white">{!ran?`Sign In`:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' >
