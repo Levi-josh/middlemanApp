@@ -64,7 +64,7 @@ fetchUsers()
       <div className="flex flex-col items-center gap-5 sm:gap-7 w-full">
         <div className="flex flex-col items-center gap-3 w-full">
           <div className='sm:h-16 sm:w-16 w-14 h-14 rounded-full flex justify-center items-center   text-white bg-purple' >{users?.profilePic?<img src={`http://localhost:3500${users?.profilePic}`} className='sm:w-20 bg-no-repeat bg-cover bg-center sm:h-20   w-14 h-14 rounded-full  '/>:<div className='sm:h-20    w-14 h-14 rounded-full sm:w-20 sm:text-lg flex items-center justify-center text-white'><FaCamera/></div>}</div>
-          <h1 className="text-white text-center text-lg sm:text-xl  font-semibold  ">Settings</h1>
+          <h1 className="text-white text-center text-base sm:text-lg  font-semibold  ">Settings</h1>
         </div>
       {/* <p className="text-white text-center  text-sm sm:text-base ">Add some money to your account balance</p> */}
       </div>

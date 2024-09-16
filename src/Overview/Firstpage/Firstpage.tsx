@@ -47,9 +47,11 @@ interface User {
 }
 const [users, setusers] = useState<User|null>();
 const [errors, setErrors] = useState<String>('');
+const [retry,setRetry] = useState<boolean>(false)
 const Id = localStorage.getItem('Id')
 useEffect(()=>{
   setusers(null)
+  console.log('ran')
 const fetchUsers = async()=>{
   const option = {
     method: 'Get',
@@ -67,7 +69,7 @@ catch (err:any) {
 }
 }
 fetchUsers()
-},[Id])
+},[Id,retry])
 console.log(users)
   return (
     <div className="w-full overflow-x-hidden lg:overflow-auto   bg-black2    lg:px-5 lg:w-107 xl:w-1075 lg:h-screen h-full " onScroll={scrolldiv}>
@@ -93,7 +95,7 @@ console.log(users)
         </div>
           :
         <div className="flex items-center text-white  justify-end w-full">
-         {errors?<div className='bg-purple px-3 py-1 sm:px-5 hover:cursor-pointer  rounded-full flex items-center gap-1'><FaArrowRotateLeft/><p>Retry</p></div>:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' >            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+         {errors?<div className='bg-purple px-3 py-1 sm:px-5 hover:cursor-pointer  rounded-full flex items-center gap-1' onClick={()=>setRetry((prev:boolean)=>!prev)}><FaArrowRotateLeft/><p>Retry</p></div>:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' >            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M12 2V6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   <path d="M12 18V22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   <path d="M4.929 4.929L7.757 7.757" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

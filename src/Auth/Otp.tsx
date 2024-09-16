@@ -4,12 +4,16 @@ import { useNavigate } from "react-router-dom"
 import { motion } from 'framer-motion';
 
 
+interface errorMessage {
+  errorMessage: String,
+}
 
 const Otp = () => {
 const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 const navigate = useNavigate()
 const [ran,setRan]=useState(false)
 const [otps, setOtp] = useState(Array(6).fill(''));
+const [errorMsg,setErrorMsg] = useState<errorMessage|null>()
 
 
 const verifyOtp = async(e:FormEvent<HTMLFormElement>)=>{
@@ -30,8 +34,8 @@ const verifyOtp = async(e:FormEvent<HTMLFormElement>)=>{
     localStorage.setItem('Id', data.UserId)
     data && navigate('/verified')
   }
-  catch (err) {
-  console.log(err)
+  catch (err:any) {
+    setErrorMsg(err)
   }
     }
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, index: number) => {
@@ -100,6 +104,7 @@ const verifyOtp = async(e:FormEvent<HTMLFormElement>)=>{
             />
           ))}
           </div>
+          <p className={`text-sm text-red-500 sm:text-base font-semibold ${errorMsg?.errorMessage?'visible':'invisible'} `}>{errorMsg?.errorMessage}</p>
           <button className='w-full md:w-106 flex justify-center items-center h-10 sm:h-12 bg-purple text-white rounded-lg'>{!ran?`Verify`:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M12 2V6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

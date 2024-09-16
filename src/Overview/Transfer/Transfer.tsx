@@ -3,11 +3,16 @@ import { NavLink } from "react-router-dom"
 import { useState,FormEvent,ChangeEvent} from "react"
 import { motion } from 'framer-motion';
 
+interface errorMessage {
+  errorMessage: String,
+}
+
 const Transfer = () => {
   const [ recipientId,setRecipientId]=useState("")
   const [amount,setAmount]=useState("")
   const [walletAdd,setWalletAdd]=useState("")
   const [data,setData]=useState("")
+  const [errorMsg,setErrorMsg] = useState<errorMessage|null>()
   const [ran,setRan]=useState(false)
   const [ searchedUser ,setSearchedUser ]=useState({username:'',profilePic:''})
   const userId= localStorage.getItem('Id')
@@ -30,10 +35,9 @@ const Transfer = () => {
             setRan(false)  
         }, 3000);
     }
-    catch (err) {
-    console.log(err)
+    catch (err:any) {
+      setErrorMsg(err)
     }
-
 }
 const handleChange = (e:ChangeEvent<HTMLInputElement>) =>{ 
   setWalletAdd(e.target.value)
@@ -51,8 +55,8 @@ const handleChange = (e:ChangeEvent<HTMLInputElement>) =>{
             setRecipientId(data.id)
             setSearchedUser(data)
         }
-        catch (err) {
-        console.log(err)
+        catch (err:any) {
+          setErrorMsg(err)
         }
     }
     if (walletid.length === 36) {
@@ -70,7 +74,7 @@ const handleChange = (e:ChangeEvent<HTMLInputElement>) =>{
           <path d="M19 12H5M5 12L9 16M5 12L9 8" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M5 12H19M19 12L15 16M19 12L15 8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg></div>
-          <h1 className="text-white text-center text-lg sm:text-xl  font-semibold  ">Transfer</h1>
+          <h1 className="text-white text-center text-base sm:text-lg  font-semibold  ">Transfer</h1>
         </div>
         <p className="text-white text-center  text-sm sm:text-base ">Paste the walletAddress of the receipt below to tranfer some money.</p>
       </div>
@@ -78,12 +82,12 @@ const handleChange = (e:ChangeEvent<HTMLInputElement>) =>{
       <input type="text" required className="w-full h-10 sm:h-12 lg:h-10 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white"  placeholder="Enter WalletId" onChange={handleChange} />
       {searchedUser.username &&<div className="flex gap-5 rounded-lg pl-5 items-center w-full h-16 sm:h-20 bg-black2">
             <div className="sm:w-12 sm:h-12  w-10 h-10 overflow-hidden rounded-full bg-black2 outline outline-3 outline-purple">
-                <img src={`https://middlemanbackend.onrender.com${searchedUser.profilePic}`}/>
+                <img src={searchedUser.profilePic}/>
             </div>
-            {/* <p>{searchedUser?.username}</p> */}
             <p className="text-white">{searchedUser.username}</p>
         </div>}
       <input type="text" required className="w-full h-10 sm:h-12 lg:h-10 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white"  placeholder="Enter amount" onChange={(e)=>setAmount(e.target.value)} />
+      <p className={`text-sm text-red-500 sm:text-base font-semibold ${errorMsg?.errorMessage?'visible':'invisible'} `}>{errorMsg?.errorMessage}</p>
       </div>
     </div>
     <button className="bg-purple  text-white  w-full rounded-lg h-10 flex justify-center items-center   sm:h-12 lg:w-108 xl:w-107">{!ran?`Transfer`:data?`Sent`:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' >            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

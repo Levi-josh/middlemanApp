@@ -3,12 +3,15 @@ import { FaCamera } from "react-icons/fa6"
 import { useNavigate } from "react-router-dom"
 import { motion } from 'framer-motion';
 
-
+interface errorMessage {
+  errorMessage: String,
+}
 const Details = () => {
     const navigate = useNavigate()
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [previewUrl, setPreviewUrl] = useState<string | null>(null);
     const [username, setUsername] = useState<string>('');
+    const [errorMsg,setErrorMsg] = useState<errorMessage|null>()
     const fileInputRef = useRef<HTMLInputElement>(null);
     const [ran,setRan]=useState(false)
     const id = localStorage.getItem('Id')
@@ -31,8 +34,8 @@ const Details = () => {
               const data = await response.json()
               data&&navigate('/')
         }
-        catch (err) {
-        console.log(err)
+        catch (err:any) {
+          setErrorMsg(err)
         }
           
     }
@@ -69,17 +72,18 @@ const Details = () => {
                 <option>Prefer not to say</option>
             </select>
           </div>
-            <button className="bg-purple text-white flex justify-center items-center  w-full rounded-lg h-10  sm:h-12 lg:w-108 xl:w-107">{!ran?`Continue`:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' >                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 2V6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M12 18V22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M4.929 4.929L7.757 7.757" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M16.243 16.243L19.071 19.071" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M2 12H6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M18 12H22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M4.929 19.071L7.757 16.243" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M16.243 7.757L19.071 4.929" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg></motion.div>}
-            </button>
+          <p className={`text-sm text-red-500 sm:text-base font-semibold ${errorMsg?.errorMessage?'visible':'invisible'} `}>{errorMsg?.errorMessage}</p>
+          <button className="bg-purple text-white flex justify-center items-center  w-full rounded-lg h-10  sm:h-12 lg:w-108 xl:w-107">{!ran?`Continue`:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' >                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2V6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 18V22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M4.929 4.929L7.757 7.757" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M16.243 16.243L19.071 19.071" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2 12H6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M18 12H22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M4.929 19.071L7.757 16.243" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M16.243 7.757L19.071 4.929" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg></motion.div>}
+          </button>
         </form>
     </div>
   )

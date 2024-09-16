@@ -23,6 +23,7 @@ interface Chat {
 }
   const [Chats, setChats] = useState<Chat[]|null>();
   const [errors, setErrors] = useState<string>('');
+  const [retry,setRetry] = useState<boolean>(false)
   const Id = localStorage.getItem('Id')
 useEffect(()=>{
  
@@ -44,7 +45,7 @@ useEffect(()=>{
   }
   }
   fetchChats()
-},[Chats,Id])
+},[Chats,Id,retry])
 const totalUnreadMessages = Chats?.reduce((total, chat) => {
   const unreadCount = chat.messages.filter(message => message.read == false && message.from !== Id).length;
   return total + unreadCount;
@@ -57,7 +58,7 @@ const totalUnreadMessages = Chats?.reduce((total, chat) => {
     <p className="py-2 lg:py-1">{`${totalUnreadMessages} unread message`}</p>
     </div>
     { Chats && Chats.length>0?<Chatlist chatUsers={Chats} />:Chats?.length===0?<p className='text-white font-bold lg:mt-20 mt-28 md:mt-32 text-center '>No Chat yet!</p>:
-    <div className="flex justify-center lg:mt-20 mt-28 md:mt-32  ">{errors?<div className='bg-purple px-3 py-1 sm:px-5 hover:cursor-pointer h-auto  rounded-full flex items-center gap-1'><FaArrowRotateLeft/><p >Retry</p></div>:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' > <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <div className="flex justify-center lg:mt-20 mt-28 md:mt-32  ">{errors?<div className='bg-purple px-3 py-1 sm:px-5 hover:cursor-pointer h-auto  rounded-full flex items-center gap-1' onClick={()=>setRetry((prev:boolean)=>!prev)}><FaArrowRotateLeft/><p >Retry</p></div>:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' > <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M12 2V6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       <path d="M12 18V22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       <path d="M4.929 4.929L7.757 7.757" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

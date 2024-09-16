@@ -20,6 +20,7 @@ const Notification = () => {
       }
     const [notes, setNotes] = useState<Note|null>();
     const [errors, setErrors] = useState<String>('');
+    const [retry,setRetry] = useState<boolean>(false)
     const Id = localStorage.getItem('Id')
     useEffect(()=>{
     const fetchUsers = async()=>{
@@ -41,8 +42,8 @@ const Notification = () => {
       }
     }
     fetchUsers()
-    },[notes])
-console.log(notes)
+    },[notes,Id,retry])
+
     const acceptInvite = async(note:any)=>{
         const option = {
           method: 'Put',
@@ -68,9 +69,8 @@ console.log(notes)
         <div className="flex flex-col items-center gap-5 sm:gap-7">
             <div className="flex flex-col items-center gap-3 w-full">
                 <div className='sm:h-16 sm:w-16 w-14 h-14 rounded-full flex justify-center items-center  text-white bg-purple ' ><FaBell className="w-5 h-5 sm:w-6 sm:h-6"/></div>
-                {notes?.message.length===1&&<h1 className="text-white text-center text-lg sm:text-xl font-semibold  ">Notifications</h1>}
+                {notes?.message.length===1&&<h1 className="text-white text-center text-base sm:text-lg font-semibold  ">Notifications</h1>}
             </div>
-            {/* <p className="text-white text-center  text-sm sm:text-base ">Ask the user for their <span className="font-bold ">invite code</span>,then paste it in the input below. please make sure the code is correct and complete.</p> */}
         </div>
         <div className='w-full gap-3 flex flex-col'>
             {notes && notes.message && notes.message.length > 0 ? (
@@ -100,7 +100,7 @@ console.log(notes)
                 ) : (
                 <div className="flex justify-center lg:mt-20 mt-28 md:mt-32 text-white">
                     {errors ? (
-                    <div className='bg-purple px-6 py-1 sm:px-10 hover:cursor-pointer h-auto rounded-full flex items-center gap-1'>
+                    <div className='bg-purple px-6 py-1 sm:px-10 hover:cursor-pointer h-auto rounded-full flex items-center gap-1' onClick={()=>setRetry((prev:boolean)=>!prev)}>
                         <FaArrowRotateLeft />
                         <p>Retry</p>
                     </div>

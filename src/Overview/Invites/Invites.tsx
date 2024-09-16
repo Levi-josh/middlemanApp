@@ -3,10 +3,15 @@ import { FaLink ,FaArrowLeft} from "react-icons/fa6"
 import { NavLink } from "react-router-dom"
 import { motion } from 'framer-motion';
 
+interface errorMessage {
+    errorMessage: String,
+}
+
 const Invites = () => {
     const [inviteCode,setInviteCode]=useState("")
     const [userid,setUserid]=useState("")
     const [data,setData]=useState("")
+    const [errorMsg,setErrorMsg] = useState<errorMessage|null>()
     const [ran,setRan]=useState(false)
     const [ searchedUser ,setSearchedUser ]=useState({username:'',profilePic:''})
     const myid= localStorage.getItem('Id')
@@ -36,11 +41,8 @@ const Invites = () => {
 
     const handSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log('code must be up to 36')
         if(inviteCode.length < 36)return
-
         setRan(true);
-    
         const option = {
             method: 'POST', 
             headers: {
@@ -51,24 +53,21 @@ const Invites = () => {
     
         try {
             const response = await fetch(`https://middlemanbackend.onrender.com/sendInvite`, option);
-            
             if (!response.ok) {
                 // If the response is not ok, read the response text to understand the error
                 const errorText = await response.text();
                 throw new Error(`Server error: ${errorText}`);
             }
-    
             const data = await response.json();
-            console.log(data)
             setData(data);
-    
             if (data) {
                 setTimeout(() => {
                     setRan(false);
                 }, 3000);
             }
-        } catch (err:any) {
-            console.error('Error:', err);
+        } 
+        catch (err:any) {
+            setErrorMsg(err)
         }
     };
     
@@ -89,8 +88,8 @@ const Invites = () => {
                 setUserid(data.id)
                 setSearchedUser(data)
             }
-            catch (err) {
-            console.log(err)
+            catch (err:any) {
+                setErrorMsg(err)
             }
         }
         if (inviteValue.length === 36) {
@@ -105,7 +104,7 @@ const Invites = () => {
         <div className="flex flex-col items-center gap-5 sm:gap-7">
         <div className="flex flex-col items-center gap-3 w-full">
         <div className='sm:h-16 sm:w-16 w-14 h-14 rounded-full flex justify-center items-center  text-white bg-purple ' ><FaLink  className="w-5 h-5 sm:w-6 sm:h-6"/></div>
-        <h1 className="text-white text-center text-lg sm:text-xl  font-semibold  ">Invite User</h1>
+        <h1 className="text-white text-center text-base sm:text-lg  font-semibold  ">Invite User</h1>
         </div>
         <p className="text-white text-center  text-sm sm:text-base ">Paste the user's invitecode below to send a business transaction invitation.</p>
         </div>
@@ -117,6 +116,7 @@ const Invites = () => {
             </div>
             <p className="text-white">{searchedUser.username}</p>
         </div>}
+        <p className={`text-sm text-red-500 sm:text-base font-semibold ${errorMsg?.errorMessage?'visible':'invisible'} `}>{errorMsg?.errorMessage}</p>
         </div>
         </div>
         <button className="bg-purple  text-white  w-full rounded-lg h-10 flex justify-center items-center  sm:h-12 lg:w-108 xl:w-107">{!ran?`Invite`:data?`Sent`:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' > <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
