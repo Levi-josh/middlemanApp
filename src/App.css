@@ -95,5 +95,17 @@
     stroke-dasharray: 20 300;
     stroke-dashoffset: -32.42;
 }
+.overflow-div::-webkit-scrollbar-thumb {
+    background-color: gray;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.overflow-div::-webkit-scrollbar {
+    width: 0px;
+    background-color: gainsboro;
+    height: 5px;
+    cursor: pointer;
+    display: none;
 
+}
   

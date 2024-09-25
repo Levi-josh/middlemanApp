@@ -49,8 +49,7 @@ useEffect(() => {
     mySocket?.off('private chat');
   };
 
-}, [mySocket]);
-
+},[mySocket]);
 useEffect(() => {
 const fetdata = async()=>{
     const option = {
@@ -101,7 +100,8 @@ useEffect(() => {
 
   return () => clearInterval(interval);
 }, []);
-
+console.log(mySocket)
+console.log(messages)
 const formatTime = (timestamp: Date): string => {
   const now = new Date();
   const messageTime = new Date(timestamp);
@@ -127,7 +127,7 @@ const handleSubmit = (e:FormEvent<HTMLFormElement>) => {
 };
 const handleChange = (e:ChangeEvent<HTMLInputElement>) =>{ setMessage(e.target.value)}
   return (
-  <div className="h-screen lg:w-1069 xl:w-1074 bg-black2    ">
+  <div className="h-screen lg:w-1069 xl:w-1074 bg-black2 w-full    ">
   {/* <ChatHeader Dbmessages={Dbmessages}/> */}
   <div className="w-full z-10 bg-black lg:w-1069 xl:w-1074 px-3 top-0  sm:px-4 md:px-5 lg:px-3 flex items-center   justify-between fixed h-16 sm:h-20 md:h-24 lg:h-20">
     <div className="flex items-center gap-5 sm:gap-10">

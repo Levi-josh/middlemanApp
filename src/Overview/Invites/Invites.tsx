@@ -3,15 +3,20 @@ import { FaLink ,FaArrowLeft} from "react-icons/fa6"
 import { NavLink } from "react-router-dom"
 import { motion } from 'framer-motion';
 
-interface errorMessage {
-    errorMessage: String,
-}
+interface errMessage{
+    username:string,
+    password:string,
+    otherErr:string
+  }
+  interface ErrorMessage {
+    message: errMessage;
+  }
 
 const Invites = () => {
     const [inviteCode,setInviteCode]=useState("")
     const [userid,setUserid]=useState("")
     const [data,setData]=useState("")
-    const [errorMsg,setErrorMsg] = useState<errorMessage|null>()
+    const [errorMsg,setErrorMsg] = useState<ErrorMessage|null>()
     const [ran,setRan]=useState(false)
     const [ searchedUser ,setSearchedUser ]=useState({username:'',profilePic:''})
     const myid= localStorage.getItem('Id')
@@ -53,21 +58,24 @@ const Invites = () => {
     
         try {
             const response = await fetch(`https://middlemanbackend.onrender.com/sendInvite`, option);
-            if (!response.ok) {
-                // If the response is not ok, read the response text to understand the error
-                const errorText = await response.text();
-                throw new Error(`Server error: ${errorText}`);
-            }
             const data = await response.json();
-            setData(data);
-            if (data) {
-                setTimeout(() => {
-                    setRan(false);
-                }, 3000);
-            }
+            if (!response.ok) {
+              setRan(false);
+              setErrorMsg({message:data.errorMessage})
+            }else{
+              setData(data)
+              setTimeout(() => {
+                setRan(false)  
+            }, 3000); 
+            }   
         } 
         catch (err:any) {
-            setErrorMsg(err)
+            setRan(false)
+            setErrorMsg({message:{
+              username:'',
+              password:'',
+              otherErr:err.message 
+            }})
         }
     };
     
@@ -83,13 +91,21 @@ const Invites = () => {
             }
             try {
                 const response = await fetch(` https://middlemanbackend.onrender.com/searchInvite/${inviteValue}`, option);
-                const data = await response.json()
-                console.log(data )
-                setUserid(data.id)
-                setSearchedUser(data)
+                const data = await response.json();
+                if (!response.ok) {
+                  setRan(false);
+                  setErrorMsg({message:data.errorMessage})
+                }else{
+                    setUserid(data.id)
+                    setSearchedUser(data)
+                }
             }
             catch (err:any) {
-                setErrorMsg(err)
+                setErrorMsg({message:{
+                    username:'',
+                    password:'',
+                    otherErr:err.message 
+                  }})
             }
         }
         if (inviteValue.length === 36) {
@@ -116,7 +132,7 @@ const Invites = () => {
             </div>
             <p className="text-white">{searchedUser.username}</p>
         </div>}
-        <p className={`text-sm text-red-500 sm:text-base font-semibold ${errorMsg?.errorMessage?'visible':'invisible'} `}>{errorMsg?.errorMessage}</p>
+        <p className={`text-sm text-red-500 sm:text-base font-semibold ${errorMsg?.message?.otherErr?'visible':'invisible'} `}>{errorMsg?.message?.otherErr}</p>
         </div>
         </div>
         <button className="bg-purple  text-white  w-full rounded-lg h-10 flex justify-center items-center  sm:h-12 lg:w-108 xl:w-107">{!ran?`Invite`:data?`Sent`:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' > <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

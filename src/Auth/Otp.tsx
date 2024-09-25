@@ -4,8 +4,13 @@ import { useNavigate } from "react-router-dom"
 import { motion } from 'framer-motion';
 
 
-interface errorMessage {
-  errorMessage: String,
+interface errMessage{
+  username:string,
+  password:string,
+  otherErr:string
+}
+interface ErrorMessage {
+  message: errMessage;
 }
 
 const Otp = () => {
@@ -13,8 +18,7 @@ const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 const navigate = useNavigate()
 const [ran,setRan]=useState(false)
 const [otps, setOtp] = useState(Array(6).fill(''));
-const [errorMsg,setErrorMsg] = useState<errorMessage|null>()
-
+const [errorMsg,setErrorMsg] = useState<ErrorMessage|null>()
 
 const verifyOtp = async(e:FormEvent<HTMLFormElement>)=>{
   e.preventDefault()
@@ -29,13 +33,22 @@ const verifyOtp = async(e:FormEvent<HTMLFormElement>)=>{
   }
   try {
     const response = await fetch(` https://middlemanbackend.onrender.com/verify-otp`, option);
-    const data = await response.json()
-    console.log(data)
-    localStorage.setItem('Id', data.UserId)
-    data && navigate('/verified')
+    const data = await response.json();
+    if (!response.ok) {
+      setRan(false);
+      setErrorMsg({message:data.errorMessage})
+    }else{
+      localStorage.setItem('Id', data.UserId)
+      data && navigate('/verified') 
+    }
   }
   catch (err:any) {
-    setErrorMsg(err)
+    setRan(false)
+    setErrorMsg({message:{
+      username:'',
+      password:'',
+      otherErr:err.message 
+    }})
   }
     }
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, index: number) => {
@@ -92,7 +105,7 @@ const verifyOtp = async(e:FormEvent<HTMLFormElement>)=>{
           {Array(6).fill('').map((_, index) => (
             <input
               key={index}
-              type="text"
+              type="number"
               maxLength={1}
               value={otps[index]}
               className="w-10 h-10 sm:h-12 sm:w-12 rounded-md outline-none bg-black text-white text-center border-2 border-solid border-demotext"
@@ -104,7 +117,7 @@ const verifyOtp = async(e:FormEvent<HTMLFormElement>)=>{
             />
           ))}
           </div>
-          <p className={`text-sm text-red-500 sm:text-base font-semibold ${errorMsg?.errorMessage?'visible':'invisible'} `}>{errorMsg?.errorMessage}</p>
+          <p className={`text-sm text-red-500 sm:text-base font-semibold ${errorMsg?.message?.otherErr?'visible':'invisible'} `}>{errorMsg?.message.otherErr}</p>
           <button className='w-full md:w-106 flex justify-center items-center h-10 sm:h-12 bg-purple text-white rounded-lg'>{!ran?`Verify`:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M12 2V6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

@@ -25,9 +25,9 @@ interface Chat {
   const [errors, setErrors] = useState<string>('');
   const [retry,setRetry] = useState<boolean>(false)
   const Id = localStorage.getItem('Id')
+
 useEffect(()=>{
- 
-  const fetchChats = async()=>{
+ const fetchChats = async()=>{
     const option = {
       method: 'Get',
       headers: {
@@ -40,7 +40,6 @@ useEffect(()=>{
       setChats(data)
   }
   catch (err:any) {
-    console.log(err)
     setErrors(err)
   }
   }
