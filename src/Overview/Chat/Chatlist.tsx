@@ -20,10 +20,10 @@ interface Chat {
 
 interface ChatlistProps {
     chatUsers: Chat[];
+    Id:any
 }
 
-const Chatlist: React.FC<ChatlistProps> = ({ chatUsers }) => {
-    const Id = localStorage.getItem('Id');
+const Chatlist: React.FC<ChatlistProps> = ({ chatUsers,Id }) => {
     const formatTime = (timestamp: Date): string => {
         const now = new Date();
         const messageTime = new Date(timestamp);

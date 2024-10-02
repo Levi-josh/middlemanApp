@@ -144,11 +144,11 @@ console.log(errorMsg)
         <form onSubmit={signInHandSubmit} className="bg-black w-109 hidden h-108 sm:w-1065 md:w-106 lg:w-109 xl:w-107 lg:h-full lg:flex flex-col justify-center  px-4 ">
           <div className="flex flex-col w-full justify-center items-center">
             <div className="w-full flex items-center flex-col">
-            <p className={`text-sm text-red-500 sm:text-base font-semibold ${errorMsg?.message?.username?'visible':'invisible'} `}>{errorMsg?.message?.username == '' || errorMsg?.message?.username == undefined?'a':errorMsg?.message?.username}</p>
+            <p className={`text-sm text-red-500 sm:text-base  ${errorMsg?.message?.username?'visible':'invisible'} `}>{errorMsg?.message?.username == '' || errorMsg?.message?.username == undefined?'a':errorMsg?.message?.username}</p>
             <input required type="email" className="w-full h-10  bg-black border    border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white"  placeholder="Enter an email" onChange={e=>{setEmail(e.target.value)}} value={email}   />
             </div>
             <div className='w-full  pt-3 pb-7 flex items-center flex-col '>
-            <p className={`text-sm text-red-500 sm:text-base font-semibold ${errorMsg?.message?.password?'visible':'invisible'} `}>{errorMsg?.message?.password == '' || errorMsg?.message?.password == undefined?'a':errorMsg?.message?.password}</p>
+            <p className={`text-sm text-red-500 sm:text-base  ${errorMsg?.message?.password?'visible':'invisible'} `}>{errorMsg?.message?.password == '' || errorMsg?.message?.password == undefined?'a':errorMsg?.message?.password}</p>
             <input required maxLength={6} type="password" className="w-full h-10 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white" placeholder="Enter a password" onChange={e=>{setPassword(e.target.value)}} value={password}   />
             </div>
             <button className="w-full h-10 rounded-lg bg-purple flex justify-center items-center text-white text-base">{!ran?`Sign In`:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' >
@@ -171,7 +171,7 @@ console.log(errorMsg)
               <p className="text-white">Or</p>
               <hr className="w-full  border-demotext "/>
             </div>
-            <div className="w-full h-10 rounded-lg gap-2 bg-black2 text-white flex justify-center items-center text-base hover:cursor-pointer" onClick={()=>window.location.href = 'https://middlemanbackend.onrender.com/auth/google'}>
+            <div className="w-full h-10 rounded-lg gap-2 bg-black2 text-white flex justify-center items-center text-base hover:cursor-pointer" onClick={()=>{window.location.href = 'https://middlemanbackend.onrender.com/auth/google'}}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M22 12C22 11.3284 21.9682 10.6647 21.9051 10.0156H12V14H17.6641C17.238 15.5394 16.3299 16.8066 15.0645 17.625V20.1625H18.5037C20.6712 18.7469 22 16.1044 22 12Z" fill="#4285F4"/>
                 <path d="M12 22C14.88 22 17.175 21.125 18.85 19.7437L15.4108 17.625C14.5487 18.2125 13.3713 18.5562 12 18.5562C9.22061 18.5562 6.92061 16.7437 6.00366 14.3187H2.42866V16.9312C4.0951 19.9625 7.69354 22 12 22Z" fill="#34A853"/>
@@ -179,7 +179,7 @@ console.log(errorMsg)
                 <path d="M12 5.5C13.4449 5.5 14.7564 6.00624 15.7957 6.93125L18.95 3.775C16.975 2 14.88 1 12 1C7.69354 1 4.0951 3.03748 2.42866 6.06873L6.00366 8.68124C6.92061 6.25624 9.22061 5.5 12 5.5Z" fill="#EA4335"/>
               </svg>
               <p>Google</p>
-              </div>
+            </div>
             <p className="text-white">Dont have an account? <span className="text-purple font-semibold  hover:cursor-pointer" onClick={changeForm}>Signup</span></p>
           </div>
         </form>
@@ -187,11 +187,11 @@ console.log(errorMsg)
         <form onSubmit={signUpHandSubmit} className="bg-black w-109 hidden h-108 sm:w-1065 md:w-106 lg:w-109 xl:w-107 lg:h-full lg:flex flex-col justify-center  px-4 ">
           <div className="flex flex-col  w-full justify-center items-center">         
             <div className="w-full flex items-center flex-col">
-            <p className={`text-sm text-red-500 sm:text-base font-semibold ${errorMsg?.message?.username?'visible':'invisible'} `}>{errorMsg?.message?.username == '' || errorMsg?.message?.username == undefined?'a':errorMsg?.message?.username}</p>
+            <p className={`text-sm text-red-500 sm:text-base  ${errorMsg?.message?.username?'visible':'invisible'} `}>{errorMsg?.message?.username == '' || errorMsg?.message?.username == undefined?'a':errorMsg?.message?.username}</p>
             <input required type="email" className="w-full h-10  bg-black border    border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white"  placeholder="Enter an email" onChange={e=>{setEmail(e.target.value)}} value={email}   />
             </div>
             <div className='w-full flex items-center flex-col  pt-3 pb-7 '>
-            <p className={`text-sm text-red-500 sm:text-base font-semibold ${errorMsg?.message?.password?'visible':'invisible'} `}>{errorMsg?.message?.password == '' || errorMsg?.message?.password == undefined?'a':errorMsg?.message?.password}</p>
+            <p className={`text-sm text-red-500 sm:text-base  ${errorMsg?.message?.password?'visible':'invisible'} `}>{errorMsg?.message?.password == '' || errorMsg?.message?.password == undefined?'a':errorMsg?.message?.password}</p>
             <input required maxLength={6} type="password" className="w-full h-10 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white" placeholder="Enter a password" onChange={e=>{setPassword(e.target.value)}} value={password}   />
             </div>
             <button className="w-full h-10 rounded-lg bg-purple flex justify-center items-center text-white text-base">{!ran?`Sign Up`:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' >            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -212,7 +212,7 @@ console.log(errorMsg)
               <p className="text-white">Or</p>
               <hr className="w-full  border-demotext "/>
             </div>
-            <div className="w-full h-10 rounded-lg gap-2 bg-black2 text-white flex justify-center items-center text-base">
+            <div className="w-full h-10 rounded-lg gap-2 bg-black2 text-white flex justify-center items-center text-base" onClick={()=>{window.location.href = 'https://middlemanbackend.onrender.com/auth/google'}}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M22 12C22 11.3284 21.9682 10.6647 21.9051 10.0156H12V14H17.6641C17.238 15.5394 16.3299 16.8066 15.0645 17.625V20.1625H18.5037C20.6712 18.7469 22 16.1044 22 12Z" fill="#4285F4"/>
                 <path d="M12 22C14.88 22 17.175 21.125 18.85 19.7437L15.4108 17.625C14.5487 18.2125 13.3713 18.5562 12 18.5562C9.22061 18.5562 6.92061 16.7437 6.00366 14.3187H2.42866V16.9312C4.0951 19.9625 7.69354 22 12 22Z" fill="#34A853"/>
@@ -225,6 +225,12 @@ console.log(errorMsg)
           </div>
         </form>}
         <div className="overflow-x-hidden ">
+        <div  className={`w-full text-white z-10   flex sm:text-lg  flex-col justify-around items-center h-104 before:pointer-events-none ${fixedBody?'-top-80 sm:-top-96':' top-16'}  lg:hidden transition-all duration-500 fixed   before:h-103 before:w-full before:absolute before:bg-opacity-20 backdrop-blur-2xl`}>
+                <NavLink to={'/landingPage/phoneSignin'} className={''}><p className="font-bold text-white z-30 ">Sign In</p></NavLink>
+                <NavLink to={'/landingPage/phoneSignup'}><p className="font-bold text-white z-30 ">Sign Up</p></NavLink>
+                <p className="font-bold text-white z-30 ">About Us</p>
+                <p className="font-bold text-white z-30">Contact Us</p>
+              </div>
         <div className="lg:px-7 lg:pt-7 px-4 sm:px-6 md:px-8       flex flex-col gap-7 sm:gap-10 lg:gap-9 ">
           <div className="flex flex-col  lg:items-center relative    justify-between w-full gap-4 ">
               <div className="flex lg:hidden bg-black2  pt-4 sm:pt-6 z-20  justify-between items-center ">
@@ -246,12 +252,6 @@ console.log(errorMsg)
                   </label>
                  </div>
               </div>
-              <div  className={`w-full text-white  flex sm:text-lg  flex-col justify-around items-center h-104 before:pointer-events-none ${fixedBody?'-top-80':' top-16'}  absolute lg:hidden transition-all duration-500   before:h-103 before:w-full before:absolute before:bg-opacity-20 backdrop-blur-2xl`}>
-                <NavLink to={'/landingPage/phoneSignin'} className={''}><p className="font-bold text-white z-30 ">Sign In</p></NavLink>
-                <NavLink to={'/landingPage/phoneSignup'}><p className="font-bold text-white z-30 ">Sign Up</p></NavLink>
-                <p className="font-bold text-white z-30 ">About Us</p>
-                <p className="font-bold text-white z-30">Contact Us</p>
-              </div>
               <img src={'data:image/png;base64,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'} className="bg-no-repeat bg-cover object-cover bg-center rounded-full w-24 h-24 hidden lg:block"/>
               <div className="flex flex-col items-center gap-1 sm:gap-2 mt-3 sm:mt-5 lg:mt-0">
                 <motion.h1 initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }}  variants={textRevealVariants} className="text-white font-bold text-lg sm:text-2xl">Welcome to The Middleman</motion.h1>
@@ -259,7 +259,8 @@ console.log(errorMsg)
               </div>
           </div>
           {middlemanImage&&<motion.div style={{ display: imageLoaded ? "visible" : "invisible" }} className="w-full  rounded-xl h-auto  md:pb-6 md:pr-0 md:pl-6 md:pt-6 mt-3 sm:mt-5 gap-7 sm:gap-10 md:gap-0    md:bg-black  flex flex-col md:flex-row   "  variants={textRevealVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }}>
-            <img src={middlemanImage} onLoad={handleImageLoad} className="bg-no-repeat bg-cover bg-center  md:w-105 h-auto rounded-xl    w-full object-cover  "/> 
+            {/* <img src={middlemanImage} onLoad={handleImageLoad} className="bg-no-repeat before:bg-black before:absolute before:w-full before:h-auto bg-cover bg-center  md:w-105 h-auto rounded-xl    w-full object-cover  "/>  */}
+            <div className="middleman md:w-105  w-full h-auto"><img src={middlemanImage} onLoad={handleImageLoad} className="bg-no-repeat bg-cover bg-center  h-full rounded-xl    w-full object-cover  "/> </div>
             <div className="md:w-105 md:pb-6 p-4 bg-black sm:p-5 md:pt-0 rounded-lg md:rounded-none  md:pl-5 md:pr-2 flex flex-col gap-3 md:gap-1">
               <motion.h1 className="font-bold text-purple text-xl lg:text-2xl text-center " variants={textRevealVariants}>About us</motion.h1>
               <motion.div variants={textRevealVariants}>
@@ -272,7 +273,7 @@ console.log(errorMsg)
             <div className="text-white text-sm sm:text-base flex flex-col gap-4 sm:gap-5">
               <div className="flex gap-2 items-start" >
                 <motion.div className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 rounded-full bg-purple flex items-center justify-center text-xs" variants={textRevealVariants}>1</motion.div>
-                <motion.p variants={textRevealVariants}>Buyer and Seller Agreement - The buyer and seller agree on the terms of the transaction.</motion.p>
+                <motion.p  variants={textRevealVariants}>Buyer and Seller Agreement - The buyer and seller agree on the terms of the transaction.</motion.p>
               </div>
               <div className="flex gap-2 items-start" >
                 <motion.div className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 rounded-full bg-purple flex items-center justify-center text-xs" variants={textRevealVariants}>2</motion.div>
@@ -324,6 +325,78 @@ console.log(errorMsg)
               </div>
             </div>
           </motion.div>
+          <motion.div className="p-4 md:p-5 w-full bg-black rounded-xl flex flex-col gap-3" variants={containerVariants} initial="hidden"whileInView="visible" viewport={{ once: true, amount: 0.5 }}>
+            <motion.h1 className="text-purple font-bold text-xl text-center md:text-start lg:text-2xl"variants={textRevealVariants}> Contact us</motion.h1>
+              <div className="w-full flex gap-5  flex-col md:flex-row items-center text-white">
+                  <div className="w-full flex flex-row md:flex-col items-center gap-3 md:gap-2 p-3 h-1015 md:h-102 lg:h-104 shadow-lg shadow-black2 border border-b-0 border-black2  rounded-lg bg-black">
+                    <div className="bg-purple w-12 h-12 sm:w-16 sm:h-16  flex-shrink-0 rounded-full flex items-center justify-center">
+                    <svg 
+                      className="w-6 h-6" 
+                      viewBox="0 0 24 24" 
+                      fill="none" 
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path 
+                        d="M22 16.92V20C22 20.5523 21.5523 21 21 21C10.0589 21 3 13.9411 3 3C3 2.44772 3.44772 2 4 2H7.08C7.58936 2 8.02452 2.38604 8.11674 2.8894L8.99923 7.47029C9.08529 7.93927 8.86167 8.41359 8.43605 8.62757L6.113 9.78294C7.5403 13.0365 10.9635 16.4597 14.217 17.887L15.3724 15.564C15.5864 15.1383 16.0607 14.9147 16.5297 15.0008L21.1106 15.8833C21.614 15.9755 22 16.4106 22 16.92Z" 
+                        stroke="currentColor" 
+                        stroke-width="2" 
+                        stroke-linecap="round" 
+                        stroke-linejoin="round"/>
+                    </svg>
+
+                    </div>
+                    <div className="w-full flex flex-col gap-1 md:gap-4 md:items-center ">
+                      <p className="text-base sm:text-lg font-bold">Phone Number</p>
+                      <p className="text-sm sm:text-base font-sans">+125-639-075-355</p> 
+                    </div>
+                  </div>
+                  <div className="w-full flex flex-row md:flex-col items-center gap-3 md:gap-2 p-3  h-1015 md:h-102 lg:h-104 shadow-lg shadow-black2 border border-b-0 border-black2  rounded-lg bg-black">
+                      <div className="bg-purple w-12 h-12 sm:w-16 sm:h-16  flex-shrink-0 rounded-full flex items-center justify-center">
+                      <svg 
+                        className="w-6 h-6" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path 
+                          d="M3 8L12 13L21 8M5 5H19C20.1046 5 21 5.89543 21 7V17C21 18.1046 20.1046 19 19 19H5C3.89543 19 3 18.1046 3 17V7C3 5.89543 3.89543 5 5 5Z" 
+                          stroke="currentColor" 
+                          stroke-width="2" 
+                          stroke-linecap="round" 
+                          stroke-linejoin="round"/>
+                      </svg>
+
+                      </div>  
+                      <div className="w-full flex flex-col gap-1 md:gap-4 md:items-center md:h-full ">  
+                        <p className="text-base sm:text-lg font-bold">Support Team</p>
+                        <div className="flex w-full justify-between md:h-full lg:flex-col">
+                        <p className="text-sm sm:text-base font-sans md:text-center">click to chat support team</p> 
+                        <button className="bg-purple px-3 rounded-lg sm:px-6 sm:py-1">Chat</button>
+                        </div>
+                      </div>
+                  </div>
+                  <div className="w-full flex flex-row md:flex-col items-center gap-3 md:gap-2 p-3 h-1015 md:h-102 lg:h-104 shadow-lg shadow-black2 border border-b-0 border-black2 rounded-lg bg-black">
+                    <div className="bg-purple w-12 h-12 sm:w-16 sm:h-16 flex-shrink-0 rounded-full flex items-center justify-center">
+                    <svg 
+                      className="w-6 h-6" 
+                      viewBox="0 0 24 24" 
+                      fill="none" 
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path 
+                        d="M21 15C21 16.1046 20.1046 17 19 17H7L3 21V7C3 5.89543 3.89543 5 5 5H19C20.1046 5 21 5.89543 21 7V15Z" 
+                        stroke="currentColor" 
+                        stroke-width="2" 
+                        stroke-linecap="round" 
+                        stroke-linejoin="round"/>
+                    </svg>
+
+                    </div>
+                    <div className="w-full flex flex-col gap-1 md:gap-4 md:items-center ">
+                      <p className="text-base sm:text-lg font-bold">Send Mail</p>
+                      <p className="text-sm sm:text-base font-sans">MiddlemanApp@gmail.com</p>
+                    </div> 
+                  </div>
+              </div>
+          </motion.div>
+
           <motion.div className="p-4 md:p-5 w-full bg-black rounded-xl flex flex-col gap-3"variants={containerVariants}initial="hidden"whileInView="visible"viewport={{ once: true, amount: 0.5 }}>
             <motion.h1 className="text-purple font-bold text-xl text-center md:text-start lg:text-2xl"variants={textRevealVariants}>Third-Party Involvement</motion.h1>
             <div className="text-white text-sm sm:text-base flex flex-col gap-4 sm:gap-5">
@@ -347,9 +420,9 @@ console.log(errorMsg)
                     </div>
 
                     <ul className='flex flex-col items-center justify-center md:flex-row gap-5 sm:gap-7 md:gap-5 lg:gap-8 xl:gap-14 text-sm sm:text-base'>
-                        <li>About Us</li>
+                        <li>BackToTop</li>
                         <li>Contact Us</li>
-                        <li>ScrollToTop</li>
+                        <li>About Us</li>
                     </ul>
                 </div>
                 <div className='flex items-center gap-5  flex-col-reverse  pt-5 md:justify-between sm:pt-7 '>

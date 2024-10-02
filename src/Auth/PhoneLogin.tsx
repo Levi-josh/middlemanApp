@@ -63,11 +63,11 @@ const handSubmit = async(e:FormEvent<HTMLFormElement>)=>{
           <div className="flex flex-col w-full items-center    justify-start">
             <div className="flex flex-col  w-full justify-center items-center">
               <div className="w-full flex items-center flex-col">
-                <p className={`text-sm text-red-500 sm:text-base font-semibold ${errorMsg?.message?.username?'visible':'invisible'} `}>{errorMsg?.message?.username == '' || errorMsg?.message?.username == undefined?'a':errorMsg?.message?.username}</p>
+                <p className={`text-sm text-red-500 sm:text-base  ${errorMsg?.message?.username?'visible':'invisible'} `}>{errorMsg?.message?.username == '' || errorMsg?.message?.username == undefined?'a':errorMsg?.message?.username}</p>
                 <input required type="email" className="w-full h-10 sm:h-12 bg-black border-0.1   border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white"  placeholder="Enter an email" onChange={e=>{setEmail(e.target.value)}} value={email} />
               </div>
               <div className='w-full flex items-center flex-col  pt-3 sm:pt-8 pb-7 sm:pb-12 '>
-              <p className={`text-sm text-red-500 sm:text-base font-semibold ${errorMsg?.message?.password?'visible':'invisible'} `}>{errorMsg?.message?.password == '' || errorMsg?.message?.password == undefined?'a':errorMsg?.message?.password}</p>
+              <p className={`text-sm text-red-500 sm:text-base  ${errorMsg?.message?.password?'visible':'invisible'} `}>{errorMsg?.message?.password == '' || errorMsg?.message?.password == undefined?'a':errorMsg?.message?.password}</p>
                 <input required maxLength={6} type="password" className="w-full h-10 sm:h-12 bg-black border border-solid  border-demotext  text-white outline-none rounded-lg placeholder:pl-1  pl-5 sm:py-1 placeholder:text-white" placeholder="Enter a password" onChange={e=>{setPassword(e.target.value)}} value={password} />
               </div>
               <button className="w-full flex justify-center items-center rounded-lg h-10 sm:h-12 bg-purple text-white">{!ran?`Sign In`:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' >
@@ -90,7 +90,7 @@ const handSubmit = async(e:FormEvent<HTMLFormElement>)=>{
                 <p className="text-white">Or</p>
                 <hr className="w-full  border-demotext "/>
               </div>
-              <div className="w-full h-10 rounded-lg sm:h-12 bg-black2 text-white gap-2 flex justify-center items-center">
+              <div className="w-full h-10 rounded-lg sm:h-12 bg-black2 text-white gap-2 flex justify-center items-center" onClick={()=>{window.location.href = 'https://middlemanbackend.onrender.com/auth/google'}}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M22 12C22 11.3284 21.9682 10.6647 21.9051 10.0156H12V14H17.6641C17.238 15.5394 16.3299 16.8066 15.0645 17.625V20.1625H18.5037C20.6712 18.7469 22 16.1044 22 12Z" fill="#4285F4"/>
                 <path d="M12 22C14.88 22 17.175 21.125 18.85 19.7437L15.4108 17.625C14.5487 18.2125 13.3713 18.5562 12 18.5562C9.22061 18.5562 6.92061 16.7437 6.00366 14.3187H2.42866V16.9312C4.0951 19.9625 7.69354 22 12 22Z" fill="#34A853"/>

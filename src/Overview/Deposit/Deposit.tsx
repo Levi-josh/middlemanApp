@@ -14,22 +14,18 @@ interface ErrorMessage {
 
 const Deposit = () => {
   const [amount,setAmount]=useState("")
-  const userId= localStorage.getItem('Id')
   const [data,setData]=useState("")
   const [errorMsg,setErrorMsg] = useState<ErrorMessage|null>()
   const [ran,setRan]=useState(false)
   const handSubmit = async(e:FormEvent<HTMLFormElement>)=>{
     e.preventDefault();
     setRan(true)
-    const option = {
-        method: 'Post',
-        headers: {
-            'content-type': 'application/json',
-        },
-        body:JSON.stringify({amount, userId})
-    }
     try {
-        const response = await fetch(` https://middlemanbackend.onrender.com/deposit`, option);
+        const response = await fetch(` https://middlemanbackend.onrender.com/deposit`, {
+          method: 'Post',
+          credentials: 'include',
+          body:JSON.stringify({amount})
+      });
         const data = await response.json();
         if (!response.ok) {
           setRan(false);

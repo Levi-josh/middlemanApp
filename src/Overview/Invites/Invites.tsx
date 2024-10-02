@@ -19,7 +19,7 @@ const Invites = () => {
     const [errorMsg,setErrorMsg] = useState<ErrorMessage|null>()
     const [ran,setRan]=useState(false)
     const [ searchedUser ,setSearchedUser ]=useState({username:'',profilePic:''})
-    const myid= localStorage.getItem('Id')
+    
     // const handSubmit = async(e:FormEvent<HTMLFormElement>)=>{
     //     e.preventDefault();
     //     setRan(true)
@@ -48,16 +48,12 @@ const Invites = () => {
         e.preventDefault();
         if(inviteCode.length < 36)return
         setRan(true);
-        const option = {
-            method: 'POST', 
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ userid: userid, myid: myid })
-        };
-    
         try {
-            const response = await fetch(`https://middlemanbackend.onrender.com/sendInvite`, option);
+            const response = await fetch(`https://middlemanbackend.onrender.com/sendInvite`, {
+              method: 'POST',
+              credentials: 'include',
+               body: JSON.stringify({ userid: userid })
+          });
             const data = await response.json();
             if (!response.ok) {
               setRan(false);
@@ -83,14 +79,11 @@ const Invites = () => {
         setInviteCode(e.target.value)
         const inviteValue = e.target.value
         const searchInvite = async()=>{
-            const option = {
-                method: 'Get',
-                headers: {
-                    'content-type': 'application/json',
-                },
-            }
             try {
-                const response = await fetch(` https://middlemanbackend.onrender.com/searchInvite/${inviteValue}`, option);
+                const response = await fetch(` https://middlemanbackend.onrender.com/searchInvite/${inviteValue}`, {
+                  method: 'Get',
+                  credentials: 'include',
+              });
                 const data = await response.json();
                 if (!response.ok) {
                   setRan(false);

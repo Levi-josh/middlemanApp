@@ -16,7 +16,10 @@ import 'swiper/css/scrollbar';
 import Footer from "../Footer/Footer";
 import { useChatContext  } from './Chat/ChatContext'
 import {  useEffect } from "react"
-import { useNavigate } from "react-router-dom"
+// import { useNavigate } from "react-router-dom"
+import { useDispatch,useSelector } from 'react-redux';
+import { verifyAuth } from '../Feature/Redux';
+import { AppDispatch, RootState  } from '../Feature/Store'; 
 
 
 // import Test from "./Test";
@@ -24,13 +27,47 @@ const Overview: React.FC = () => {
   const swiperRef = useRef<SwiperCore | null>();
   const { fromChat } = useChatContext();
   const [iconFill,setIconfill]=useState(true)
-  const Id = localStorage.getItem('Id')
-  const navigate = useNavigate()
-   useEffect(()=>{
-    if (!Id) {
-      navigate('/landingPage')
-    }
-  },[])
+  // const [isAuthenticated,setIsAuthenticated]=useState(false)
+  // const [user,setUser]=useState<any|null>()
+  const dispatch = useDispatch<AppDispatch>();
+  const isAuthenticated= useSelector((state: RootState) => state.mode.isAuthenticated);
+  
+ 
+  // const navigate = useNavigate()
+  //  useEffect(()=>{
+  //   // if (!Id) {
+  //   //   navigate('/landingPage')
+  //   // }
+  //   const checkAuth = async () => {
+  //     try {
+  //       const response = await fetch('http://localhost:3500/auth/verify', {
+  //         method: 'GET',
+  //         credentials: 'include', // Include cookies in the request
+  //       });
+
+  //       if (response.ok) {
+  //         const data = await response.json()
+  //         setUser(data)
+  //         setIsAuthenticated(true); // Set authenticated to true if valid
+  //       } else {
+  //         throw new Error('Not authenticated');
+  //       }
+  //     } catch (err) {
+  //       console.error(err);
+  //       setIsAuthenticated(false); // Set to false on error
+  //       if (location.pathname !== '/landingPage') {
+  //         navigate('/landingPage');
+  //       }
+  //     }
+  //   };
+
+  //   checkAuth();
+  // },[])
+
+  useEffect(() => {
+    // Dispatch verifyAuth action when the app loads
+    dispatch(verifyAuth());
+  }, [dispatch]);
 
 const goToSlide = (index: number) => {
     if (swiperRef.current) {
@@ -57,10 +94,10 @@ const handleSlideChange = () => {
       }
     }
   };
-
+console.log(isAuthenticated)
 return (
 <div className="w-full h-screen fixed      bg-black2">
-{Id && <div className="w-full   lg:hidden     h-full ">
+{isAuthenticated && <div className="w-full   lg:hidden     h-full ">
  {/* small screen */}
 
 <Swiper modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
@@ -74,7 +111,7 @@ return (
   initialSlide={fromChat?1:0}
  className="  text-white  w-full h-full ">
 <SwiperSlide ><Firstpage/></SwiperSlide> 
-<SwiperSlide> <Chat /></SwiperSlide> 
+<SwiperSlide> <Chat  /></SwiperSlide> 
 </Swiper>
 
 {/* large screen  */}
@@ -82,7 +119,7 @@ return (
 <Footer goToSlide={goToSlide}iconFill={iconFill} />
 
 </div>}
-{Id && <div className="hidden lg:flex  w-full h-full">
+{isAuthenticated && <div className="hidden lg:flex  w-full h-full">
 {/* <Laptopfirstpg/> */}
 <Firstpage/>
 <Chat />

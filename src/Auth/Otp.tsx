@@ -117,7 +117,7 @@ const verifyOtp = async(e:FormEvent<HTMLFormElement>)=>{
             />
           ))}
           </div>
-          <p className={`text-sm text-red-500 sm:text-base font-semibold ${errorMsg?.message?.otherErr?'visible':'invisible'} `}>{errorMsg?.message.otherErr}</p>
+          <p className={`text-sm text-red-500 sm:text-base  ${errorMsg?.message?.otherErr?'visible':'invisible'} `}>{errorMsg?.message.otherErr}</p>
           <button className='w-full md:w-106 flex justify-center items-center h-10 sm:h-12 bg-purple text-white rounded-lg'>{!ran?`Verify`:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M12 2V6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

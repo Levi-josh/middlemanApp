@@ -21,20 +21,17 @@ const Notification = () => {
     const [notes, setNotes] = useState<Note|null>();
     const [errors, setErrors] = useState<String>('');
     const [retry,setRetry] = useState<boolean>(false)
-    const Id = localStorage.getItem('Id')
     useEffect(()=>{
+    setNotes(null)
+    setErrors('')
     const fetchUsers = async()=>{
-      const option = {
-        method: 'Get',
-        headers: {
-            'content-type': 'application/json',
-        },
-    }
     try {
-        const response = await fetch(`https://middlemanbackend.onrender.com/getNotes/${Id}`, option);
+        const response = await fetch(`https://middlemanbackend.onrender.com/getNotes`, {
+            method: 'Get',
+            credentials: 'include',
+        });
         const data = await response.json()
         setNotes(data)
-       console.log(data)
     }
     catch (err:any) {
         console.log(err)
@@ -42,22 +39,18 @@ const Notification = () => {
       }
     }
     fetchUsers()
-    },[notes,Id,retry])
+    },[notes,retry])
 
     const acceptInvite = async(note:any)=>{
-        const option = {
-          method: 'Put',
-          headers: {
-              'content-type': 'application/json',
-          },
-      }
       try {
-          const response = await fetch(`https://middlemanbackend.onrender.com/acceptInvite/${note}/${Id}`, option);
+          const response = await fetch(`https://middlemanbackend.onrender.com/acceptInvite/${note}`,{
+            method: 'Put',
+            credentials: 'include',
+        });
           const data = await response.json()
           console.log(data)
       }
       catch (err:any) {
-          console.log(err)
           setErrors(err)
         }
       }
@@ -100,10 +93,10 @@ const Notification = () => {
                 ) : (
                 <div className="flex justify-center lg:mt-20 mt-28 md:mt-32 text-white">
                     {errors ? (
-                    <div className='bg-purple px-6 py-1 sm:px-10 hover:cursor-pointer h-auto rounded-full flex items-center gap-1' onClick={()=>setRetry((prev:boolean)=>!prev)}>
+                    <div className='flex items-center flex-col gap-3 sm:gap-5 '><p className='text-white text-base sm:text-lg'>something went wrong</p><div className='bg-purple px-6 py-1 sm:px-10 hover:cursor-pointer h-auto rounded-full flex items-center gap-1' onClick={()=>setRetry((prev:boolean)=>!prev)}>
                         <FaArrowRotateLeft />
                         <p>Retry</p>
-                    </div>
+                    </div></div>
                     ) : (
                     <motion.div
                         animate={{ rotate: 360 }}

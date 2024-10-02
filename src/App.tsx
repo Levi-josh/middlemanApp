@@ -31,7 +31,8 @@ import Transfer from './Overview/Transfer/Transfer';
 import Notification from './Overview/Notification/Notification';
 import Setting from './Overview/Setting/Setting';
 import Frequently from './Overview/F&Q/Frequently';
-import Overview2 from './Overview/Overview2'
+import Overview2 from './Overview/Overview2';
+import Support from './Overview/Chat/Support';
 
 
 
@@ -97,6 +98,7 @@ const AnimatedRoutes = () => {
         <Route path='withdraw' element={<MotionWrapper><Withdraw /></MotionWrapper>} />
         <Route path='transfer' element={<MotionWrapper><Transfer /></MotionWrapper>} />
         <Route path='history' element={<MotionWrapper><History /></MotionWrapper>} />
+        <Route path='support' element={<MotionWrapper><Support/></MotionWrapper>} />
         <Route path='customers' element={<MotionWrapper><Customers /></MotionWrapper>} />
         <Route path='verified' element={<Verified />} />
         <Route path='details' element={<Details />} />

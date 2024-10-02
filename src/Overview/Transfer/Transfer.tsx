@@ -20,20 +20,16 @@ const Transfer = () => {
   const [errorMsg,setErrorMsg] = useState<ErrorMessage|null>()
   const [ran,setRan]=useState(false)
   const [ searchedUser ,setSearchedUser ]=useState({username:'',profilePic:''})
-  const userId= localStorage.getItem('Id')
   const handSubmit = async(e:FormEvent<HTMLFormElement>)=>{
     e.preventDefault();
     if(walletAdd.length < 36)return
     setRan(true)
-    const option = {
-        method: 'Post',
-        headers: {
-            'content-type': 'application/json',
-        },
-        body:JSON.stringify({amount, userId,recipientId})
-    }
     try {
-        const response = await fetch(` https://middlemanbackend.onrender.com/makePayment`, option);
+        const response = await fetch(` https://middlemanbackend.onrender.com/makePayment`, {
+          method: 'Post',
+          credentials: 'include',
+          body:JSON.stringify({amount,recipientId})
+      });
         const data = await response.json();
         if (!response.ok) {
           setRan(false);
@@ -58,14 +54,11 @@ const handleChange = (e:ChangeEvent<HTMLInputElement>) =>{
   setWalletAdd(e.target.value)
     const walletid = e.target.value
     const searchInvite = async()=>{
-        const option = {
-            method: 'Get',
-            headers: {
-                'content-type': 'application/json',
-            },
-        }
         try {
-            const response = await fetch(` https://middlemanbackend.onrender.com/searchInvite/${walletid}`, option);
+            const response = await fetch(` https://middlemanbackend.onrender.com/searchInvite/${walletid}`, {
+              method: 'Get',
+              credentials: 'include',
+          });
             const data = await response.json();
             if (!response.ok) {
               setRan(false);

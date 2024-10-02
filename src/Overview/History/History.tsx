@@ -42,20 +42,18 @@ const History = () => {
   const [history, setHistory] = useState<transaction[]|null>();
   const [errors, setErrors] = useState<String>('');
   const [retry,setRetry] = useState<boolean>(false)
-  const Id = localStorage.getItem('Id')
+  
   useEffect(()=>{
+    setHistory(null)
+    setErrors('')
   const fetchUsers = async()=>{
-    const option = {
-      method: 'Get',
-      headers: {
-          'content-type': 'application/json',
-      },
-  }
   try {
-      const response = await fetch(`https://middlemanbackend.onrender.com/getHistory/${Id}`, option);
+      const response = await fetch(`https://middlemanbackend.onrender.com/getHistory`, {
+        method: 'Get',
+        credentials: 'include',
+    });
       const data = await response.json()
       setHistory(data)
-     console.log(data)
   }
   catch (err:any) {
     console.log(err)
@@ -63,7 +61,7 @@ const History = () => {
   }
   }
   fetchUsers()
-  },[Id,retry])
+  },[retry])
   return (
     <div className=" h-screen w-full text-white flex fixed flex-col justify-center items-center bg-black">
        <NavLink to={'/'} relative="path"><FaArrowLeft className="absolute text-white top-7 left-7 sm:top-10 sm:left-10 "/></NavLink>
@@ -89,7 +87,7 @@ const History = () => {
             </div>
           </div>)):history&&history.length===0?(<p className='text-white  mt-20  sm:text-lg font-semibold '>No transaction history yet!</p>)
         :
-        <div className="flex justify-center lg:mt-20 mt-28 md:mt-32  ">{errors?<div className='bg-purple px-6 py-1 sm:px-10 hover:cursor-pointer h-auto  rounded-full flex items-center gap-1' onClick={()=>setRetry((prev:boolean)=>!prev)}><FaArrowRotateLeft/><p >Retry</p></div>:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' >            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div className="flex justify-center lg:mt-20 mt-28 md:mt-32  ">{errors?<div className='flex items-center flex-col gap-3 sm:gap-5 '><p className='text-white text-base sm:text-lg'>something went wrong</p><div className='bg-purple px-6 py-1 sm:px-10 hover:cursor-pointer h-auto  rounded-full flex items-center gap-1' onClick={()=>setRetry((prev:boolean)=>!prev)}><FaArrowRotateLeft/><p >Retry</p></div></div>:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' >            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 2V6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M12 18V22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M4.929 4.929L7.757 7.757" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

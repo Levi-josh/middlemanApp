@@ -36,17 +36,14 @@ const Setting = () => {
         __v: number;
       }
       const [users, setusers] = useState<User|null>();
-      const Id = localStorage.getItem('Id')
+
 useEffect(()=>{
 const fetchUsers = async()=>{
-  const option = {
-    method: 'Get',
-    headers: {
-        'content-type': 'application/json',
-    },
-}
 try {
-    const response = await fetch(`https://middlemanbackend.onrender.com/getusers/${Id}`, option);
+    const response = await fetch(`https://middlemanbackend.onrender.com/getusers`, {
+      method: 'Get',
+      credentials: 'include',
+  });
     const data = await response.json()
     setusers(data)
 }
