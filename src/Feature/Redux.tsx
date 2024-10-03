@@ -1,30 +1,25 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-
-// Define the shape of your state
 interface AuthState {
-  user: User | null;         // User object or null
-  isAuthenticated: boolean;  // Is the user authenticated
-  error: string | null;      // Error message or null
+  user: User | null;        
+  isAuthenticated: boolean;  
+  error: string | null;     
 }
 
-// Define the User type (update this according to your backend response structure)
 interface User {
   Id: string;
 }
 
-// Initial state with proper typing
 const initialState: AuthState = {
   user: null,
   isAuthenticated: false,
   error: null,
 };
 
-// Async action to verify authentication, returning the `User` type
 export const verifyAuth = createAsyncThunk<User, void, { rejectValue: string }>(
   'mode/verifyAuth',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await fetch('http://localhost:3500/auth/verify', {
+      const response = await fetch('https://middlemanbackend.onrender.com/auth/verify', {
         method: 'GET',
         credentials: 'include', // Include cookies in the request
       });

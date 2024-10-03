@@ -48,7 +48,6 @@ interface User {
 const [users, setusers] = useState<User|null>();
 const [errors, setErrors] = useState<String>('');
 const [retry,setRetry] = useState<boolean>(false)
-const Id = localStorage.getItem('Id')
 useEffect(()=>{
   setusers(null)
   setErrors('')
@@ -66,7 +65,7 @@ catch (err:any) {
 }
 }
 fetchUsers()
-},[Id,retry])
+},[retry])
 console.log(users)
   return (
     <div className="w-full overflow-x-hidden lg:overflow-auto   bg-black2    lg:px-5 lg:w-107 xl:w-1075 lg:h-screen h-full " onScroll={scrolldiv}>

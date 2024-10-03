@@ -16,7 +16,7 @@ import 'swiper/css/scrollbar';
 import Footer from "../Footer/Footer";
 import { useChatContext  } from './Chat/ChatContext'
 import {  useEffect } from "react"
-// import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { useDispatch,useSelector } from 'react-redux';
 import { verifyAuth } from '../Feature/Redux';
 import { AppDispatch, RootState  } from '../Feature/Store'; 
@@ -31,11 +31,12 @@ const Overview: React.FC = () => {
   // const [user,setUser]=useState<any|null>()
   const dispatch = useDispatch<AppDispatch>();
   const isAuthenticated= useSelector((state: RootState) => state.mode.isAuthenticated);
-  
+  const isError= useSelector((state: RootState) => state.mode.error);
+  const navigate = useNavigate()
  
   // const navigate = useNavigate()
   //  useEffect(()=>{
-  //   // if (!Id) {
+  //   // if (isErrorr) {
   //   //   navigate('/landingPage')
   //   // }
   //   const checkAuth = async () => {
@@ -66,9 +67,14 @@ const Overview: React.FC = () => {
 
   useEffect(() => {
     // Dispatch verifyAuth action when the app loads
+    
     dispatch(verifyAuth());
   }, [dispatch]);
-
+  useEffect(() => {
+      if (isError) {
+      navigate('/landingPage')}
+  }, [isError]);
+console.log(isError)
 const goToSlide = (index: number) => {
     if (swiperRef.current) {
       swiperRef.current.slideTo(index);
