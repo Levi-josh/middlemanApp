@@ -39,7 +39,7 @@ const Notification = () => {
       }
     }
     fetchUsers()
-    },[notes,retry])
+    },[retry])
 
     const acceptInvite = async(note:any)=>{
       try {
