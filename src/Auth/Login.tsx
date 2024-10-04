@@ -325,13 +325,13 @@ console.log(errorMsg)
               </div>
             </div>
           </motion.div>
-          <motion.div className="p-4 md:p-5 w-full bg-black rounded-xl flex flex-col gap-3" variants={containerVariants} initial="hidden"whileInView="visible" viewport={{ once: true, amount: 0.5 }}>
-            <motion.h1 className="text-purple font-bold text-xl text-center md:text-start lg:text-2xl"variants={textRevealVariants}> Contact us</motion.h1>
-              <div className="w-full flex gap-5  flex-col md:flex-row items-center text-white">
-                  <div className="w-full flex flex-row md:flex-col items-center gap-3 md:gap-2 p-3 h-1015 md:h-102 lg:h-104 shadow-lg shadow-black2 border border-b-0 border-black2  rounded-lg bg-black">
-                    <div className="bg-purple w-12 h-12 sm:w-16 sm:h-16  flex-shrink-0 rounded-full flex items-center justify-center">
+          {/* <motion.div className="p-4 md:p-5 w-full bg-black rounded-xl flex flex-col gap-3" variants={containerVariants} initial="hidden"whileInView="visible" viewport={{ once: true, amount: 0.5 }}>
+            <motion.h1 className="text-purple font-bold text-xl text-center md:text-start lg:text-2xl"variants={textRevealVariants}> Contact us</motion.h1> */}
+              <div className="w-full flex gap-5   flex-col md:flex-row items-center text-white">
+                  <div className="w-full flex flex-row md:flex-col items-center gap-3 md:gap-2 p-3 h-20 md:h-102 lg:h-104 shadow-lg shadow-black2 border border-b-0 border-black2  rounded-xl bg-black">
+                    <div className="bg-purple w-11 h-11 sm:w-16 sm:h-16  flex-shrink-0 rounded-full flex items-center justify-center">
                     <svg 
-                      className="w-6 h-6" 
+                      className="sm:w-6 sm:h-6 w-4 h-4" 
                       viewBox="0 0 24 24" 
                       fill="none" 
                       xmlns="http://www.w3.org/2000/svg">
@@ -344,15 +344,15 @@ console.log(errorMsg)
                     </svg>
 
                     </div>
-                    <div className="w-full flex flex-col gap-1 md:gap-4 md:items-center ">
-                      <p className="text-base sm:text-lg font-bold">Phone Number</p>
+                    <div className="w-full flex flex-col  md:gap-4 md:items-center ">
+                      <p className="text-base sm:text-lg font-semibold">Phone Number</p>
                       <p className="text-sm sm:text-base font-sans">+125-639-075-355</p> 
                     </div>
                   </div>
-                  <div className="w-full flex flex-row md:flex-col items-center gap-3 md:gap-2 p-3  h-1015 md:h-102 lg:h-104 shadow-lg shadow-black2 border border-b-0 border-black2  rounded-lg bg-black">
-                      <div className="bg-purple w-12 h-12 sm:w-16 sm:h-16  flex-shrink-0 rounded-full flex items-center justify-center">
+                  <div className="w-full flex flex-row md:flex-col items-center gap-3 md:gap-2 p-3  h-20 md:h-102 lg:h-104 shadow-lg shadow-black2 border border-b-0 border-black2  rounded-lg bg-black">
+                      <div className="bg-purple w-11 h-11 sm:w-16 sm:h-16  flex-shrink-0 rounded-full flex items-center justify-center">
                       <svg 
-                        className="w-6 h-6" 
+                        className="sm:w-6 sm:h-6 w-4 h-4" 
                         viewBox="0 0 24 24" 
                         fill="none" 
                         xmlns="http://www.w3.org/2000/svg">
@@ -365,18 +365,18 @@ console.log(errorMsg)
                       </svg>
 
                       </div>  
-                      <div className="w-full flex flex-col gap-1 md:gap-4 md:items-center md:h-full ">  
-                        <p className="text-base sm:text-lg font-bold">Support Team</p>
+                      <div className="w-full flex flex-col  md:gap-4 md:items-center md:h-full ">  
+                        <p className="text-base sm:text-lg font-semibold">Support Team</p>
                         <div className="flex w-full justify-between md:h-full lg:flex-col">
                         <p className="text-sm sm:text-base font-sans md:text-center">click to chat support team</p> 
-                        <button className="bg-purple px-3 rounded-lg sm:px-6 sm:py-1">Chat</button>
+                        <button className="bg-purple  px-3 rounded-lg sm:px-6 sm:py-1 text-sm">Chat</button>
                         </div>
                       </div>
                   </div>
-                  <div className="w-full flex flex-row md:flex-col items-center gap-3 md:gap-2 p-3 h-1015 md:h-102 lg:h-104 shadow-lg shadow-black2 border border-b-0 border-black2 rounded-lg bg-black">
-                    <div className="bg-purple w-12 h-12 sm:w-16 sm:h-16 flex-shrink-0 rounded-full flex items-center justify-center">
+                  <div className="w-full flex flex-row md:flex-col items-center gap-3 md:gap-2 p-3 h-20 md:h-102 lg:h-104 shadow-lg shadow-black2 border border-b-0 border-black2 rounded-lg bg-black">
+                    <div className="bg-purple w-11 h-11 sm:w-16 sm:h-16 flex-shrink-0 rounded-full flex items-center justify-center">
                     <svg 
-                      className="w-6 h-6" 
+                      className="sm:w-6 sm:h-6 w-4 h-4" 
                       viewBox="0 0 24 24" 
                       fill="none" 
                       xmlns="http://www.w3.org/2000/svg">
@@ -389,13 +389,13 @@ console.log(errorMsg)
                     </svg>
 
                     </div>
-                    <div className="w-full flex flex-col gap-1 md:gap-4 md:items-center ">
-                      <p className="text-base sm:text-lg font-bold">Send Mail</p>
+                    <div className="w-full flex flex-col md:gap-4 md:items-center ">
+                      <p className="text-base sm:text-lg font-semibold">Send Mail</p>
                       <p className="text-sm sm:text-base font-sans">MiddlemanApp@gmail.com</p>
                     </div> 
                   </div>
               </div>
-          </motion.div>
+          {/* </motion.div> */}
 
           <motion.div className="p-4 md:p-5 w-full bg-black rounded-xl flex flex-col gap-3"variants={containerVariants}initial="hidden"whileInView="visible"viewport={{ once: true, amount: 0.5 }}>
             <motion.h1 className="text-purple font-bold text-xl text-center md:text-start lg:text-2xl"variants={textRevealVariants}>Third-Party Involvement</motion.h1>

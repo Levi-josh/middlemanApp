@@ -67,7 +67,6 @@ const Overview: React.FC = () => {
 
   useEffect(() => {
     // Dispatch verifyAuth action when the app loads
-    
     dispatch(verifyAuth());
   }, [dispatch]);
   useEffect(() => {
