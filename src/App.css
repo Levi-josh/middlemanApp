@@ -102,6 +102,13 @@
     cursor: pointer;
     
 }
+.show1{
+    transform: rotate(-45deg);   
+}
+.show2{
+    stroke-dasharray: 20 300;
+    stroke-dashoffset: -32.42;  
+}
 .overflow-div::-webkit-scrollbar {
     width: 0px;
     background-color: gainsboro;

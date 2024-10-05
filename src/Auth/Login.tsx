@@ -1,11 +1,13 @@
-import { useState,FormEvent, } from "react"
+import { useState,FormEvent,useRef } from "react"
 import { useNavigate } from "react-router-dom"
 import { NavLink } from "react-router-dom"
 import { motion } from 'framer-motion';
 import middlemanImage from '../assets/middlemanImage.jpg'
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa6";
 // import { FaBars} from "react-icons/fa";
-// const ham = document.querySelector('.ham');
+const ham = document.querySelector('.ham');
+// const hamburger = document.querySelector('.hamburger');
+// const line = document.querySelector('.line-top-bottom')||null;
 // const navComp = document.querySelector('.nav_comp');
 
 
@@ -27,6 +29,8 @@ const [fixedBody,setFixedBody]= useState<boolean>(true)
 const [switchForm,setSwitchForm] = useState<boolean>(true)
 const [imageLoaded, setImageLoaded] = useState(false);
 const [errorMsg,setErrorMsg] = useState<ErrorMessage|null>()
+const aboutRef = useRef<null | HTMLDivElement>(null);
+const contactRef = useRef<null | HTMLDivElement>(null);
 
 // Function to handle image load event
 const handleImageLoad = () => {
@@ -45,18 +49,10 @@ const containerVariants = {
    
   }
 };
-// ham?.addEventListener('click', () => {
-//   if (navComp?.classList.contains('show')) {
-//       navComp?.classList.remove('show');
-//       console.log('show')
-//       setFixedBody(true)
-     
-//   } else {
-//       navComp?.classList.add('show');
-//       setFixedBody(false)
-     
-//   }
-// })
+ham?.addEventListener('click', () => {
+//  line?.className='line-top-bottom' 
+
+})
 
 
 const textRevealVariants = {
@@ -70,7 +66,10 @@ const textRevealVariants = {
     }
   }
 };
-
+const scrolltoPage = (currentRef:any)=> {
+  changeIcon()
+  currentRef.current?.scrollIntoView({ behavior: "smooth" });
+}
 const signUpHandSubmit = async(e:FormEvent<HTMLFormElement>)=>{
     e.preventDefault();
     setRan(true)
@@ -228,8 +227,8 @@ console.log(errorMsg)
         <div  className={`w-full text-white z-10   flex sm:text-lg  flex-col justify-around items-center h-104 before:pointer-events-none ${fixedBody?'-top-80 sm:-top-96':' top-16'}  lg:hidden transition-all duration-500 fixed   before:h-103 before:w-full before:absolute before:bg-opacity-20 backdrop-blur-2xl`}>
                 <NavLink to={'/landingPage/phoneSignin'} className={''}><p className="font-bold text-white z-30 ">Sign In</p></NavLink>
                 <NavLink to={'/landingPage/phoneSignup'}><p className="font-bold text-white z-30 ">Sign Up</p></NavLink>
-                <p className="font-bold text-white z-30 ">About Us</p>
-                <p className="font-bold text-white z-30">Contact Us</p>
+                <p className="font-bold text-white z-30 " onClick={()=>{scrolltoPage(aboutRef)}}>About Us</p>
+                <p className="font-bold text-white z-30" onClick={()=>{scrolltoPage(contactRef)}}>Contact Us</p>
               </div>
         <div className="lg:px-7 lg:pt-7 px-4 sm:px-6 md:px-8       flex flex-col gap-7 sm:gap-10 lg:gap-9 ">
           <div className="flex flex-col  lg:items-center relative    justify-between w-full gap-4 ">
@@ -242,7 +241,7 @@ console.log(errorMsg)
                 {/* <FaBars className="text-white text-2xl sm:text-3xl"/> */}
                 <div className="menu" >
                   <label className="hamburger">
-                       <input type="checkbox" className="ham "/> 
+                       <input type="checkbox" className="ham" onChange={()=>console.log('ran')} /> 
                       <svg viewBox="0 0 32 32" onClick={changeIcon}>
                           <path className="line line-top-bottom "
                               d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22">
@@ -258,7 +257,7 @@ console.log(errorMsg)
                 <motion.h2 className="text-white text-center text-sm font-sans sm:text-base"   variants={textRevealVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }}>Your Trusted Escrow Service for Secure Transactions...</motion.h2>
               </div>
           </div>
-          {middlemanImage&&<motion.div style={{ display: imageLoaded ? "visible" : "invisible" }} className="w-full  rounded-xl h-auto  md:pb-6 md:pr-0 md:pl-6 md:pt-6 mt-3 sm:mt-5 gap-7 sm:gap-10 md:gap-0    md:bg-black  flex flex-col md:flex-row   "  variants={textRevealVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }}>
+          {middlemanImage&&<motion.div ref={aboutRef}  style={{ display: imageLoaded ? "visible" : "invisible" }} className="w-full  rounded-xl h-auto  md:pb-6 md:pr-0 md:pl-6 md:pt-6 mt-3 sm:mt-5 gap-7 sm:gap-10 md:gap-0    md:bg-black  flex flex-col md:flex-row   "  variants={textRevealVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }}>
             {/* <img src={middlemanImage} onLoad={handleImageLoad} className="bg-no-repeat before:bg-black before:absolute before:w-full before:h-auto bg-cover bg-center  md:w-105 h-auto rounded-xl    w-full object-cover  "/>  */}
             <div className="middleman md:w-105  w-full h-auto"><img src={middlemanImage} onLoad={handleImageLoad} className="bg-no-repeat bg-cover bg-center  h-full rounded-xl    w-full object-cover  "/> </div>
             <div className="md:w-105 md:pb-6 p-4 bg-black sm:p-5 md:pt-0 rounded-lg md:rounded-none  md:pl-5 md:pr-2 flex flex-col gap-3 md:gap-1">
@@ -325,13 +324,13 @@ console.log(errorMsg)
               </div>
             </div>
           </motion.div>
-          {/* <motion.div className="p-4 md:p-5 w-full bg-black rounded-xl flex flex-col gap-3" variants={containerVariants} initial="hidden"whileInView="visible" viewport={{ once: true, amount: 0.5 }}>
-            <motion.h1 className="text-purple font-bold text-xl text-center md:text-start lg:text-2xl"variants={textRevealVariants}> Contact us</motion.h1> */}
+          <motion.div ref={contactRef} className="py-4 sm:p-4 md:p-5 px-2  w-full bg-black rounded-xl flex flex-col gap-3" variants={containerVariants} initial="hidden"whileInView="visible" viewport={{ once: true, amount: 0.5 }}>
+            <motion.h1 className="text-purple font-bold text-xl text-center md:text-start lg:text-2xl"variants={textRevealVariants}> Contact us</motion.h1>
               <div className="w-full flex gap-5   flex-col md:flex-row items-center text-white">
-                  <div className="w-full flex flex-row md:flex-col items-center gap-3 md:gap-2 p-3 h-20 md:h-102 lg:h-104 shadow-lg shadow-black2 border border-b-0 border-black2  rounded-xl bg-black">
-                    <div className="bg-purple w-11 h-11 sm:w-16 sm:h-16  flex-shrink-0 rounded-full flex items-center justify-center">
+                  <div className="w-full flex flex-row md:flex-col items-center gap-3 md:gap-2 p-3  h-20 sm:h-24 md:h-52  border  border-black2  rounded-xl bg-black">
+                    <div className="bg-purple w-11 h-11 sm:w-14 sm:h-14  flex-shrink-0 rounded-full flex items-center justify-center">
                     <svg 
-                      className="sm:w-6 sm:h-6 w-4 h-4" 
+                      className="sm:w-5 sm:h-5 w-4 h-4" 
                       viewBox="0 0 24 24" 
                       fill="none" 
                       xmlns="http://www.w3.org/2000/svg">
@@ -344,15 +343,15 @@ console.log(errorMsg)
                     </svg>
 
                     </div>
-                    <div className="w-full flex flex-col  md:gap-4 md:items-center ">
+                    <div className="w-full flex flex-col  md:gap-2 md:items-center ">
                       <p className="text-base sm:text-lg font-semibold">Phone Number</p>
                       <p className="text-sm sm:text-base font-sans">+125-639-075-355</p> 
                     </div>
                   </div>
-                  <div className="w-full flex flex-row md:flex-col items-center gap-3 md:gap-2 p-3  h-20 md:h-102 lg:h-104 shadow-lg shadow-black2 border border-b-0 border-black2  rounded-lg bg-black">
-                      <div className="bg-purple w-11 h-11 sm:w-16 sm:h-16  flex-shrink-0 rounded-full flex items-center justify-center">
+                  <div className="w-full flex flex-row md:flex-col items-center gap-3 md:gap-2 p-3  h-20 sm:h-24 md:h-52  border  border-black2  rounded-xl bg-black">
+                      <div className="bg-purple w-11 h-11 sm:w-14 sm:h-14   flex-shrink-0 rounded-full flex items-center justify-center">
                       <svg 
-                        className="sm:w-6 sm:h-6 w-4 h-4" 
+                        className="sm:w-5 sm:h-5 w-4 h-4 " 
                         viewBox="0 0 24 24" 
                         fill="none" 
                         xmlns="http://www.w3.org/2000/svg">
@@ -365,18 +364,18 @@ console.log(errorMsg)
                       </svg>
 
                       </div>  
-                      <div className="w-full flex flex-col  md:gap-4 md:items-center md:h-full ">  
+                      <div className="w-full flex flex-col  md:gap-2 md:items-center md:h-full ">  
                         <p className="text-base sm:text-lg font-semibold">Support Team</p>
-                        <div className="flex w-full justify-between md:h-full lg:flex-col">
+                        <div className="flex w-full justify-between md:h-full md:flex-col">
                         <p className="text-sm sm:text-base font-sans md:text-center">click to chat support team</p> 
-                        <button className="bg-purple  px-3 rounded-lg sm:px-6 sm:py-1 text-sm">Chat</button>
+                        <button className="bg-purple  px-4 rounded-md sm:px-6 py-1 text-sm sm:text-base">Chat</button>
                         </div>
                       </div>
                   </div>
-                  <div className="w-full flex flex-row md:flex-col items-center gap-3 md:gap-2 p-3 h-20 md:h-102 lg:h-104 shadow-lg shadow-black2 border border-b-0 border-black2 rounded-lg bg-black">
-                    <div className="bg-purple w-11 h-11 sm:w-16 sm:h-16 flex-shrink-0 rounded-full flex items-center justify-center">
+                  <div className="w-full flex flex-row md:flex-col items-center gap-3 md:gap-2 p-3 h-20 sm:h-24 md:h-52  border  border-black2 rounded-xl bg-black">
+                    <div className="bg-purple w-11 h-11 sm:w-14 sm:h-14 flex-shrink-0 rounded-full flex items-center justify-center">
                     <svg 
-                      className="sm:w-6 sm:h-6 w-4 h-4" 
+                      className="sm:w-5 sm:h-5 w-4 h-4" 
                       viewBox="0 0 24 24" 
                       fill="none" 
                       xmlns="http://www.w3.org/2000/svg">
@@ -389,15 +388,15 @@ console.log(errorMsg)
                     </svg>
 
                     </div>
-                    <div className="w-full flex flex-col md:gap-4 md:items-center ">
+                    <div className="w-full flex flex-col md:gap-2 md:items-center ">
                       <p className="text-base sm:text-lg font-semibold">Send Mail</p>
                       <p className="text-sm sm:text-base font-sans">MiddlemanApp@gmail.com</p>
                     </div> 
                   </div>
               </div>
-          {/* </motion.div> */}
+          </motion.div>
 
-          <motion.div className="p-4 md:p-5 w-full bg-black rounded-xl flex flex-col gap-3"variants={containerVariants}initial="hidden"whileInView="visible"viewport={{ once: true, amount: 0.5 }}>
+          <motion.div id="about" className="p-4 md:p-5 w-full bg-black rounded-xl flex flex-col gap-3"variants={containerVariants}initial="hidden"whileInView="visible"viewport={{ once: true, amount: 0.5 }}>
             <motion.h1 className="text-purple font-bold text-xl text-center md:text-start lg:text-2xl"variants={textRevealVariants}>Third-Party Involvement</motion.h1>
             <div className="text-white text-sm sm:text-base flex flex-col gap-4 sm:gap-5">
               <div className="flex gap-2 items-start" >
