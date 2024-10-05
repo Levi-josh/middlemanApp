@@ -33,6 +33,7 @@ const Overview: React.FC = () => {
   const isAuthenticated= useSelector((state: RootState) => state.mode.isAuthenticated);
   const isError= useSelector((state: RootState) => state.mode.error);
   const navigate = useNavigate()
+  const loggedIn = localStorage.getItem('loggin')
  
   // const navigate = useNavigate()
   //  useEffect(()=>{
@@ -70,7 +71,7 @@ const Overview: React.FC = () => {
     dispatch(verifyAuth());
   }, [dispatch]);
   useEffect(() => {
-      if (isError) {
+      if (isError||!loggedIn) {
       navigate('/landingPage')}
   }, [isError]);
 console.log(isError)

@@ -141,8 +141,13 @@ const changeForm = () => {
   setSwitchForm(prev => !prev)
 }
 const changeIcon = ()=>{
- 
   setFixedBody(prev=>!prev)
+}
+const scrolltoTop = ()=>{
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 }
 console.log(errorMsg)
   return (
@@ -235,8 +240,8 @@ console.log(errorMsg)
         <div  className={`w-full text-white z-10   flex sm:text-lg  flex-col justify-around items-center h-104 before:pointer-events-none ${fixedBody?'-top-80 sm:-top-96':' top-16'}  lg:hidden transition-all duration-500 fixed   before:h-103 before:w-full before:absolute before:bg-opacity-20 backdrop-blur-2xl`}>
                 <NavLink to={'/landingPage/phoneSignin'} className={''}><p className="font-bold text-white z-30 ">Sign In</p></NavLink>
                 <NavLink to={'/landingPage/phoneSignup'}><p className="font-bold text-white z-30 ">Sign Up</p></NavLink>
-                <p className="font-bold text-white z-30 " onClick={()=>{scrolltoPage(aboutRef)}}>About Us</p>
-                <p className="font-bold text-white z-30" onClick={()=>{scrolltoPage(contactRef)}}>Contact Us</p>
+                <p className="font-bold text-white z-30 hover:cursor-pointer " onClick={()=>{scrolltoPage(aboutRef)}}>About Us</p>
+                <p className="font-bold text-white z-30 hover:cursor-pointer" onClick={()=>{scrolltoPage(contactRef)}}>Contact Us</p>
         </div>
         <div className="lg:px-7 lg:pt-7 px-4 sm:px-6 md:px-8       flex flex-col gap-7 sm:gap-10 lg:gap-9 ">
           <div className="flex flex-col  lg:items-center relative    justify-between w-full gap-4 ">
@@ -427,23 +432,23 @@ console.log(errorMsg)
                     </div>
 
                     <ul className='flex flex-col items-center justify-center md:flex-row gap-5 sm:gap-7 md:gap-5 lg:gap-8 xl:gap-14 text-sm sm:text-base'>
-                        <li>BackToTop</li>
-                        <li>Contact Us</li>
-                        <li>About Us</li>
+                        <li className="hover:cursor-pointer" onClick={scrolltoTop}>BackToTop</li>
+                        <li onClick={()=>{scrolltoPage(contactRef)}} className="hover:cursor-pointer">Contact Us</li>
+                        <li onClick={()=>{scrolltoPage(aboutRef)}} className="hover:cursor-pointer">About Us</li>
                     </ul>
                 </div>
                 <div className='flex items-center gap-5  flex-col-reverse  pt-5 md:justify-between sm:pt-7 '>
                     <div className='flex justify-center gap-5 md:gap-4 flex-col-reverse md:flex-row  lg:gap-6 xl:gap-8'>
                         <p className='whitespace-nowrap text-sm sm:text-base'>Copyright 2023 Middleman.All rights reserved. </p>
                         <div className='flex justify-center text-sm sm:text-base gap-6 md:gap-4 lg:gap-5 xl:gap-7 font-semibold'>
-                            <p className=' whitespace-nowrap'>Privacy policy</p>
-                            <p className=' whitespace-nowrap'>Terms of use</p>
+                            <p className=' whitespace-nowrap hover:cursor-pointer'>Privacy policy</p>
+                            <p className=' whitespace-nowrap hover:cursor-pointer'>Terms of use</p>
                         </div>
                     </div>
                     <div className='flex items-center gap-7 md:gap-4 lg:gap-10 text-lg sm:text-xl'>
-                        <FaInstagram/>
-                        <FaFacebook />
-                        <FaTwitter />
+                        <FaInstagram className="hover:cursor-pointer"/>
+                        <FaFacebook className="hover:cursor-pointer" />
+                        <FaTwitter className="hover:cursor-pointer" />
                     </div>
                 </div>
         </footer>
