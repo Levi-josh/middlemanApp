@@ -16,7 +16,7 @@ import 'swiper/css/scrollbar';
 import Footer from "../Footer/Footer";
 import { useChatContext  } from './Chat/ChatContext'
 import {  useEffect } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate} from "react-router-dom"
 import { useDispatch,useSelector } from 'react-redux';
 import { verifyAuth } from '../Feature/Redux';
 import { AppDispatch, RootState  } from '../Feature/Store'; 
@@ -33,8 +33,7 @@ const Overview: React.FC = () => {
   const isAuthenticated= useSelector((state: RootState) => state.mode.isAuthenticated);
   const isError= useSelector((state: RootState) => state.mode.error);
   const navigate = useNavigate()
-  const loggedIn = localStorage.getItem('loggin')
- 
+  const loggedIn = localStorage.getItem('loggedIn')
   // const navigate = useNavigate()
   //  useEffect(()=>{
   //   // if (isErrorr) {

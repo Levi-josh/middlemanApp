@@ -77,6 +77,9 @@ const scrolltoPage = (currentRef:any)=> {
   setMenuOpen(!menuOpen); 
   currentRef.current?.scrollIntoView({ behavior: "smooth" });
 }
+const scrolltoPage1 = (currentRef:any)=> {
+  currentRef.current?.scrollIntoView({ behavior: "smooth" });
+}
 const signUpHandSubmit = async(e:FormEvent<HTMLFormElement>)=>{
     e.preventDefault();
     setRan(true)
@@ -124,7 +127,7 @@ const signInHandSubmit = async(e:FormEvent<HTMLFormElement>)=>{
           setRan(false);
           setErrorMsg({message:data.errorMessage})
         }else{
-        localStorage.setItem('Id', data.UserId)
+        localStorage.setItem('loggedIn', 'true')
         data && navigate('/')   
      }
     }
@@ -433,8 +436,8 @@ console.log(errorMsg)
 
                     <ul className='flex flex-col items-center justify-center md:flex-row gap-5 sm:gap-7 md:gap-5 lg:gap-8 xl:gap-14 text-sm sm:text-base'>
                         <li className="hover:cursor-pointer" onClick={scrolltoTop}>BackToTop</li>
-                        <li onClick={()=>{scrolltoPage(contactRef)}} className="hover:cursor-pointer">Contact Us</li>
-                        <li onClick={()=>{scrolltoPage(aboutRef)}} className="hover:cursor-pointer">About Us</li>
+                        <li onClick={()=>{scrolltoPage1(contactRef)}} className="hover:cursor-pointer">Contact Us</li>
+                        <li onClick={()=>{scrolltoPage1(aboutRef)}} className="hover:cursor-pointer">About Us</li>
                     </ul>
                 </div>
                 <div className='flex items-center gap-5  flex-col-reverse  pt-5 md:justify-between sm:pt-7 '>
