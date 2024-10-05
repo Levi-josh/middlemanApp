@@ -31,6 +31,12 @@ const [imageLoaded, setImageLoaded] = useState(false);
 const [errorMsg,setErrorMsg] = useState<ErrorMessage|null>()
 const aboutRef = useRef<null | HTMLDivElement>(null);
 const contactRef = useRef<null | HTMLDivElement>(null);
+const [menuOpen, setMenuOpen] = useState(false);
+
+const toggleMenu = () => {
+  setMenuOpen(!menuOpen);  // Toggle between true and false
+};
+
 
 // Function to handle image load event
 const handleImageLoad = () => {
@@ -68,6 +74,7 @@ const textRevealVariants = {
 };
 const scrolltoPage = (currentRef:any)=> {
   changeIcon()
+  setMenuOpen(!menuOpen); 
   currentRef.current?.scrollIntoView({ behavior: "smooth" });
 }
 const signUpHandSubmit = async(e:FormEvent<HTMLFormElement>)=>{
@@ -134,6 +141,7 @@ const changeForm = () => {
   setSwitchForm(prev => !prev)
 }
 const changeIcon = ()=>{
+ 
   setFixedBody(prev=>!prev)
 }
 console.log(errorMsg)
@@ -229,7 +237,7 @@ console.log(errorMsg)
                 <NavLink to={'/landingPage/phoneSignup'}><p className="font-bold text-white z-30 ">Sign Up</p></NavLink>
                 <p className="font-bold text-white z-30 " onClick={()=>{scrolltoPage(aboutRef)}}>About Us</p>
                 <p className="font-bold text-white z-30" onClick={()=>{scrolltoPage(contactRef)}}>Contact Us</p>
-              </div>
+        </div>
         <div className="lg:px-7 lg:pt-7 px-4 sm:px-6 md:px-8       flex flex-col gap-7 sm:gap-10 lg:gap-9 ">
           <div className="flex flex-col  lg:items-center relative    justify-between w-full gap-4 ">
               <div className="flex lg:hidden bg-black2  pt-4 sm:pt-6 z-20  justify-between items-center ">
@@ -241,12 +249,12 @@ console.log(errorMsg)
                 {/* <FaBars className="text-white text-2xl sm:text-3xl"/> */}
                 <div className="menu" >
                   <label className="hamburger">
-                       <input type="checkbox" className="ham" onChange={()=>console.log('ran')} /> 
+                       <input type="checkbox" className="ham" onChange={toggleMenu} checked={menuOpen}  /> 
                       <svg viewBox="0 0 32 32" onClick={changeIcon}>
-                          <path className="line line-top-bottom "
+                          <path className={`line line-top-bottom ${menuOpen ? '' : ''}`}
                               d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22">
                           </path>
-                          <path className="line" d="M7 16 27 16"></path>
+                          <path className={`line `} d="M7 16 27 16"></path>
                       </svg>
                   </label>
                  </div>
