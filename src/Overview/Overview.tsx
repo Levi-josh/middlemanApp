@@ -66,11 +66,10 @@ const Overview: React.FC = () => {
   // },[])
 
   useEffect(() => {
-    // Dispatch verifyAuth action when the app loads
     dispatch(verifyAuth());
   }, [dispatch]);
   useEffect(() => {
-      if (isError||!loggedIn) {
+      if (!loggedIn) {
       navigate('/landingPage')}
   }, [isError]);
 console.log(isError)
