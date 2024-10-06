@@ -19,22 +19,21 @@ const Details = () => {
     const [errorMsg,setErrorMsg] = useState<ErrorMessage|null>()
     const fileInputRef = useRef<HTMLInputElement>(null);
     const [ran,setRan]=useState(false)
-    const id = localStorage.getItem('Id')
 
     const handSubmit = async(e:FormEvent<HTMLFormElement>)=>{
         e.preventDefault();
-        if (!selectedFile || !id) return;
+        if (!selectedFile ) return;
         setRan(true)
         const formData = new FormData();
         formData.append('image', selectedFile);
         formData.append('username', username);
-        formData.append('id', id );
-        const option = {
-          method: 'POST',
-          body: formData,
-        };
+
         try {
-              const response = await fetch(`https://middlemanbackend.onrender.com/getPfp`, option);
+              const response = await fetch(`https://middlemanbackend.onrender.com/getPfp`,
+              { method: 'POST',
+              body: formData,
+              credentials: 'include'
+              });
               const data = await response.json();
               if (!response.ok) {
                 setRan(false);

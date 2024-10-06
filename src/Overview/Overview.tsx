@@ -16,7 +16,7 @@ import 'swiper/css/scrollbar';
 import Footer from "../Footer/Footer";
 import { useChatContext  } from './Chat/ChatContext'
 import {  useEffect } from "react"
-import { useNavigate} from "react-router-dom"
+import { useNavigate,useSearchParams} from "react-router-dom"
 import { useDispatch,useSelector } from 'react-redux';
 import { verifyAuth } from '../Feature/Redux';
 import { AppDispatch, RootState  } from '../Feature/Store'; 
@@ -33,6 +33,7 @@ const Overview: React.FC = () => {
   const isAuthenticated= useSelector((state: RootState) => state.mode.isAuthenticated);
   const isError= useSelector((state: RootState) => state.mode.error);
   const navigate = useNavigate()
+  const searchParams = useSearchParams()
   const loggedIn = localStorage.getItem('loggedIn')
   // const navigate = useNavigate()
   //  useEffect(()=>{
@@ -71,8 +72,12 @@ const Overview: React.FC = () => {
   useEffect(() => {
       if (!loggedIn) {
       navigate('/landingPage')}
+  }, [loggedIn]);
+  useEffect(() => {
+      if (isError) {
+      localStorage.removeItem('loggedIn')}
   }, [isError]);
-console.log(isError)
+
 const goToSlide = (index: number) => {
     if (swiperRef.current) {
       swiperRef.current.slideTo(index);
@@ -98,7 +103,8 @@ const handleSlideChange = () => {
       }
     }
   };
-console.log(isAuthenticated)
+  
+console.log(searchParams)
 return (
 <div className="w-full h-screen fixed      bg-black2">
 {isAuthenticated && <div className="w-full   lg:hidden     h-full ">
