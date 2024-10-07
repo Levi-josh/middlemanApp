@@ -16,7 +16,7 @@ import 'swiper/css/scrollbar';
 import Footer from "../Footer/Footer";
 import { useChatContext  } from './Chat/ChatContext'
 import {  useEffect } from "react"
-import { useNavigate,useSearchParams} from "react-router-dom"
+import { useNavigate} from "react-router-dom"
 import { useDispatch,useSelector } from 'react-redux';
 import { verifyAuth } from '../Feature/Redux';
 import { AppDispatch, RootState  } from '../Feature/Store'; 
