@@ -18,7 +18,11 @@ const initialState: AuthState = {
 export const verifyAuth = createAsyncThunk<User, void, { rejectValue: string }>(
   'mode/verifyAuth',
   async (_, { rejectWithValue }) => {
+    const loggedIn = localStorage.getItem('loggedIn')
     try {
+      if(!loggedIn){
+        throw new Error('Not authenticated');
+      }
       const response = await fetch('https://middlemanbackend.onrender.com/auth/verify', {
         method: 'GET',
         credentials: 'include', // Include cookies in the request

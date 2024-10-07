@@ -85,8 +85,9 @@ const Overview: React.FC = () => {
       if (!isError) {
      setIsAuthenticated(true)
     }else{
-    navigate('/landingPage');
-    }
+        if (location.pathname !== '/landingPage') {
+      navigate('/landingPage');
+      }}
   }, [isError]);
 
 const goToSlide = (index: number) => {
@@ -114,8 +115,7 @@ const handleSlideChange = () => {
       }
     }
   };
-  const loggedIn2 = searchParams.get('loggedIn');
-console.log(loggedIn2 )
+
 return (
 <div className="w-full h-screen fixed      bg-black2">
 {isAuthenticated && <div className="w-full   lg:hidden     h-full ">
