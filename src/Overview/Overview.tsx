@@ -17,9 +17,9 @@ import Footer from "../Footer/Footer";
 import { useChatContext  } from './Chat/ChatContext'
 import {  useEffect } from "react"
 import { useNavigate,useSearchParams} from "react-router-dom"
-import { useDispatch,useSelector } from 'react-redux';
-import { verifyAuth } from '../Feature/Redux';
-import { AppDispatch, RootState  } from '../Feature/Store'; 
+// import { useDispatch,useSelector } from 'react-redux';
+// import { verifyAuth } from '../Feature/Redux';
+// import { AppDispatch, RootState  } from '../Feature/Store'; 
 
 
 // import Test from "./Test";
@@ -29,8 +29,8 @@ const Overview: React.FC = () => {
   const [iconFill,setIconfill]=useState(true)
   const [isAuthenticated,setIsAuthenticated]=useState(false)
   // const [user,setUser]=useState<any|null>()
-  const dispatch = useDispatch<AppDispatch>();
-  const isError= useSelector((state: RootState) => state.mode.error);
+  // const dispatch = useDispatch<AppDispatch>();
+  // const isError= useSelector((state: RootState) => state.mode.error);
   const navigate = useNavigate()
   const [searchParams] = useSearchParams();
   const loggedIn = localStorage.getItem('loggedIn')
@@ -65,18 +65,18 @@ const Overview: React.FC = () => {
   //   checkAuth();
   // },[])
 
-  useEffect(() => {
-    dispatch(verifyAuth());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(verifyAuth());
+  // }, [dispatch]);
 
   useEffect(() => {
       if (loggedIn) {
      setIsAuthenticated(true)}
-      if (!loggedIn||isError) {
+      if (!loggedIn) {
           if (location.pathname !== '/landingPage') {
           navigate('/landingPage');
         }}
-      if (loggedIn&&isError) {
+      if (loggedIn) {
         localStorage.removeItem('loggedIn')
           if (location.pathname !== '/landingPage') {
           navigate('/landingPage');
@@ -84,8 +84,8 @@ const Overview: React.FC = () => {
       }
       console.log(loggedIn)
     console.log(!loggedIn)
-    console.log(isError)
-  }, [isError,loggedIn]);
+    console.log()
+  }, [loggedIn]);
 
 const goToSlide = (index: number) => {
     if (swiperRef.current) {
