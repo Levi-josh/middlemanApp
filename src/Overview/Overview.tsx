@@ -15,11 +15,11 @@ import 'swiper/css/autoplay';
 import 'swiper/css/scrollbar';
 import Footer from "../Footer/Footer";
 import { useChatContext  } from './Chat/ChatContext'
-import {  useEffect } from "react"
-import { useNavigate} from "react-router-dom"
-import { useDispatch,useSelector } from 'react-redux';
-import { verifyAuth } from '../Feature/Redux';
-import { AppDispatch, RootState  } from '../Feature/Store'; 
+// import {  useEffect } from "react"
+// import { useNavigate} from "react-router-dom"
+import { useSelector } from 'react-redux';
+// import { verifyAuth } from '../Feature/Redux';
+import {  RootState  } from '../Feature/Store'; 
 
 
 // import Test from "./Test";
@@ -27,11 +27,11 @@ const Overview: React.FC = () => {
   const swiperRef = useRef<SwiperCore | null>();
   const { fromChat } = useChatContext();
   const [iconFill,setIconfill]=useState(true)
-  const [isAuthenticated,setIsAuthenticated]=useState(false)
+  // const [isAuthenticated,setIsAuthenticated]=useState(false)
   // const [user,setUser]=useState<any|null>()
-  const dispatch = useDispatch<AppDispatch>();
-  const isError= useSelector((state: RootState) => state.mode.error);
-  const navigate = useNavigate()
+  // const dispatch = useDispatch<AppDispatch>();
+  const isAuthenticated= useSelector((state: RootState) => state.mode.error);
+  // const navigate = useNavigate()
   // const [searchParams] = useSearchParams();
   // const loggedIn = localStorage.getItem('loggedIn')
   // const navigate = useNavigate()
@@ -65,11 +65,9 @@ const Overview: React.FC = () => {
   //   checkAuth();
   // },[])
 
-  useEffect(() => {
-    dispatch(verifyAuth());
-  }, [dispatch]);
 
-  useEffect(() => {
+
+  // useEffect(() => {
     //   if (loggedIn) {
     //  setIsAuthenticated(true)}
     //   if (!loggedIn) {
@@ -82,13 +80,13 @@ const Overview: React.FC = () => {
     //       navigate('/landingPage');
     //     }
     //   }
-      if (!isError) {
-     setIsAuthenticated(true)
-    }else{
-        if (location.pathname !== '/landingPage') {
-      navigate('/landingPage');
-      }}
-  }, [isError]);
+  //     if (!isError) {
+  //    setIsAuthenticated(true)
+  //   }else{
+  //       if (location.pathname !== '/landingPage') {
+  //     navigate('/landingPage');
+  //     }}
+  // }, [isError]);
 
 const goToSlide = (index: number) => {
     if (swiperRef.current) {
