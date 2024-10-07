@@ -27,13 +27,12 @@ const Overview: React.FC = () => {
   const swiperRef = useRef<SwiperCore | null>();
   const { fromChat } = useChatContext();
   const [iconFill,setIconfill]=useState(true)
-  // const [isAuthenticated,setIsAuthenticated]=useState(false)
+  const [isAuthenticated,setIsAuthenticated]=useState(false)
   // const [user,setUser]=useState<any|null>()
   const dispatch = useDispatch<AppDispatch>();
-  const isAuthenticated= useSelector((state: RootState) => state.mode.isAuthenticated);
   const isError= useSelector((state: RootState) => state.mode.error);
   const navigate = useNavigate()
-  const searchParams = useSearchParams()
+  const [searchParams] = useSearchParams();
   const loggedIn = localStorage.getItem('loggedIn')
   // const navigate = useNavigate()
   //  useEffect(()=>{
@@ -69,14 +68,24 @@ const Overview: React.FC = () => {
   useEffect(() => {
     dispatch(verifyAuth());
   }, [dispatch]);
+
   useEffect(() => {
-      if (!loggedIn) {
-      navigate('/landingPage')}
-  }, [loggedIn]);
-  useEffect(() => {
-      if (isError) {
-      localStorage.removeItem('loggedIn')}
-  }, [isError]);
+      if (loggedIn) {
+     setIsAuthenticated(true)}
+      if (!loggedIn||isError) {
+          if (location.pathname !== '/landingPage') {
+          navigate('/landingPage');
+        }}
+      if (loggedIn&&isError) {
+        localStorage.removeItem('loggedIn')
+          if (location.pathname !== '/landingPage') {
+          navigate('/landingPage');
+        }
+      }
+      console.log(loggedIn)
+    console.log(!loggedIn)
+    console.log(isError)
+  }, [isError,loggedIn]);
 
 const goToSlide = (index: number) => {
     if (swiperRef.current) {
@@ -103,8 +112,8 @@ const handleSlideChange = () => {
       }
     }
   };
-  
-console.log(searchParams)
+  const loggedIn2 = searchParams.get('loggedIn');
+console.log(loggedIn2 )
 return (
 <div className="w-full h-screen fixed      bg-black2">
 {isAuthenticated && <div className="w-full   lg:hidden     h-full ">
