@@ -32,7 +32,7 @@ const Overview: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const isError= useSelector((state: RootState) => state.mode.error);
   const navigate = useNavigate()
-  const [searchParams] = useSearchParams();
+  // const [searchParams] = useSearchParams();
   // const loggedIn = localStorage.getItem('loggedIn')
   // const navigate = useNavigate()
   //  useEffect(()=>{
