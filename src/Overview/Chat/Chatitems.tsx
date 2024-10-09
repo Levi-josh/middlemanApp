@@ -99,8 +99,7 @@ useEffect(() => {
 
   return () => clearInterval(interval);
 }, []);
-console.log(mySocket)
-console.log(messages)
+
 const formatTime = (timestamp: Date): string => {
   const now = new Date();
   const messageTime = new Date(timestamp);

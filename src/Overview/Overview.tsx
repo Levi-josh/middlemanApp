@@ -17,9 +17,9 @@ import Footer from "../Footer/Footer";
 import { useChatContext  } from './Chat/ChatContext'
 // import {  useEffect } from "react"
 // import { useNavigate} from "react-router-dom"
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 // import { verifyAuth } from '../Feature/Redux';
-import {  RootState  } from '../Feature/Store'; 
+// import {  RootState  } from '../Feature/Store'; 
 
 
 // import Test from "./Test";
@@ -30,10 +30,10 @@ const Overview: React.FC = () => {
   // const [isAuthenticated,setIsAuthenticated]=useState(false)
   // const [user,setUser]=useState<any|null>()
   // const dispatch = useDispatch<AppDispatch>();
-  const isAuthenticated= useSelector((state: RootState) => state.mode.error);
+  // const isAuthenticated= useSelector((state: RootState) => state.mode.error);
   // const navigate = useNavigate()
   // const [searchParams] = useSearchParams();
-  // const loggedIn = localStorage.getItem('loggedIn')
+  const loggedIn = localStorage.getItem('loggedIn')
   // const navigate = useNavigate()
   //  useEffect(()=>{
   //   // if (isErrorr) {
@@ -116,7 +116,7 @@ const handleSlideChange = () => {
 
 return (
 <div className="w-full h-screen fixed      bg-black2">
-{isAuthenticated && <div className="w-full   lg:hidden     h-full ">
+{loggedIn && <div className="w-full   lg:hidden     h-full ">
  {/* small screen */}
 
 <Swiper modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
@@ -138,7 +138,7 @@ return (
 <Footer goToSlide={goToSlide}iconFill={iconFill} />
 
 </div>}
-{isAuthenticated && <div className="hidden lg:flex  w-full h-full">
+{loggedIn && <div className="hidden lg:flex  w-full h-full">
 {/* <Laptopfirstpg/> */}
 <Firstpage/>
 <Chat />

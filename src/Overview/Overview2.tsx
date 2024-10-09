@@ -11,16 +11,21 @@ const Overview2 = () => {
   const dispatch = useDispatch<AppDispatch>();
   const isError= useSelector((state: RootState) => state.mode.error);
   const navigate = useNavigate()
+   const loggedIn = localStorage.getItem('loggedIn')
   console.log(`loggin:${loggedIn2}` )
 
 useEffect(() => {
   dispatch(verifyAuth());
 }, [dispatch]);
 useEffect(() => {
-  if(isError){
-    navigate('/landing')
+  if (!loggedIn) {
+    if (location.pathname !== '/landingPage') {
+    navigate('/landingPage');
   }
-}, [isError]);
+  if(isError){
+    localStorage.removeItem('loggedIn')
+  }
+}}, [loggedIn,isError]);
 return (
 <div className=" w-full h-screen">
 </div>

@@ -343,7 +343,7 @@ console.log(errorMsg)
           <motion.div ref={contactRef} className="py-4 sm:p-4 md:p-5 px-2  w-full bg-black rounded-xl flex flex-col gap-3" variants={containerVariants} initial="hidden"whileInView="visible" viewport={{ once: true, amount: 0.5 }}>
             <motion.h1 className="text-purple font-bold text-xl text-center md:text-start lg:text-2xl"variants={textRevealVariants}> Contact us</motion.h1>
               <div className="w-full flex gap-5   flex-col md:flex-row items-center text-white">
-                  <div className="w-full flex flex-row md:flex-col items-center gap-3 md:gap-2 p-3  h-20 sm:h-24 md:h-52  border  border-black2  rounded-xl bg-black">
+                  <div className="w-full flex flex-row md:flex-col items-center gap-3 md:gap-2 p-3  h-20 sm:h-24 md:h-52  border  border-black2 hover:cursor-pointer  rounded-xl bg-black">
                     <div className="bg-purple w-11 h-11 sm:w-14 sm:h-14  flex-shrink-0 rounded-full flex items-center justify-center">
                     <svg 
                       className="sm:w-5 sm:h-5 w-4 h-4" 
@@ -364,7 +364,7 @@ console.log(errorMsg)
                       <p className="text-sm sm:text-base font-sans">+125-639-075-355</p> 
                     </div>
                   </div>
-                  <div className="w-full flex flex-row md:flex-col items-center gap-3 md:gap-2 p-3  h-20 sm:h-24 md:h-52  border  border-black2  rounded-xl bg-black">
+                  <div className="w-full flex flex-row md:flex-col items-center gap-3 md:gap-2 p-3  h-20 sm:h-24 md:h-52  border  border-black2 hover:cursor-pointer  rounded-xl bg-black">
                       <div className="bg-purple w-11 h-11 sm:w-14 sm:h-14   flex-shrink-0 rounded-full flex items-center justify-center">
                       <svg 
                         className="sm:w-5 sm:h-5 w-4 h-4 " 
@@ -383,12 +383,11 @@ console.log(errorMsg)
                       <div className="w-full flex flex-col  md:gap-2 md:items-center md:h-full ">  
                         <p className="text-base sm:text-lg font-semibold">Support Team</p>
                         <div className="flex w-full justify-between md:h-full md:flex-col">
-                        <p className="text-sm sm:text-base font-sans md:text-center">click to chat support team</p> 
-                        <button className="bg-purple  px-4 rounded-md sm:px-6 py-1 text-sm sm:text-base">Chat</button>
+                        <p className="text-sm sm:text-base font-sans md:text-center">Tap to chat support team</p> 
                         </div>
                       </div>
                   </div>
-                  <div className="w-full flex flex-row md:flex-col items-center gap-3 md:gap-2 p-3 h-20 sm:h-24 md:h-52  border  border-black2 rounded-xl bg-black">
+                  <div className="w-full flex flex-row md:flex-col items-center gap-3 md:gap-2 p-3 h-20 sm:h-24 md:h-52  border  border-black2 hover:cursor-pointer rounded-xl bg-black">
                     <div className="bg-purple w-11 h-11 sm:w-14 sm:h-14 flex-shrink-0 rounded-full flex items-center justify-center">
                     <svg 
                       className="sm:w-5 sm:h-5 w-4 h-4" 
@@ -406,7 +405,7 @@ console.log(errorMsg)
                     </div>
                     <div className="w-full flex flex-col md:gap-2 md:items-center ">
                       <p className="text-base sm:text-lg font-semibold">Send Mail</p>
-                      <p className="text-sm sm:text-base font-sans">MiddlemanApp@gmail.com</p>
+                      <p className="text-sm sm:text-base font-sans">Tap to send mail</p>
                     </div> 
                   </div>
               </div>
