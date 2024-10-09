@@ -13,6 +13,7 @@ const Overview2 = () => {
   const navigate = useNavigate()
    const loggedIn = localStorage.getItem('loggedIn')
   console.log(`loggin:${loggedIn2}` )
+  console.log(isError )
 
 useEffect(() => {
   dispatch(verifyAuth());
@@ -23,11 +24,11 @@ useEffect(() => {
     navigate('/landingPage');
   }
 }}, [loggedIn]);
-useEffect(() => {
-  if(isError){
-    localStorage.removeItem('loggedIn')
-  }
-}, [isError]);
+// useEffect(() => {
+//   if(isError){
+//     localStorage.removeItem('loggedIn')
+//   }
+// }, [isError]);
 return (
 <div className=" w-full h-screen">
 </div>
