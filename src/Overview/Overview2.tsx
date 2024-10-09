@@ -22,10 +22,12 @@ useEffect(() => {
     if (location.pathname !== '/landingPage') {
     navigate('/landingPage');
   }
+}}, [loggedIn]);
+useEffect(() => {
   if(isError){
     localStorage.removeItem('loggedIn')
   }
-}}, [loggedIn,isError]);
+}, [isError]);
 return (
 <div className=" w-full h-screen">
 </div>
