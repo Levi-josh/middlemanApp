@@ -40,15 +40,15 @@ const Overview: React.FC = () => {
   //   dispatch(verifyAuth());
   //   console.log('ran')
   // }, [dispatch,location]);
-  if (loading) {
-    return <div className="text-3xl text-black font-bold">Loading...</div>;  // This will show until the authentication check is completed
-  }
+  // if (loading) {
+  //   return <div className="text-3xl text-black font-bold">Loading...</div>;  // This will show until the authentication check is completed
+  // }
   // If the user is not authenticated, redirect them to the login page
-  if (!isAuthenticated) {
-    if(location.pathname !== '/landingPage')
-    window.location.href = '/landingPage'; // Redirect to login page
-    return null;  // Don't render anything else while redirecting
-  }
+  // if (!isAuthenticated) {
+  //   if(location.pathname !== '/landingPage')
+  //   window.location.href = '/landingPage'; // Redirect to login page
+  //   return null;  // Don't render anything else while redirecting
+  // }
   console.log(`loaction:${location}`)
   console.log(`lisAuthenticated:${isAuthenticated}`)
   console.log(`loading:${loading}`)
