@@ -15,79 +15,39 @@ import 'swiper/css/autoplay';
 import 'swiper/css/scrollbar';
 import Footer from "../Footer/Footer";
 import { useChatContext  } from './Chat/ChatContext'
-// import {  useEffect } from "react"
-// import { useNavigate} from "react-router-dom"
-// import { useSelector } from 'react-redux';
-// import { verifyAuth } from '../Feature/Redux';
-// import {  RootState  } from '../Feature/Store'; 
-
+import {  useEffect } from "react"
+import { useLocation} from "react-router-dom"
+import { useDispatch,useSelector } from 'react-redux';
+import { verifyAuth } from '../Feature/Redux';
+import { AppDispatch, RootState  } from '../Feature/Store';
 
 // import Test from "./Test";
 const Overview: React.FC = () => {
   const swiperRef = useRef<SwiperCore | null>();
   const { fromChat } = useChatContext();
   const [iconFill,setIconfill]=useState(true)
+   const location = useLocation();
   // const [isAuthenticated,setIsAuthenticated]=useState(false)
   // const [user,setUser]=useState<any|null>()
-  // const dispatch = useDispatch<AppDispatch>();
-  // const isAuthenticated= useSelector((state: RootState) => state.mode.error);
+  const dispatch = useDispatch<AppDispatch>();
+  const isAuthenticated= useSelector((state: RootState) => state.mode.isAuthenticated);
+  const loading= useSelector((state: RootState) => state.mode.isAuthenticated);
   // const navigate = useNavigate()
   // const [searchParams] = useSearchParams();
-  const loggedIn = localStorage.getItem('loggedIn')
-  // const navigate = useNavigate()
-  //  useEffect(()=>{
-  //   // if (isErrorr) {
-  //   //   navigate('/landingPage')
-  //   // }
-  //   const checkAuth = async () => {
-  //     try {
-  //       const response = await fetch('http://localhost:3500/auth/verify', {
-  //         method: 'GET',
-  //         credentials: 'include', // Include cookies in the request
-  //       });
+  // const loggedIn = localStorage.getItem('loggedIn')
 
-  //       if (response.ok) {
-  //         const data = await response.json()
-  //         setUser(data)
-  //         setIsAuthenticated(true); // Set authenticated to true if valid
-  //       } else {
-  //         throw new Error('Not authenticated');
-  //       }
-  //     } catch (err) {
-  //       console.error(err);
-  //       setIsAuthenticated(false); // Set to false on error
-  //       if (location.pathname !== '/landingPage') {
-  //         navigate('/landingPage');
-  //       }
-  //     }
-  //   };
-
-  //   checkAuth();
-  // },[])
-
-
-
-  // useEffect(() => {
-    //   if (loggedIn) {
-    //  setIsAuthenticated(true)}
-    //   if (!loggedIn) {
-    //       if (location.pathname !== '/landingPage') {
-    //       navigate('/landingPage');
-    //     }}
-    //   if (loggedIn) {
-    //     localStorage.removeItem('loggedIn')
-    //       if (location.pathname !== '/landingPage') {
-    //       navigate('/landingPage');
-    //     }
-    //   }
-  //     if (!isError) {
-  //    setIsAuthenticated(true)
-  //   }else{
-  //       if (location.pathname !== '/landingPage') {
-  //     navigate('/landingPage');
-  //     }}
-  // }, [isError]);
-
+  useEffect(() => {
+    dispatch(verifyAuth());
+  }, [dispatch,location]);
+  if (loading) {
+    return <div className="text-3xl text-black font-bold">Loading...</div>;  // This will show until the authentication check is completed
+  }
+  // If the user is not authenticated, redirect them to the login page
+  if (!isAuthenticated) {
+    if(location.pathname !== '/landingPage')
+    window.location.href = '/landingPage'; // Redirect to login page
+    return null;  // Don't render anything else while redirecting
+  }
 const goToSlide = (index: number) => {
     if (swiperRef.current) {
       swiperRef.current.slideTo(index);
@@ -116,7 +76,7 @@ const handleSlideChange = () => {
 
 return (
 <div className="w-full h-screen fixed      bg-black2">
-{loggedIn && <div className="w-full   lg:hidden     h-full ">
+<div className="w-full   lg:hidden     h-full ">
  {/* small screen */}
 
 <Swiper modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
@@ -137,12 +97,12 @@ return (
 
 <Footer goToSlide={goToSlide}iconFill={iconFill} />
 
-</div>}
-{loggedIn && <div className="hidden lg:flex  w-full h-full">
+</div>
+ <div className="hidden lg:flex  w-full h-full">
 {/* <Laptopfirstpg/> */}
 <Firstpage/>
 <Chat />
-</div>}
+</div>
 </div>
   )
 }
