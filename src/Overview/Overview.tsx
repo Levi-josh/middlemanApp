@@ -38,7 +38,7 @@ const Overview: React.FC = () => {
 
   const cookieExists = document.cookie.split('; ').find(row => row.startsWith('jwt='));
 useEffect(() => {
-  if (cookieExists) {
+  if (!cookieExists) {
     if(location.pathname !== '/landingPage')
     window.location.href = '/landingPage'; // Redirect to login page
   }
