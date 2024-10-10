@@ -23,7 +23,7 @@ const initialState: AuthState = {
 // Async action to verify authentication
 export const verifyAuth = createAsyncThunk('auth/verifyAuth', async (_, { rejectWithValue }) => {
   try {
-    const response = await fetch('http://localhost:3500/auth/verify', {
+    const response = await fetch('`https://middlemanbackend.onrender.com/auth/verify', {
       method: 'GET',
       credentials: 'include', // Include cookies in the request
     });
