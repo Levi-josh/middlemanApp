@@ -48,6 +48,7 @@ interface User {
 const [users, setusers] = useState<User|null>();
 const [errors, setErrors] = useState<String>('');
 const [retry,setRetry] = useState<boolean>(false)
+const cookieExists = document.cookie.split('; ').find(row => row.startsWith('jwt='));
 useEffect(()=>{
   setusers(null)
   setErrors('')
@@ -64,7 +65,7 @@ catch (err:any) {
   setErrors(err)
 }
 }
-fetchUsers()
+cookieExists&&fetchUsers()
 },[retry])
 console.log(users)
   return (
