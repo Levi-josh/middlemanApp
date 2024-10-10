@@ -15,11 +15,11 @@ import 'swiper/css/autoplay';
 import 'swiper/css/scrollbar';
 import Footer from "../Footer/Footer";
 import { useChatContext  } from './Chat/ChatContext'
-// import {  useEffect } from "react"
+import {  useEffect } from "react"
 import { useLocation} from "react-router-dom"
-import { useSelector } from 'react-redux';
+// import { useDispatch,useSelector } from 'react-redux';
 // import { verifyAuth } from '../Feature/Redux';
-import { RootState  } from '../Feature/Store';
+// import {AppDispatch, RootState  } from '../Feature/Store';
 
 // import Test from "./Test";
 const Overview: React.FC = () => {
@@ -30,28 +30,21 @@ const Overview: React.FC = () => {
   // const [isAuthenticated,setIsAuthenticated]=useState(false)
   // const [user,setUser]=useState<any|null>()
   // const dispatch = useDispatch<AppDispatch>();
-  const isAuthenticated= useSelector((state: RootState) => state.mode.isAuthenticated);
-  const loading= useSelector((state: RootState) => state.mode.isAuthenticated);
+  // const isAuthenticated= useSelector((state: RootState) => state.mode.isAuthenticated);
+  // const loading= useSelector((state: RootState) => state.mode.loading);
   // const navigate = useNavigate()
   // const [searchParams] = useSearchParams();
   // const loggedIn = localStorage.getItem('loggedIn')
 
-  // useEffect(() => {
-  //   dispatch(verifyAuth());
-  //   console.log('ran')
-  // }, [dispatch,location]);
-  // if (loading) {
-  //   return <div className="text-3xl text-black font-bold">Loading...</div>;  // This will show until the authentication check is completed
-  // }
-  // If the user is not authenticated, redirect them to the login page
-  // if (!isAuthenticated) {
-  //   if(location.pathname !== '/landingPage')
-  //   window.location.href = '/landingPage'; // Redirect to login page
-  //   return null;  // Don't render anything else while redirecting
-  // }
-  console.log(`loaction:${location}`)
-  console.log(`lisAuthenticated:${isAuthenticated}`)
-  console.log(`loading:${loading}`)
+  const cookieExists = document.cookie.split('; ').find(row => row.startsWith('jwt='));
+useEffect(() => {
+  if (cookieExists) {
+    if(location.pathname !== '/landingPage')
+    window.location.href = '/landingPage'; // Redirect to login page
+  }
+}, [cookieExists]);
+  console.log(`cookieExists:${cookieExists}`)
+
 const goToSlide = (index: number) => {
     if (swiperRef.current) {
       swiperRef.current.slideTo(index);
