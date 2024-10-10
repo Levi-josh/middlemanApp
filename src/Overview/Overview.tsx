@@ -42,7 +42,7 @@ useEffect(() => {
     if(location.pathname !== '/landingPage')
     window.location.href = '/landingPage'; // Redirect to login page
   }
-}, [cookieExists]);
+}, []);
   console.log(`cookieExists:${cookieExists}`)
 
 const goToSlide = (index: number) => {
