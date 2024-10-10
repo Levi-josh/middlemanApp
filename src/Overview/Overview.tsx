@@ -38,6 +38,7 @@ const Overview: React.FC = () => {
 
   useEffect(() => {
     dispatch(verifyAuth());
+    console.log('ran')
   }, [dispatch,location]);
   if (loading) {
     return <div className="text-3xl text-black font-bold">Loading...</div>;  // This will show until the authentication check is completed
@@ -48,6 +49,9 @@ const Overview: React.FC = () => {
     window.location.href = '/landingPage'; // Redirect to login page
     return null;  // Don't render anything else while redirecting
   }
+  console.log(`loaction:${location}`)
+  console.log(`lisAuthenticated:${isAuthenticated}`)
+  console.log(`loading:${loading}`)
 const goToSlide = (index: number) => {
     if (swiperRef.current) {
       swiperRef.current.slideTo(index);
