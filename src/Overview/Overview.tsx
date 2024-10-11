@@ -15,8 +15,8 @@ import 'swiper/css/autoplay';
 import 'swiper/css/scrollbar';
 import Footer from "../Footer/Footer";
 import { useChatContext  } from './Chat/ChatContext'
-// import {  useEffect } from "react"
-// import { useLocation} from "react-router-dom"
+import {  useEffect } from "react"
+import { useLocation} from "react-router-dom"
 // import { useDispatch,useSelector } from 'react-redux';
 // import { verifyAuth } from '../Feature/Redux';
 // import {AppDispatch, RootState  } from '../Feature/Store';
@@ -26,7 +26,7 @@ const Overview: React.FC = () => {
   const swiperRef = useRef<SwiperCore | null>();
   const { fromChat } = useChatContext();
   const [iconFill,setIconfill]=useState(true)
-  //  const location = useLocation();
+   const location = useLocation();
   // const [isAuthenticated,setIsAuthenticated]=useState(false)
   // const [user,setUser]=useState<any|null>()
   // const dispatch = useDispatch<AppDispatch>();
@@ -37,12 +37,12 @@ const Overview: React.FC = () => {
   // const loggedIn = localStorage.getItem('loggedIn')
 
   const cookieExists = document.cookie.split('; ').find(row => row.startsWith('jwt='));
-// useEffect(() => {
-//   if (!cookieExists) {
-//     if(location.pathname !== '/landingPage')
-//     window.location.href = '/landingPage'; // Redirect to login page
-//   }
-// }, []);
+useEffect(() => {
+  if (!cookieExists) {
+    if(location.pathname !== '/landingPage')
+    window.location.href = '/landingPage'; // Redirect to login page
+  }
+}, []);
   console.log(`cookieExists:${cookieExists}`)
 
 const goToSlide = (index: number) => {
