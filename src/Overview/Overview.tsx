@@ -35,15 +35,9 @@ const Overview: React.FC = () => {
   // const navigate = useNavigate()
   // const [searchParams] = useSearchParams();
   // const loggedIn = localStorage.getItem('loggedIn')
-
-  const cookieExists = document.cookie.split('; ').find(row => row.startsWith('jwt='));
 useEffect(() => {
-  if (!cookieExists) {
-    if(location.pathname !== '/landingPage')
-    window.location.href = '/landingPage'; // Redirect to login page
-  }
-}, []);
-  console.log(`cookieExists:${cookieExists}`)
+console.log(location)
+}, [location]);
 
 const goToSlide = (index: number) => {
     if (swiperRef.current) {
