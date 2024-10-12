@@ -48,7 +48,7 @@ interface User {
 const [users, setusers] = useState<User|null>();
 const [errors, setErrors] = useState<String>('');
 const [retry,setRetry] = useState<boolean>(false)
-const cookieExists = document.cookie.split('; ').find(row => row.startsWith('jwt='));
+
 useEffect(()=>{
   setusers(null)
   setErrors('')
@@ -65,7 +65,7 @@ catch (err:any) {
   setErrors(err)
 }
 }
-cookieExists&&fetchUsers()
+fetchUsers()
 },[retry])
   return (
     <div className="w-full overflow-x-hidden lg:overflow-auto   bg-black2    lg:px-5 lg:w-107 xl:w-1075 lg:h-screen h-full " onScroll={scrolldiv}>

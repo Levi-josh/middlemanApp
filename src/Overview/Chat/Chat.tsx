@@ -27,7 +27,7 @@ const [Chats, setChats] = useState<Chat[]|null>();
 const [errors, setErrors] = useState<string>('');
 const [retry,setRetry] = useState<boolean>(false)
 const user= useSelector((state: RootState) => state.mode.user);
-const cookieExists = document.cookie.split('; ').find(row => row.startsWith('jwt='));
+
 useEffect(()=>{
 
   setErrors('')
@@ -44,7 +44,7 @@ useEffect(()=>{
     setErrors(err)
   }
   }
-  cookieExists&&fetchChats()
+  fetchChats()
 },[Chats,retry])
 
 const totalUnreadMessages = Chats?.reduce((total, chat) => {
