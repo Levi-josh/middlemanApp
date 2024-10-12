@@ -126,8 +126,10 @@ const signInHandSubmit = async(e:FormEvent<HTMLFormElement>)=>{
         if (!response.ok) {
           setRan(false);
           setErrorMsg({message:data.errorMessage})
-        }else{
-        console.log(data)  
+        }else{ 
+        const mydata = { value: data.token, expiration: Date.now() + 86400000 }; // Expires in 24 hours
+        localStorage.setItem('myData', JSON.stringify(mydata));
+        data && navigate('/')   
      }
     }
     catch (err:any) {

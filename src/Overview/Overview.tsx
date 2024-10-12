@@ -37,6 +37,19 @@ const Overview: React.FC = () => {
   // const loggedIn = localStorage.getItem('loggedIn')
 useEffect(() => {
 console.log(location)
+const storedDataString = localStorage.getItem('myData');
+if (storedDataString) {
+  const storedData = JSON.parse(storedDataString);
+  if (storedData && storedData.expiration > Date.now()) {
+    console.log('still valid')
+  } else {
+    // Data has expired or is invalid
+    localStorage.removeItem('myData');
+  }
+} else {
+  console.log('not found')
+}
+
 }, [location]);
 
 const goToSlide = (index: number) => {
