@@ -50,7 +50,7 @@ if (storedDataString) {
   console.log('not found')
 }
 
-}, []);
+}, [location]);
 
 const goToSlide = (index: number) => {
     if (swiperRef.current) {
