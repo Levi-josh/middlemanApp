@@ -37,7 +37,6 @@ const handSubmit = async(e:FormEvent<HTMLFormElement>)=>{
             setRan(false);
             setErrorMsg({message:data.errorMessage})
           }else{
-            localStorage.setItem('loggedIn', 'true')
           data && navigate('/')   
        }
     }
