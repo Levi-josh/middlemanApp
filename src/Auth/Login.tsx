@@ -127,8 +127,7 @@ const signInHandSubmit = async(e:FormEvent<HTMLFormElement>)=>{
           setRan(false);
           setErrorMsg({message:data.errorMessage})
         }else{
-        localStorage.setItem('loggedIn', 'true')
-        data && navigate('/')   
+        console.log(data)  
      }
     }
     catch (err:any) {

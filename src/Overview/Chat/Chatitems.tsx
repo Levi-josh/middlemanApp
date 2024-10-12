@@ -45,7 +45,6 @@ setMySocket(socket)
 useEffect(() => {
   mySocket?.on('private chat', (data:any) => {
     setMessages((prevMessages) => [...prevMessages, data]);
-    console.log(data)
   });
   return () => {
     mySocket?.off('private chat');

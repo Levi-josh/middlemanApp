@@ -46,7 +46,7 @@ useEffect(()=>{
   }
   cookieExists&&fetchChats()
 },[Chats,retry])
-console.log(user)
+
 const totalUnreadMessages = Chats?.reduce((total, chat) => {
   const unreadCount = chat.messages.filter(message => message.read == false && message.from !== user?.Id).length;
   return total + unreadCount;

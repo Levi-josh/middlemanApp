@@ -67,7 +67,6 @@ catch (err:any) {
 }
 cookieExists&&fetchUsers()
 },[retry])
-console.log(users)
   return (
     <div className="w-full overflow-x-hidden lg:overflow-auto   bg-black2    lg:px-5 lg:w-107 xl:w-1075 lg:h-screen h-full " onScroll={scrolldiv}>
     <Header scrollPosition={scrollPosition} profilePic={users?.profilePic}/>
