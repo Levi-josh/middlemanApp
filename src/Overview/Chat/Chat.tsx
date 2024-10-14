@@ -27,9 +27,8 @@ const [Chats, setChats] = useState<Chat[]|null>();
 const [errors, setErrors] = useState<string>('');
 const [retry,setRetry] = useState<boolean>(false)
 const user= useSelector((state: RootState) => state.mode.user);
-
+const storedDataString = localStorage.getItem('myData');
 useEffect(()=>{
-
   setErrors('')
  const fetchChats = async()=>{
   try {
@@ -44,7 +43,7 @@ useEffect(()=>{
     setErrors(err)
   }
   }
-  fetchChats()
+  storedDataString&&fetchChats()
 },[Chats,retry])
 
 const totalUnreadMessages = Chats?.reduce((total, chat) => {

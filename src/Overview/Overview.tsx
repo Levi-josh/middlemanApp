@@ -15,18 +15,30 @@ import 'swiper/css/autoplay';
 import 'swiper/css/scrollbar';
 import Footer from "../Footer/Footer";
 import { useChatContext  } from './Chat/ChatContext'
-import {  useEffect } from "react"
-import { useLocation} from "react-router-dom"
+// import {  useEffect } from "react"
+// import { useLocation} from "react-router-dom"
 // import { useDispatch,useSelector } from 'react-redux';
 // import { verifyAuth } from '../Feature/Redux';
 // import {AppDispatch, RootState  } from '../Feature/Store';
 
 // import Test from "./Test";
+interface localStorage {
+value: string, 
+expiration: number
+}
 const Overview: React.FC = () => {
   const swiperRef = useRef<SwiperCore | null>();
   const { fromChat } = useChatContext();
   const [iconFill,setIconfill]=useState(true)
-   const location = useLocation();
+  const [storedData,setStoreData]= useState<localStorage|null>()
+  const storedDataString = localStorage.getItem('myData');
+  if(storedDataString){
+  const storedData = JSON.parse(storedDataString);
+    setStoreData(storedData)
+  }else{
+    setStoreData(null)
+  }
+  //  const location = useLocation();
   // const [isAuthenticated,setIsAuthenticated]=useState(false)
   // const [user,setUser]=useState<any|null>()
   // const dispatch = useDispatch<AppDispatch>();
@@ -35,22 +47,10 @@ const Overview: React.FC = () => {
   // const navigate = useNavigate()
   // const [searchParams] = useSearchParams();
   // const loggedIn = localStorage.getItem('loggedIn')
-useEffect(() => {
-console.log(location)
-const storedDataString = localStorage.getItem('myData');
-if (storedDataString) {
-  const storedData = JSON.parse(storedDataString);
-  if (storedData && storedData.expiration > Date.now()) {
-    console.log('still valid')
-  } else {
-    // Data has expired or is invalid
-    localStorage.removeItem('myData');
-  }
-} else {
-  console.log('not found')
-}
+// useEffect(() => {
+// const storedDataString = localStorage.getItem('myData');
 
-}, []);
+// }, []);
 
 const goToSlide = (index: number) => {
     if (swiperRef.current) {
@@ -80,7 +80,7 @@ const handleSlideChange = () => {
 
 return (
 <div className="w-full h-screen fixed      bg-black2">
-<div className="w-full   lg:hidden     h-full ">
+{storedData&&<div className="w-full  lg:hidden  h-full ">
  {/* small screen */}
 
 <Swiper modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
@@ -101,12 +101,12 @@ return (
 
 <Footer goToSlide={goToSlide}iconFill={iconFill} />
 
-</div>
- <div className="hidden lg:flex  w-full h-full">
+</div>}
+{storedData&&<div className="hidden lg:flex  w-full h-full">
 {/* <Laptopfirstpg/> */}
 <Firstpage/>
 <Chat />
-</div>
+</div>}
 </div>
   )
 }
