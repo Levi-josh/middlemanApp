@@ -46,7 +46,7 @@ useEffect(()=>{
   storedDataString&&fetchChats()
 },[Chats,retry])
 
-const totalUnreadMessages = Chats?.reduce((total, chat) => {
+const totalUnreadMessages = Chats && Chats?.reduce((total, chat) => {
   const unreadCount = chat.messages.filter(message => message.read == false && message.from !== user?.Id).length;
   return total + unreadCount;
 }, 0);
