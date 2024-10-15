@@ -8,9 +8,9 @@ interface User {
   // Add any other fields that are part of the user object
 }
 interface AuthState {
-  user: User | null;         // User object or null
-  isAuthenticated: boolean;  // Is the user authenticated
-  error: string | null;      // Error message or null
+  user: User | null;     
+  isAuthenticated: boolean; 
+  error: string | null;      
   loading :boolean
 }
 const initialState: AuthState = {

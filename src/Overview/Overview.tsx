@@ -2,7 +2,7 @@ import Firstpage from "./Firstpage/Firstpage"
 import Chat from "./Chat/Chat"
 import SwiperCore from 'swiper';
 // import Laptopfirstpg from "./Firstpage/Laptopfirstpg"
-import  { useRef, useState, } from 'react';
+import  { useEffect, useRef, useState, } from 'react';
 // import { useState, useEffect } from "react"
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -31,6 +31,7 @@ const Overview: React.FC = () => {
   const { fromChat } = useChatContext();
   const [iconFill,setIconfill]=useState(true)
   const [storedData,setStoreData]= useState<localStorage|null>()
+  useEffect(()=>{
   const storedDataString = localStorage.getItem('myData');
   if(storedDataString){
   const storedData = JSON.parse(storedDataString);
@@ -38,6 +39,7 @@ const Overview: React.FC = () => {
   }else{
     setStoreData(null)
   }
+},[])
   //  const location = useLocation();
   // const [isAuthenticated,setIsAuthenticated]=useState(false)
   // const [user,setUser]=useState<any|null>()
