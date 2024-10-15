@@ -22,25 +22,21 @@ import { useLocation} from "react-router-dom"
 // import {AppDispatch, RootState  } from '../Feature/Store';
 
 // import Test from "./Test";
-interface localStorage {
-value: string, 
-expiration: number
-}
+
 const Overview: React.FC = () => {
   const swiperRef = useRef<SwiperCore | null>();
   const { fromChat } = useChatContext();
   const [iconFill,setIconfill]=useState(true)
-  const [storedData,setStoreData]= useState<localStorage|null>()
-    const location = useLocation();
+  const [storedData,setStoreData]= useState<any|null>()
+  const location = useLocation();
   useEffect(()=>{
   const storedDataString = localStorage.getItem('myData');
   if(storedDataString){
-  const storedData = JSON.parse(storedDataString);
-    setStoreData(storedData)
+    setStoreData(storedDataString)
   }else{
     setStoreData(null)
   }
-},[location])
+},[location,storedData])
   //  const location = useLocation();
   // const [isAuthenticated,setIsAuthenticated]=useState(false)
   // const [user,setUser]=useState<any|null>()
