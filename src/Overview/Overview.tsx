@@ -16,7 +16,7 @@ import 'swiper/css/scrollbar';
 import Footer from "../Footer/Footer";
 import { useChatContext  } from './Chat/ChatContext'
 // import {  useEffect } from "react"
-import { useLocation} from "react-router-dom"
+// import { useLocation} from "react-router-dom"
 // import { useDispatch,useSelector } from 'react-redux';
 // import { verifyAuth } from '../Feature/Redux';
 // import {AppDispatch, RootState  } from '../Feature/Store';
@@ -28,7 +28,7 @@ const Overview: React.FC = () => {
   const { fromChat } = useChatContext();
   const [iconFill,setIconfill]=useState(true)
   const [storedData,setStoreData]= useState<any|null>()
-  const location = useLocation();
+  // const location = useLocation();
   useEffect(()=>{
   const storedDataString = localStorage.getItem('myData');
   if(storedDataString){
