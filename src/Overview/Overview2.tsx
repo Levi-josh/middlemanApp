@@ -21,9 +21,9 @@ const Overview2 = () => {
            localStorage.removeItem('myData');
       }
     } else {
-     navigate('/landingPage')
+    //  navigate('/landingPage')
     }  
-    console.log(`loggin2:${storedDataString}` )
+
     }, []);
 
     

@@ -36,7 +36,7 @@ const Overview: React.FC = () => {
   }else{
     setStoreData(null)
   }
-},[location,storedData])
+},[storedData])
   //  const location = useLocation();
   // const [isAuthenticated,setIsAuthenticated]=useState(false)
   // const [user,setUser]=useState<any|null>()
