@@ -17,13 +17,20 @@ const Deposit = () => {
   const [data,setData]=useState("")
   const [errorMsg,setErrorMsg] = useState<ErrorMessage|null>()
   const [ran,setRan]=useState(false)
+  const storedDataString = localStorage.getItem('myData');
+  
   const handSubmit = async(e:FormEvent<HTMLFormElement>)=>{
     e.preventDefault();
     setRan(true)
+    const storedData = storedDataString ? JSON.parse(storedDataString) : null; // Parse if data exists
+    const token = storedData?.value;
     try {
         const response = await fetch(` https://middlemanbackend.onrender.com/deposit`, {
           method: 'Post',
-          credentials: 'include',
+          headers: {
+            'Authorization': `Bearer ${token}`, // Authorization header
+            'Content-Type': 'application/json'  // Optional: Specify content type
+          },
           body:JSON.stringify({amount})
       });
         const data = await response.json();

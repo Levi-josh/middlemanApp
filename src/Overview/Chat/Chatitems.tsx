@@ -8,8 +8,8 @@ import  { useState, useEffect,FormEvent , ChangeEvent,useRef } from 'react';
 import { useParams } from 'react-router-dom'
 import { useChatContext } from './ChatContext';
 import io from 'socket.io-client';
-import {useSelector } from 'react-redux';
-import {RootState  } from '../../Feature/Store'; 
+// import {useSelector } from 'react-redux';
+// import {RootState  } from '../../Feature/Store'; 
 
 const Chatitems = () => {
   interface Messages {
@@ -35,11 +35,13 @@ const [Dbmessages, setDbMessages] = useState<Messanger>();
 const [message, setMessage] = useState<string>('');
 const { isfromChat } = useChatContext();
 const [mySocket,setMySocket] = useState<any|null>();
-const user= useSelector((state: RootState) => state.mode.user);
-
+// const user= useSelector((state: RootState) => state.mode.user);
+const storedDataString = localStorage.getItem('myData');
+const storedData = storedDataString ? JSON.parse(storedDataString) : null; // Parse if data exists
+const token = storedData?.Id;
 useEffect(() => {
 const socket = io('https://middlemanbackend.onrender.com')
-socket.emit('setCustomId',user?.Id)
+socket.emit('setCustomId',token)
 setMySocket(socket)
 }, []);
 useEffect(() => {
@@ -53,10 +55,15 @@ useEffect(() => {
 },[mySocket]);
 useEffect(() => {
 const fetdata = async()=>{
+  const storedData = storedDataString ? JSON.parse(storedDataString) : null; // Parse if data exists
+  const token = storedData?.value;
     try {
         const response = await fetch(`https://middlemanbackend.onrender.com/getmessages/${params.id}`, {
           method: 'Get',
-          credentials: 'include',
+          headers: {
+            'Authorization': `Bearer ${token}`, // Authorization header
+            'Content-Type': 'application/json'  // Optional: Specify content type
+          }
       });
         const data = await response.json()
         setDbMessages(data)
@@ -73,10 +80,13 @@ useEffect(() => {
 }, [Dbmessages]);
 useEffect(() => {
   const fetdata = async()=>{
+    const storedData = storedDataString ? JSON.parse(storedDataString) : null; // Parse if data exists
+    const token = storedData?.value;
     const option = {
         method: 'Put',
         headers: {
-            'content-type': 'application/json',
+          'Authorization': `Bearer ${token}`, // Authorization header
+          'Content-Type': 'application/json'  // Optional: Specify content type
         },
         body:JSON.stringify({contactId:params.id})
     }
@@ -118,7 +128,7 @@ const formatTime = (timestamp: Date): string => {
 const handleSubmit = (e:FormEvent<HTMLFormElement>) => {
   e.preventDefault();
   if (message.trim() && params.id) {
-    mySocket.emit('private chat', { from: user?.Id, to: params.id, message,timestamp: Date.now() });
+    mySocket.emit('private chat', { from: token, to: params.id, message,timestamp: Date.now() });
       setMessage(''); // Clear the input field
   }
 };
@@ -139,7 +149,7 @@ const handleChange = (e:ChangeEvent<HTMLInputElement>) =>{ setMessage(e.target.v
   </div>
   <div className={`pt-24 gap-5 px-4 w-full h-full overflow-auto `}>
   {Dbmessages?.messages?.map((prev:any) => (
-  <div className={`text-white ${prev.from === user?.Id ? 'mr-0 self-end message-right' : prev.from == 'middleman'?'bg-purple': 'ml-0 self-start message-left'} h-auto mt-5 m-auto p-2 flex flex-col gap-2 w-107 bg-black rounded-lg relative`}>
+  <div className={`text-white ${prev.from === token ? 'mr-0 self-end message-right' : prev.from == 'middleman'?'bg-purple': 'ml-0 self-start message-left'} h-auto mt-5 m-auto p-2 flex flex-col gap-2 w-107 bg-black rounded-lg relative`}>
     <p className="">{prev.message}</p>
     <div className="flex items-center mr-0 m-auto w-auto justify-end">
       <p className="text-xs">{formatTime(prev.timestamp)}</p>
@@ -147,7 +157,7 @@ const handleChange = (e:ChangeEvent<HTMLInputElement>) =>{ setMessage(e.target.v
   </div>
 ))}
     {messages.map((prev:any) => (
-  <div className={`text-white ${prev.from === user?.Id ? 'mr-0 self-end message-right' : prev.from == 'middleman'?'bg-purple': 'ml-0 self-start message-left'} h-auto mt-5 m-auto p-2 flex flex-col gap-2 w-107 bg-black rounded-lg relative`}>
+  <div className={`text-white ${prev.from === token ? 'mr-0 self-end message-right' : prev.from == 'middleman'?'bg-purple': 'ml-0 self-start message-left'} h-auto mt-5 m-auto p-2 flex flex-col gap-2 w-107 bg-black rounded-lg relative`}>
     <p className="">{prev.message}</p>
     <div className="flex items-center mr-0 m-auto w-auto justify-end">
       <p className="text-xs ">{formatTime(prev.timestamp)}</p>

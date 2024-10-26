@@ -19,6 +19,7 @@ const Details = () => {
     const [errorMsg,setErrorMsg] = useState<ErrorMessage|null>()
     const fileInputRef = useRef<HTMLInputElement>(null);
     const [ran,setRan]=useState(false)
+    const storedDataString = localStorage.getItem('myData');
 
     const handSubmit = async(e:FormEvent<HTMLFormElement>)=>{
         e.preventDefault();
@@ -27,12 +28,16 @@ const Details = () => {
         const formData = new FormData();
         formData.append('image', selectedFile);
         formData.append('username', username);
-
+        const storedData = storedDataString ? JSON.parse(storedDataString) : null; // Parse if data exists
+        const token = storedData?.value;
         try {
               const response = await fetch(`https://middlemanbackend.onrender.com/getPfp`,
               { method: 'POST',
               body: formData,
-              credentials: 'include'
+              headers: {
+                'Authorization': `Bearer ${token}`, // Authorization header
+                'Content-Type': 'application/json'  // Optional: Specify content type
+              }
               });
               const data = await response.json();
               if (!response.ok) {

@@ -25,15 +25,21 @@ const Customers = () => {
 const [customers, setCustomers] = useState<customs[]|null>();
 const [errors, setErrors] = useState<String>('');
 const [retry,setRetry] = useState<boolean>(false)
+const storedDataString = localStorage.getItem('myData');
 
 useEffect(()=>{
   setCustomers(null)
   setErrors('')
 const fetchUsers = async()=>{
+  const storedData = storedDataString ? JSON.parse(storedDataString) : null; // Parse if data exists
+  const token = storedData?.value;
 try {
     const response = await fetch(`https://middlemanbackend.onrender.com/getCustom`, {
       method: 'Get',
-      credentials: 'include',
+      headers: {
+        'Authorization': `Bearer ${token}`, // Authorization header
+        'Content-Type': 'application/json'  // Optional: Specify content type
+      }
   });
     const data = await response.json()
     setCustomers(data)

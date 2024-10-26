@@ -1,6 +1,7 @@
 import { FaArrowLeft,FaCamera, FaPencil, FaCopy} from "react-icons/fa6"
 import { NavLink } from "react-router-dom"
 import { useState,useEffect } from 'react';
+import { useNavigate} from "react-router-dom"
 
 
 const Setting = () => {
@@ -36,13 +37,20 @@ const Setting = () => {
         __v: number;
       }
       const [users, setusers] = useState<User|null>();
+      const storedDataString = localStorage.getItem('myData');
+      const navigate = useNavigate()
 
 useEffect(()=>{
 const fetchUsers = async()=>{
+  const storedData = storedDataString ? JSON.parse(storedDataString) : null; // Parse if data exists
+  const token = storedData?.value;
 try {
     const response = await fetch(`https://middlemanbackend.onrender.com/getusers`, {
       method: 'Get',
-      credentials: 'include',
+      headers: {
+        'Authorization': `Bearer ${token}`, // Authorization header
+        'Content-Type': 'application/json'  // Optional: Specify content type
+      }
   });
     const data = await response.json()
     setusers(data)
@@ -53,6 +61,10 @@ console.log(err)
 }
 fetchUsers()
 },[])
+const logOut = ()=>{
+  localStorage.removeItem('myData')
+  navigate('/landingPage')
+}
   return (
     <div className="w-full h-screen fixed bg-black flex justify-center items-center">
     <NavLink to={'/'} relative="path"><FaArrowLeft className="absolute text-white top-7 left-7 sm:top-10 sm:left-10 "/></NavLink>
@@ -60,7 +72,7 @@ fetchUsers()
     <div className="flex flex-col gap-5 items-center sm:gap-7 w-full">
       <div className="flex flex-col items-center gap-5 sm:gap-7 w-full">
         <div className="flex flex-col items-center gap-3 w-full">
-          <div className='sm:h-16 sm:w-16 w-14 h-14 rounded-full flex justify-center items-center   text-white bg-purple' >{users?.profilePic?<img src={`http://localhost:3500${users?.profilePic}`} className='sm:w-20 bg-no-repeat bg-cover bg-center sm:h-20   w-14 h-14 rounded-full  '/>:<div className='sm:h-20    w-14 h-14 rounded-full sm:w-20 sm:text-lg flex items-center justify-center text-white'><FaCamera/></div>}</div>
+          <div className='sm:h-16 sm:w-16 w-14 h-14 rounded-full flex justify-center items-center overflow-hidden   text-white bg-purple' >{users?.profilePic?<img src={users?.profilePic} className='sm:w-20 bg-no-repeat bg-cover bg-center sm:h-20   w-14 h-14 rounded-full  '/>:<div className='sm:h-20    w-14 h-14 rounded-full sm:w-20 sm:text-lg flex items-center justify-center text-white'><FaCamera/></div>}</div>
           <h1 className="text-white text-center text-base sm:text-lg  font-semibold  ">Settings</h1>
         </div>
       {/* <p className="text-white text-center  text-sm sm:text-base ">Add some money to your account balance</p> */}
@@ -84,7 +96,7 @@ fetchUsers()
         </div>
       </div>
     </div>
-    <NavLink to={'/landingPage'} className={'w-full lg:w-108 xl:w-107'}><button className="bg-purple  text-white  w-full rounded-lg h-10  sm:h-12 " >Log Out</button></NavLink>
+  <button className="bg-purple  text-white rounded-lg h-10  sm:h-12 w-full lg:w-108 xl:w-107 " onClick={logOut}>Log Out</button>
     </form>
 </div>
   )

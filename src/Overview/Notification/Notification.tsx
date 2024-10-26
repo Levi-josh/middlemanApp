@@ -21,14 +21,21 @@ const Notification = () => {
     const [notes, setNotes] = useState<Note|null>();
     const [errors, setErrors] = useState<String>('');
     const [retry,setRetry] = useState<boolean>(false)
+    const storedDataString = localStorage.getItem('myData');
+    
     useEffect(()=>{
     setNotes(null)
     setErrors('')
     const fetchUsers = async()=>{
+        const storedData = storedDataString ? JSON.parse(storedDataString) : null; // Parse if data exists
+        const token = storedData?.value;
     try {
         const response = await fetch(`https://middlemanbackend.onrender.com/getNotes`, {
             method: 'Get',
-            credentials: 'include',
+            headers: {
+                'Authorization': `Bearer ${token}`, // Authorization header
+                'Content-Type': 'application/json'  // Optional: Specify content type
+              }
         });
         const data = await response.json()
         setNotes(data)
@@ -42,10 +49,15 @@ const Notification = () => {
     },[retry])
 
     const acceptInvite = async(note:any)=>{
+        const storedData = storedDataString ? JSON.parse(storedDataString) : null; // Parse if data exists
+        const token = storedData?.value;
       try {
           const response = await fetch(`https://middlemanbackend.onrender.com/acceptInvite/${note}`,{
             method: 'Put',
-            credentials: 'include',
+            headers: {
+                'Authorization': `Bearer ${token}`, // Authorization header
+                'Content-Type': 'application/json'  // Optional: Specify content type
+              }
         });
           const data = await response.json()
           console.log(data)

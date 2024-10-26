@@ -55,9 +55,15 @@ useEffect(()=>{
   setErrors('')
 const fetchUsers = async()=>{
 try {
+  const storedData = storedDataString ? JSON.parse(storedDataString) : null; // Parse if data exists
+const token = storedData?.value;
+console.log(token)
     const response = await fetch(`https://middlemanbackend.onrender.com/getusers`,{
-      method: 'Get',
-      credentials: 'include',
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`, // Authorization header
+        'Content-Type': 'application/json'  // Optional: Specify content type
+      }
   });
     const data = await response.json()
     setusers(data)
@@ -68,6 +74,7 @@ catch (err:any) {
 }
 storedDataString&&fetchUsers()
 },[retry])
+
   return (
     <div className="w-full overflow-x-hidden lg:overflow-auto   bg-black2    lg:px-5 lg:w-107 xl:w-1075 lg:h-screen h-full " onScroll={scrolldiv}>
     <Header scrollPosition={scrollPosition} profilePic={users?.profilePic}/>

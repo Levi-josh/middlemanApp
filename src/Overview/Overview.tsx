@@ -28,15 +28,15 @@ const Overview: React.FC = () => {
   const { fromChat } = useChatContext();
   const [iconFill,setIconfill]=useState(true)
   const [storedData,setStoreData]= useState<any|null>()
+  const storedDataString = localStorage.getItem('myData');
   // const location = useLocation();
   useEffect(()=>{
-  const storedDataString = localStorage.getItem('myData');
   if(storedDataString){
     setStoreData(storedDataString)
   }else{
     setStoreData(null)
   }
-},[storedData])
+},[!storedDataString])
   //  const location = useLocation();
   // const [isAuthenticated,setIsAuthenticated]=useState(false)
   // const [user,setUser]=useState<any|null>()

@@ -37,6 +37,8 @@ const handSubmit = async(e:FormEvent<HTMLFormElement>)=>{
             setRan(false);
             setErrorMsg({message:data.errorMessage})
           }else{
+            const mydata = { value: data.token, expiration: Date.now() + 86400000,Id:data.UserId }; // Expires in 24 hours
+            localStorage.setItem('myData', JSON.stringify(mydata));
           data && navigate('/')   
        }
     }
