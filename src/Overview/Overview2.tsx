@@ -1,4 +1,4 @@
-// import { useSearchParams} from "react-router-dom"
+import { useSearchParams} from "react-router-dom"
 import {  useEffect } from "react"
 import { useNavigate} from "react-router-dom"
 // import { useDispatch } from 'react-redux';
@@ -6,8 +6,8 @@ import { useNavigate} from "react-router-dom"
 // import { AppDispatch } from '../Feature/Store';
 
 const Overview2 = () => {
-  // const [searchParams] = useSearchParams();
-  // const loggedIn2 = searchParams.get('loggedIn');
+  const [searchParams] = useSearchParams();
+  const loggedIn2 = searchParams.get('Userid');
   //  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate()
   const storedDataString = localStorage.getItem('myData');
@@ -24,7 +24,7 @@ const Overview2 = () => {
     }  
 
     }, []);
-
+console.log(`loggedIn2:${loggedIn2}`)
     
 
 return (
