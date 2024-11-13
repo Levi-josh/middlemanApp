@@ -7,12 +7,15 @@ import { useNavigate} from "react-router-dom"
 
 const Overview2 = () => {
   const [searchParams] = useSearchParams();
-  const loggedIn2 = searchParams.get('Userid');
+  const paramsId = searchParams.get('Userid');
+  const paramsToken = searchParams.get('token');
   //  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate()
-  const storedDataString = localStorage.getItem('myData');
-
   useEffect(() => {
+    if(paramsToken){
+      const mydata = { value:paramsToken, expiration: Date.now() + 86400000,Id:paramsId }; // Expires in 24 hours
+      localStorage.setItem('myData', JSON.stringify(mydata));}
+    const storedDataString = localStorage.getItem('myData');
     if (storedDataString) {
       // dispatch(verifyAuth)
       const storedData = JSON.parse(storedDataString);
@@ -24,7 +27,6 @@ const Overview2 = () => {
     }  
 
     }, []);
-console.log(`loggedIn2:${loggedIn2}`)
     
 
 return (
